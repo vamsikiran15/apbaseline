@@ -13,444 +13,586 @@
         <div v-if="currentStep === step">
           <!-- <h2>Step {{ step }}: Details</h2> -->
           <div v-if="step === 1">
-                <ion-col>
-            <ion-card>
-              <ion-card-header color="tertiary">
-                <h3>1 General Information</h3>
-              </ion-card-header>
+            <ion-col>
+              <ion-card>
+                <ion-card-header color="tertiary">
+                  <h3>1 General Information</h3>
+                </ion-card-header>
 
-              <ion-card-content>
-                <ion-row class="ion-padding-top">
-                <ion-select
-                  aria-label="District"
-                  interface="popover"
-                  label="Select District"
-                  label-placement="floating"
-                  placeholder="Select District"
-                  fill="outline"
-                >
-                  <ion-select-option value="apples"
-                    >District 1</ion-select-option
-                  >
-                  <ion-select-option value="oranges"
-                    >District 2</ion-select-option
-                  >
-                  <ion-select-option value="bananas"
-                    >District 3</ion-select-option
-                  >
-                </ion-select>
-              </ion-row>
-                <ion-row class="ion-padding-top">
-                <ion-select
-                  aria-label="District"
-                  interface="popover"
-                  label="Select WCC"
-                  label-placement="floating"
-                  placeholder="Select WCC"
-                  fill="outline"
-                >
-                  <ion-select-option value="apples"
-                    >District 1</ion-select-option
-                  >
-                  <ion-select-option value="oranges"
-                    >District 2</ion-select-option
-                  >
-                  <ion-select-option value="bananas"
-                    >District 3</ion-select-option
-                  >
-                </ion-select>
-              </ion-row>
-              <ion-row class="ion-padding-top">
-                <ion-select
-                  aria-label="District"
-                  interface="popover"
-                  label="Select WCC"
-                  label-placement="floating"
-                  placeholder="Select WCC"
-                  fill="outline"
-                >
-                  <ion-select-option value="apples"
-                    >District 1</ion-select-option
-                  >
-                  <ion-select-option value="oranges"
-                    >District 2</ion-select-option
-                  >
-                  <ion-select-option value="bananas"
-                    >District 3</ion-select-option
-                  >
-                </ion-select>
-              </ion-row>
-              <ion-row class="ion-padding-top">
-                <ion-select
-                  aria-label="District"
-                  interface="popover"
-                  label="Name of the Micro Watershed Village"
-                  label-placement="floating"
-                  placeholder="Name of the Micro Watershed Village"
-                  fill="outline"
-                >
-                  <ion-select-option value="apples"
-                    >District 1</ion-select-option
-                  >
-                  <ion-select-option value="oranges"
-                    >District 2</ion-select-option
-                  >
-                  <ion-select-option value="bananas"
-                    >District 3</ion-select-option
-                  >
-                </ion-select>
-              </ion-row>
-              <ion-row class="ion-padding-top">
-                <ion-select
-                  aria-label="District"
-                  interface="popover"
-                  label="Select Mandal"
-                  label-placement="floating"
-                  placeholder="Select Mandal"
-                  fill="outline"
-                >
-                  <ion-select-option value="apples"
-                    >District 1</ion-select-option
-                  >
-                  <ion-select-option value="oranges"
-                    >District 2</ion-select-option
-                  >
-                  <ion-select-option value="bananas"
-                    >District 3</ion-select-option
-                  >
-                </ion-select>
-              </ion-row>
-              <ion-row class="ion-padding-top">
-                <ion-select
-                  aria-label="District"
-                  interface="popover"
-                  label="Name of the Gram Panchayat"
-                  label-placement="floating"
-                  placeholder="Name of the Gram Panchayat"
-                  fill="outline"
-                >
-                  <ion-select-option value="apples"
-                    >District 1</ion-select-option
-                  >
-                  <ion-select-option value="oranges"
-                    >District 2</ion-select-option
-                  >
-                  <ion-select-option value="bananas"
-                    >District 3</ion-select-option
-                  >
-                </ion-select>
-              </ion-row>
-              </ion-card-content>
-            </ion-card>
+                <ion-card-content>
+                  <ion-row class="ion-padding-top">
+                    <ion-select
+                      aria-label="District"
+                      interface="popover"
+                      label="Select District"
+                      label-placement="floating"
+                      placeholder="Select District"
+                      fill="outline"
+                    >
+                      <ion-select-option value="apples"
+                        >District 1</ion-select-option
+                      >
+                      <ion-select-option value="oranges"
+                        >District 2</ion-select-option
+                      >
+                      <ion-select-option value="bananas"
+                        >District 3</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-row>
+                  <ion-row class="ion-padding-top">
+                    <ion-select
+                      aria-label="District"
+                      interface="popover"
+                      label="Select WCC"
+                      label-placement="floating"
+                      placeholder="Select WCC"
+                      fill="outline"
+                    >
+                      <ion-select-option value="apples"
+                        >District 1</ion-select-option
+                      >
+                      <ion-select-option value="oranges"
+                        >District 2</ion-select-option
+                      >
+                      <ion-select-option value="bananas"
+                        >District 3</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-row>
+                  <ion-row class="ion-padding-top">
+                    <ion-select
+                      aria-label="District"
+                      interface="popover"
+                      label="Select WCC"
+                      label-placement="floating"
+                      placeholder="Select WCC"
+                      fill="outline"
+                    >
+                      <ion-select-option value="apples"
+                        >District 1</ion-select-option
+                      >
+                      <ion-select-option value="oranges"
+                        >District 2</ion-select-option
+                      >
+                      <ion-select-option value="bananas"
+                        >District 3</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-row>
+                  <ion-row class="ion-padding-top">
+                    <ion-select
+                      aria-label="District"
+                      interface="popover"
+                      label="Name of the Micro Watershed Village"
+                      label-placement="floating"
+                      placeholder="Name of the Micro Watershed Village"
+                      fill="outline"
+                    >
+                      <ion-select-option value="apples"
+                        >District 1</ion-select-option
+                      >
+                      <ion-select-option value="oranges"
+                        >District 2</ion-select-option
+                      >
+                      <ion-select-option value="bananas"
+                        >District 3</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-row>
+                  <ion-row class="ion-padding-top">
+                    <ion-select
+                      aria-label="District"
+                      interface="popover"
+                      label="Select Mandal"
+                      label-placement="floating"
+                      placeholder="Select Mandal"
+                      fill="outline"
+                    >
+                      <ion-select-option value="apples"
+                        >District 1</ion-select-option
+                      >
+                      <ion-select-option value="oranges"
+                        >District 2</ion-select-option
+                      >
+                      <ion-select-option value="bananas"
+                        >District 3</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-row>
+                  <ion-row class="ion-padding-top">
+                    <ion-select
+                      aria-label="District"
+                      interface="popover"
+                      label="Name of the Gram Panchayat"
+                      label-placement="floating"
+                      placeholder="Name of the Gram Panchayat"
+                      fill="outline"
+                    >
+                      <ion-select-option value="apples"
+                        >District 1</ion-select-option
+                      >
+                      <ion-select-option value="oranges"
+                        >District 2</ion-select-option
+                      >
+                      <ion-select-option value="bananas"
+                        >District 3</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-row>
+                </ion-card-content>
+              </ion-card>
             </ion-col>
             <ion-col>
-            <ion-card>
-              <ion-card-header color="tertiary"><h3>1.1 Individual Information</h3></ion-card-header>
-              <ion-card-content>
-                <ion-input
-                  class="ion-margin-top"
-                  label="Name of the Household"
-                  interface="popover"
-                  label-placement="floating"
-                  fill="outline"
-                  placeholder="Name of the Household"
-                ></ion-input>
-              <ion-input
-                  class="ion-margin-top"
-                  label="Household No./Door No"
-                  label-placement="floating"
-                  fill="outline"
-                  interface="popover"
-                  placeholder="Household No./Door No"
-                ></ion-input>
-          </ion-card-content>
-         </ion-card>
-         </ion-col>
-         <ion-col>
-         <ion-card>
-          <ion-card-header color="tertiary" class="ion-padding">Economic Status</ion-card-header>
-          <ion-card-contents>
-            <ion-radio-group value="PoP">
-                  <ion-radio
-                    value="PoP"
-                    label-placement="fixed"
-                    class="ion-padding"
-                    >PoP</ion-radio
-                  >
-                  <ion-radio
-                    value="Poor"
-                    label-placement="fixed"
-                    class="ion-padding"
-                    >Poor</ion-radio
-                  >
-                  <ion-radio
-                    value="Middle"
-                    label-placement="fixed"
-                    class="ion-padding"
-                    >Middle</ion-radio
-                  >
-                  <ion-radio
-                    value="Rich"
-                    label-placement="fixed"
-                    class="ion-padding"
-                    >Rich</ion-radio
-                  >
-                </ion-radio-group>
-                <ion-input
-                  type="number"
-                  class="ion-margin-top"
-                  label="Aadhaar Card No"
-                  label-placement="floating"
-                  fill="outline"
-                  placeholder="Enter Aadhaar Card No"
-                ></ion-input>
-          </ion-card-contents>
-         </ion-card>
-        </ion-col>
-        <ion-col>
-         <ion-card>
-          <ion-card-header color="tertiary" class="ion-padding">Occupation</ion-card-header>
-          <ion-card-contents>
-            <ion-item>
-                  <ion-label>Agriculture</ion-label>
-                  <ion-checkbox slot="end"></ion-checkbox>
-                </ion-item>
-
-                <ion-item>
-                  <ion-label>Ag Labour</ion-label>
-                  <ion-checkbox slot="end"></ion-checkbox>
-                </ion-item>
-
-                <ion-item>
-                  <ion-label>Non –Ag labour</ion-label>
-                  <ion-checkbox slot="end"></ion-checkbox>
-                </ion-item>
-
-                <ion-item>
-                  <ion-label>Employee</ion-label>
-                  <ion-checkbox slot="end"></ion-checkbox>
-                </ion-item>
-
-                <ion-item>
-                  <ion-label>Business</ion-label>
-                  <ion-checkbox slot="end"></ion-checkbox>
-                </ion-item>
-
-                <ion-item>
-                  <ion-label>Others</ion-label>
-                  <ion-checkbox slot="end"></ion-checkbox>
-                </ion-item>
-          </ion-card-contents>
-         </ion-card>
-        </ion-col>
-        <ion-col>
-         <ion-card>
-          <ion-card-header color="tertiary">Location</ion-card-header>
-          <ion-card-contents>
-            <ion-row>
-                  <ion-radio-group value="Ridge" class="ion-padding">
-                    <ion-col size="4">
-                      <ion-radio value="Ridge" label-placement="start"
-                        >Ridge</ion-radio
-                      >
-                    </ion-col>
-                    <ion-col size="4">
-                      <ion-radio value="Middle" label-placement="start"
-                        >Middle</ion-radio
-                      >
-                    </ion-col>
-                    <ion-col size="4">
-                      <ion-radio value="Valley" label-placement="start"
-                        >Valley</ion-radio
-                      >
-                    </ion-col>
+              <ion-card>
+                <ion-card-header color="tertiary"
+                  ><h3>1.1 Individual Information</h3></ion-card-header
+                >
+                <ion-card-content>
+                  <ion-input
+                    class="ion-margin-top"
+                    label="Name of the Household"
+                    interface="popover"
+                    label-placement="floating"
+                    fill="outline"
+                    placeholder="Name of the Household"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    label="Household No./Door No"
+                    label-placement="floating"
+                    fill="outline"
+                    interface="popover"
+                    placeholder="Household No./Door No"
+                  ></ion-input>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card>
+                <ion-card-header color="tertiary" class="ion-padding"
+                  >Economic Status</ion-card-header
+                >
+                <ion-card-contents>
+                  <ion-radio-group value="PoP">
+                    <ion-radio
+                      value="PoP"
+                      label-placement="fixed"
+                      class="ion-padding"
+                      >PoP</ion-radio
+                    >
+                    <ion-radio
+                      value="Poor"
+                      label-placement="fixed"
+                      class="ion-padding"
+                      >Poor</ion-radio
+                    >
+                    <ion-radio
+                      value="Middle"
+                      label-placement="fixed"
+                      class="ion-padding"
+                      >Middle</ion-radio
+                    >
+                    <ion-radio
+                      value="Rich"
+                      label-placement="fixed"
+                      class="ion-padding"
+                      >Rich</ion-radio
+                    >
                   </ion-radio-group>
                   <ion-input
-                  class="ion-margin-top"
-                  label="District"
-                  label-placement="floating"
-                  fill="outline"
-                  placeholder="District"
-                ></ion-input>
+                    type="number"
+                    class="ion-margin-top"
+                    label="Aadhaar Card No"
+                    label-placement="floating"
+                    fill="outline"
+                    placeholder="Enter Aadhaar Card No"
+                  ></ion-input>
+                </ion-card-contents>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card>
+                <ion-card-header color="tertiary" class="ion-padding"
+                  >Occupation</ion-card-header
+                >
+                <ion-card-contents>
+                  <ion-item>
+                    <ion-label>Agriculture</ion-label>
+                    <ion-checkbox slot="end"></ion-checkbox>
+                  </ion-item>
 
-                <ion-input
-                  type="number"
-                  class="ion-margin-top"
-                  label="Job Card No"
-                  label-placement="floating"
-                  fill="outline"
-                  placeholder="Job Card No"
-                ></ion-input>
-                </ion-row>
-            </ion-card-contents>
-           </ion-card>
-          </ion-col>
-          <ion-col>
-           <ion-card>
-            <ion-card-header color="tertiary">Social Status</ion-card-header>
-            <ion-card-contents>
-              <ion-row>
-                  <ion-radio-group value="SC" class="ion-padding">
-                    <ion-col size="3">
-                      <ion-radio value="SC" label-placement="start"
-                        >SC</ion-radio
-                      >
-                    </ion-col>
-                    <ion-col size="3">
-                      <ion-radio value="ST" label-placement="start"
-                        >ST</ion-radio
-                      >
-                    </ion-col>
-                    <ion-col size="3">
-                      <ion-radio value="BC" label-placement="start"
-                        >BC</ion-radio
-                      >
-                    </ion-col>
-                    <ion-col size="3">
-                      <ion-radio value="Others" label-placement="start"
-                        >Others</ion-radio
-                      >
-                    </ion-col>
-                  </ion-radio-group>
-                </ion-row>
-                <ion-input
-                  type="number"
-                  class="ion-margin-top"
-                  label="Contact No (Mobile)"
-                  label-placement="floating"
-                  fill="outline"
-                  placeholder="Contact No (Mobile)"
-                ></ion-input>
-            </ion-card-contents>
-           </ion-card>
-          </ion-col>
-          <ion-col>
-           <ion-card>
-            <ion-card-header color="tertiary">Total Land Holding (Acres)
-            </ion-card-header>
-            <ion-card-contents>
-              <ion-row style="display: flex">
-                  <ion-col>
+                  <ion-item>
+                    <ion-label>Ag Labour</ion-label>
+                    <ion-checkbox slot="end"></ion-checkbox>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Non –Ag labour</ion-label>
+                    <ion-checkbox slot="end"></ion-checkbox>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Employee</ion-label>
+                    <ion-checkbox slot="end"></ion-checkbox>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Business</ion-label>
+                    <ion-checkbox slot="end"></ion-checkbox>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label>Others</ion-label>
+                    <ion-checkbox slot="end"></ion-checkbox>
+                  </ion-item>
+                </ion-card-contents>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card>
+                <ion-card-header color="tertiary">Location</ion-card-header>
+                <ion-card-contents>
+                  <ion-row>
+                    <ion-radio-group value="Ridge" class="ion-padding">
+                      <ion-col size="4">
+                        <ion-radio value="Ridge" label-placement="start"
+                          >Ridge</ion-radio
+                        >
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-radio value="Middle" label-placement="start"
+                          >Middle</ion-radio
+                        >
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-radio value="Valley" label-placement="start"
+                          >Valley</ion-radio
+                        >
+                      </ion-col>
+                    </ion-radio-group>
+                    <ion-input
+                      class="ion-margin-top"
+                      label="District"
+                      label-placement="floating"
+                      fill="outline"
+                      placeholder="District"
+                    ></ion-input>
+
                     <ion-input
                       type="number"
                       class="ion-margin-top"
-                      label="Rainfed"
+                      label="Job Card No"
                       label-placement="floating"
                       fill="outline"
-                      placeholder="Rainfed"
+                      placeholder="Job Card No"
                     ></ion-input>
-                  </ion-col>
-                  <ion-col>
-                    <ion-input
-                      type="number"
-                      class="ion-margin-top"
-                      label="Irrigated"
-                      label-placement="floating"
-                      fill="outline"
-                      placeholder="Irrigated"
-                    ></ion-input>
-                  </ion-col>
-                </ion-row>
-            </ion-card-contents>
-           </ion-card>
-          </ion-col>
+                  </ion-row>
+                </ion-card-contents>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card>
+                <ion-card-header color="tertiary"
+                  >Social Status</ion-card-header
+                >
+                <ion-card-contents>
+                  <ion-row>
+                    <ion-radio-group value="SC" class="ion-padding">
+                      <ion-col size="3">
+                        <ion-radio value="SC" label-placement="start"
+                          >SC</ion-radio
+                        >
+                      </ion-col>
+                      <ion-col size="3">
+                        <ion-radio value="ST" label-placement="start"
+                          >ST</ion-radio
+                        >
+                      </ion-col>
+                      <ion-col size="3">
+                        <ion-radio value="BC" label-placement="start"
+                          >BC</ion-radio
+                        >
+                      </ion-col>
+                      <ion-col size="3">
+                        <ion-radio value="Others" label-placement="start"
+                          >Others</ion-radio
+                        >
+                      </ion-col>
+                    </ion-radio-group>
+                  </ion-row>
+                  <ion-input
+                    type="number"
+                    class="ion-margin-top"
+                    label="Contact No (Mobile)"
+                    label-placement="floating"
+                    fill="outline"
+                    placeholder="Contact No (Mobile)"
+                  ></ion-input>
+                </ion-card-contents>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card>
+                <ion-card-header color="tertiary"
+                  >Total Land Holding (Acres)
+                </ion-card-header>
+                <ion-card-contents>
+                  <ion-row style="display: flex">
+                    <ion-col>
+                      <ion-input
+                        type="number"
+                        class="ion-margin-top"
+                        label="Rainfed"
+                        label-placement="floating"
+                        fill="outline"
+                        placeholder="Rainfed"
+                      ></ion-input>
+                    </ion-col>
+                    <ion-col>
+                      <ion-input
+                        type="number"
+                        class="ion-margin-top"
+                        label="Irrigated"
+                        label-placement="floating"
+                        fill="outline"
+                        placeholder="Irrigated"
+                      ></ion-input>
+                    </ion-col>
+                  </ion-row>
+                </ion-card-contents>
+              </ion-card>
+            </ion-col>
           </div>
 
           <div v-if="step === 2">
+            <ion-col>
+              <ion-card>
+                <ion-card-header color="tertiary"
+                  ><h3>2 Household Details</h3></ion-card-header
+                >
+                <ion-card-contents>
+                  <ion-input
+                    class="ion-margin-top"
+                    label="Name of Family Member"
+                    label-placement="floating"
+                    fill="outline"
+                    placeholder="Name of Family Member"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    label="Relationship"
+                    label-placement="floating"
+                    fill="outline"
+                    placeholder="Relationship"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    label="Disability"
+                    label-placement="floating"
+                    fill="outline"
+                    placeholder="Disability"
+                  ></ion-input>
+                  <ion-select
+                    class="ion-margin-top"
+                    aria-label="Gender"
+                    interface="popover"
+                    label="Gender"
+                    label-placement="floating"
+                    placeholder="Gender"
+                    fill="outline"
+                  >
+                    <ion-select-option value="male">Male</ion-select-option>
+                    <ion-select-option value="female">Female</ion-select-option>
+                    <ion-select-option value="others">Others</ion-select-option>
+                  </ion-select>
+                  <ion-input
+                    class="ion-margin-top"
+                    label="Age"
+                    label-placement="floating"
+                    fill="outline"
+                    placeholder="Age"
+                  ></ion-input>
+                  <ion-select
+                    class="ion-margin-top"
+                    aria-label="Education"
+                    interface="popover"
+                    label="Level of Education"
+                    label-placement="floating"
+                    placeholder="Select Education"
+                    fill="outline"
+                  >
+                    <ion-select-option value="illiterate"
+                      >Illiterate</ion-select-option
+                    >
+                    <ion-select-option value="primary"
+                      >Primary</ion-select-option
+                    >
+                    <ion-select-option value="upperprimary"
+                      >Upper Primary</ion-select-option
+                    >
+                    <ion-select-option value="highschool"
+                      >High School</ion-select-option
+                    >
+                    <ion-select-option value="interdiploma"
+                      >Inter/Diploma</ion-select-option
+                    >
+                    <ion-select-option value="degree">Degree</ion-select-option>
+                    <ion-select-option value="pg">PG</ion-select-option>
+                    <ion-select-option value="others">Others</ion-select-option>
+                  </ion-select>
+                  <ion-select
+                    class="ion-margin-top"
+                    aria-label="Occupation"
+                    interface="popover"
+                    label="Occupation (Source of Livelihoods)"
+                    label-placement="floating"
+                    placeholder="Select Occupation"
+                    fill="outline"
+                  >
+                    <ion-select-option value="agriculture"
+                      >Agriculture</ion-select-option
+                    >
+                    <ion-select-option value="livestockrearing"
+                      >Livestock rearing</ion-select-option
+                    >
+                    <ion-select-option value="microenterprise"
+                      >Micro Enterprise</ion-select-option
+                    >
+                    <ion-select-option value="agrilabour"
+                      >Agri-Labour</ion-select-option
+                    >
+                    <ion-select-option value="nonaglabour"
+                      >Non-Ag labour</ion-select-option
+                    >
+                    <ion-select-option value="employee"
+                      >Employee</ion-select-option
+                    >
+                    <ion-select-option value="ruralartician"
+                      >Rural Artician</ion-select-option
+                    >
+                    <ion-select-option value="others">Others</ion-select-option>
+                  </ion-select>
+                  <ion-select
+                    class="ion-margin-top"
+                    aria-label="Membership"
+                    interface="popover"
+                    label="Membership"
+                    label-placement="floating"
+                    placeholder="Select Membership"
+                    fill="outline"
+                  >
+                    <ion-select-option value="shg">SHG</ion-select-option>
+                    <ion-select-option value="ug">UG</ion-select-option>
+                    <ion-select-option value="wc">WC</ion-select-option>
+                    <ion-select-option value="others">Others</ion-select-option>
+                  </ion-select>
+                </ion-card-contents>
+              </ion-card>
+            </ion-col>
+            <ion-button
+              expand="block"
+              class="ion-padding-down"
+              color="tertiary"
+              @click="removeRow(index)"
+            >
+              Remove Row
+            </ion-button>
+            <ion-button expand="block" color="tertiary" @click="addRows()"
+              >Add Family Member Details</ion-button
+            >
+            <ul>
+              <li v-for="(row, index) in rows" :key="index">{{ row }}</li>
+            </ul>
+            <!-- completed second section. -->
+          </div>
+
+          <div v-if="step === 3">
+            <ion-rol>
               <ion-col>
                 <ion-card>
-                  <ion-card-header color="tertiary"><h3>2 Household Details</h3></ion-card-header>
+                  <ion-card-header class="ion-padding" color="tertiary"
+                    ><h3>3.Land Particulars</h3></ion-card-header
+                  >
+                  <ion-card-contents>
+                    <ion-text color="tertiary"
+                      ><h3>3.1Cultivated Area(Acres)</h3></ion-text
+                    >
+                    <ion-card-header color="tertiary"
+                      ><h4>Cultivated Area(Acres)</h4></ion-card-header
+                    >
+                    <ion-input
+                      class="ion-margin-top"
+                      placeholder="Rainfed(Acres)"
+                      fill="outline"
+                      label="Rainfed(Acres)"
+                      label-placement="floating"
+                    ></ion-input>
+                    <ion-input
+                      class="ion-margin-top"
+                      placeholder="Irrigated(Acres)"
+                      fill="outline"
+                      label="Irrigated(Acres)"
+                      label-placement="floating"
+                    ></ion-input>
+                    <ion-input
+                      class="ion-margin-top"
+                      placeholder="Total"
+                      label="Total"
+                      fill="outline"
+                      label-placement="floating"
+                    ></ion-input>
+                    <ion-select
+                      class="ion-margin-top"
+                      aria-label="Type of Ownership"
+                      interface="popover"
+                      label="Type of Ownership"
+                      label-placement="floating"
+                      placeholder="Type of Ownership"
+                      fill="outline"
+                    >
+                      <ion-select-option value="Own">Own</ion-select-option>
+                      <ion-select-option value="Rent">Rent</ion-select-option>
+                    </ion-select>
+                  </ion-card-contents>
+                </ion-card>
+                <ion-card>
+                  <ion-card-header class="ion-padding" color="tertiary"
+                    ><h4>Leased-In</h4></ion-card-header
+                  >
                   <ion-card-contents>
                     <ion-input
                       class="ion-margin-top"
-                      label="Name of Family Member"
-                      label-placement="floating"
+                      placeholder="Rainfed(Acres)"
                       fill="outline"
-                      placeholder="Name of Family Member"
+                      label="Rainfed(Acres)"
+                      label-placement="floating"
                     ></ion-input>
                     <ion-input
                       class="ion-margin-top"
-                      label="Relationship"
-                      label-placement="floating"
+                      placeholder="Irrigated(Acres)"
                       fill="outline"
-                      placeholder="Relationship"
+                      label="Irrigated(Acres)"
+                      label-placement="floating"
                     ></ion-input>
                     <ion-input
                       class="ion-margin-top"
-                      label="Disability"
-                      label-placement="floating"
+                      placeholder="Total"
+                      label="Total"
                       fill="outline"
-                      placeholder="Disability"
+                      label-placement="floating"
                     ></ion-input>
                     <ion-select
-                  class="ion-margin-top"
-                  aria-label="Gender"
-                  interface="popover"
-                  label="Gender"
-                  label-placement="floating"
-                  placeholder="Gender"
-                  fill="outline"
-                >
-                  <ion-select-option value="male">Male</ion-select-option>
-                  <ion-select-option value="female">Female</ion-select-option>
-                  <ion-select-option value="others">Others</ion-select-option>
-                </ion-select>
-                <ion-input
                       class="ion-margin-top"
-                      label="Age"
+                      aria-label="Type of Ownership"
+                      interface="popover"
+                      label="Type of Ownership"
                       label-placement="floating"
+                      placeholder="Type of Ownership"
                       fill="outline"
-                      placeholder="Age"
-                    ></ion-input>
-                    <ion-select
-                  class="ion-margin-top"
-                  aria-label="Education"
-                  interface="popover"
-                  label="Level of Education"
-                  label-placement="floating"
-                  placeholder="Select Education"
-                  fill="outline"
-                >
-                  <ion-select-option value="illiterate">Illiterate</ion-select-option>
-                  <ion-select-option value="primary">Primary</ion-select-option>
-                  <ion-select-option value="upperprimary">Upper Primary</ion-select-option>
-                  <ion-select-option value="highschool">High School</ion-select-option>
-                  <ion-select-option value="interdiploma">Inter/Diploma</ion-select-option>
-                  <ion-select-option value="degree">Degree</ion-select-option>
-                  <ion-select-option value="pg">PG</ion-select-option>
-                  <ion-select-option value="others">Others</ion-select-option>
-                  </ion-select>
-                  <ion-select
-                  class="ion-margin-top"
-                  aria-label="Occupation"
-                  interface="popover"
-                  label="Occupation (Source of Livelihoods)"
-                  label-placement="floating"
-                  placeholder="Select Occupation"
-                  fill="outline"
-                >
-                  <ion-select-option value="agriculture">Agriculture</ion-select-option>
-                  <ion-select-option value="livestockrearing">Livestock rearing</ion-select-option>
-                  <ion-select-option value="microenterprise">Micro Enterprise</ion-select-option>
-                  <ion-select-option value="agrilabour">Agri-Labour</ion-select-option>
-                  <ion-select-option value="nonaglabour">Non-Ag labour</ion-select-option>
-                  <ion-select-option value="employee">Employee</ion-select-option>
-                  <ion-select-option value="ruralartician">Rural Artician</ion-select-option>
-                  <ion-select-option value="others">Others</ion-select-option>
-                  </ion-select>
-                  <ion-select
-                  class="ion-margin-top"
-                  aria-label="Membership"
-                  interface="popover"
-                  label="Membership"
-                  label-placement="floating"
-                  placeholder="Select Membership"
-                  fill="outline"
-                  >       
-                  <ion-select-option value="shg">SHG</ion-select-option>
-                  <ion-select-option value="ug">UG</ion-select-option>
-                  <ion-select-option value="wc">WC</ion-select-option>
-                  <ion-select-option value="others">Others</ion-select-option>               
+                    >
+                      <ion-select-option value="Own">Own</ion-select-option>
+                      <ion-select-option value="Rent">Rent</ion-select-option>
                     </ion-select>
                   </ion-card-contents>
                     </ion-card>
@@ -667,6 +809,8 @@ export default {
 
       rows: [],
       head_of_the_family: "",
+
+      name_of_the_family_member: "",
     };
   },
   components: {
@@ -694,6 +838,17 @@ export default {
         this.currentStep--;
       }
     },
+    addRows() {
+      // Check if any field is not empty
+      if (
+        Object.values(this.name_of_the_family_member).some(
+          (field) => field.trim() !== ""
+        )
+      ) {
+        this.rows.push({ ...this.newRow }); // Add a copy of newRow to rows
+        this.clearFields(); // Clear the input fields
+      }
+    },
     removeRow(index) {
       this.rows.splice(index, 1);
     },
@@ -702,12 +857,11 @@ export default {
 </script>
 
 <style>
-
-.nextButton{
+.nextButton {
   float: right;
 }
-.header{
-  display:contents;
-  text-align: center
+.header {
+  display: contents;
+  text-align: center;
 }
 </style>
