@@ -525,10 +525,12 @@
                 </span>
                 <ion-button
                   expand="block"
-                  class="ion-padding-down"
-                  color="tertiary"
+                  class="remove-button"
+                  color="danger"
                   @click="removeRow(index)"
+                  fill="clear"
                 >
+                  <ion-icon name="close-circle-outline"></ion-icon>
                 </ion-button>
               </li>
             </ul>
@@ -1734,5 +1736,12 @@ export default {
 
 .remove-button {
   flex-shrink: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.remove-button ion-icon {
+  font-size: 1.5rem;
+  color: red;
 }
 </style>
