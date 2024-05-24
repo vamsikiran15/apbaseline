@@ -1570,6 +1570,9 @@
               @click="addRows()"
               >Add Family Member Details</ion-button>
           </div>
+          <div v-if="step === 6">
+            <SixthPage/>
+          </div>
         </div>
       </div>
 
@@ -1621,7 +1624,8 @@ import {
   IonRadio,
   IonList,
 } from "@ionic/vue";
-import fifthPage from './fifthPage.vue';
+import fifthPage from "./fifthPage.vue";
+import SixthPage from "./sixthPage.vue";
 export default {
   data() {
     return {
@@ -1663,7 +1667,8 @@ export default {
     IonRadioGroup,
     IonRadio,
     IonList,
-    fifthPage
+    fifthPage,
+    SixthPage
   },
   methods: {
     nextStep() {
