@@ -538,10 +538,9 @@
           </div>
 
           <div v-if="step === 3">
-            <ion-list>
               <ion-col>
                 <ion-card>
-                  <ion-card-header class="ion-padding" color="tertiary"
+                  <ion-card-header color="tertiary"
                     ><h3>3.Land Particulars</h3></ion-card-header
                   >
                   <ion-card-contents>
@@ -943,7 +942,6 @@
                   </ion-card-contents>
                 </ion-card>
               </ion-col>
-            </ion-list>
           </div>
           <div v-if="step === 4">
             <ion-card>
@@ -1563,6 +1561,15 @@
               </ion-card-contents>
             </ion-card>
           </div>
+          <div v-if="step === 5">
+            <fifthPage/>
+            <ion-button
+              class="ion-margin-top"
+              expand="block"
+              color="tertiary"
+              @click="addRows()"
+              >Add Family Member Details</ion-button>
+          </div>
         </div>
       </div>
 
@@ -1614,6 +1621,7 @@ import {
   IonRadio,
   IonList,
 } from "@ionic/vue";
+import fifthPage from './fifthPage.vue';
 export default {
   data() {
     return {
@@ -1655,6 +1663,7 @@ export default {
     IonRadioGroup,
     IonRadio,
     IonList,
+    fifthPage
   },
   methods: {
     nextStep() {
