@@ -465,7 +465,109 @@
 
           </div>
 
-          <div v-if="step === 3"></div>
+          <div v-if="step === 3"> 
+            <ion-rol>
+            <ion-col>
+            <ion-card>
+              <ion-card-header class="ion-padding" color="tertiary"><h3>3.Land Particulars</h3></ion-card-header>
+              <ion-card-contents> 
+                <ion-text color="tertiary"><h3>3.1Cultivated Area(Acres)</h3></ion-text>
+                    <ion-card-header color="tertiary"><h4>Cultivated Area(Acres)</h4></ion-card-header> 
+                <ion-input  class="ion-margin-top" placeholder="Rainfed(Acres)" fill="outline" label="Rainfed(Acres)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top"  placeholder="Irrigated(Acres)" fill="outline" label="Irrigated(Acres)" label-placement="floating"></ion-input>
+                <ion-input  class="ion-margin-top" placeholder="Total" label="Total" fill="outline" label-placement="floating"></ion-input>
+                <ion-select
+                class="ion-margin-top"
+                  aria-label="Type of Ownership"
+                  interface="popover"
+                  label="Type of Ownership"
+                  label-placement="floating"
+                  placeholder="Type of Ownership"
+                  fill="outline">
+                  <ion-select-option value="Own">Own</ion-select-option>
+                  <ion-select-option value="Rent">Rent</ion-select-option>
+                </ion-select>
+       </ion-card-contents>
+            </ion-card>
+            <ion-card>
+              <ion-card-header class="ion-padding" color="tertiary"><h4>Leased-In</h4></ion-card-header>
+              <ion-card-contents> 
+                <ion-input class="ion-margin-top" placeholder="Rainfed(Acres)" fill="outline" label="Rainfed(Acres)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irrigated(Acres)" fill="outline" label="Irrigated(Acres)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Total" label="Total" fill="outline" label-placement="floating"></ion-input>
+                <ion-select
+                class="ion-margin-top"
+                  aria-label="Type of Ownership"
+                  interface="popover"
+                  label="Type of Ownership"
+                  label-placement="floating"
+                  placeholder="Type of Ownership"
+                  fill="outline">
+                  <ion-select-option value="Own">Own</ion-select-option>
+                  <ion-select-option value="Rent">Rent</ion-select-option>
+                </ion-select>
+       </ion-card-contents>
+            </ion-card>
+            <ion-card>
+              <ion-card-header class="ion-padding" color="tertiary"><h4>Leased-Out</h4></ion-card-header>
+              <ion-card-contents> 
+                <ion-input class="ion-margin-top" placeholder="Rainfed(Acres)" fill="outline" label="Rainfed(Acres)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irrigated(Acres)" fill="outline" label="Irrigated(Acres)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Total" label="Total" fill="outline" label-placement="floating"></ion-input>
+                <ion-select
+                class="ion-margin-top"
+                  aria-label="Type of Ownership"
+                  interface="popover"
+                  label="Type of Ownership"
+                  label-placement="floating"
+                  placeholder="Type of Ownership"
+                  fill="outline">
+                  <ion-select-option value="Own">Own</ion-select-option>
+                  <ion-select-option value="Rent">Rent</ion-select-option>
+                </ion-select>
+       </ion-card-contents>
+            </ion-card>
+            <ion-card>
+              <ion-card-header color="tertiary"><h4>3.2 Income from Crops(Rs)-Kharif</h4></ion-card-header>
+              <ion-card-contents>
+                <ion-input class="ion-margin-top" placeholder="Crop Grown" fill="outline" label="Crop Grown" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Rainfed(Acres)" fill="outline" label="Rainfed(Acres)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Rainfed Yield(Qtls)" label="Rainfed Yield(Qtls)" fill="outline" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Total Rainfed Net income" fill="outline" label="Total Rainfed Net Income(7-5)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irrigated Area(Acres)" fill="outline" label="Irrigated Area(Acres)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irigated Yield(Qtls)" label="Irrigated Yield(Qtls)" fill="outline" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irrigated(Acres) Cost of Cultiation(Rs)" label="Irrigated(Acres) Cost of Cultiation(Rs)" fill="outline" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irrigated(Acres) Rate per Qtls(Rs)" fill="outline" label="Irrigated(Acres) Rate per Qtls(Rs) " label-placement="floating"></ion-input>
+                <ion-card-subtitle color="tertiary">Irrigated(Acres) Gross Income :</ion-card-subtitle>
+                <ion-input class="ion-margin-top" placeholder="Total Irrigated Net Income" fill="outline" label="Total Irrigated Net Income" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Kharif Grand Total Income" label="Kharif Grand Total Income" fill="outline" label-placement="floating"></ion-input>
+                <ion-card-subtitle color="tertiary">Irrigated(Acres) Net Income(13-11) :</ion-card-subtitle>
+                <ion-input class="ion-margin-top" placeholder="Total Irrigated Net Income" fill="outline" label="Total Irrigated Net Income" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Kharif Grand Total Income" label="Kharif Grand Total Income" fill="outline" label-placement="floating"></ion-input>
+              </ion-card-contents>
+            </ion-card>
+            <ion-card>
+              <ion-card-header color="tertiary"><h4>3.3 Income from Crops(Rs)-Rabi</h4></ion-card-header>
+              <ion-card-contents>
+                <ion-input class="ion-margin-top" placeholder="Crop Grown" fill="outline" label="Crop Grown" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Rainfed(Acres)" fill="outline" label="Rainfed(Acres)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Rainfed Yield(Qtls)" label="Rainfed Yield(Qtls)" fill="outline" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Total Rainfed Net income" fill="outline" label="Total Rainfed Net Income(7-5)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irrigated Area(Acres)" fill="outline" label="Irrigated Area(Acres)" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irigated Yield(Qtls)" label="Irrigated Yield(Qtls)" fill="outline" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irrigated(Acres) Cost of Cultiation(Rs)" label="Irrigated(Acres) Cost of Cultiation(Rs)" fill="outline" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Irrigated(Acres) Rate per Qtls(Rs)" fill="outline" label="Irrigated(Acres) Rate per Qtls(Rs) " label-placement="floating"></ion-input>
+                <ion-card-subtitle color="tertiary">Irrigated(Acres) Gross Income :</ion-card-subtitle>
+                <ion-input class="ion-margin-top" placeholder="Total Irrigated Net Income" fill="outline" label="Total Irrigated Net Income" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Kharif Grand Total Income" label="Kharif Grand Total Income" fill="outline" label-placement="floating"></ion-input>
+                <ion-card-subtitle color="tertiary">Irrigated(Acres) Net Income(13-11) :</ion-card-subtitle>
+                <ion-input class="ion-margin-top" placeholder="Total Irrigated Net Income" fill="outline" label="Total Irrigated Net Income" label-placement="floating"></ion-input>
+                <ion-input class="ion-margin-top" placeholder="Kharif Grand Total Income" label="Kharif Grand Total Income" fill="outline" label-placement="floating"></ion-input>
+              </ion-card-contents>
+            </ion-card>
+          </ion-col>
+        </ion-rol>
+          </div>
         </div>
       </div>
 
