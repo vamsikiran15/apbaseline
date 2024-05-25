@@ -1573,6 +1573,9 @@
           <div v-if="step === 6">
             <SixthPage/>
           </div>
+          <div v-if="step === 7">
+            <SeventhPage/>
+          </div>
         </div>
       </div>
 
@@ -1626,6 +1629,7 @@ import {
 } from "@ionic/vue";
 import fifthPage from "./fifthPage.vue";
 import SixthPage from "./sixthPage.vue";
+import SeventhPage from "./seventhPage.vue";
 export default {
   data() {
     return {
@@ -1668,7 +1672,8 @@ export default {
     IonRadio,
     IonList,
     fifthPage,
-    SixthPage
+    SixthPage,
+    SeventhPage
   },
   methods: {
     nextStep() {
