@@ -1575,6 +1575,12 @@
           </div>
           <div v-if="step === 7">
             <SeventhPage/>
+            <ion-button
+              class="ion-margin-top"
+              expand="block"
+              color="tertiary"
+              @click="addRows()"
+              >Add Family Member Details</ion-button>
           </div>
         </div>
       </div>
