@@ -1582,9 +1582,11 @@
               @click="addRows()"
               >Add Government Scheme Details</ion-button>
           </div>
+          <div v-if="step === 8">
+            <Eighthpage/>
         </div>
       </div>
-
+      </div>
       <div>
         <ion-button
           class="ion-margin-top"
@@ -1636,6 +1638,7 @@ import {
 import fifthPage from "./fifthPage.vue";
 import SixthPage from "./sixthPage.vue";
 import SeventhPage from "./seventhPage.vue";
+import Eighthpage from "./eighthpage.vue";
 export default {
   data() {
     return {
@@ -1679,7 +1682,8 @@ export default {
     IonList,
     fifthPage,
     SixthPage,
-    SeventhPage
+    SeventhPage,
+    Eighthpage
   },
   methods: {
     nextStep() {
