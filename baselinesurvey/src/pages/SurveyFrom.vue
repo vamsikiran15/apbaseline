@@ -1568,7 +1568,7 @@
               expand="block"
               color="tertiary"
               @click="addRows()"
-              >Add Family Member Details</ion-button>
+              >Add Scheme Details</ion-button>
           </div>
           <div v-if="step === 6">
             <SixthPage/>
