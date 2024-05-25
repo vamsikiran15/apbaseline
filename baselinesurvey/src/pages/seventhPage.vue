@@ -1,6 +1,6 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary">7.Benefits from Government Schemes</ion-card-header>
+        <ion-card-header color="tertiary"><h3>7.Benefits from Government Schemes</h3></ion-card-header>
         <ion-card-contents>
             <ion-input
             class="ion-margin-top"

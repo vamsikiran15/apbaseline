@@ -1,9 +1,9 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary"><h3>8.Use of Manure and Chemical Fertilizers(Previous Year)</h3></ion-card-header>
-    <ion-card-contents>
-        <ion-card-header color="tertiary">8.1 Manures and Fertilizers used(in Tons)</ion-card-header>
-        <ion-select
+        <ion-card-header color="tertiary"><h3>9.Pest and Disease Control Measures</h3></ion-card-header>
+        <ion-card-contents>
+            <ion-card-header color="tertiary">Crop Measures</ion-card-header>
+            <ion-select
                       class="ion-margin-top"
                       aria-label="Crops"
                       interface="popover"
@@ -53,49 +53,65 @@
                     </ion-select>
                     <ion-input
             class="ion-margin-top"
-            placeholder="Enter value in tons"
+            placeholder="Enter name of the pest/disease"
             fill="outline"
-            label="Organic(Tons)"
+            label="Name of the Pest/Disease"
             label-placement="floating"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
-            placeholder="Enter value in grams"
+            placeholder="Biological"
             fill="outline"
-            label="Micro Nutrients(In Gms)"
+            label="Biological"
             label-placement="floating"
           ></ion-input>
-    </ion-card-contents>
+          <ion-input
+            class="ion-margin-top"
+            placeholder="Enter chemical"
+            fill="outline"
+            label="Chemical"
+            label-placement="floating"
+          ></ion-input>
+          <ion-input
+            class="ion-margin-top"
+            placeholder="others(Name them)"
+            fill="outline"
+            label="Others(Name Them)"
+            label-placement="floating"
+          ></ion-input>
+        </ion-card-contents>
     </ion-card>
     <ion-card>
-        <ion-card-header color="tertiary">Chemical(Qtl)</ion-card-header>
+        <ion-card-header color="tertiary">
+            Amount Spent Towards
+        </ion-card-header>
         <ion-card-contents>
             <ion-input
             class="ion-margin-top"
-            placeholder="N"
+            placeholder="Enter material"
             fill="outline"
-            label="N"
+            label="Material"
             label-placement="floating"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
-            placeholder="P"
+            placeholder="Enter Wages"
             fill="outline"
-            label="P"
+            label="Wages"
             label-placement="floating"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
-            placeholder="K"
+            placeholder="Total material"
             fill="outline"
-            label="K"
+            label="Total Material"
             label-placement="floating"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
-            placeholder="Enter cost in rupees"
+            placeholder="Total wages"
             fill="outline"
-            label="Cost in Rupees"
+            label="Total Wages"
             label-placement="floating"
           ></ion-input>
         </ion-card-contents>
@@ -103,9 +119,9 @@
     <ion-card>
         <ion-input
             class="ion-margin-top"
-            placeholder="Total"
+            placeholder="Grand Total"
             fill="outline"
-            label="Total"
+            label="Grand Total"
             label-placement="floating"
           ></ion-input>
     </ion-card>
