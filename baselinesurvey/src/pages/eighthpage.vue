@@ -3,17 +3,53 @@
         <ion-card-header color="tertiary"><h3>8.Use of Manure and Chemical Fertilizers(Previous Year)</h3></ion-card-header>
     <ion-card-contents>
         <ion-card-header color="tertiary">8.1 Manures and Fertilizers used(in Tons)</ion-card-header>
-            <ion-select
+        <ion-select
                       class="ion-margin-top"
                       aria-label="Crops"
                       interface="popover"
                       label="Crops"
                       label-placement="floating"
-                      placeholder="Crops"
+                      placeholder="Select Crop Item"
                       fill="outline"
                     >
-                      <ion-select-option value="Own">Own</ion-select-option>
-                      <ion-select-option value="Rent">Rent</ion-select-option>
+                      <ion-select-option value="Paddy">Paddy</ion-select-option>
+                      <ion-select-option value="Meeze">Meeze</ion-select-option>
+                      <ion-select-option value="Jower">Jower</ion-select-option>
+                      <ion-select-option value="Cotton"
+                        >Cotton</ion-select-option
+                      >
+                      <ion-select-option value="Mirchi"
+                        >Mirchi</ion-select-option
+                      >
+                      <ion-select-option value="Groundnut"
+                        >Groundnut</ion-select-option
+                      >
+                      <ion-select-option value="Red Gram"
+                        >Red Gram</ion-select-option
+                      >
+                      <ion-select-option value="Black Gram"
+                        >Black Gram</ion-select-option
+                      >
+                      <ion-select-option value="Green Gram"
+                        >Green Gram</ion-select-option
+                      >
+                      <ion-select-option value="Mango">Mango</ion-select-option>
+                      <ion-select-option value="Sapota"
+                        >Sapota</ion-select-option
+                      >
+                      <ion-select-option value="Chinny"
+                        >Chinny</ion-select-option
+                      >
+                      <ion-select-option value="Neem">Neem</ion-select-option>
+                      <ion-select-option value="Cashew"
+                        >Cashew</ion-select-option
+                      >
+                      <ion-select-option value="Vegetables"
+                        >Vegetables</ion-select-option
+                      >
+                      <ion-select-option value="Sunflower"
+                        >Sunflower</ion-select-option
+                      >
                     </ion-select>
                     <ion-input
             class="ion-margin-top"
