@@ -1588,6 +1588,9 @@
         <div v-if="step === 9">
             <NinthPage/>
         </div>
+        <div v-if="step === 10">
+            <TenthPage/>
+        </div>
       </div>
       </div>
       <div>
@@ -1643,6 +1646,7 @@ import SixthPage from "./sixthPage.vue";
 import SeventhPage from "./seventhPage.vue";
 import Eighthpage from "./eighthpage.vue";
 import NinthPage from "./ninthPage.vue";
+import TenthPage from "./tenthPage.vue";
 export default {
   data() {
     return {
@@ -1688,7 +1692,8 @@ export default {
     SixthPage,
     SeventhPage,
     Eighthpage,
-    NinthPage
+    NinthPage,
+    TenthPage
   },
   methods: {
     nextStep() {
