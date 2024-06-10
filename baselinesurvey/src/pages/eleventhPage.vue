@@ -84,7 +84,6 @@
           ></ion-input>
           <ion-input
             class="ion-margin-top"
-            placeholder="Enter Expenditure(Rs) As per Last Year"
             fill="outline"
             label="Total"
             label-placement="floating"
