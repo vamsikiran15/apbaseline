@@ -1,9 +1,8 @@
 <template>
 <ion-card class="ion-margin-top">
-    <ion-card-header class="ion-text-center" color="tertiary"><h3>Source and Quality of Water(3ft = 1 metre) </h3></ion-card-header>
+    <ion-card-header class="ion-text-center" color="tertiary"><h3>14.Source and Quality of Water(3ft = 1 metre) </h3></ion-card-header>
         <ion-card-title class="ion-margin-top" color="tertiary"><h3>Water Source</h3></ion-card-title>
         <ion-card-header class="ion-margin-top" color="tertiary"><h6>Open</h6></ion-card-header>
-        <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -62,11 +61,9 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
-    </ion-card-content>
 </ion-card>
 <ion-card class="ion-margin-top">
     <ion-card-header class="ion-margin-top" color="tertiary"><h6>Borewell</h6></ion-card-header>
-    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -125,11 +122,9 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
-    </ion-card-content>
 </ion-card>
 <ion-card class="ion-margin-top">
     <ion-card-header class="ion-margin-top" color="tertiary"><h6>Tank</h6></ion-card-header>
-    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -188,11 +183,9 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
-    </ion-card-content>
 </ion-card>
 <ion-card class="ion-margin-top">
     <ion-card-header class="ion-margin-top" color="tertiary"><h6>Drip(Specify Crop)</h6></ion-card-header>
-    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -251,11 +244,9 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
-    </ion-card-content>
 </ion-card>
 <ion-card class="ion-margin-top">
     <ion-card-header class="ion-margin-top" color="tertiary"><h6>Others</h6></ion-card-header>
-    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -314,7 +305,6 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
-    </ion-card-content>
 </ion-card>
 </template>
 <script>
