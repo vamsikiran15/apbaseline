@@ -19,7 +19,6 @@
                   <h3>1 General Information</h3>
                 </ion-card-header>
 
-                <ion-card-content>
                   <ion-row class="ion-padding-top">
                     <ion-select
                       aria-label="District"
@@ -140,7 +139,6 @@
                       >
                     </ion-select>
                   </ion-row>
-                </ion-card-content>
               </ion-card>
             </ion-col>
             <ion-col>
@@ -148,7 +146,6 @@
                 <ion-card-header color="tertiary"
                   ><h3>1.1 Individual Information</h3></ion-card-header
                 >
-                <ion-card-content>
                   <ion-input
                     class="ion-margin-top"
                     label="Name of the Household"
@@ -165,7 +162,6 @@
                     interface="popover"
                     placeholder="Household No./Door No"
                   ></ion-input>
-                </ion-card-content>
               </ion-card>
             </ion-col>
             <ion-col>
@@ -173,7 +169,6 @@
                 <ion-card-header color="tertiary" class="ion-padding"
                   >Economic Status</ion-card-header
                 >
-                <ion-card-contents>
                   <ion-radio-group value="PoP">
                     <ion-radio
                       value="PoP"
@@ -208,7 +203,6 @@
                     fill="outline"
                     placeholder="Enter Aadhaar Card No"
                   ></ion-input>
-                </ion-card-contents>
               </ion-card>
             </ion-col>
             <ion-col>
@@ -216,7 +210,6 @@
                 <ion-card-header color="tertiary" class="ion-padding"
                   >Occupation</ion-card-header
                 >
-                <ion-card-contents>
                   <ion-item>
                     <ion-label>Agriculture</ion-label>
                     <ion-checkbox slot="end"></ion-checkbox>
@@ -246,13 +239,11 @@
                     <ion-label>Others</ion-label>
                     <ion-checkbox slot="end"></ion-checkbox>
                   </ion-item>
-                </ion-card-contents>
               </ion-card>
             </ion-col>
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary">Location</ion-card-header>
-                <ion-card-contents>
                   <ion-row>
                     <ion-radio-group value="Ridge" class="ion-padding">
                       <ion-col size="4">
@@ -288,15 +279,12 @@
                       placeholder="Job Card No"
                     ></ion-input>
                   </ion-row>
-                </ion-card-contents>
               </ion-card>
             </ion-col>
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >Social Status</ion-card-header
-                >
-                <ion-card-contents>
+                  >Social Status</ion-card-header>
                   <ion-row>
                     <ion-radio-group value="SC" class="ion-padding">
                       <ion-col size="3">
@@ -329,7 +317,6 @@
                     fill="outline"
                     placeholder="Contact No (Mobile)"
                   ></ion-input>
-                </ion-card-contents>
               </ion-card>
             </ion-col>
             <ion-col>
@@ -337,7 +324,6 @@
                 <ion-card-header color="tertiary"
                   >Total Land Holding (Acres)
                 </ion-card-header>
-                <ion-card-contents>
                   <ion-row style="display: flex">
                     <ion-col>
                       <ion-input
@@ -360,7 +346,6 @@
                       ></ion-input>
                     </ion-col>
                   </ion-row>
-                </ion-card-contents>
               </ion-card>
             </ion-col>
           </div>
@@ -371,7 +356,6 @@
                 <ion-card-header color="tertiary"
                   ><h3>2 Household Details</h3></ion-card-header
                 >
-                <ion-card-contents>
                   <ion-input
                     class="ion-margin-top"
                     label="Name of Family Member"
@@ -503,7 +487,6 @@
                     placeholder="Annual Gross Income"
                     v-model="newRow.annual_gross_income"
                   ></ion-input>
-                </ion-card-contents>
               </ion-card>
             </ion-col>
 
@@ -543,7 +526,6 @@
                   <ion-card-header color="tertiary"
                     ><h3>3.Land Particulars</h3></ion-card-header
                   >
-                  <ion-card-contents>
                     <ion-text color="tertiary"
                       ><h3>3.1 Cultivated Area(Acres)</h3></ion-text
                     >
@@ -583,13 +565,11 @@
                       <ion-select-option value="Own">Own</ion-select-option>
                       <ion-select-option value="Rent">Rent</ion-select-option>
                     </ion-select>
-                  </ion-card-contents>
                 </ion-card>
                 <ion-card>
                   <ion-card-header class="ion-padding" color="tertiary"
                     ><h4>Leased-In</h4></ion-card-header
                   >
-                  <ion-card-contents>
                     <ion-input
                       class="ion-margin-top"
                       placeholder="Rainfed(Acres)"
@@ -623,13 +603,11 @@
                       <ion-select-option value="Own">Own</ion-select-option>
                       <ion-select-option value="Rent">Rent</ion-select-option>
                     </ion-select>
-                  </ion-card-contents>
                 </ion-card>
                 <ion-card>
                   <ion-card-header class="ion-padding" color="tertiary"
                     ><h4>Leased-Out</h4></ion-card-header
                   >
-                  <ion-card-contents>
                     <ion-input
                       class="ion-margin-top"
                       placeholder="Rainfed(Acres)"
@@ -663,13 +641,11 @@
                       <ion-select-option value="Own">Own</ion-select-option>
                       <ion-select-option value="Rent">Rent</ion-select-option>
                     </ion-select>
-                  </ion-card-contents>
                 </ion-card>
                 <ion-card>
                   <ion-card-header color="tertiary"
                     ><h4>3.2 Income from Crops(Rs)-Kharif</h4></ion-card-header
                   >
-                  <ion-card-contents>
                     <ion-select
                       class="ion-margin-top"
                       aria-label="Crop Grown"
@@ -801,13 +777,11 @@
                       fill="outline"
                       label-placement="floating"
                     ></ion-input>
-                  </ion-card-contents>
                 </ion-card>
                 <ion-card>
                   <ion-card-header color="tertiary"
                     ><h4>3.3 Income from Crops(Rs)-Rabi</h4></ion-card-header
                   >
-                  <ion-card-contents>
                     <ion-select
                       class="ion-margin-top"
                       aria-label="Crop Grown"
@@ -939,7 +913,6 @@
                       fill="outline"
                       label-placement="floating"
                     ></ion-input>
-                  </ion-card-contents>
                 </ion-card>
               </ion-col>
           </div>
@@ -948,7 +921,6 @@
               <ion-card-header color="tertiary"
                 ><h3>4.Livestock Details</h3></ion-card-header
               >
-              <ion-card-contents>
                 <ion-card-header class="ion-margin-top" color="tertiary"
                   ><h3>4.1 Dairy</h3></ion-card-header
                 >
@@ -1087,13 +1059,11 @@
                   label="Income Generated during Last Year"
                   label-placement="floating"
                 ></ion-input>
-              </ion-card-contents>
             </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><h3>4.2 Livestock</h3></ion-card-header
               >
-              <ion-card-contents>
                 <ion-card-subtitle class="ion-margin-top" color="tertiary"
                   >Goat :</ion-card-subtitle
                 >
@@ -1364,13 +1334,11 @@
                   label="Income Generated during Last Year"
                   label-placement="floating"
                 ></ion-input>
-              </ion-card-contents>
             </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><h3>4.3 Poultry</h3></ion-card-header
               >
-              <ion-card-contents>
                 <ion-card-subtitle class="ion-margin-top" color="tertiary"
                   >Back yard :</ion-card-subtitle
                 >
@@ -1506,13 +1474,11 @@
                   label="Income Generated during Last Year"
                   label-placement="floating"
                 ></ion-input>
-              </ion-card-contents>
             </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><h3>4.4 Piggery</h3></ion-card-header
               >
-              <ion-card-contents>
                 <ion-card-subtitle color="tertiary" class="ion-margin-top"
                   >Piggery:</ion-card-subtitle
                 >
@@ -1558,7 +1524,6 @@
                   label="Income Generated during Last Year"
                   label-placement="floating"
                 ></ion-input>
-              </ion-card-contents>
             </ion-card>
           </div>
           <div v-if="step === 5">
@@ -1605,6 +1570,9 @@
         </div>
         <div v-if="step === 15">
             <FifteenthPage></FifteenthPage>
+        </div>
+        <div v-if="step === 16">
+            <SixteenthPage></SixteenthPage>
         </div>
       </div>
       </div>
@@ -1669,6 +1637,7 @@ import TwelvethPage from "./twelvethPage.vue";
 import ThirteenthPage from "./thirteenthPage.vue";
 import FourteenthPage from "./fourteenthPage.vue";
 import FifteenthPage from "./fifteenthPage.vue";
+import SixteenthPage from "./sixteenthPage.vue";
 export default {
   data() {
     return {
@@ -1720,7 +1689,8 @@ export default {
     TwelvethPage,
     ThirteenthPage,
     FourteenthPage,
-    FifteenthPage
+    FifteenthPage,
+    SixteenthPage
   },
   methods: {
     nextStep() {

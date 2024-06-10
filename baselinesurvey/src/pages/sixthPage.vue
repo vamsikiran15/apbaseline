@@ -1,6 +1,6 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary"><h5>6.If Land Less Labourers , given the details of the Number of days Employment Availed</h5></ion-card-header>
+        <ion-card-header color="tertiary" class="ion-text-center"><h5>6.If Land Less Labourers , given the details of the Number of days Employment Availed</h5></ion-card-header>
         <ion-card-contents>
             <ion-card-title color="tertiary"><h4>Name of the Scheme/Project</h4></ion-card-title>
             <ion-card-header color="tertiary">Watershed</ion-card-header>

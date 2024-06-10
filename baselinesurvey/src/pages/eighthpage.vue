@@ -2,7 +2,7 @@
     <ion-card>
         <ion-card-header color="tertiary"><h3>8.Use of Manure and Chemical Fertilizers(Previous Year)</h3></ion-card-header>
     <ion-card-contents>
-        <ion-card-header color="tertiary">8.1 Manures and Fertilizers used(in Tons)</ion-card-header>
+        <ion-card-header  class="ion-margin-top" color="tertiary">8.1 Manures and Fertilizers used(in Tons)</ion-card-header>
         <ion-select
                       class="ion-margin-top"
                       aria-label="Crops"

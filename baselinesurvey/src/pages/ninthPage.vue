@@ -2,7 +2,7 @@
     <ion-card>
         <ion-card-header color="tertiary"><h3>9.Pest and Disease Control Measures</h3></ion-card-header>
         <ion-card-contents>
-            <ion-card-header color="tertiary">Crop Measures</ion-card-header>
+            <ion-card-header class="ion-margin-top" color="tertiary">Crop Measures</ion-card-header>
             <ion-select
                       class="ion-margin-top"
                       aria-label="Crops"

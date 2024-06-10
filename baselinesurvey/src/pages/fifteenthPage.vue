@@ -1,8 +1,7 @@
 <template>
 <ion-card>
-<ion-card-header color="tertiary"><h3>Agriculture Implements</h3></ion-card-header>
+<ion-card-header color="tertiary"><h3>15.Agriculture Implements</h3></ion-card-header>
 <ion-card-title class="ion-margin-top" color="tertiary">Implements</ion-card-title>
-<ion-card-content>
     <ion-card-header class="ion-margin-top" color="tertiary">Tractor</ion-card-header>
     <ion-select
                       class="ion-margin-top"
@@ -263,7 +262,6 @@
                       <ion-select-option value="Owned">Owned</ion-select-option>
                       <ion-select-option value="Hired">Hired</ion-select-option>
           </ion-select>
-</ion-card-content>
 </ion-card>
 </template>
 <script>
