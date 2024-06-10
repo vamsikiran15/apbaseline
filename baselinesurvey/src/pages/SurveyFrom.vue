@@ -1597,6 +1597,9 @@
         <div v-if="step === 12">
             <TwelvethPage></TwelvethPage>
         </div>
+        <div v-if="step === 13">
+            <ThirteenthPage></ThirteenthPage>
+        </div>
       </div>
       </div>
     </ion-content>
@@ -1657,6 +1660,7 @@ import NinthPage from "./ninthPage.vue";
 import TenthPage from "./tenthPage.vue";
 import EleventhPage from "./eleventhPage.vue";
 import TwelvethPage from "./twelvethPage.vue";
+import ThirteenthPage from "./thirteenthPage.vue";
 export default {
   data() {
     return {
@@ -1705,7 +1709,8 @@ export default {
     NinthPage,
     TenthPage,
     EleventhPage,
-    TwelvethPage
+    TwelvethPage,
+    ThirteenthPage
   },
   methods: {
     nextStep() {
