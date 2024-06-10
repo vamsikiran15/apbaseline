@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar color="tertiary">
         <ion-title class="header" style="font-size: 1.5vh"
           >HOUSEHOLD SOCIO-ECONOMIC SURVEY</ion-title
         >
@@ -1591,18 +1591,23 @@
         <div v-if="step === 10">
             <TenthPage/>
         </div>
+        <div v-if="step === 11">
+            <EleventhPage></EleventhPage>
+        </div>
       </div>
       </div>
-      <div>
+    </ion-content>
+    <ion-footer>
+      <div class="ion-padding">
         <ion-button
-          class="ion-margin-top"
+
           color="tertiary"
           v-if="currentStep !== 1"
           @click="prevStep()"
           >Previous</ion-button
         >
         <ion-button
-          class="nextButton ion-margin-top"
+          class="nextButton"
           color="tertiary"
           v-if="currentStep !== totalSteps"
           @click="nextStep()"
@@ -1616,7 +1621,7 @@
           >Submit</ion-button
         >
       </div>
-    </ion-content>
+    </ion-footer>
   </ion-page>
 </template>
 <script>
@@ -1647,6 +1652,7 @@ import SeventhPage from "./seventhPage.vue";
 import Eighthpage from "./eighthpage.vue";
 import NinthPage from "./ninthPage.vue";
 import TenthPage from "./tenthPage.vue";
+import EleventhPage from "./eleventhPage.vue";
 export default {
   data() {
     return {
@@ -1693,7 +1699,8 @@ export default {
     SeventhPage,
     Eighthpage,
     NinthPage,
-    TenthPage
+    TenthPage,
+    EleventhPage
   },
   methods: {
     nextStep() {
