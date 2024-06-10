@@ -3,7 +3,7 @@
     <ion-header>
       <ion-toolbar color="tertiary">
         <ion-title class="header" style="font-size: 1.5vh"
-          >HOUSEHOLD SOCIO-ECONOMIC SURVEY</ion-title
+          ><strong>HOUSEHOLD SOCIO-ECONOMIC SURVEY</strong></ion-title
         >
       </ion-toolbar>
     </ion-header>
@@ -1594,6 +1594,9 @@
         <div v-if="step === 11">
             <EleventhPage></EleventhPage>
         </div>
+        <div v-if="step === 12">
+            <TwelvethPage></TwelvethPage>
+        </div>
       </div>
       </div>
     </ion-content>
@@ -1653,6 +1656,7 @@ import Eighthpage from "./eighthpage.vue";
 import NinthPage from "./ninthPage.vue";
 import TenthPage from "./tenthPage.vue";
 import EleventhPage from "./eleventhPage.vue";
+import TwelvethPage from "./twelvethPage.vue";
 export default {
   data() {
     return {
@@ -1700,7 +1704,8 @@ export default {
     Eighthpage,
     NinthPage,
     TenthPage,
-    EleventhPage
+    EleventhPage,
+    TwelvethPage
   },
   methods: {
     nextStep() {
