@@ -1589,6 +1589,9 @@
         <div v-if="step === 21">
             <TwentyfirstPage></TwentyfirstPage>
         </div>
+        <div v-if="step === 22">
+            <TwentysecondPage></TwentysecondPage>
+        </div>
       </div>
       </div>
     </ion-content>
@@ -1658,6 +1661,7 @@ import EighteenthPage from "./eighteenthPage.vue";
 import NinteenthPage from "./ninteenthPage.vue";
 import TwentythPage from "./twentythPage.vue";
 import TwentyfirstPage from "./twentyfirstPage.vue";
+import TwentysecondPage from "./twentysecondPage.vue";
 export default {
   data() {
     return {
@@ -1715,7 +1719,8 @@ export default {
     EighteenthPage,
     NinteenthPage,
     TwentythPage,
-    TwentyfirstPage
+    TwentyfirstPage,
+    TwentysecondPage
   },
   methods: {
     nextStep() {
