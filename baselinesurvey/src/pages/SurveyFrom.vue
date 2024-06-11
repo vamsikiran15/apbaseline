@@ -495,7 +495,7 @@
               expand="block"
               color="tertiary"
               @click="addRows()"
-              >Add Family Member Details</ion-button
+              ><ion-icon class="ion-margin-end" name="add-circle" slot="icon-only"></ion-icon>Add Family Member Details</ion-button
             >
             <ul class="styled-list">
               <li v-for="(row, index) in rows" :key="index">
@@ -1533,7 +1533,7 @@
               expand="block"
               color="tertiary"
               @click="addRows()"
-              >Add Family Member Details</ion-button>
+              ><ion-icon class="ion-margin-end" name="add-circle" slot="icon-only"></ion-icon>Add Family Member Details</ion-button>
           </div>
           <div v-if="step === 6">
             <SixthPage/>
@@ -1545,7 +1545,7 @@
               expand="block"
               color="tertiary"
               @click="addRows()"
-              >Add Government Scheme Details</ion-button>
+              ><ion-icon class="ion-margin-end" name="add-circle" slot="icon-only"></ion-icon>Add Government Scheme Details</ion-button>
           </div>
           <div v-if="step === 8">
             <Eighthpage/>
@@ -1595,6 +1595,12 @@
         <div v-if="step === 23">
             <TwentythirdPage></TwentythirdPage>
         </div>
+        <div v-if="step === 24">
+            <TwentyfourthPage></TwentyfourthPage>
+        </div>
+        <div v-if="step === 25">
+            <TwentyfifthPage></TwentyfifthPage>
+        </div>
       </div>
       </div>
     </ion-content>
@@ -1605,22 +1611,24 @@
           color="tertiary"
           v-if="currentStep !== 1"
           @click="prevStep()"
-          >Previous</ion-button
+          ><ion-icon name="carat-back-outline"></ion-icon>Previous</ion-button
         >
         <ion-button
           class="nextButton"
           color="tertiary"
           v-if="currentStep !== totalSteps"
           @click="nextStep()"
-          >Next</ion-button
+          ><ion-icon name="caret-forward-outline"></ion-icon>Next</ion-button
         >
+        
         <ion-button
           v-else-if="currentStep === totalSteps"
           class="nextButton"
           color="tertiary"
           @click="submitForm"
-          >Submit</ion-button
+          ><ion-icon name="checkmark-outline"></ion-icon>Submit</ion-button
         >
+        <ion-ripple-effect></ion-ripple-effect>
       </div>
     </ion-footer>
   </ion-page>
@@ -1646,6 +1654,9 @@ import {
   IonRadioGroup,
   IonRadio,
   IonList,
+  IonIcon,
+  IonButton,
+  IonButtons,
 } from "@ionic/vue";
 import fifthPage from "./fifthPage.vue";
 import SixthPage from "./sixthPage.vue";
@@ -1666,6 +1677,8 @@ import TwentythPage from "./twentythPage.vue";
 import TwentyfirstPage from "./twentyfirstPage.vue";
 import TwentysecondPage from "./twentysecondPage.vue";
 import TwentythirdPage from "./twentythirdPage.vue";
+import TwentyfourthPage from "./twentyfourthPage.vue";
+import TwentyfifthPage from "./twentyfifthPage.vue";
 export default {
   data() {
     return {
@@ -1725,7 +1738,11 @@ export default {
     TwentythPage,
     TwentyfirstPage,
     TwentysecondPage,
-    TwentythirdPage
+    TwentythirdPage,
+    TwentyfourthPage,
+    IonIcon,
+    IonButton,
+    TwentyfifthPage
   },
   methods: {
     nextStep() {
