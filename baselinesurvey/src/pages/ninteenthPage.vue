@@ -3,7 +3,7 @@
     <ion-card-title color="tertiary" class="ion-margin-top">Grazing of Cattle/Animals</ion-card-title>
 </ion-card>
 <ion-card>
-    <ion-card-header color="tertiary" class="ion-margin-top"><h6>In Community Land</h6></ion-card-header>
+    <ion-card-header color="tertiary" class="ion-margin-top">In Community Land</ion-card-header>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter number of cattle/animals"
@@ -20,7 +20,7 @@
           ></ion-input>
 </ion-card>
 <ion-card>
-    <ion-card-header color="tertiary" class="ion-margin-top"><h6>Fed in the House</h6></ion-card-header>
+    <ion-card-header color="tertiary" class="ion-margin-top">Fed in the House</ion-card-header>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter number of cattle/animals"
@@ -37,7 +37,7 @@
           ></ion-input>
 </ion-card>
 <ion-card>
-    <ion-card-header color="tertiary" class="ion-margin-top"><h6>In Own Lands</h6></ion-card-header>
+    <ion-card-header color="tertiary" class="ion-margin-top">In Own Lands</ion-card-header>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter number of cattle/animals"

@@ -3,7 +3,7 @@
             <ion-card-header color="tertiary"><h3>11.Family Expenditure</h3></ion-card-header>
         </ion-card>
         <ion-card>
-            <ion-card-header color="tertiary"><h6>items</h6></ion-card-header>
+            <ion-card-header color="tertiary">items</ion-card-header>
                 <ion-input
             class="ion-margin-top"
             placeholder="Enter Expenditure(Rs) As per Last Year"
