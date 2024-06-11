@@ -1586,6 +1586,9 @@
         <div v-if="step === 20">
             <TwentythPage></TwentythPage>
         </div>
+        <div v-if="step === 21">
+            <TwentyfirstPage></TwentyfirstPage>
+        </div>
       </div>
       </div>
     </ion-content>
@@ -1654,11 +1657,12 @@ import SeventeenthPage from "./seventeenthPage.vue";
 import EighteenthPage from "./eighteenthPage.vue";
 import NinteenthPage from "./ninteenthPage.vue";
 import TwentythPage from "./twentythPage.vue";
+import TwentyfirstPage from "./twentyfirstPage.vue";
 export default {
   data() {
     return {
       currentStep: 1,
-      totalSteps: 20, // Update this to the total number of steps
+      totalSteps: 25, // Update this to the total number of steps
       newRow: {
         name_of_the_family_member: "",
         relationship_with_head: "",
@@ -1710,7 +1714,8 @@ export default {
     SeventeenthPage,
     EighteenthPage,
     NinteenthPage,
-    TwentythPage
+    TwentythPage,
+    TwentyfirstPage
   },
   methods: {
     nextStep() {
