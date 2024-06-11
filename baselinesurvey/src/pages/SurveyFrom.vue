@@ -1574,6 +1574,9 @@
         <div v-if="step === 16">
             <SixteenthPage></SixteenthPage>
         </div>
+        <div v-if="step === 17">
+            <SeventeenthPage></SeventeenthPage>
+        </div>
       </div>
       </div>
     </ion-content>
@@ -1638,6 +1641,7 @@ import ThirteenthPage from "./thirteenthPage.vue";
 import FourteenthPage from "./fourteenthPage.vue";
 import FifteenthPage from "./fifteenthPage.vue";
 import SixteenthPage from "./sixteenthPage.vue";
+import SeventeenthPage from "./seventeenthPage.vue";
 export default {
   data() {
     return {
@@ -1690,7 +1694,8 @@ export default {
     ThirteenthPage,
     FourteenthPage,
     FifteenthPage,
-    SixteenthPage
+    SixteenthPage,
+    SeventeenthPage
   },
   methods: {
     nextStep() {
