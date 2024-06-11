@@ -2,7 +2,7 @@
     <ion-card-header class="ion-text-center" color="tertiary"><h3>13.Availability of Drinking Water(Drinking Water requirement @ 5Litres per Day/Person)</h3></ion-card-header>
 </ion-card>
 <ion-card>
-    <ion-card-header color="tertiary"><h6>Present Availability of Drinking Water</h6></ion-card-header>
+    <ion-card-header color="tertiary">Present Availability of Drinking Water</ion-card-header>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Quantity"
@@ -27,7 +27,7 @@
           </ion-select>
 </ion-card>
 <ion-card>
-    <ion-card-header color="tertiary"><h6>Present Availability of Drinking Water</h6></ion-card-header>
+    <ion-card-header color="tertiary">Present Availability of Drinking Water</ion-card-header>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter No of Months in a Year"
