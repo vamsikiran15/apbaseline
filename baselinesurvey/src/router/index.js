@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import HomePage from '../views/HomePage.vue';
 import SurveyFrom from '../pages/SurveyFrom.vue';
+import SearchView from '../views/SearchView.vue';
 
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/search'
   },
   {
     path: '/home',
@@ -16,6 +17,11 @@ const routes = [
     path: '/survey',
     name: 'Survey',
     component : SurveyFrom
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component : SearchView
   }
 ]
 
