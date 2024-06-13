@@ -1,9 +1,10 @@
 <template>
 <ion-card>
-    <ion-card-header color="tertiary" class="ion-text-center"><h3>18.Fodder/Fuel use during previous year(1 ton = 1000kgs, 1 Head load = 25kgs)</h3></ion-card-header>
+    <ion-card-header color="tertiary" class="ion-text-center">18.Fodder/Fuel use during previous year(1 ton = 1000kgs, 1 Head load = 25kgs)</ion-card-header>
 </ion-card>
 <ion-card>
     <ion-card-header color="tertiary" class="ion-text-center">Own Load</ion-card-header>
+    <ion-card-content>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter value in Tons"
@@ -32,9 +33,11 @@
             label="Agricultural Waste"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 <ion-card>
     <ion-card-header color="tertiary" class="ion-text-center">Community</ion-card-header>
+    <ion-card-content>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter value in Tons"
@@ -63,9 +66,11 @@
             label="Agricultural Waste"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 <ion-card>
     <ion-card-header color="tertiary" class="ion-text-center">Purchased</ion-card-header>
+    <ion-card-content>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter value in Tons"
@@ -94,9 +99,11 @@
             label="Agricultural Waste"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 <ion-card>
-    <ion-card-header color="tertiary" class="ion-text-center"><h6>Others</h6></ion-card-header>
+    <ion-card-header color="tertiary" class="ion-text-center">Others</ion-card-header>
+    <ion-card-content>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter value in Tons"
@@ -125,14 +132,17 @@
             label="Agricultural Waste"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 <ion-card>
+  <ion-card-content>
     <ion-input
             class="ion-margin-top"
             fill="outline"
             label="Total"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 </template>
 <script>

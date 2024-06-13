@@ -1,8 +1,8 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary"><h3>9.Pest and Disease Control Measures</h3></ion-card-header>
-        <ion-card-contents>
-            <ion-card-header class="ion-margin-top" color="tertiary">Crop Measures</ion-card-header>
+        <ion-card-header color="tertiary">9.Pest and Disease Control Measures</ion-card-header>
+        <ion-card-header class="ion-margin-top" color="tertiary">Crop Measures</ion-card-header>
+        <ion-card-content>
             <ion-select
                       class="ion-margin-top"
                       aria-label="Crops"
@@ -79,13 +79,13 @@
             label="Others(Name Them)"
             label-placement="floating"
           ></ion-input>
-        </ion-card-contents>
+        </ion-card-content>
     </ion-card>
     <ion-card>
         <ion-card-header color="tertiary">
             Amount Spent Towards
         </ion-card-header>
-        <ion-card-contents>
+        <ion-card-content>
             <ion-input
             class="ion-margin-top"
             placeholder="Enter material"
@@ -114,9 +114,10 @@
             label="Total Wages"
             label-placement="floating"
           ></ion-input>
-        </ion-card-contents>
+        </ion-card-content>
     </ion-card>
     <ion-card>
+      <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Grand Total"
@@ -124,6 +125,7 @@
             label="Grand Total"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
     </ion-card>
 </template>
 <script>

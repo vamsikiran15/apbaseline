@@ -1,9 +1,10 @@
 <template><ion-card>
-    <ion-card-header color="tertiary" class="ion-text-center"><h3>19.Do you Graze your Cattle in the Community Land? Yes/No</h3></ion-card-header>
-    <ion-card-title color="tertiary" class="ion-margin-top">Grazing of Cattle/Animals</ion-card-title>
+    <ion-card-header color="tertiary" class="ion-text-center">19.Do you Graze your Cattle in the Community Land? Yes/No</ion-card-header>
+    <ion-card-subtitle color="tertiary" class="ion-margin-top ion-text-center">Grazing of Cattle/Animals</ion-card-subtitle>
 </ion-card>
 <ion-card>
     <ion-card-header color="tertiary" class="ion-margin-top">In Community Land</ion-card-header>
+    <ion-card-content>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter number of cattle/animals"
@@ -18,9 +19,11 @@
             label="How many days in a Year"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 <ion-card>
     <ion-card-header color="tertiary" class="ion-margin-top">Fed in the House</ion-card-header>
+    <ion-card-content>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter number of cattle/animals"
@@ -35,9 +38,11 @@
             label="How many days in a Year"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 <ion-card>
     <ion-card-header color="tertiary" class="ion-margin-top">In Own Lands</ion-card-header>
+    <ion-card-content>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter number of cattle/animals"
@@ -52,6 +57,7 @@
             label="How many days in a Year"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 </template>
 <script>

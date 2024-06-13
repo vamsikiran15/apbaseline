@@ -1,7 +1,8 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar color="tertiary">
+      <ion-toolbar>
+        <ion-img class="rsiImgSize" src="../src/assets/rsi dark.png"></ion-img>  
         <ion-title class="header" style="font-size: 1.5vh"
           ><strong>HOUSEHOLD SOCIO-ECONOMIC SURVEY</strong></ion-title
         >
@@ -18,7 +19,7 @@
                 <ion-card-header color="tertiary">
                   1 General Information
                 </ion-card-header>
-
+                <ion-card-content>
                 <ion-row class="ion-padding-top">
                   <ion-select
                     aria-label="District"
@@ -139,6 +140,7 @@
                     >
                   </ion-select>
                 </ion-row>
+              </ion-card-content>
               </ion-card>
             </ion-col>
             <ion-col>
@@ -146,6 +148,7 @@
                 <ion-card-header color="tertiary"
                   >1.1 Individual Information</ion-card-header
                 >
+                <ion-card-content>
                 <ion-input
                   class="ion-margin-top"
                   label="Name of the Household"
@@ -325,6 +328,7 @@
                     </ion-col>
                   </ion-row>
                 </ion-row>
+              </ion-card-content>
               </ion-card>
             </ion-col>
           </div>
@@ -333,8 +337,9 @@
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  ><h3>2 Household Details</h3></ion-card-header
+                  >2.Household Details</ion-card-header
                 >
+                <ion-card-content>
                 <ion-input
                   class="ion-margin-top"
                   label="Name of Family Member"
@@ -464,12 +469,13 @@
                   placeholder="Annual Gross Income"
                   v-model="newRow.annual_gross_income"
                 ></ion-input>
+              </ion-card-content>
               </ion-card>
             </ion-col>
 
             <ion-button
               class="ion-margin-top"
-              expand="block"
+              expand="full"
               color="tertiary"
               @click="addRows()"
               ><ion-icon
@@ -506,15 +512,24 @@
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  ><h3>3.Land Particulars</h3></ion-card-header
+                  >3.Land Particulars</ion-card-header
                 >
-                <ion-text color="tertiary"
-                  ><h3>3.1 Cultivated Area(Acres)</h3></ion-text
+                <ion-card-subtitle class="ion-padding ion-text-center" color="tertiary">3.1 Cultivated Area(Acres)</ion-card-subtitle
                 >
-                <ion-card-header color="tertiary"
-                  ><h4>Owned Land</h4></ion-card-header
+              <ion-card-content>
+                <ion-select
+                  aria-label="Type of Ownership"
+                  interface="popover"
+                  label="Type of Ownership"
+                  label-placement="floating"
+                  placeholder="Type of Ownership"
+                  fill="outline"
                 >
-                <ion-input
+                  <ion-select-option value="Own">Owned Land</ion-select-option>
+                  <ion-select-option value="Rent">Leased-In</ion-select-option>
+                  <ion-select-option value="Rent">Leased-Out</ion-select-option>
+                </ion-select>
+                 <ion-input
                   class="ion-margin-top"
                   placeholder="Rainfed(Acres)"
                   fill="outline"
@@ -547,87 +562,141 @@
                   <ion-select-option value="Own">Own</ion-select-option>
                   <ion-select-option value="Rent">Rent</ion-select-option>
                 </ion-select>
-              </ion-card>
-              <ion-card>
-                <ion-card-header class="ion-padding" color="tertiary"
-                  ><h4>Leased-In</h4></ion-card-header
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed(Acres)"
-                  fill="outline"
-                  label="Rainfed(Acres)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres)"
-                  fill="outline"
-                  label="Irrigated(Acres)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total"
-                  label="Total"
-                  fill="outline"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-select
-                  class="ion-margin-top"
-                  aria-label="Type of Ownership"
-                  interface="popover"
-                  label="Type of Ownership"
-                  label-placement="floating"
-                  placeholder="Type of Ownership"
-                  fill="outline"
-                >
-                  <ion-select-option value="Own">Own</ion-select-option>
-                  <ion-select-option value="Rent">Rent</ion-select-option>
-                </ion-select>
-              </ion-card>
-              <ion-card>
-                <ion-card-header class="ion-padding" color="tertiary"
-                  ><h4>Leased-Out</h4></ion-card-header
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed(Acres)"
-                  fill="outline"
-                  label="Rainfed(Acres)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres)"
-                  fill="outline"
-                  label="Irrigated(Acres)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total"
-                  label="Total"
-                  fill="outline"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-select
-                  class="ion-margin-top"
-                  aria-label="Type of Ownership"
-                  interface="popover"
-                  label="Type of Ownership"
-                  label-placement="floating"
-                  placeholder="Type of Ownership"
-                  fill="outline"
-                >
-                  <ion-select-option value="Own">Own</ion-select-option>
-                  <ion-select-option value="Rent">Rent</ion-select-option>
-                </ion-select>
+              </ion-card-content>
               </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  ><h4>3.2 Income from Crops(Rs)-Kharif</h4></ion-card-header
+                  >3.2 Income from Crops(Rs)-Kharif</ion-card-header
                 >
+                <ion-card-content>
+                  <ion-select
+                  class="ion-margin-top"
+                  aria-label="Crop Grown"
+                  interface="popover"
+                  label="Crop Grown"
+                  label-placement="floating"
+                  placeholder="Select Crop Item"
+                  fill="outline"
+                >
+                  <ion-select-option value="Paddy">Paddy</ion-select-option>
+                  <ion-select-option value="Meeze">Meeze</ion-select-option>
+                  <ion-select-option value="Jower">Jower</ion-select-option>
+                  <ion-select-option value="Cotton">Cotton</ion-select-option>
+                  <ion-select-option value="Mirchi">Mirchi</ion-select-option>
+                  <ion-select-option value="Groundnut"
+                    >Groundnut</ion-select-option
+                  >
+                  <ion-select-option value="Red Gram"
+                    >Red Gram</ion-select-option
+                  >
+                  <ion-select-option value="Black Gram"
+                    >Black Gram</ion-select-option
+                  >
+                  <ion-select-option value="Green Gram"
+                    >Green Gram</ion-select-option
+                  >
+                  <ion-select-option value="Mango">Mango</ion-select-option>
+                  <ion-select-option value="Sapota">Sapota</ion-select-option>
+                  <ion-select-option value="Chinny">Chinny</ion-select-option>
+                  <ion-select-option value="Neem">Neem</ion-select-option>
+                  <ion-select-option value="Cashew">Cashew</ion-select-option>
+                  <ion-select-option value="Vegetables"
+                    >Vegetables</ion-select-option
+                  >
+                  <ion-select-option value="Sunflower"
+                    >Sunflower</ion-select-option
+                  >
+                </ion-select>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Rainfed(Acres)"
+                  fill="outline"
+                  label="Rainfed(Acres)"
+                  label-placement="floating"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Rainfed Yield(Qtls)"
+                  label="Rainfed Yield(Qtls)"
+                  fill="outline"
+                  label-placement="floating"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Total Rainfed Net income"
+                  fill="outline"
+                  label="Total Rainfed Net Income(7-5)"
+                  label-placement="floating"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Irrigated Area(Acres)"
+                  fill="outline"
+                  label="Irrigated Area(Acres)"
+                  label-placement="floating"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Irigated Yield(Qtls)"
+                  label="Irrigated Yield(Qtls)"
+                  fill="outline"
+                  label-placement="floating"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
+                  label="Irrigated(Acres) Cost of Cultiation(Rs)"
+                  fill="outline"
+                  label-placement="floating"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
+                  fill="outline"
+                  label="Irrigated(Acres) Rate per Qtls(Rs) "
+                  label-placement="floating"
+                ></ion-input>
+                <ion-card-subtitle class="ion-padding-top ion-text-center" color="tertiary"
+                  >Irrigated(Acres) Gross Income :</ion-card-subtitle
+                >
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Total Irrigated Net Income"
+                  fill="outline"
+                  label="Total Irrigated Net Income"
+                  label-placement="floating"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Kharif Grand Total Income"
+                  label="Kharif Grand Total Income"
+                  fill="outline"
+                  label-placement="floating"
+                ></ion-input>
+                <ion-card-subtitle class="ion-padding-top ion-text-center" color="tertiary"
+                  >Irrigated(Acres) Net Income(13-11) :</ion-card-subtitle
+                >
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Total Irrigated Net Income"
+                  fill="outline"
+                  label="Total Irrigated Net Income"
+                  label-placement="floating"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Kharif Grand Total Income"
+                  label="Kharif Grand Total Income"
+                  fill="outline"
+                  label-placement="floating"
+                ></ion-input>
+              </ion-card-content>
+              </ion-card>
+              <ion-card>
+                <ion-card-header color="tertiary"
+                  >3.3 Income from Crops(Rs)-Rabi</ion-card-header
+                >
+                <ion-card-content>
                 <ion-select
                   class="ion-margin-top"
                   aria-label="Crop Grown"
@@ -715,7 +784,7 @@
                   label="Irrigated(Acres) Rate per Qtls(Rs) "
                   label-placement="floating"
                 ></ion-input>
-                <ion-card-subtitle class="ion-padding-top" color="tertiary"
+                <ion-card-subtitle class="ion-padding-top ion-text-center" color="tertiary"
                   >Irrigated(Acres) Gross Income :</ion-card-subtitle
                 >
                 <ion-input
@@ -732,7 +801,7 @@
                   fill="outline"
                   label-placement="floating"
                 ></ion-input>
-                <ion-card-subtitle class="ion-padding-top" color="tertiary"
+                <ion-card-subtitle class="ion-padding-top ion-text-center" color="tertiary"
                   >Irrigated(Acres) Net Income(13-11) :</ion-card-subtitle
                 >
                 <ion-input
@@ -749,146 +818,21 @@
                   fill="outline"
                   label-placement="floating"
                 ></ion-input>
-              </ion-card>
-              <ion-card>
-                <ion-card-header color="tertiary"
-                  ><h4>3.3 Income from Crops(Rs)-Rabi</h4></ion-card-header
-                >
-                <ion-select
-                  class="ion-margin-top"
-                  aria-label="Crop Grown"
-                  interface="popover"
-                  label="Crop Grown"
-                  label-placement="floating"
-                  placeholder="Select Crop Item"
-                  fill="outline"
-                >
-                  <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="Meeze">Meeze</ion-select-option>
-                  <ion-select-option value="Jower">Jower</ion-select-option>
-                  <ion-select-option value="Cotton">Cotton</ion-select-option>
-                  <ion-select-option value="Mirchi">Mirchi</ion-select-option>
-                  <ion-select-option value="Groundnut"
-                    >Groundnut</ion-select-option
-                  >
-                  <ion-select-option value="Red Gram"
-                    >Red Gram</ion-select-option
-                  >
-                  <ion-select-option value="Black Gram"
-                    >Black Gram</ion-select-option
-                  >
-                  <ion-select-option value="Green Gram"
-                    >Green Gram</ion-select-option
-                  >
-                  <ion-select-option value="Mango">Mango</ion-select-option>
-                  <ion-select-option value="Sapota">Sapota</ion-select-option>
-                  <ion-select-option value="Chinny">Chinny</ion-select-option>
-                  <ion-select-option value="Neem">Neem</ion-select-option>
-                  <ion-select-option value="Cashew">Cashew</ion-select-option>
-                  <ion-select-option value="Vegetables"
-                    >Vegetables</ion-select-option
-                  >
-                  <ion-select-option value="Sunflower"
-                    >Sunflower</ion-select-option
-                  >
-                </ion-select>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed(Acres)"
-                  fill="outline"
-                  label="Rainfed(Acres)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed Yield(Qtls)"
-                  label="Rainfed Yield(Qtls)"
-                  fill="outline"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Rainfed Net income"
-                  fill="outline"
-                  label="Total Rainfed Net Income(7-5)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated Area(Acres)"
-                  fill="outline"
-                  label="Irrigated Area(Acres)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irigated Yield(Qtls)"
-                  label="Irrigated Yield(Qtls)"
-                  fill="outline"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
-                  label="Irrigated(Acres) Cost of Cultiation(Rs)"
-                  fill="outline"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
-                  fill="outline"
-                  label="Irrigated(Acres) Rate per Qtls(Rs) "
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle class="ion-padding-top" color="tertiary"
-                  >Irrigated(Acres) Gross Income :</ion-card-subtitle
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Irrigated Net Income"
-                  fill="outline"
-                  label="Total Irrigated Net Income"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Kharif Grand Total Income"
-                  label="Kharif Grand Total Income"
-                  fill="outline"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle class="ion-padding-top" color="tertiary"
-                  >Irrigated(Acres) Net Income(13-11) :</ion-card-subtitle
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Irrigated Net Income"
-                  fill="outline"
-                  label="Total Irrigated Net Income"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Kharif Grand Total Income"
-                  label="Kharif Grand Total Income"
-                  fill="outline"
-                  label-placement="floating"
-                ></ion-input>
+              </ion-card-content>
               </ion-card>
             </ion-col>
           </div>
           <div v-if="step === 4">
             <ion-card>
               <ion-card-header color="tertiary"
-                ><h3>4.Livestock Details</h3></ion-card-header
-              >
+                >4.Livestock Details</ion-card-header>
               <ion-card-header class="ion-margin-top" color="tertiary"
-                ><h3>4.1 Dairy</h3></ion-card-header
+                >4.1 Dairy</ion-card-header
               >
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Cow Improved Breed :</ion-card-subtitle
               >
+              <ion-card-content>
               <ion-input
                 class="ion-margin-top"
                 placeholder="Enter existing No"
@@ -931,7 +875,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Cow Local Breed :</ion-card-subtitle
               >
               <ion-input
@@ -976,7 +920,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >She Buffaloes :</ion-card-subtitle
               >
               <ion-input
@@ -1021,12 +965,14 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
+            </ion-card-content>
             </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
-                ><h3>4.2 Livestock</h3></ion-card-header
+                >4.2 Livestock</ion-card-header
               >
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-content>
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Goat :</ion-card-subtitle
               >
               <ion-input
@@ -1071,7 +1017,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Goat Wool :</ion-card-subtitle
               >
               <ion-input
@@ -1116,7 +1062,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Sheep :</ion-card-subtitle
               >
               <ion-input
@@ -1161,7 +1107,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Sheep Wool :</ion-card-subtitle
               >
               <ion-input
@@ -1206,7 +1152,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Ox :</ion-card-subtitle
               >
               <ion-input
@@ -1251,7 +1197,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >He Buffaloes :</ion-card-subtitle
               >
               <ion-input
@@ -1296,12 +1242,13 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
+            </ion-card-content>
             </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
-                ><h3>4.3 Poultry</h3></ion-card-header
-              >
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+                >4.3 Poultry</ion-card-header
+              ><ion-card-content>             
+                 <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Back yard :</ion-card-subtitle
               >
               <ion-input
@@ -1346,7 +1293,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Commercial :</ion-card-subtitle
               >
               <ion-input
@@ -1391,7 +1338,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
-              <ion-card-subtitle class="ion-margin-top" color="tertiary"
+              <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary"
                 >Eggs :</ion-card-subtitle
               >
               <ion-input
@@ -1436,12 +1383,14 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
+            </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-header color="tertiary"
-                ><h3>4.4 Piggery</h3></ion-card-header
+                     <ion-card-header color="tertiary"
+                >4.4 Piggery</ion-card-header
               >
-              <ion-card-subtitle color="tertiary" class="ion-margin-top"
+              <ion-card-content>    
+              <ion-card-subtitle class="ion-text-center ion-margin-top" color="tertiary"
                 >Piggery:</ion-card-subtitle
               >
               <ion-input
@@ -1486,6 +1435,7 @@
                 label="Income Generated during Last Year"
                 label-placement="floating"
               ></ion-input>
+            </ion-card-content>
             </ion-card>
           </div>
           <div v-if="step === 5">
@@ -1495,6 +1445,11 @@
               expand="block"
               color="tertiary"
               @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
               >Add Family Member Details</ion-button
             >
           </div>
@@ -1586,7 +1541,7 @@
           color="tertiary"
           v-if="currentStep !== totalSteps"
           @click="nextStep()"
-          ><ion-icon name="caret-forward-outline"></ion-icon>Next</ion-button
+          >Next<ion-icon name="caret-forward-outline"></ion-icon></ion-button
         >
 
         <ion-button
@@ -1799,4 +1754,11 @@ export default {
   font-size: 1.5rem;
   color: red;
 }
+.rsiImgSize{
+  height: 2rem;
+  width: 27rem;
+}
+/* ion-toolbar{
+  background: var(--ion-header-color);
+} */
 </style>

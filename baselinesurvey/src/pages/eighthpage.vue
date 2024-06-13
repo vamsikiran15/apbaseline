@@ -1,8 +1,8 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary"><h3>8.Use of Manure and Chemical Fertilizers(Previous Year)</h3></ion-card-header>
-    <ion-card-contents>
+        <ion-card-header color="tertiary">8.Use of Manure and Chemical Fertilizers(Previous Year)</ion-card-header>
         <ion-card-header  class="ion-margin-top" color="tertiary">8.1 Manures and Fertilizers used(in Tons)</ion-card-header>
+        <ion-card-content>
         <ion-select
                       class="ion-margin-top"
                       aria-label="Crops"
@@ -65,11 +65,11 @@
             label="Micro Nutrients(In Gms)"
             label-placement="floating"
           ></ion-input>
-    </ion-card-contents>
+    </ion-card-content>
     </ion-card>
     <ion-card>
         <ion-card-header color="tertiary">Chemical(Qtl)</ion-card-header>
-        <ion-card-contents>
+        <ion-card-content>
             <ion-input
             class="ion-margin-top"
             placeholder="N"
@@ -98,9 +98,10 @@
             label="Cost in Rupees"
             label-placement="floating"
           ></ion-input>
-        </ion-card-contents>
+        </ion-card-content>
     </ion-card>
     <ion-card>
+      <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Total"
@@ -108,6 +109,7 @@
             label="Total"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
     </ion-card>
 </template>
 <script>

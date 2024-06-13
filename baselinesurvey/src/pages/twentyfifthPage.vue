@@ -1,5 +1,5 @@
 <template><ion-card>
-    <ion-card-header class="ion-text-center" color="tertiary"><h3>25.Soil,Land & Water Conservation</h3></ion-card-header>
+    <ion-card-header class="ion-text-center" color="tertiary">25.Soil,Land & Water Conservation</ion-card-header>
 </ion-card>
 <ion-card>
     <ion-card-content>
@@ -44,12 +44,14 @@
 <div class="ion-padding">
     <ion-datetime locale="en-GB" hour-cycle="h12"></ion-datetime>
 </div>
+<ion-item>
 <ion-input
 class="ion-margin-top"
             placeholder="Enter name of the surveyor"
             fill="outline"
             label="Name of the Surveyor"
             label-placement="floating"></ion-input>
+          </ion-item>
 </template>
 <script>
 export default{}

@@ -1,8 +1,9 @@
 <template>
 <ion-card class="ion-margin-top">
-    <ion-card-header class="ion-text-center" color="tertiary"><h3>14.Source and Quality of Water(3ft = 1 metre) </h3></ion-card-header>
-        <ion-card-title class="ion-margin-top" color="tertiary"><h3>Water Source</h3></ion-card-title>
+    <ion-card-header class="ion-text-center" color="tertiary">14.Source and Quality of Water(3ft = 1 metre)</ion-card-header>
+        <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Water Source</ion-card-subtitle>
         <ion-card-header class="ion-margin-top" color="tertiary">Open</ion-card-header>
+        <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -31,8 +32,10 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-title class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-title>
+          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+        </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
+          <ion-card-content>
           <ion-input
             class="ion-margin-top"
             placeholder="Enter Litres"
@@ -61,9 +64,11 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 <ion-card class="ion-margin-top">
     <ion-card-header class="ion-margin-top" color="tertiary">Borewell</ion-card-header>
+    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -92,9 +97,11 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-title class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-title>
+          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+        </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
-          <ion-input
+          <ion-card-content>
+            <ion-input
             class="ion-margin-top"
             placeholder="Enter Litres"
             fill="outline"
@@ -122,9 +129,11 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 <ion-card class="ion-margin-top">
     <ion-card-header class="ion-margin-top" color="tertiary">Tank</ion-card-header>
+    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -153,8 +162,10 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-title class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-title>
+          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+    </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
+          <ion-card-content>
           <ion-input
             class="ion-margin-top"
             placeholder="Enter Litres"
@@ -183,9 +194,11 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
-</ion-card>
+        </ion-card-content>
+        </ion-card>
 <ion-card class="ion-margin-top">
     <ion-card-header class="ion-margin-top" color="tertiary">Drip(Specify Crop)</ion-card-header>
+    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -214,8 +227,10 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-title class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-title>
+          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+        </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
+          <ion-card-content>
           <ion-input
             class="ion-margin-top"
             placeholder="Enter Litres"
@@ -244,9 +259,11 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
-</ion-card>
+        </ion-card-content>
+        </ion-card>
 <ion-card class="ion-margin-top">
     <ion-card-header class="ion-margin-top" color="tertiary">Others</ion-card-header>
+    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Number"
@@ -275,8 +292,10 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-title class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-title>
+          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+        </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
+          <ion-card-content>
           <ion-input
             class="ion-margin-top"
             placeholder="Enter Litres"
@@ -305,6 +324,7 @@
             label="Other Crops(Specify)"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
 </ion-card>
 </template>
 <script>

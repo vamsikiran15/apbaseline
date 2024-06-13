@@ -1,9 +1,10 @@
 <template>
     <ion-card>
-        <ion-card-header class="ion-text-center" color="tertiary"><h3>12.Difference Source of Income,Expenditure and Family Debt Details</h3></ion-card-header>
+        <ion-card-header class="ion-text-center" color="tertiary">12.Difference Source of Income,Expenditure and Family Debt Details</ion-card-header>
     </ion-card>
     <ion-card>
         <ion-card-header color="tertiary">Source</ion-card-header>
+        <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Income during the Year(Rs)"
@@ -122,6 +123,7 @@
             label="Total Income"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
     </ion-card>
 </template>
 <script>
