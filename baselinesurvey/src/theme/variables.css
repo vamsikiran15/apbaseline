@@ -91,9 +91,9 @@ http://ionicframework.com/docs/theming/ */
   
     --ion-toolbar-color: var(--ion-color-primary-contrast);
 
-    --ion-color-header-color : linear-gradient(90deg, #08B9C7 0%, #128BD5 100%);
+    --ion-color-header-color : linear-gradient(90deg, #373B68 0%, #1E223B 100%);
 
-    --ion-card-header-color : #bbfafa;
+    --ion-card-header-color : linear-gradient(90deg, #97AACA 0%, #687B9B 100%);
 
-    --ion-button-colors : #01BBC4;
+    --ion-button-colors : #20243F;
   } 
