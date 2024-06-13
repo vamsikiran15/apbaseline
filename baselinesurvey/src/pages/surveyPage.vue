@@ -1,6 +1,30 @@
 <template>
   <ion-page>
     <ion-content>
+      <!-- Dropdown for step navigation -->
+      <ion-row class="ion-padding">
+        <ion-col>
+          <ion-select
+            aria-label="Select Step"
+            interface="popover"
+            label="1.General Information"
+            label-placement="floating"
+            placeholder="Go to Step"
+            fill="outline"
+            v-model="selectedStep"
+            @ionChange="navigateToStep"
+          >
+            <ion-select-option
+              v-for="(stepName, index) in steps"
+              :key="index"
+              :value="index + 1"
+            >
+              {{ stepName }}
+            </ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+
       <div v-for="step in totalSteps" :key="step">
         <!-- Intermediate steps -->
         <div v-if="currentStep === step">
@@ -1646,6 +1670,34 @@ export default {
     return {
       currentStep: 1,
       totalSteps: 25, // Update this to the total number of steps
+      selectedStep: null, // Selected step from the dropdown
+      steps: [
+        "1 General Information",
+        "2 Household Details",
+        "3 Land Particulars",
+        "4 Livestock details",
+        "5 Migration status",
+        "6 If land less labourers",
+        "7 Benefits from Government Schemes",
+        "8 Use of manure and chemical fertilizers",
+        "9 Pest and Disease control measures",
+        "10 Details loan particulars",
+        "11 Family Expenditure",
+        "12 Different source of Income, Expenditure and Family Debt Details",
+        "13 Availability of Drinking water",
+        "14 Source and Quality of Water",
+        "15 Agriculture Implements",
+        "16 Horticulture details",
+        "17 Fodder and Feed Availability",
+        "18 Fodder/ Fuel use during previous year",
+        "19 Do you Graze your cattle in the Community",
+        "20 Household Assets",
+        "21 Participation of Community Programmes",
+        "22 Awareness on adoption of technology",
+        "23 Membership details",
+        "24 Have been the beneficiary of any scheme of project previously",
+        "25 Soil, Land & Water Conservation",
+      ],
       newRow: {
         name_of_the_family_member: "",
         relationship_with_head: "",
@@ -1719,14 +1771,19 @@ export default {
   },
   methods: {
     nextStep() {
-      if (this.currentStep < this.totalSteps) {
+      if (this.currentStep < this.steps.length) {
         this.currentStep++;
+        this.selectedStep = this.currentStep;
       }
     },
     prevStep() {
       if (this.currentStep > 1) {
         this.currentStep--;
+        this.selectedStep = this.currentStep;
       }
+    },
+    navigateToStep(event) {
+      this.currentStep = event.detail.value;
     },
     addRows() {
       // Check if any field is not empty
