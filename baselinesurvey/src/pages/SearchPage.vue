@@ -2,28 +2,40 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title style="font-size: 1.5vh">
-          <ion-img :src="RsiLogo" class="imgsize"></ion-img
-        ></ion-title>
+        <ion-img :src="RsiLogo" class="imgsize"></ion-img>
+        <ion-title style="font-size: 1.5vh"> </ion-title>
+        <!-- <div class="ion-text-center">
+          <h4>RSI LLP</h4>
+        </div> -->
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <ion-searchbar
-        v-model="query"
-        @ionInput="searchInfo"
-        @ionClear="clearSearch"
-        debounce="500"
-        placeholder="Enter Aadhar Number"
-      ></ion-searchbar>
-      <ion-list>
-        <ion-item
-          v-for="item in items"
-          :key="item.id"
-          @click="selectItem(item)"
-        >
-          {{ item.name }}
-        </ion-item>
-      </ion-list>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <div class="ion-text-center">
+              <h4>HOUSEHOLD SOCIO - ECONOMIC SURVEY</h4>
+            </div>
+            <ion-searchbar
+              v-model="query"
+              @ionInput="searchInfo"
+              @ionClear="clearSearch"
+              debounce="500"
+              placeholder="Enter Aadhar Number"
+            ></ion-searchbar>
+            <ion-list>
+              <ion-item
+                v-for="item in items"
+                :key="item.id"
+                @click="selectItem(item)"
+              >
+                {{ item.name }}
+              </ion-item>
+            </ion-list>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
       <!-- <edit-item
         v-if="selectedItem"
         :item="selectedItem"
@@ -49,6 +61,11 @@ import {
   IonItem,
   IonLabel,
   IonImg,
+  IonCard,
+  IonText,
+  IonCardTitle,
+  IonRow,
+  IonCol,
 } from "@ionic/vue";
 import axios from "axios";
 import EditItem from "@/pages/editPage.vue";
@@ -68,6 +85,11 @@ export default {
     EditItem,
     SurveyPage,
     IonImg,
+    IonCard,
+    IonText,
+    IonCardTitle,
+    IonRow,
+    IonCol,
   },
   data() {
     return {
@@ -116,7 +138,7 @@ export default {
 </script>
 <style>
 .imgsize {
-  height: 5vh;
-  width: 25vh;
+  height: 6vh;
+  width: 28vh;
 }
 </style>
