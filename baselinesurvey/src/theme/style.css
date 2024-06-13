@@ -1,0 +1,20 @@
+ion-toolbar {
+    --background: var(--ion-color-header-color);
+    /* --color: var(--ion-color-primary-contrast); */
+  }
+
+  ion-card {
+    background : var(--ion-color-success-contrast);
+  }
+  ion-card-header {
+    background: var(--ion-card-header-color);
+    color : var(--ion-color-step-50)
+  }
+
+  ion-footer{
+    --background: var(--ion-color-header-color);
+  }
+
+  ion-button{
+    background: var(--ion-button-colors);
+  }

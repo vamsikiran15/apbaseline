@@ -48,6 +48,7 @@ addIcons({
 
 /* Theme variables */
 import './theme/variables.css';
+import './theme/style.css';
 
 const app = createApp(App)
   .use(IonicVue)
