@@ -107,7 +107,7 @@ export default {
       }
       try {
         const response = await axios.get(
-          `http://192.168.1.111:5000/items/search`,
+          `http://183.82.109.39:5000/items/search`,
           {
             params: { query: this.query },
           }
