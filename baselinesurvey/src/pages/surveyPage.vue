@@ -1620,6 +1620,7 @@ import {
   IonIcon,
   IonButton,
   IonButtons,
+  IonFooter,
 } from "@ionic/vue";
 import fifthPage from "./fifthPage.vue";
 import SixthPage from "./sixthPage.vue";
@@ -1710,6 +1711,16 @@ export default {
     IonIcon,
     IonButton,
     TwentyfifthPage,
+    IonFooter,
+  },
+  watch: {
+    item: {
+      immediate: true,
+      handler(newVal) {
+        // Ensure to make a deep copy of the received item
+        this.editedItem = newVal ? { ...newVal } : null;
+      },
+    },
   },
   methods: {
     nextStep() {
@@ -1753,17 +1764,20 @@ export default {
         membership: "",
       };
     },
+    async updateItem() {
+      try {
+        const response = await axios.put(
+          `http://localhost:5000/items/${this.editedItem.id}`,
+          this.editedItem
+        );
+        console.log("Item updated:", response.data);
+        this.$emit("item-updated", response.data); // Emit event with updated item
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    },
     removeRow(index) {
       this.rows.splice(index, 1);
-    },
-  },
-  watch: {
-    item: {
-      immediate: true,
-      handler(newVal) {
-        // Ensure to make a deep copy of the received item
-        this.editedItem = newVal ? { ...newVal } : null;
-      },
     },
   },
 };

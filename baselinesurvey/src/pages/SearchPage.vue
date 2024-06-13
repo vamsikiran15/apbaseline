@@ -1,10 +1,10 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar color="tertiary">
-        <ion-title class="header" style="font-size: 1.5vh"
-          ><strong>HOUSEHOLD SOCIO-ECONOMIC SURVEY</strong></ion-title
-        >
+      <ion-toolbar>
+        <ion-title style="font-size: 1.5vh">
+          <ion-img :src="RsiLogo" class="imgsize"></ion-img
+        ></ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
@@ -48,10 +48,12 @@ import {
   IonList,
   IonItem,
   IonLabel,
+  IonImg,
 } from "@ionic/vue";
 import axios from "axios";
 import EditItem from "@/pages/editPage.vue";
 import SurveyPage from "@/pages/surveyPage.vue";
+import Logo from "../assets/img/Rsilogo.png";
 export default {
   components: {
     IonPage,
@@ -65,12 +67,14 @@ export default {
     IonLabel,
     EditItem,
     SurveyPage,
+    IonImg,
   },
   data() {
     return {
       query: "",
       items: [],
       selectedItem: null,
+      RsiLogo: Logo,
     };
   },
   methods: {
@@ -110,3 +114,9 @@ export default {
   },
 };
 </script>
+<style>
+.imgsize {
+  height: 5vh;
+  width: 25vh;
+}
+</style>
