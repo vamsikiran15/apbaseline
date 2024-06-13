@@ -1570,15 +1570,11 @@
     </ion-content>
     <ion-footer>
       <div class="ion-padding">
-        <ion-button
-          color="tertiary"
-          v-if="currentStep !== 1"
-          @click="prevStep()"
+        <ion-button v-if="currentStep !== 1" @click="prevStep()"
           ><ion-icon name="carat-back-outline"></ion-icon>Previous</ion-button
         >
         <ion-button
           class="nextButton"
-          color="tertiary"
           v-if="currentStep !== totalSteps"
           @click="nextStep()"
           ><ion-icon name="caret-forward-outline"></ion-icon>Next</ion-button
@@ -1587,7 +1583,6 @@
         <ion-button
           v-else-if="currentStep === totalSteps"
           class="nextButton"
-          color="tertiary"
           @click="submitForm"
           ><ion-icon name="checkmark-outline"></ion-icon>Submit</ion-button
         >
