@@ -1,13 +1,11 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary"><h3>10.Details of Loan Particulars(Amount in Rs)</h3></ion-card-header>
+        <ion-card-header color="tertiary">10.Details of Loan Particulars(Amount in Rs)></ion-card-header>
    </ion-card>
    <ion-card>
     <ion-card-header color="tertiary">Amount Borrowed</ion-card-header>
-   </ion-card>
-   <ion-card>
-    <ion-card-header color="tertiary">Source</ion-card-header>
-    <ion-card-contents>
+    <ion-card-content>
+    <ion-card-subtitle  class="ion-margin-top" color="tertiary">Source</ion-card-subtitle>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter bank"
@@ -57,11 +55,7 @@
             label="Total"
             label-placement="floating"
           ></ion-input>
-   </ion-card-contents>
-   </ion-card>
-   <ion-card>
-    <ion-card-header color="tertiary">Purpose</ion-card-header>
-    <ion-card-contents>
+          <ion-card-subtitle color="tertiary">Purpose</ion-card-subtitle>
         <ion-select
                       class="ion-margin-top"
                       interface="popover"
@@ -242,14 +236,14 @@
                         >Sunflower</ion-select-option
                       >
                     </ion-select>
-    </ion-card-contents>
+   </ion-card-content>
+   </ion-card>
+   <ion-card>
    </ion-card>
    <ion-card>
     <ion-card-header color="tertiary">Amount Repaid</ion-card-header>
-   </ion-card>
-   <ion-card>
-    <ion-card-header color="tertiary">Source</ion-card-header>
-    <ion-card-contents>
+    <ion-card-content>
+      <ion-card-subtitle class="ion-margin-top" color="tertiary">Source</ion-card-subtitle>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter bank"
@@ -299,11 +293,7 @@
             label="Total"
             label-placement="floating"
           ></ion-input>
-   </ion-card-contents>
-   </ion-card>
-   <ion-card>
-    <ion-card-header color="tertiary">Purpose</ion-card-header>
-    <ion-card-contents>
+    <ion-card-subtitle color="tertiary">Purpose</ion-card-subtitle>
         <ion-select
                       class="ion-margin-top"
                       interface="popover"
@@ -484,13 +474,15 @@
                         >Sunflower</ion-select-option
                       >
                     </ion-select>
-    </ion-card-contents>
-   </ion-card>
+                  </ion-card-content>
+                </ion-card>
    <ion-card>
+    <ion-card-content>
     <ion-input  placeholder="Outstanding Amount"
             fill="outline"
             label="Outstanding Amount"
             label-placement="floating"></ion-input>
+          </ion-card-content>
    </ion-card>
 </template>
 <script>

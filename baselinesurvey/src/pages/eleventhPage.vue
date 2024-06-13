@@ -1,9 +1,10 @@
 <template>
         <ion-card>
-            <ion-card-header color="tertiary"><h3>11.Family Expenditure</h3></ion-card-header>
+            <ion-card-header color="tertiary">11.Family Expenditure</ion-card-header>
         </ion-card>
         <ion-card>
             <ion-card-header color="tertiary">items</ion-card-header>
+            <ion-card-content>
                 <ion-input
             class="ion-margin-top"
             placeholder="Enter Expenditure(Rs) As per Last Year"
@@ -87,6 +88,7 @@
             label="Total"
             label-placement="floating"
           ></ion-input>
+        </ion-card-content>
         </ion-card>
 </template>
 <script>

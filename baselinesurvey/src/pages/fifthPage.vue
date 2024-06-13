@@ -1,7 +1,7 @@
 <template>
 <ion-card>
-    <ion-card-header color="tertiary"><h3>5.Migration Status</h3></ion-card-header>
-    <ion-card-contents>
+    <ion-card-header color="tertiary">5.Migration Status</ion-card-header>
+    <ion-card-content>
       <ion-input
             class="ion-margin-top"
             placeholder="Enter name of the person migrating"
@@ -74,7 +74,7 @@
             label="Income from Such Occupation "
             label-placement="floating"
           ></ion-input>
-    </ion-card-contents>
+    </ion-card-content>
   </ion-card>
 </template>
 <script>

@@ -1,8 +1,9 @@
 <template><ion-card>
-    <ion-card-header class="ion-text-center" color="tertiary"><h3>13.Availability of Drinking Water(Drinking Water requirement @ 5Litres per Day/Person)</h3></ion-card-header>
+    <ion-card-header class="ion-text-center" color="tertiary">13.Availability of Drinking Water(Drinking Water requirement @ 5Litres per Day/Person)</ion-card-header>
 </ion-card>
 <ion-card>
     <ion-card-header color="tertiary">Present Availability of Drinking Water</ion-card-header>
+    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter Quantity"
@@ -25,9 +26,11 @@
                       <ion-select-option value="openwell">Open Well</ion-select-option>
                       <ion-select-option value="canalwater">Canal Water</ion-select-option>
           </ion-select>
-</ion-card>
+        </ion-card-content>
+        </ion-card>
 <ion-card>
     <ion-card-header color="tertiary">Present Availability of Drinking Water</ion-card-header>
+    <ion-card-content>
         <ion-input
             class="ion-margin-top"
             placeholder="Enter No of Months in a Year"
@@ -50,7 +53,9 @@
                       <ion-select-option value="openwell">Open Well</ion-select-option>
                       <ion-select-option value="canalwater">Canal Water</ion-select-option>
           </ion-select>
-</ion-card></template>
+        </ion-card-content>
+</ion-card>
+</template>
 <script>
 export default{}
 </script>

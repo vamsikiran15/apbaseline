@@ -1,5 +1,6 @@
 <template><ion-card>
-    <ion-card-header color="tertiary"><h3>23.Membership Details</h3></ion-card-header>
+    <ion-card-header color="tertiary">23.Membership Details</ion-card-header>
+    <ion-card-content>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter number of SGH"
@@ -28,7 +29,9 @@
             label="Others"
             label-placement="floating"
           ></ion-input>
-</ion-card></template>
+        </ion-card-content>
+</ion-card>
+</template>
 <script>
 export default{}
 </script>
