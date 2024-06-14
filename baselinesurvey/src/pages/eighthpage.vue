@@ -1,7 +1,7 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary">8.Use of Manure and Chemical Fertilizers(Previous Year)</ion-card-header>
-        <ion-card-header  class="ion-margin-top" color="tertiary">8.1 Manures and Fertilizers used(in Tons)</ion-card-header>
+        <ion-card-header color="tertiary" class="ion-text-center"><strong>8.Use of Manure and Chemical Fertilizers(Previous Year)</strong></ion-card-header>
+        <ion-card-header  class="ion-margin-top" color="tertiary"><strong>8.1 Manures and Fertilizers used(in Tons)</strong></ion-card-header>
         <ion-card-content>
         <ion-select
                       class="ion-margin-top"
@@ -68,7 +68,7 @@
     </ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header color="tertiary">Chemical(Qtl)</ion-card-header>
+        <ion-card-header color="tertiary"><strong>Chemical(Qtl)</strong></ion-card-header>
         <ion-card-content>
             <ion-input
             class="ion-margin-top"

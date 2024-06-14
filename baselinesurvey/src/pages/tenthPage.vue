@@ -1,6 +1,6 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary">10.Details of Loan Particulars(Amount in Rs)></ion-card-header>
+        <ion-card-header color="tertiary"><strong>10.Details of Loan Particulars(Amount in Rs)</strong></ion-card-header>
    </ion-card>
    <ion-card>
     <ion-card-content>
@@ -65,7 +65,7 @@
             label="Total"
             label-placement="floating"
           ></ion-input>
-          <ion-card-subtitle color="tertiary" class="ion-text-center">Purpose</ion-card-subtitle>
+          <ion-card-subtitle color="tertiary" class="ion-text-center ion-margin-top">Purpose</ion-card-subtitle>
         <ion-select
                       class="ion-margin-top"
                       interface="popover"

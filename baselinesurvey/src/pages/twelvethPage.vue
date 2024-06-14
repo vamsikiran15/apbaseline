@@ -1,9 +1,9 @@
 <template>
     <ion-card>
-        <ion-card-header class="ion-text-center" color="tertiary">12.Difference Source of Income,Expenditure and Family Debt Details</ion-card-header>
+        <ion-card-header class="ion-text-center" color="tertiary"><strong>12.Difference Source of Income,Expenditure and Family Debt Details</strong></ion-card-header>
     </ion-card>
     <ion-card>
-        <ion-card-header color="tertiary">Source</ion-card-header>
+        <ion-card-header color="tertiary"><strong>Source</strong></ion-card-header>
         <ion-card-content>
         <ion-input
             class="ion-margin-top"

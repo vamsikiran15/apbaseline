@@ -1,8 +1,8 @@
 <template><ion-card>
-    <ion-card-header class="ion-text-center" color="tertiary">13.Availability of Drinking Water(Drinking Water requirement @ 5Litres per Day/Person)</ion-card-header>
+    <ion-card-header class="ion-text-center" color="tertiary"><strong>13.Availability of Drinking Water(Drinking Water requirement @ 5Litres per Day/Person)</strong></ion-card-header>
 </ion-card>
 <ion-card>
-    <ion-card-header color="tertiary">Present Availability of Drinking Water</ion-card-header>
+    <ion-card-header color="tertiary"><strong>Present Availability of Drinking Water</strong></ion-card-header>
     <ion-card-content>
         <ion-input
             class="ion-margin-top"
@@ -29,7 +29,7 @@
         </ion-card-content>
         </ion-card>
 <ion-card>
-    <ion-card-header color="tertiary">Present Availability of Drinking Water</ion-card-header>
+    <ion-card-header color="tertiary"><strong>Present Availability of Drinking Water</strong></ion-card-header>
     <ion-card-content>
         <ion-input
             class="ion-margin-top"
@@ -44,7 +44,7 @@
                       interface="popover"
                       label="Source of Drinking Water"
                       label-placement="floating"
-                      placeholder=""
+                      placeholder="Select source of drinking water"
                       fill="outline"
                     >
                     <ion-select-option value="borewell">Borewell</ion-select-option>

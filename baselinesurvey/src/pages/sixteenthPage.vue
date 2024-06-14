@@ -1,174 +1,39 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary">16.Horticulture Details</ion-card-header>
-            <ion-card-header class="ion-margin-top" color="tertiary">Horticulture Plants/Trees</ion-card-header>
+        <ion-card-header color="tertiary"><strong>16.Horticulture Details</strong></ion-card-header>
             <ion-card-content>
+              <ion-select
+                      class="ion-margin-top"
+                      interface="popover"
+                      label="Details"
+                      label-placement="floating"
+                      placeholder="Select Details"
+                      fill="outline"
+                    >
+                      <ion-select-option value="HorticulturePlantsTrees">Horticulture Plants/Trees</ion-select-option>
+                      <ion-select-option value="mango">Mango</ion-select-option>
+                      <ion-select-option value="Coconut">Coconut</ion-select-option>
+                      <ion-select-option value="guava">Guava</ion-select-option>
+                      <ion-select-option value="sapota">Sapota</ion-select-option>
+                      <ion-select-option value="custardapple">Custard Apple</ion-select-option>
+                      <ion-select-option value="lemon">Lemon</ion-select-option>
+                      <ion-select-option value="sweetlime">Sweet Lime</ion-select-option>
+                      <ion-select-option value="foresttrees">Forest Trees</ion-select-option>
+                      <ion-select-option value="cashew">Cashew</ion-select-option>
+                      <ion-select-option value="teak">Teak</ion-select-option>
+                      <ion-select-option value="neem">Neem</ion-select-option>
+                      <ion-select-option value="nilgiri">Nilgiri</ion-select-option>
+                      <ion-select-option value="acacia">Acacia</ion-select-option>
+                      <ion-select-option value="pongamia">Pongamia</ion-select-option>
+                      <ion-select-option value="tamarind">Tamarind</ion-select-option>
+
+          </ion-select>
             <ion-input
             class="ion-margin-top"
-            placeholder="Enter number of Horticulture Plants/Trees"
+            placeholder="Enter number of details"
             fill="outline"
-            label="Horticulture Plants/Trees"
+            label="Number of Details"
             label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Mango</ion-card-header>
-        <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Mango"
-            fill="outline"
-            label="Mango"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Coconut</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter Enter number of Coconut"
-            fill="outline"
-            label="Coconut"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Guava</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Guava"
-            fill="outline"
-            label="Guava"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Sapota</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Sapota"
-            fill="outline"
-            label="Sapota"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Custard Apple</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Custard Apple"
-            fill="outline"
-            label="Custard Apple"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Lemon</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Lemon"
-            fill="outline"
-            label="Lemon"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Sweet lime</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Sweet Lime"
-            fill="outline"
-            label="Sweet lime"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Forest Trees</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Forest Trees"
-            fill="outline"
-            label="Forest Trees"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Cashew</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Cashew"
-            fill="outline"
-            label="Cashew"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Teak</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Teak"
-            fill="outline"
-            label="Teak"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Tractor</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Tractor"
-            fill="outline"
-            label="Tractor"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Neem</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Neem"
-            fill="outline"
-            label="Neem"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Nilgiri</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Nilgiri"
-            fill="outline"
-            label="Nilgiri"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Acacia</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Acacia"
-            fill="outline"
-            label="Acacia"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Pongamia</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Pongamia"
-            fill="outline"
-            label="Pongamia"
-            label-placement="floating"
-          ></ion-input>
-        </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary">Tamarind</ion-card-header>
-          <ion-card-content>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter number of Tamarind"
-            fill="outline"
-            label-placement="floating"
-            label="Tamarind"
           ></ion-input>
         </ion-card-content>
     </ion-card>

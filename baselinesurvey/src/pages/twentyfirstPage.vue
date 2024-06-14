@@ -1,72 +1,35 @@
 <template><ion-card>
-    <ion-card-header color="tertiary">21.Participation in Community Programs</ion-card-header>
-    <ion-card-subtitle color="tertiary" class="ion-margin-top ion-text-center">Name of the Community Program</ion-card-subtitle>
+    <ion-card-header color="tertiary"><strong>21.Participation in Community Programs</strong></ion-card-header>
 </ion-card>
 <ion-card>
-    <ion-card-header color="tertiary">Awareness Programs</ion-card-header>
     <ion-card-content>
-    <ion-card-subtitle class="ion-margin-top">Increase in Knowledge/Capacity to Execute/Decision Making/Project Management</ion-card-subtitle>
-    <ion-radio-group value="awarenessprograms">
-                    <ion-radio
-                      value="Yes"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >Yes</ion-radio
+      <ion-select
+                      class="ion-margin-top"
+                      interface="popover"
+                      label="Name of the Community Program"
+                      label-placement="floating"
+                      placeholder="Select Name of the Community Program"
+                      fill="outline"
                     >
-                    <ion-radio
-                      value="No"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >No</ion-radio
+                      <ion-select-option value="AwarenessProgram">Awareness Programs</ion-select-option>
+                      <ion-select-option value="Trainings">Trainings</ion-select-option>
+                      <ion-select-option value="ExposureVisits">Exposure Visits</ion-select-option>
+                      <ion-select-option value="InterStateFieldVisits">Inter-State Field Visits</ion-select-option>
+                      </ion-select>
+                      <ion-select
+                      class="ion-margin-top"
+                      interface="popover"
+                      label="Select mark the appropriate"
+                      label-placement="floating"
+                      placeholder="Select mark the appropriate"
+                      fill="outline"
                     >
-                  </ion-radio-group>
-                </ion-card-content>
-</ion-card>
-<ion-card>
-    <ion-card-header color="tertiary">Trainings</ion-card-header>
-    <ion-card-content>
-    <ion-card-subtitle class="ion-margin-top">Increase in Knowledge/Capacity to Execute/Decision Making/Project Management</ion-card-subtitle>
-    <ion-radio-group value="trainings">
-                    <ion-radio
-                      value="Yes"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >Yes</ion-radio
-                    >
-                    <ion-radio
-                      value="No"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >No</ion-radio
-                    >
-                  </ion-radio-group>
-                </ion-card-content>
-</ion-card>
-<ion-card>
-    <ion-card-header color="tertiary">Exposure Visits</ion-card-header>
-    <ion-card-content>
-    <ion-card-subtitle class="ion-margin-top">Increase in Knowledge/Capacity to Execute/Decision Making/Project Management</ion-card-subtitle>
-    <ion-radio-group value="PoP">
-                    <ion-radio
-                      value="Yes"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >Yes</ion-radio
-                    >
-                    <ion-radio
-                      value="No"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >No</ion-radio
-                    >
-                  </ion-radio-group>
-                </ion-card-content>
-</ion-card>
-<ion-card>
-    <ion-card-header color="tertiary">Inter-State Field Visits</ion-card-header>
-    <ion-card-content>
-    <ion-card-subtitle class="ion-margin-top">Increase in Knowledge/Capacity to Execute/Decision Making/Project Management</ion-card-subtitle>
-    <ion-radio-group value="PoP">
+                      <ion-select-option value="AwarenessProgram">Increase in Knowledge</ion-select-option>
+                      <ion-select-option value="Trainings">Capacity to Execute</ion-select-option>
+                      <ion-select-option value="ExposureVisits">Decision Making</ion-select-option>
+                      <ion-select-option value="InterStateFieldVisits">Project Management</ion-select-option>
+                      </ion-select>
+                      <ion-radio-group value="awarenessprograms">
                     <ion-radio
                       value="Yes"
                       label-placement="fixed"
