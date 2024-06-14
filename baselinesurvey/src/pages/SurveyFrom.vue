@@ -553,9 +553,9 @@
                   <ion-select
                     aria-label="Type of Ownership"
                     interface="popover"
-                    label="Type of Ownership"
+                    label="Cultivated Area"
                     label-placement="floating"
-                    placeholder="Type of Ownership"
+                    placeholder="Cultivated Area"
                     fill="outline"
                   >
                     <ion-select-option value="Own"
@@ -607,9 +607,13 @@
                 <ion-card-header color="tertiary"
                   >3.2 Income from Crops(Rs)-Kharif</ion-card-header
                 >
+                <ion-card-subtitle
+                  class="ion-padding ion-text-center"
+                  color="tertiary"
+                  >Rainfed(Acres) </ion-card-subtitle
+                >
                 <ion-card-content>
                   <ion-select
-                    class="ion-margin-top"
                     aria-label="Crop Grown"
                     interface="popover"
                     label="Crop Grown"
@@ -676,11 +680,23 @@
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
+                    placeholder="Total Rainfed Gross income"
+                    fill="outline"
+                    label="Rainfed(Acres) Gross Income"
+                    label-placement="floating"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
                     placeholder="Total Rainfed Net income"
                     fill="outline"
                     label="Total Rainfed Net Income(7-5)"
                     label-placement="floating"
                   ></ion-input>
+                  <ion-card-subtitle
+                  class="ion-padding ion-text-center"
+                  color="tertiary"
+                  >Irrigated(Acres) </ion-card-subtitle
+                >
                   <ion-input
                     class="ion-margin-top"
                     placeholder="Irrigated Area(Acres)"
@@ -721,13 +737,6 @@
                     label="Total Irrigated Net Income"
                     label-placement="floating"
                   ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Kharif Grand Total Income"
-                    label="Kharif Grand Total Income"
-                    fill="outline"
-                    label-placement="floating"
-                  ></ion-input>
                   <ion-card-subtitle
                     class="ion-padding-top ion-text-center"
                     color="tertiary"
@@ -754,6 +763,11 @@
                   >3.3 Income from Crops(Rs)-Rabi</ion-card-header
                 >
                 <ion-card-content>
+                  <ion-card-subtitle
+                  class="ion-padding ion-text-center"
+                  color="tertiary"
+                  >Rainfed(Acres) </ion-card-subtitle
+                >
                   <ion-select
                     class="ion-margin-top"
                     aria-label="Crop Grown"
@@ -822,11 +836,23 @@
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
+                    placeholder="Total Rainfed Gross income"
+                    fill="outline"
+                    label="Rainfed(Acres) Gross Income"
+                    label-placement="floating"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
                     placeholder="Total Rainfed Net income"
                     fill="outline"
                     label="Total Rainfed Net Income(7-5)"
                     label-placement="floating"
                   ></ion-input>
+                  <ion-card-subtitle
+                  class="ion-padding ion-text-center"
+                  color="tertiary"
+                  >Irrigated(Acres) </ion-card-subtitle
+                >
                   <ion-input
                     class="ion-margin-top"
                     placeholder="Irrigated Area(Acres)"
@@ -865,13 +891,6 @@
                     placeholder="Total Irrigated Net Income"
                     fill="outline"
                     label="Total Irrigated Net Income"
-                    label-placement="floating"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Kharif Grand Total Income"
-                    label="Kharif Grand Total Income"
-                    fill="outline"
                     label-placement="floating"
                   ></ion-input>
                   <ion-card-subtitle
