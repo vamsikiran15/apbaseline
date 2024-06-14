@@ -5,7 +5,7 @@
    <ion-card>
     <ion-card-header color="tertiary">Amount Borrowed</ion-card-header>
     <ion-card-content>
-    <ion-card-subtitle  class="ion-margin-top" color="tertiary">Source</ion-card-subtitle>
+    <ion-card-subtitle  class="ion-margin-top ion-text-center" color="tertiary">Source</ion-card-subtitle>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter bank"
@@ -55,7 +55,7 @@
             label="Total"
             label-placement="floating"
           ></ion-input>
-          <ion-card-subtitle color="tertiary">Purpose</ion-card-subtitle>
+          <ion-card-subtitle color="tertiary" class="ion-text-center">Purpose</ion-card-subtitle>
         <ion-select
                       class="ion-margin-top"
                       interface="popover"
@@ -243,7 +243,7 @@
    <ion-card>
     <ion-card-header color="tertiary">Amount Repaid</ion-card-header>
     <ion-card-content>
-      <ion-card-subtitle class="ion-margin-top" color="tertiary">Source</ion-card-subtitle>
+      <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Source</ion-card-subtitle>
     <ion-input
             class="ion-margin-top"
             placeholder="Enter bank"
@@ -293,7 +293,7 @@
             label="Total"
             label-placement="floating"
           ></ion-input>
-    <ion-card-subtitle color="tertiary">Purpose</ion-card-subtitle>
+    <ion-card-subtitle color="tertiary" class="ion-text-center">Purpose</ion-card-subtitle>
         <ion-select
                       class="ion-margin-top"
                       interface="popover"

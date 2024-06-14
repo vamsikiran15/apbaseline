@@ -32,7 +32,7 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+          <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
         </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
           <ion-card-content>
@@ -97,7 +97,7 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+          <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
         </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
           <ion-card-content>
@@ -162,7 +162,7 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+          <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
     </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
           <ion-card-content>
@@ -227,7 +227,7 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+          <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
         </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
           <ion-card-content>
@@ -292,7 +292,7 @@
             label="Yield from the Borewell(Litres/Minute)"
             label-placement="floating"
           ></ion-input>
-          <ion-card-subtitle class="ion-margin-top" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
+          <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
         </ion-card-content>
           <ion-card-header class="ion-margin-top" color="tertiary">Agriculture</ion-card-header>
           <ion-card-content>
