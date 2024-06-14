@@ -1,6 +1,6 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary">16.Horticulture Details></ion-card-header>
+        <ion-card-header color="tertiary">16.Horticulture Details</ion-card-header>
             <ion-card-header class="ion-margin-top" color="tertiary">Horticulture Plants/Trees</ion-card-header>
             <ion-card-content>
             <ion-input

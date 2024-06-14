@@ -190,7 +190,7 @@
                     placeholder="Job Card No"
                   ></ion-input>
 
-                  <ion-card-subtitle color="tertiary" class="ion-padding"
+                  <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center"
                     >Economic Status</ion-card-subtitle
                   >
                   <ion-radio-group value="PoP">
@@ -220,7 +220,7 @@
                     >
                   </ion-radio-group>
 
-                  <ion-card-subtitle color="tertiary" class="ion-padding"
+                  <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center"
                     >Occupation</ion-card-subtitle
                   >
                   <ion-item>
@@ -253,7 +253,7 @@
                     <ion-checkbox slot="end"></ion-checkbox>
                   </ion-item>
 
-                  <ion-card-subtitle color="tertiary" class="ion-padding"
+                  <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center"
                     >Location</ion-card-subtitle
                   >
                   <ion-row>
@@ -276,7 +276,7 @@
                     </ion-radio-group>
                   </ion-row>
 
-                  <ion-card-subtitle color="tertiary" class="ion-padding"
+                  <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center"
                     >Social Status</ion-card-subtitle
                   >
                   <ion-row>
@@ -302,9 +302,11 @@
                         >
                       </ion-col>
                     </ion-radio-group>
-                    <ion-card-subtitle color="tertiary" class="ion-padding"
+                    <ion-row class="ion-padding ion-text-center">
+                      <ion-card-subtitle color="tertiary"
                       >Total Land Holding (Acres)
                     </ion-card-subtitle>
+                  </ion-row>
                     <ion-row style="display: flex">
                       <ion-col class="ion-margin-start">
                         <ion-input
@@ -326,7 +328,37 @@
                           placeholder="Irrigated"
                         ></ion-input>
                       </ion-col>
-                    </ion-row>
+                    </ion-row >
+                  </ion-row>
+                  <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center">Type of House</ion-card-subtitle>
+                  <ion-row>
+                    <ion-radio-group value="house" class="ion-padding">
+                      <ion-col>
+                        <ion-radio value="SC" label-placement="start"
+                          >Pucca House</ion-radio
+                        >
+                      </ion-col>
+                      <ion-col>
+                        <ion-radio value="ST" label-placement="start"
+                          >Semi Pucca</ion-radio
+                        >
+                      </ion-col>
+                    </ion-radio-group>
+                  </ion-row>
+                  <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center">Own/Rented</ion-card-subtitle>
+                  <ion-row>
+                    <ion-radio-group value="house" class="ion-padding">
+                      <ion-col>
+                        <ion-radio value="SC" label-placement="start"
+                          >Own</ion-radio
+                        >
+                      </ion-col>
+                      <ion-col>
+                        <ion-radio value="ST" label-placement="start"
+                          >Rented</ion-radio
+                        >
+                      </ion-col>
+                    </ion-radio-group>
                   </ion-row>
                 </ion-card-content>
               </ion-card>
@@ -630,6 +662,20 @@
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
+                    placeholder="Enter v"
+                    fill="outline"
+                    label="Rainfed(Acres) Cost of Cultivation(Rs)"
+                    label-placement="floating"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
+                    fill="outline"
+                    label="Rainfed(Acres) Rate per Qtls(Rs)"
+                    label-placement="floating"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
                     placeholder="Total Rainfed Net income"
                     fill="outline"
                     label="Total Rainfed Net Income(7-5)"
@@ -758,6 +804,20 @@
                     placeholder="Rainfed Yield(Qtls)"
                     label="Rainfed Yield(Qtls)"
                     fill="outline"
+                    label-placement="floating"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Enter Rainfed(Acres) Cost of Cultivation(Rs)"
+                    fill="outline"
+                    label="Rainfed(Acres) Cost of Cultivation(Rs)"
+                    label-placement="floating"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
+                    fill="outline"
+                    label="Rainfed(Acres) Rate per Qtls(Rs)"
                     label-placement="floating"
                   ></ion-input>
                   <ion-input
@@ -1480,7 +1540,6 @@
             <ion-button
               class="ion-margin-top"
               expand="block"
-              color="tertiary"
               @click="addRows()"
               ><ion-icon
                 class="ion-margin-end"
@@ -1498,7 +1557,6 @@
             <ion-button
               class="ion-margin-top"
               expand="block"
-              color="tertiary"
               @click="addRows()"
               ><ion-icon
                 class="ion-margin-end"

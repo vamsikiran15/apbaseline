@@ -1525,7 +1525,6 @@
             <ion-button
               class="ion-margin-top"
               expand="block"
-              color="tertiary"
               @click="addRows()"
               ><ion-icon
                 class="ion-margin-end"
