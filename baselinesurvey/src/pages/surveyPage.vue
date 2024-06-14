@@ -1522,10 +1522,7 @@
           </div>
           <div v-if="step === 7">
             <SeventhPage />
-            <ion-button
-              class="ion-margin-top"
-              expand="block"
-              @click="addRows()"
+            <ion-button class="ion-margin-top" expand="block" @click="addRows()"
               ><ion-icon
                 class="ion-margin-end"
                 name="add-circle"

@@ -4,6 +4,9 @@
       <ion-toolbar>
         <ion-img :src="RsiLogo" class="imgsize"></ion-img>
         <ion-title style="font-size: 1.5vh"> </ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button default-href="/" />
+        </ion-buttons>
         <!-- <div class="ion-text-center">
           <h4>RSI LLP</h4>
         </div> -->
@@ -29,7 +32,9 @@
                 :key="item.id"
                 @click="selectItem(item)"
               >
-                {{ item.name }}
+                {{ item.head_of_the_family }}
+                {{ item.household_door_no }}
+                {{ item.aadhar_number }}
               </ion-item>
             </ion-list>
           </ion-card>
@@ -41,11 +46,11 @@
         :item="selectedItem"
         @item-updated="onItemUpdated"
       ></edit-item> -->
-      <survey-page
+      <edit-survey
         v-if="selectedItem"
         :item="selectedItem"
         @item-updated="onItemUpdated"
-      ></survey-page>
+      ></edit-survey>
     </ion-content>
   </ion-page>
 </template>
@@ -66,11 +71,13 @@ import {
   IonCardTitle,
   IonRow,
   IonCol,
+  IonBackButton,
+  IonButtons,
 } from "@ionic/vue";
 import axios from "axios";
 import EditItem from "@/pages/editPage.vue";
-import SurveyPage from "@/pages/surveyPage.vue";
-import Logo from "../assets/img/Rsilogo.png";
+import EditSurvey from "@/pages/editSurvey.vue";
+import Logo from "../assets/img/rsilogotwo.jpg";
 export default {
   components: {
     IonPage,
@@ -83,13 +90,15 @@ export default {
     IonItem,
     IonLabel,
     EditItem,
-    SurveyPage,
+    EditSurvey,
     IonImg,
     IonCard,
     IonText,
     IonCardTitle,
     IonRow,
     IonCol,
+    IonBackButton,
+    IonButtons,
   },
   data() {
     return {
@@ -107,7 +116,7 @@ export default {
       }
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/items/search`,
+          `http://183.82.109.39:5000/items/searchByName`,
           {
             params: { query: this.query },
           }
@@ -124,6 +133,7 @@ export default {
     },
     selectItem(item) {
       this.selectedItem = { ...item }; // Copy the selected item
+      this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {
       // Optionally update the items list with the updated item
