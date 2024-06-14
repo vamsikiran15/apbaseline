@@ -139,6 +139,16 @@
                         >District 3</ion-select-option
                       >
                     </ion-select>
+                    <ion-select
+                    class="ion-margin-top"
+                    aria-label="Gender"
+                    interface="popover"
+                    label="Name of Habitation"
+                    label-placement="floating"
+                    placeholder="Enter name of Habitation"
+                    fill="outline"
+                    v-model="newRow.gender"
+                  ></ion-select>
                   </ion-row>
                 </ion-card-content>
               </ion-card>
@@ -607,11 +617,6 @@
                 <ion-card-header color="tertiary"
                   >3.2 Income from Crops(Rs)-Kharif</ion-card-header
                 >
-                <ion-card-subtitle
-                  class="ion-padding ion-text-center"
-                  color="tertiary"
-                  >Rainfed(Acres) </ion-card-subtitle
-                >
                 <ion-card-content>
                   <ion-select
                     aria-label="Crop Grown"
@@ -650,6 +655,11 @@
                       >Sunflower</ion-select-option
                     >
                   </ion-select>
+                  <ion-card-subtitle
+                  class="ion-padding ion-text-center"
+                  color="tertiary"
+                  >Rainfed(Acres) </ion-card-subtitle
+                >
                   <ion-input
                     class="ion-margin-top"
                     placeholder="Rainfed(Acres)"
@@ -689,7 +699,7 @@
                     class="ion-margin-top"
                     placeholder="Total Rainfed Net income"
                     fill="outline"
-                    label="Total Rainfed Net Income(7-5)"
+                    label="Rainfed(Acres) Net Income(7-5)"
                     label-placement="floating"
                   ></ion-input>
                   <ion-card-subtitle
@@ -725,28 +735,18 @@
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
                   ></ion-input>
-                  <ion-card-subtitle
-                    class="ion-padding-top ion-text-center"
-                    color="tertiary"
-                    >Irrigated(Acres) Gross Income :</ion-card-subtitle
-                  >
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Total Irrigated Net Income"
+                    placeholder="Irrigated(Acres) Gross Income"
                     fill="outline"
-                    label="Total Irrigated Net Income"
+                    label="Total Irrigated(Acres) Gross Income"
                     label-placement="floating"
                   ></ion-input>
-                  <ion-card-subtitle
-                    class="ion-padding-top ion-text-center"
-                    color="tertiary"
-                    >Irrigated(Acres) Net Income(13-11) :</ion-card-subtitle
-                  >
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Total Irrigated Net Income"
+                    placeholder="Total Irrigated Net Income(13-11)"
                     fill="outline"
-                    label="Total Irrigated Net Income"
+                    label="Total Irrigated Net Income(13-11)"
                     label-placement="floating"
                   ></ion-input>
                   <ion-input
@@ -763,13 +763,7 @@
                   >3.3 Income from Crops(Rs)-Rabi</ion-card-header
                 >
                 <ion-card-content>
-                  <ion-card-subtitle
-                  class="ion-padding ion-text-center"
-                  color="tertiary"
-                  >Rainfed(Acres) </ion-card-subtitle
-                >
                   <ion-select
-                    class="ion-margin-top"
                     aria-label="Crop Grown"
                     interface="popover"
                     label="Crop Grown"
@@ -806,6 +800,11 @@
                       >Sunflower</ion-select-option
                     >
                   </ion-select>
+                  <ion-card-subtitle
+                  class="ion-padding ion-text-center"
+                  color="tertiary"
+                  >Rainfed(Acres) </ion-card-subtitle
+                >
                   <ion-input
                     class="ion-margin-top"
                     placeholder="Rainfed(Acres)"
@@ -822,7 +821,7 @@
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Enter Rainfed(Acres) Cost of Cultivation(Rs)"
+                    placeholder="Enter v"
                     fill="outline"
                     label="Rainfed(Acres) Cost of Cultivation(Rs)"
                     label-placement="floating"
@@ -845,7 +844,7 @@
                     class="ion-margin-top"
                     placeholder="Total Rainfed Net income"
                     fill="outline"
-                    label="Total Rainfed Net Income(7-5)"
+                    label="Rainfed(Acres) Net Income(7-5)"
                     label-placement="floating"
                   ></ion-input>
                   <ion-card-subtitle
@@ -881,28 +880,18 @@
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
                   ></ion-input>
-                  <ion-card-subtitle
-                    class="ion-padding-top ion-text-center"
-                    color="tertiary"
-                    >Irrigated(Acres) Gross Income :</ion-card-subtitle
-                  >
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Total Irrigated Net Income"
+                    placeholder="Irrigated(Acres) Gross Income"
                     fill="outline"
-                    label="Total Irrigated Net Income"
+                    label="Total Irrigated(Acres) Gross Income"
                     label-placement="floating"
                   ></ion-input>
-                  <ion-card-subtitle
-                    class="ion-padding-top ion-text-center"
-                    color="tertiary"
-                    >Irrigated(Acres) Net Income(13-11) :</ion-card-subtitle
-                  >
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Total Irrigated Net Income"
+                    placeholder="Total Irrigated Net Income(13-11)"
                     fill="outline"
-                    label="Total Irrigated Net Income"
+                    label="Total Irrigated Net Income(13-11)"
                     label-placement="floating"
                   ></ion-input>
                   <ion-input
@@ -924,106 +913,19 @@
               <ion-card-header class="ion-margin-top" color="tertiary"
                 >4.1 Dairy</ion-card-header
               >
-              <ion-card-subtitle
-                class="ion-margin-top ion-text-center"
-                color="tertiary"
-                >Cow Improved Breed :</ion-card-subtitle
-              >
               <ion-card-content>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter existing No"
-                  fill="outline"
-                  label="Existing No"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Production(Ltrs/Day) if applicable"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Consumed(Ltrs/Day)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter quantity sold by year"
-                  fill="outline"
-                  label="Quantity Sold by Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Unit Value"
-                  fill="outline"
-                  label="Unit Value(Rs)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter income generated during last year"
-                  fill="outline"
-                  label="Income Generated during Last Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >Cow Local Breed :</ion-card-subtitle
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter existing No"
-                  fill="outline"
-                  label="Existing No"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Production(Ltrs/Day) if applicable"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Consumed(Ltrs/Day)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter quantity sold by year"
-                  fill="outline"
-                  label="Quantity Sold by Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Unit Value"
-                  fill="outline"
-                  label="Unit Value(Rs)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter income generated during last year"
-                  fill="outline"
-                  label="Income Generated during Last Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >She Buffaloes :</ion-card-subtitle
-                >
+                <ion-select
+                    aria-label="Crop Grown"
+                    interface="popover"
+                    label="Name of the Animal"
+                    label-placement="floating"
+                    placeholder="Select Animal"
+                    fill="outline"
+                  >
+                  <ion-select-option value="Own">Cow Improved Breed</ion-select-option>
+                  <ion-select-option value="Rent">Cow Local Breed</ion-select-option>
+                  <ion-select-option value="Rent">She Buffaloes</ion-select-option>
+                </ion-select>
                 <ion-input
                   class="ion-margin-top"
                   placeholder="Enter existing No"
@@ -1071,246 +973,21 @@
             <ion-card>
               <ion-card-header color="tertiary">4.2 Livestock</ion-card-header>
               <ion-card-content>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >Goat :</ion-card-subtitle
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter existing No"
-                  fill="outline"
-                  label="Existing No"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Production(Ltrs/Day) if applicable"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Consumed(Ltrs/Day)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter quantity sold by year"
-                  fill="outline"
-                  label="Quantity Sold by Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Unit Value"
-                  fill="outline"
-                  label="Unit Value(Rs)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter income generated during last year"
-                  fill="outline"
-                  label="Income Generated during Last Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >Goat Wool :</ion-card-subtitle
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter existing No"
-                  fill="outline"
-                  label="Existing No"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Production(Ltrs/Day) if applicable"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Consumed(Ltrs/Day)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter quantity sold by year"
-                  fill="outline"
-                  label="Quantity Sold by Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Unit Value"
-                  fill="outline"
-                  label="Unit Value(Rs)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter income generated during last year"
-                  fill="outline"
-                  label="Income Generated during Last Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >Sheep :</ion-card-subtitle
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter existing No"
-                  fill="outline"
-                  label="Existing No"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Production(Ltrs/Day) if applicable"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Consumed(Ltrs/Day)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter quantity sold by year"
-                  fill="outline"
-                  label="Quantity Sold by Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Unit Value"
-                  fill="outline"
-                  label="Unit Value(Rs)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter income generated during last year"
-                  fill="outline"
-                  label="Income Generated during Last Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >Sheep Wool :</ion-card-subtitle
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter existing No"
-                  fill="outline"
-                  label="Existing No"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Production(Ltrs/Day) if applicable"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Consumed(Ltrs/Day)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter quantity sold by year"
-                  fill="outline"
-                  label="Quantity Sold by Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Unit Value"
-                  fill="outline"
-                  label="Unit Value(Rs)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter income generated during last year"
-                  fill="outline"
-                  label="Income Generated during Last Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >Ox :</ion-card-subtitle
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter existing No"
-                  fill="outline"
-                  label="Existing No"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Production(Ltrs/Day) if applicable"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Consumed(Ltrs/Day)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter quantity sold by year"
-                  fill="outline"
-                  label="Quantity Sold by Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Unit Value"
-                  fill="outline"
-                  label="Unit Value(Rs)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter income generated during last year"
-                  fill="outline"
-                  label="Income Generated during Last Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >He Buffaloes :</ion-card-subtitle
-                >
+                <ion-select
+                    aria-label="Crop Grown"
+                    interface="popover"
+                    label="Name of the Animal"
+                    label-placement="floating"
+                    placeholder="Select Animal"
+                    fill="outline"
+                  >
+                  <ion-select-option value="Own">Goat</ion-select-option>
+                  <ion-select-option value="Rent">Goat Wool</ion-select-option>
+                  <ion-select-option value="Rent">Sheep</ion-select-option>
+                  <ion-select-option value="Own">Sheep Wool</ion-select-option>
+                  <ion-select-option value="Rent">Ox</ion-select-option>
+                  <ion-select-option value="Rent">He Buffaloes</ion-select-option>
+                </ion-select>
                 <ion-input
                   class="ion-margin-top"
                   placeholder="Enter existing No"
@@ -1357,12 +1034,20 @@
             </ion-card>
             <ion-card>
               <ion-card-header color="tertiary">4.3 Poultry</ion-card-header
-              ><ion-card-content>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >Back yard :</ion-card-subtitle
-                >
+              >
+              <ion-card-content>
+                <ion-select
+                    aria-label="Crop Grown"
+                    interface="popover"
+                    label="Name of the Animal"
+                    label-placement="floating"
+                    placeholder="Select Animal"
+                    fill="outline"
+                  >
+                  <ion-select-option value="Own">Backyard</ion-select-option>
+                  <ion-select-option value="Rent">Commercial</ion-select-option>
+                  <ion-select-option value="Rent">Eggs</ion-select-option>
+                </ion-select>
                 <ion-input
                   class="ion-margin-top"
                   placeholder="Enter existing No"
@@ -1405,58 +1090,11 @@
                   label="Income Generated during Last Year"
                   label-placement="floating"
                 ></ion-input>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >Commercial :</ion-card-subtitle
-                >
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter existing No"
-                  fill="outline"
-                  label="Existing No"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Production(Ltrs/Day) if applicable"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter litres/day"
-                  fill="outline"
-                  label="Milk Consumed(Ltrs/Day)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter quantity sold by year"
-                  fill="outline"
-                  label="Quantity Sold by Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Unit Value"
-                  fill="outline"
-                  label="Unit Value(Rs)"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter income generated during last year"
-                  fill="outline"
-                  label="Income Generated during Last Year"
-                  label-placement="floating"
-                ></ion-input>
-                <ion-card-subtitle
-                  class="ion-margin-top ion-text-center"
-                  color="tertiary"
-                  >Eggs :</ion-card-subtitle
-                >
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-header color="tertiary">4.4 Fisheries</ion-card-header>
+              <ion-card-content>
                 <ion-input
                   class="ion-margin-top"
                   placeholder="Enter existing No"
@@ -1504,11 +1142,6 @@
             <ion-card>
               <ion-card-header color="tertiary">4.4 Piggery</ion-card-header>
               <ion-card-content>
-                <ion-card-subtitle
-                  class="ion-text-center ion-margin-top"
-                  color="tertiary"
-                  >Piggery:</ion-card-subtitle
-                >
                 <ion-input
                   class="ion-margin-top"
                   placeholder="Enter existing No"
@@ -1565,7 +1198,7 @@
                 name="add-circle"
                 slot="icon-only"
               ></ion-icon
-              >Add Family Member Details</ion-button
+              >Add Migration Status</ion-button
             >
           </div>
           <div v-if="step === 6">
