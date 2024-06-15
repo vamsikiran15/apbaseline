@@ -986,6 +986,27 @@
             </ion-col>
           </div>
           <div v-if="step === 4">
+            <ion-item>
+              <ion-select
+                v-model="selectedValue"
+                interface="popover"
+                fill="outline"
+              >
+                <template v-for="group in groupedData" :key="group.label">
+                  <ion-select-option disabled>{{
+                    group.label
+                  }}</ion-select-option>
+                  <ion-select-option
+                    v-for="option in group.options"
+                    :key="option.value"
+                    :value="option.value"
+                  >
+                    {{ option.label }}
+                  </ion-select-option>
+                </template>
+              </ion-select>
+            </ion-item>
+
             <ion-card>
               <ion-card-header color="tertiary"
                 >4.Livestock Details</ion-card-header
@@ -1753,6 +1774,7 @@ import {
   IonButton,
   IonButtons,
   IonFooter,
+  IonItem,
 } from "@ionic/vue";
 import fifthPage from "./fifthPage.vue";
 import SixthPage from "./sixthPage.vue";
@@ -1810,6 +1832,25 @@ export default {
         "23 Membership details",
         "24 Have been the beneficiary of any scheme of project previously",
         "25 Soil, Land & Water Conservation",
+      ],
+      selectedValue: "",
+      groupedData: [
+        {
+          label: "Dairy",
+          options: [
+            { value: "Cows-Improved Breed", label: "Cows-Improved Breed" },
+            { value: "Cows-Local Breed", label: "Cows-Local Breed" },
+            { value: "She buffaloes", label: "She buffaloes" },
+          ],
+        },
+        {
+          label: "Vegetables",
+          options: [
+            { value: "carrot", label: "Carrot" },
+            { value: "broccoli", label: "Broccoli" },
+            { value: "spinach", label: "Spinach" },
+          ],
+        },
       ],
       newRow: {
         name_of_the_family_member: "",
@@ -1872,6 +1913,7 @@ export default {
     IonButton,
     TwentyfifthPage,
     IonFooter,
+    IonItem,
   },
   computed: {
     currentStepLabel() {
@@ -2000,4 +2042,12 @@ export default {
 /* ion-toolbar{
     background: var(--ion-header-color);
   } */
+
+ion-select {
+  width: 100%;
+}
+
+ion-select-option {
+  padding-left: 16px;
+}
 </style>

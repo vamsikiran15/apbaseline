@@ -30,7 +30,10 @@
               <ion-item
                 v-for="item in items"
                 :key="item.id"
-                @click="selectItem(item)"
+                @click="
+                  selectItem(item);
+                  getHouseHoldInfo();
+                "
               >
                 {{ item.head_of_the_family }}
                 {{ item.household_door_no }}
@@ -117,6 +120,24 @@ export default {
       try {
         const response = await axios.get(
           `http://183.82.109.39:5000/items/searchByName`,
+          {
+            params: { query: this.query },
+          }
+        );
+        this.items = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getHouseHoldInfo() {
+      if (this.query.trim() === "") {
+        this.items = [];
+        return;
+      }
+      try {
+        console.log("selected item print", this.selectedItem.id);
+        const response = await axios.get(
+          `http://183.82.109.39:5000/items/houseHoldInfo`,
           {
             params: { query: this.query },
           }
