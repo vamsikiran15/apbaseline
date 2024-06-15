@@ -30,10 +30,7 @@
               <ion-item
                 v-for="item in items"
                 :key="item.id"
-                @click="
-                  selectItem(item);
-                  getHouseHoldInfo();
-                "
+                @click="selectItem(item)"
               >
                 {{ item.head_of_the_family }}
                 {{ item.household_door_no }}
@@ -52,6 +49,7 @@
       <edit-survey
         v-if="selectedItem"
         :item="selectedItem"
+        :household="householdinfo"
         @item-updated="onItemUpdated"
       ></edit-survey>
     </ion-content>
@@ -107,6 +105,7 @@ export default {
     return {
       query: "",
       items: [],
+      householdinfo: [],
       selectedItem: null,
       RsiLogo: Logo,
     };
@@ -130,19 +129,21 @@ export default {
       }
     },
     async getHouseHoldInfo() {
-      if (this.query.trim() === "") {
-        this.items = [];
-        return;
-      }
+      const id = this.selectedItem.id;
+      console.log("pring the id", id);
+      // if (id.trim() === "") {
+      //   this.items = [];
+      //   return;
+      // }
       try {
-        console.log("selected item print", this.selectedItem.id);
         const response = await axios.get(
-          `http://183.82.109.39:5000/items/houseHoldInfo`,
+          `http://183.82.109.39:5000/items/householdinfo`,
           {
-            params: { query: this.query },
+            params: { id: id },
           }
         );
-        this.items = response.data;
+        this.householdinfo = response.data;
+        console.log("house hold info from search page", this.householdinfo);
       } catch (error) {
         console.error(error);
       }
@@ -154,6 +155,7 @@ export default {
     },
     selectItem(item) {
       this.selectedItem = { ...item }; // Copy the selected item
+      this.getHouseHoldInfo();
       this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {

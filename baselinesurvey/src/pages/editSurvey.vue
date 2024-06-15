@@ -441,6 +441,17 @@
                   >2.Household Details</ion-card-header
                 >
                 <ion-card-content>
+                  <ion-list>
+                    <ion-item
+                      v-for="item in houseHoldEditItem"
+                      :key="item.id"
+                      @click="selectItem(item)"
+                    >
+                      {{ item.name_of_the_family_member }}
+                      {{ item.relationship_with_head }}
+                      {{ item.gender }}
+                    </ion-item>
+                  </ion-list>
                   <ion-input
                     class="ion-margin-top"
                     label="Name of Family Member"
@@ -475,9 +486,9 @@
                     fill="outline"
                     v-model="newRow.gender"
                   >
-                    <ion-select-option value="male">Male</ion-select-option>
-                    <ion-select-option value="female">Female</ion-select-option>
-                    <ion-select-option value="others">Others</ion-select-option>
+                    <ion-select-option value="Male">Male</ion-select-option>
+                    <ion-select-option value="Female">Female</ion-select-option>
+                    <ion-select-option value="Others">Others</ion-select-option>
                   </ion-select>
                   <ion-input
                     class="ion-margin-top"
@@ -497,57 +508,58 @@
                     fill="outline"
                     v-model="newRow.level_of_education"
                   >
-                    <ion-select-option value="illiterate"
+                    <ion-select-option value="Illiterate"
                       >Illiterate</ion-select-option
                     >
-                    <ion-select-option value="primary"
+                    <ion-select-option value="Primary"
                       >Primary</ion-select-option
                     >
-                    <ion-select-option value="upperprimary"
+                    <ion-select-option value="Upper Primary"
                       >Upper Primary</ion-select-option
                     >
-                    <ion-select-option value="highschool"
+                    <ion-select-option value="High School"
                       >High School</ion-select-option
                     >
-                    <ion-select-option value="interdiploma"
+                    <ion-select-option value="Inter/Diploma"
                       >Inter/Diploma</ion-select-option
                     >
-                    <ion-select-option value="degree">Degree</ion-select-option>
-                    <ion-select-option value="pg">PG</ion-select-option>
-                    <ion-select-option value="others">Others</ion-select-option>
+                    <ion-select-option value="Degree">Degree</ion-select-option>
+                    <ion-select-option value="PG">PG</ion-select-option>
+                    <ion-select-option value="Others">Others</ion-select-option>
                   </ion-select>
                   <ion-select
                     class="ion-margin-top"
                     aria-label="Occupation"
                     interface="popover"
-                    label="Occupation (Source of Livelihoods)"
+                    label="Occupation"
                     label-placement="floating"
                     placeholder="Select Occupation"
                     fill="outline"
                     v-model="newRow.occupation"
+                    :multiple="true"
                   >
-                    <ion-select-option value="agriculture"
+                    <ion-select-option value="Agriculture"
                       >Agriculture</ion-select-option
                     >
-                    <ion-select-option value="livestockrearing"
+                    <ion-select-option value="Livestock rearing"
                       >Livestock rearing</ion-select-option
                     >
-                    <ion-select-option value="microenterprise"
+                    <ion-select-option value="Micro Enterprise"
                       >Micro Enterprise</ion-select-option
                     >
-                    <ion-select-option value="agrilabour"
+                    <ion-select-option value="Agri-Labour"
                       >Agri-Labour</ion-select-option
                     >
-                    <ion-select-option value="nonaglabour"
+                    <ion-select-option value="Non-Ag labour"
                       >Non-Ag labour</ion-select-option
                     >
-                    <ion-select-option value="employee"
+                    <ion-select-option value="Employee"
                       >Employee</ion-select-option
                     >
-                    <ion-select-option value="ruralartician"
+                    <ion-select-option value="Rural Artician"
                       >Rural Artician</ion-select-option
                     >
-                    <ion-select-option value="others">Others</ion-select-option>
+                    <ion-select-option value="Others">Others</ion-select-option>
                   </ion-select>
                   <ion-select
                     class="ion-margin-top"
@@ -559,9 +571,9 @@
                     fill="outline"
                     v-model="newRow.membership"
                   >
-                    <ion-select-option value="shg">SHG</ion-select-option>
-                    <ion-select-option value="ug">UG</ion-select-option>
-                    <ion-select-option value="wc">WC</ion-select-option>
+                    <ion-select-option value="SHG">SHG</ion-select-option>
+                    <ion-select-option value="UG">UG</ion-select-option>
+                    <ion-select-option value="WC">WC</ion-select-option>
                     <ion-select-option value="others">Others</ion-select-option>
                   </ion-select>
                   <ion-input
@@ -986,27 +998,6 @@
             </ion-col>
           </div>
           <div v-if="step === 4">
-            <ion-item>
-              <ion-select
-                v-model="selectedValue"
-                interface="popover"
-                fill="outline"
-              >
-                <template v-for="group in groupedData" :key="group.label">
-                  <ion-select-option disabled>{{
-                    group.label
-                  }}</ion-select-option>
-                  <ion-select-option
-                    v-for="option in group.options"
-                    :key="option.value"
-                    :value="option.value"
-                  >
-                    {{ option.label }}
-                  </ion-select-option>
-                </template>
-              </ion-select>
-            </ion-item>
-
             <ion-card>
               <ion-card-header color="tertiary"
                 >4.Livestock Details</ion-card-header
@@ -1800,6 +1791,7 @@ import TwentyfifthPage from "./twentyfifthPage.vue";
 export default {
   props: {
     item: Object,
+    household: Object,
   },
   data() {
     return {
@@ -1833,25 +1825,6 @@ export default {
         "24 Have been the beneficiary of any scheme of project previously",
         "25 Soil, Land & Water Conservation",
       ],
-      selectedValue: "",
-      groupedData: [
-        {
-          label: "Dairy",
-          options: [
-            { value: "Cows-Improved Breed", label: "Cows-Improved Breed" },
-            { value: "Cows-Local Breed", label: "Cows-Local Breed" },
-            { value: "She buffaloes", label: "She buffaloes" },
-          ],
-        },
-        {
-          label: "Vegetables",
-          options: [
-            { value: "carrot", label: "Carrot" },
-            { value: "broccoli", label: "Broccoli" },
-            { value: "spinach", label: "Spinach" },
-          ],
-        },
-      ],
       newRow: {
         name_of_the_family_member: "",
         relationship_with_head: "",
@@ -1867,6 +1840,7 @@ export default {
 
       //   head_of_the_family: "",
       editedItem: null,
+      houseHoldEditItem: [],
     };
   },
   components: {
@@ -1930,6 +1904,14 @@ export default {
         this.editedItem = newVal ? { ...newVal } : null;
       },
     },
+    household: {
+      immediate: true,
+      handler(newVal) {
+        // Ensure to make a deep copy of the received item
+        this.houseHoldEditItem = newVal ? { ...newVal } : null;
+        console.log("house hold info", this.houseHoldEditItem);
+      },
+    },
   },
   methods: {
     nextStep() {
@@ -1981,6 +1963,21 @@ export default {
     removeRow(index) {
       this.rows.splice(index, 1);
     },
+
+    selectItem(item) {
+      this.newRow.name_of_the_family_member = item.name_of_the_family_member;
+      this.newRow.relationship_with_head = item.relationship_with_head;
+      this.newRow.disability = item.disability;
+      this.newRow.gender = item.gender;
+      this.newRow.age = item.age;
+      this.newRow.level_of_education = item.level_of_education;
+      this.newRow.occupation = item.occupation
+        .split(",")
+        .map((item) => item.trim());
+      this.newRow.annual_gross_income = item.annual_gross_income;
+      this.newRow.membership = item.membership;
+    },
+
     async updateItem() {
       try {
         const response = await axios.put(
