@@ -1,6 +1,6 @@
 <template>
     <ion-card>
-        <ion-card-header class="ion-text-center" color="tertiary">24.have been the Beneficiary of any scheme of project Previously?Yes/No , if Yes</ion-card-header>
+        <ion-card-header class="ion-text-center" color="tertiary"><strong>24.have been the Beneficiary of any scheme of project Previously?Yes/No , if Yes</strong></ion-card-header>
         <ion-card-content>
         <ion-input
             class="ion-margin-top"

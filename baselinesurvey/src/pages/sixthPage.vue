@@ -1,6 +1,6 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary" class="ion-text-center">6.If Land Less Labourers , given the details of the Number of days Employment Availed</ion-card-header>
+        <ion-card-header color="tertiary" class="ion-text-center"><strong>6.If Land Less Labourers , given the details of the Number of days Employment Availed</strong></ion-card-header>
             <ion-card-content>
               <ion-select
                     aria-label="Crop Grown"
@@ -9,6 +9,7 @@
                     label-placement="floating"
                     placeholder="Select Name of the Scheme/Project"
                     fill="outline"
+                    class="ion-margin-top"
                   >
                   <ion-select-option value="Own">Watershed</ion-select-option>
                   <ion-select-option value="Rent">MGNREGS</ion-select-option>

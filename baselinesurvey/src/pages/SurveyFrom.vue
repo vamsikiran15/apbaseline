@@ -16,9 +16,7 @@
           <div v-if="step === 1">
             <ion-col>
               <ion-card>
-                <ion-card-header color="tertiary">
-                  1 General Information
-                </ion-card-header>
+                <ion-card-header color="tertiary"><strong>1.General Information</strong></ion-card-header>
                 <ion-card-content>
                   <ion-row class="ion-padding-top">
                     <ion-select
@@ -156,8 +154,7 @@
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >1.1 Individual Information</ion-card-header
-                >
+                  ><strong>1.1 Individual Information</strong></ion-card-header>
                 <ion-card-content>
                   <ion-input
                     class="ion-margin-top"
@@ -266,8 +263,9 @@
                   <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center"
                     >Location</ion-card-subtitle
                   >
-                  <ion-row>
-                    <ion-radio-group value="Ridge" class="ion-padding">
+                  <ion-grid>
+                    <ion-radio-group value="Ridge">
+                      <ion-row>
                       <ion-col size="4">
                         <ion-radio value="Ridge" label-placement="start"
                           >Ridge</ion-radio
@@ -283,35 +281,39 @@
                           >Valley</ion-radio
                         >
                       </ion-col>
+                    </ion-row>
                     </ion-radio-group>
-                  </ion-row>
+                </ion-grid>
 
                   <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center"
                     >Social Status</ion-card-subtitle
                   >
-                  <ion-row>
-                    <ion-radio-group value="SC" class="ion-padding">
-                      <ion-col size="3">
+                  <ion-grid>
+                    <ion-radio-group value="SC">
+                      <ion-row>
+                      <ion-col>
                         <ion-radio value="SC" label-placement="start"
                           >SC</ion-radio
                         >
                       </ion-col>
-                      <ion-col size="3">
+                      <ion-col>
                         <ion-radio value="ST" label-placement="start"
                           >ST</ion-radio
                         >
                       </ion-col>
-                      <ion-col size="3">
+                      <ion-col>
                         <ion-radio value="BC" label-placement="start"
                           >BC</ion-radio
                         >
                       </ion-col>
-                      <ion-col size="3">
+                      <ion-col>
                         <ion-radio value="Others" label-placement="start"
                           >Others</ion-radio
                         >
                       </ion-col>
+                    </ion-row>
                     </ion-radio-group>
+                  </ion-grid>
                     <ion-row class="ion-padding ion-text-center">
                       <ion-card-subtitle color="tertiary"
                       >Total Land Holding (Acres)
@@ -339,10 +341,10 @@
                         ></ion-input>
                       </ion-col>
                     </ion-row >
-                  </ion-row>
                   <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center">Type of House</ion-card-subtitle>
+                  <ion-grid>
                   <ion-row>
-                    <ion-radio-group value="house" class="ion-padding">
+                    <ion-radio-group value="house">
                       <ion-col>
                         <ion-radio value="SC" label-placement="start"
                           >Pucca House</ion-radio
@@ -355,9 +357,11 @@
                       </ion-col>
                     </ion-radio-group>
                   </ion-row>
+                </ion-grid>
                   <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center">Own/Rented</ion-card-subtitle>
+                 <ion-grid>
                   <ion-row>
-                    <ion-radio-group value="house" class="ion-padding">
+                    <ion-radio-group value="house">
                       <ion-col>
                         <ion-radio value="SC" label-placement="start"
                           >Own</ion-radio
@@ -370,6 +374,7 @@
                       </ion-col>
                     </ion-radio-group>
                   </ion-row>
+                </ion-grid>
                 </ion-card-content>
               </ion-card>
             </ion-col>
@@ -379,7 +384,7 @@
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >2.Household Details</ion-card-header
+                  ><strong>2.Household Details</strong></ion-card-header
                 >
                 <ion-card-content>
                   <ion-input
@@ -552,12 +557,12 @@
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >3.Land Particulars</ion-card-header
+                  ><strong>3.Land Particulars</strong></ion-card-header
                 >
                 <ion-card-subtitle
                   class="ion-padding ion-text-center"
                   color="tertiary"
-                  >3.1 Cultivated Area(Acres)</ion-card-subtitle
+                  ><strong>3.1 Cultivated Area(Acres)</strong></ion-card-subtitle
                 >
                 <ion-card-content>
                   <ion-select
@@ -615,7 +620,7 @@
               </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >3.2 Income from Crops(Rs)-Kharif</ion-card-header
+                  ><strong>3.2 Income from Crops(Rs)-Kharif</strong></ion-card-header
                 >
                 <ion-card-content>
                   <ion-select
@@ -625,6 +630,7 @@
                     label-placement="floating"
                     placeholder="Select Crop Item"
                     fill="outline"
+                    class="ion-margin-top"
                   >
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -760,7 +766,7 @@
               </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >3.3 Income from Crops(Rs)-Rabi</ion-card-header
+                  ><strong>3.3 Income from Crops(Rs)-Rabi</strong></ion-card-header
                 >
                 <ion-card-content>
                   <ion-select
@@ -770,6 +776,7 @@
                     label-placement="floating"
                     placeholder="Select Crop Item"
                     fill="outline"
+                    class="ion-margin-top"
                   >
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -908,10 +915,10 @@
           <div v-if="step === 4">
             <ion-card>
               <ion-card-header color="tertiary"
-                >4.Livestock Details</ion-card-header
+                ><strong>4.Livestock Details</strong></ion-card-header
               >
               <ion-card-header class="ion-margin-top" color="tertiary"
-                >4.1 Dairy</ion-card-header
+                ><strong>4.1 Dairy</strong></ion-card-header
               >
               <ion-card-content>
                 <ion-select
@@ -921,6 +928,7 @@
                     label-placement="floating"
                     placeholder="Select Animal"
                     fill="outline"
+                    class="ion-margin-top"
                   >
                   <ion-select-option value="Own">Cow Improved Breed</ion-select-option>
                   <ion-select-option value="Rent">Cow Local Breed</ion-select-option>
@@ -971,7 +979,7 @@
               </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-header color="tertiary">4.2 Livestock</ion-card-header>
+              <ion-card-header color="tertiary"><strong>4.2 Livestock</strong></ion-card-header>
               <ion-card-content>
                 <ion-select
                     aria-label="Crop Grown"
@@ -980,6 +988,7 @@
                     label-placement="floating"
                     placeholder="Select Animal"
                     fill="outline"
+                    class="ion-margin-top"
                   >
                   <ion-select-option value="Own">Goat</ion-select-option>
                   <ion-select-option value="Rent">Goat Wool</ion-select-option>
@@ -1033,7 +1042,7 @@
               </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-header color="tertiary">4.3 Poultry</ion-card-header
+              <ion-card-header color="tertiary"><strong>4.3 Poultry</strong></ion-card-header
               >
               <ion-card-content>
                 <ion-select
@@ -1043,6 +1052,7 @@
                     label-placement="floating"
                     placeholder="Select Animal"
                     fill="outline"
+                    class="ion-margin-top"
                   >
                   <ion-select-option value="Own">Backyard</ion-select-option>
                   <ion-select-option value="Rent">Commercial</ion-select-option>
@@ -1093,7 +1103,7 @@
               </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-header color="tertiary">4.4 Fisheries</ion-card-header>
+              <ion-card-header color="tertiary"><strong>4.4 Fisheries</strong></ion-card-header>
               <ion-card-content>
                 <ion-input
                   class="ion-margin-top"
@@ -1140,7 +1150,7 @@
               </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-header color="tertiary">4.4 Piggery</ion-card-header>
+              <ion-card-header color="tertiary"><strong>4.4 Piggery</strong></ion-card-header>
               <ion-card-content>
                 <ion-input
                   class="ion-margin-top"
@@ -1276,12 +1286,12 @@
       </div>
     </ion-content>
     <ion-footer>
-      <div class="ion-padding">
-        <ion-button v-if="currentStep !== 1" @click="prevStep()"
+      <div class="ion-margin-bottom">
+        <ion-button class="ion-margin-start" v-if="currentStep !== 1" @click="prevStep()"
           ><ion-icon name="carat-back-outline"></ion-icon>Previous</ion-button
         >
         <ion-button
-          class="nextButton"
+          class="nextButton ion-margin-end"
           v-if="currentStep !== totalSteps"
           @click="nextStep()"
           >Next<ion-icon name="caret-forward-outline"></ion-icon
@@ -1289,7 +1299,7 @@
 
         <ion-button
           v-else-if="currentStep === totalSteps"
-          class="nextButton"
+          class="nextButton ion-margin-end"
           @click="submitForm"
           ><ion-icon name="checkmark-outline"></ion-icon>Submit</ion-button
         >

@@ -1,6 +1,6 @@
 <template>
 <ion-card>
-    <ion-card-header color="tertiary">22.Awareness on Adaption of Technology</ion-card-header>
+    <ion-card-header color="tertiary"><strong>22.Awareness on Adaption of Technology</strong></ion-card-header>
     <ion-card-subtitle color="tertiary" class="ion-margin-top ion-text-center">Technology</ion-card-subtitle>
 </ion-card>
 <ion-card>

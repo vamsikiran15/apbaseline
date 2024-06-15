@@ -1,7 +1,7 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary">9.Pest and Disease Control Measures</ion-card-header>
-        <ion-card-header class="ion-margin-top" color="tertiary">Crop Measures</ion-card-header>
+        <ion-card-header color="tertiary"><strong>9.Pest and Disease Control Measures</strong></ion-card-header>
+        <ion-card-header class="ion-margin-top" color="tertiary"><strong>Crop Measures</strong></ion-card-header>
         <ion-card-content>
             <ion-select
                       class="ion-margin-top"
@@ -82,8 +82,7 @@
         </ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header color="tertiary">
-            Amount Spent Towards
+        <ion-card-header color="tertiary"><strong>Amount Spent Towards</strong>
         </ion-card-header>
         <ion-card-content>
             <ion-input

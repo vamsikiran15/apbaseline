@@ -1,9 +1,9 @@
 <template>
         <ion-card>
-            <ion-card-header color="tertiary">11.Family Expenditure</ion-card-header>
+            <ion-card-header color="tertiary"><strong>11.Family Expenditure</strong></ion-card-header>
         </ion-card>
         <ion-card>
-            <ion-card-header color="tertiary">items</ion-card-header>
+            <ion-card-header color="tertiary"><strong>Items</strong></ion-card-header>
             <ion-card-content>
                 <ion-input
             class="ion-margin-top"

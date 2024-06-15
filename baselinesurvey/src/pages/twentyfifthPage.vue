@@ -1,5 +1,5 @@
 <template><ion-card>
-    <ion-card-header class="ion-text-center" color="tertiary">25.Soil,Land & Water Conservation</ion-card-header>
+    <ion-card-header class="ion-text-center" color="tertiary"><strong>25.Soil,Land & Water Conservation</strong></ion-card-header>
 </ion-card>
 <ion-card>
     <ion-card-content>

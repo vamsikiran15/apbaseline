@@ -1,6 +1,6 @@
 <template>
 <ion-card>
-    <ion-card-header color="tertiary">5.Migration Status</ion-card-header>
+    <ion-card-header color="tertiary"><strong>5.Migration Status</strong></ion-card-header>
     <ion-card-content>
       <ion-input
             class="ion-margin-top"
