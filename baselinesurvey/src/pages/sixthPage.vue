@@ -1,7 +1,9 @@
 <template>
     <ion-card>
         <ion-card-header color="tertiary" class="ion-text-center"><strong>6.If Land Less Labourers , given the details of the Number of days Employment Availed</strong></ion-card-header>
-            <ion-card-content>
+      </ion-card>   
+        <ion-card> 
+        <ion-card-content>
               <ion-select
                     aria-label="Crop Grown"
                     interface="popover"
@@ -11,9 +13,9 @@
                     fill="outline"
                     class="ion-margin-top"
                   >
-                  <ion-select-option value="Own">Watershed</ion-select-option>
-                  <ion-select-option value="Rent">MGNREGS</ion-select-option>
-                  <ion-select-option value="Rent">Others</ion-select-option>
+                  <ion-select-option value="watershed">Watershed</ion-select-option>
+                  <ion-select-option value="mgnregs">MGNREGS</ion-select-option>
+                  <ion-select-option value="others">Others</ion-select-option>
                 </ion-select>
             <ion-input
             class="ion-margin-top"
@@ -52,3 +54,9 @@
 <script>
 export default{}
 </script>
+<style>
+ion-card {
+  border-radius: 1.2rem;
+  box-shadow:0.1rem 0.1rem 0.7rem rgb(96, 96, 161);
+}
+</style>

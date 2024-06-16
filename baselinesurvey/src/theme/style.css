@@ -5,16 +5,20 @@ ion-toolbar {
 
   ion-card {
     background : var(--ion-color-success-contrast);
+    color:var(--ion-text-color)
   }
+  
   ion-card-header {
     background: var(--ion-card-header-color);
     color : var(--ion-color-step-50)
   }
 
-  ion-footer{
+  ion-footer {
     --background: var(--ion-color-header-color);
   }
 
-  ion-button{
-    --background : var(--ion-button-colors);
+  ion-button {
+    --background : var(--ion-button-colors) !important;
   }
+
+  

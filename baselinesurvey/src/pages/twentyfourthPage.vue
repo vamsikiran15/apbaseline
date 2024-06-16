@@ -1,6 +1,8 @@
 <template>
     <ion-card>
         <ion-card-header class="ion-text-center" color="tertiary"><strong>24.have been the Beneficiary of any scheme of project Previously?Yes/No , if Yes</strong></ion-card-header>
+      </ion-card>
+        <ion-card>
         <ion-card-content>
         <ion-input
             class="ion-margin-top"
@@ -25,9 +27,6 @@
           ></ion-input>
         </ion-card-content>
     </ion-card>
-    <div class="ion-margin">
-        <ion-icon class="iconSize" color="tertiary" name="add-circle" slot="icon-only"></ion-icon>
-    </div>
 </template>
 <script>
 export default{}

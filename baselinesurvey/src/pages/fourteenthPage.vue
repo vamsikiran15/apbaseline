@@ -1,7 +1,9 @@
 <template>
 <ion-card class="ion-margin-top">
     <ion-card-header class="ion-text-center" color="tertiary"><strong>14.Source and Quality of Water(3ft = 1 metre)</strong></ion-card-header>
-        <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Water Source</ion-card-subtitle>
+  </ion-card>
+    <ion-card>   
+    <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Water Source</ion-card-subtitle>
         <ion-card-content>
           <ion-select
                       class="ion-margin-top"
@@ -48,7 +50,7 @@
           ></ion-input>
           <ion-card-subtitle class="ion-margin-top ion-text-center" color="tertiary">Irrigated Area(in Ha)</ion-card-subtitle>
         </ion-card-content>
-          <ion-card-header class="ion-margin-top" color="tertiary"><strong>Agriculture</strong></ion-card-header>
+          <ion-card-header color="tertiary"><strong>Agriculture</strong></ion-card-header>
           <ion-card-content>
           <ion-input
             class="ion-margin-top"

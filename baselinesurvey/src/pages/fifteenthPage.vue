@@ -1,6 +1,8 @@
 <template>
 <ion-card>
 <ion-card-header color="tertiary"><strong>15.Agriculture Implements</strong></ion-card-header>
+</ion-card>
+<ion-card>
     <ion-card-content>
       <ion-select
                       class="ion-margin-top"
