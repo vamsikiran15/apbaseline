@@ -594,7 +594,7 @@
                 name="add-circle"
                 slot="icon-only"
               ></ion-icon
-              >Add Family Member Details</ion-button
+              >Update Family Member Details</ion-button
             >
             <ul class="styled-list">
               <li v-for="(row, index) in rows" :key="index">
@@ -631,6 +631,17 @@
                   >3.1 Cultivated Area(Acres)</ion-card-subtitle
                 >
                 <ion-card-content>
+                  <ion-list>
+                    <ion-item
+                      v-for="item in landparticular"
+                      :key="item.id"
+                      @click="selectItem(item)"
+                    >
+                      {{ item.cultivated_area }}
+                      {{ item.rainfed }}
+                      {{ item.irrigated }}
+                    </ion-item>
+                  </ion-list>
                   <ion-select
                     aria-label="Type of Ownership"
                     interface="popover"
@@ -1788,10 +1799,12 @@ import TwentysecondPage from "./twentysecondPage.vue";
 import TwentythirdPage from "./twentythirdPage.vue";
 import TwentyfourthPage from "./twentyfourthPage.vue";
 import TwentyfifthPage from "./twentyfifthPage.vue";
+import axios from "axios";
 export default {
   props: {
     item: Object,
     household: Object,
+    landparticular: Object,
   },
   data() {
     return {
@@ -1826,6 +1839,8 @@ export default {
         "25 Soil, Land & Water Conservation",
       ],
       newRow: {
+        id: "",
+        headId: "",
         name_of_the_family_member: "",
         relationship_with_head: "",
         disability: "",
@@ -1944,11 +1959,14 @@ export default {
       ) {
         this.rows.push({ ...this.newRow }); // Add a copy of newRow to rows
         console.log("this rows", this.rows);
+        this.updateItem();
         this.clearFields(); // Clear the input fields
       }
     },
     clearFields() {
       this.newRow = {
+        id: "",
+        headId: "",
         name_of_the_family_member: "",
         relationship_with_head: "",
         disability: "",
@@ -1965,6 +1983,8 @@ export default {
     },
 
     selectItem(item) {
+      this.newRow.id = item.id;
+      this.newRow.headId = item.headId;
       this.newRow.name_of_the_family_member = item.name_of_the_family_member;
       this.newRow.relationship_with_head = item.relationship_with_head;
       this.newRow.disability = item.disability;
@@ -1980,9 +2000,17 @@ export default {
 
     async updateItem() {
       try {
+        const rowsWithCommaSeparatedOccupation = this.rows.map((row) => ({
+          ...row,
+          occupation: row.occupation.join(", "),
+        }));
+        const data = {
+          rows: rowsWithCommaSeparatedOccupation, // Assuming rows_land_less_labourers contains your table data
+        };
+        console.log("updated rows *****************", data);
         const response = await axios.put(
-          `http://localhost:5000/items/${this.editedItem.id}`,
-          this.editedItem
+          `http://localhost:5000/items/updatehouseholdmember`,
+          data
         );
         console.log("Item updated:", response.data);
         this.$emit("item-updated", response.data); // Emit event with updated item

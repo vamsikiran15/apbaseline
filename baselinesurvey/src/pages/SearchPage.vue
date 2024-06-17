@@ -50,6 +50,7 @@
         v-if="selectedItem"
         :item="selectedItem"
         :household="householdinfo"
+        :landparticular="landparticulars"
         @item-updated="onItemUpdated"
       ></edit-survey>
     </ion-content>
@@ -106,6 +107,7 @@ export default {
       query: "",
       items: [],
       householdinfo: [],
+      landparticulars: [],
       selectedItem: null,
       RsiLogo: Logo,
     };
@@ -148,6 +150,26 @@ export default {
         console.error(error);
       }
     },
+    async getLandPerticularsInfo() {
+      const id = this.selectedItem.id;
+      console.log("pring the id", id);
+      // if (id.trim() === "") {
+      //   this.items = [];
+      //   return;
+      // }
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/items/landparticulars`,
+          {
+            params: { id: id },
+          }
+        );
+        this.landparticulars = response.data;
+        console.log("landparticulars from search page", this.landparticulars);
+      } catch (error) {
+        console.error(error);
+      }
+    },
     clearSearch() {
       this.query = ""; // Clear the search bar
       this.items = []; // Clear the item list
@@ -156,6 +178,7 @@ export default {
     selectItem(item) {
       this.selectedItem = { ...item }; // Copy the selected item
       this.getHouseHoldInfo();
+      this.getLandPerticularsInfo();
       this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {
