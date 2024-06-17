@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-img class="rsiImgSize" src="../src/assets/RSIWHITEL_Logo.png"></ion-img>
+        <ion-img class="rsiImgSize" src="../src/assets/img/RSIWHITEL_Logo2.png"></ion-img>
         <ion-title  class="ion-text-justify ion-margin-end titleText">
           <strong>HOUSEHOLD SOCIO-ECONOMIC SURVEY</strong>
         </ion-title>
@@ -1577,8 +1577,8 @@ export default {
 }
 
 .rsiImgSize {
-  height: 1rem;
-  width: 3rem;
+  height: 3vh;
+  width: 6vh;
   text-align: center;
 }
 
@@ -1597,7 +1597,7 @@ export default {
 }
 
 ion-card {
-  border-radius: 1.2rem;
-  box-shadow:0.1rem 0.1rem 0.7rem rgb(96, 96, 161);
+  border-radius: 8px;
+  box-shadow:1px 1px 6px rgb(96, 96, 161);
 }
 </style>
