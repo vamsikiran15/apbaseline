@@ -1,5 +1,7 @@
 <template><ion-card>
     <ion-card-header color="tertiary"><strong>23.Membership Details</strong></ion-card-header>
+  </ion-card>
+    <ion-card>
     <ion-card-content>
     <ion-input
             class="ion-margin-top"

@@ -1,9 +1,9 @@
 <template>
     <ion-card>
-        <ion-card-header color="tertiary"><strong>10.Details of Loan Particulars(Amount in Rs)</strong></ion-card-header>
-   </ion-card>
-   <ion-card>
-    <ion-card-content>
+        <ion-card-header color="tertiary" class="ion-text-center"><strong>10.Details of Loan Particulars(Amount in Rs)</strong></ion-card-header>
+      </ion-card>
+        <ion-card>
+        <ion-card-content>
       <ion-select
                       class="ion-margin-top"
                       interface="popover"
@@ -247,7 +247,7 @@
                       >
                     </ion-select>
    </ion-card-content>
-   </ion-card>
+  </ion-card>
    <ion-card>
     <ion-card-content>
     <ion-input  placeholder="Outstanding Amount"

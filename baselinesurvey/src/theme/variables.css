@@ -6,7 +6,7 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 :root {
-    --ion-color-primary: #3c487c;
+    --ion-color-primary: #20243F;
     --ion-color-primary-rgb: 149, 1, 203;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -97,3 +97,17 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-button-colors : #20243F;
   } 
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --ion-card-background: white;
+      --ion-text-color: black;
+    }
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ion-card-background: black;
+      --ion-text-color: #ccc;  
+    }
+  }

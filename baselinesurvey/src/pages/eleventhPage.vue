@@ -4,9 +4,10 @@
         </ion-card>
         <ion-card>
             <ion-card-header color="tertiary"><strong>Items</strong></ion-card-header>
+          </ion-card>
+            <ion-card>
             <ion-card-content>
                 <ion-input
-            class="ion-margin-top"
             placeholder="Enter Expenditure(Rs) As per Last Year"
             fill="outline"
             label="Food"

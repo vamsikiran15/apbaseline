@@ -2,10 +2,10 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-img class="rsiImgSize" src="../src/assets/rsi dark.png"></ion-img>
-        <ion-title class="header" style="font-size: 1.5vh"
-          ><strong>HOUSEHOLD SOCIO-ECONOMIC SURVEY</strong></ion-title
-        >
+        <ion-img class="rsiImgSize" src="../src/assets/RSIWHITEL_Logo.png"></ion-img>
+        <ion-title  class="ion-text-justify ion-margin-end titleText">
+          <strong>HOUSEHOLD SOCIO-ECONOMIC SURVEY</strong>
+        </ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -14,11 +14,12 @@
         <div v-if="currentStep === step">
           <!-- <h2>Step {{ step }}: Details</h2> -->
           <div v-if="step === 1">
-            <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"><strong>1.General Information</strong></ion-card-header>
+              </ion-card>
+              <ion-card>
                 <ion-card-content>
-                  <ion-row class="ion-padding-top">
+                <ion-row>
                     <ion-select
                       aria-label="District"
                       interface="popover"
@@ -37,7 +38,7 @@
                         >District 3</ion-select-option
                       >
                     </ion-select>
-                  </ion-row>
+                    </ion-row>
                   <ion-row class="ion-padding-top">
                     <ion-select
                       aria-label="District"
@@ -150,11 +151,11 @@
                   </ion-row>
                 </ion-card-content>
               </ion-card>
-            </ion-col>
-            <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
                   ><strong>1.1 Individual Information</strong></ion-card-header>
+                </ion-card>
+                  <ion-card>
                 <ion-card-content>
                   <ion-input
                     class="ion-margin-top"
@@ -231,33 +232,27 @@
                     >Occupation</ion-card-subtitle
                   >
                   <ion-item>
-                    <ion-label>Agriculture</ion-label>
-                    <ion-checkbox slot="end"></ion-checkbox>
+                    <ion-checkbox  mode="ios">Agriculture</ion-checkbox>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Ag Labour</ion-label>
-                    <ion-checkbox slot="end"></ion-checkbox>
+                    <ion-checkbox  mode="ios">Ag Labour</ion-checkbox>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Non –Ag labour</ion-label>
-                    <ion-checkbox slot="end"></ion-checkbox>
+                    <ion-checkbox justify="space-between" mode="ios">Non –Ag labour</ion-checkbox>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Employee</ion-label>
-                    <ion-checkbox slot="end"></ion-checkbox>
+                    <ion-checkbox justify="space-between" mode="ios">Employee</ion-checkbox>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Business</ion-label>
-                    <ion-checkbox slot="end"></ion-checkbox>
+                    <ion-checkbox justify="space-between" mode="ios">Business</ion-checkbox>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label>Others</ion-label>
-                    <ion-checkbox slot="end"></ion-checkbox>
+                    <ion-checkbox justify="space-between" mode="ios">Others</ion-checkbox>
                   </ion-item>
 
                   <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center"
@@ -377,15 +372,15 @@
                 </ion-grid>
                 </ion-card-content>
               </ion-card>
-            </ion-col>
           </div>
 
           <div v-if="step === 2">
-            <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
                   ><strong>2.Household Details</strong></ion-card-header
                 >
+              </ion-card>
+                <ion-card>
                 <ion-card-content>
                   <ion-input
                     class="ion-margin-top"
@@ -520,9 +515,8 @@
                   ></ion-input>
                 </ion-card-content>
               </ion-card>
-            </ion-col>
 
-            <ion-button class="ion-margin-top" expand="full" @click="addRows()"
+            <ion-button class="ion-margin" color="primary"  expand="block" @click="addRows()"
               ><ion-icon
                 class="ion-margin-end"
                 name="add-circle"
@@ -554,11 +548,12 @@
           </div>
 
           <div v-if="step === 3">
-            <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
                   ><strong>3.Land Particulars</strong></ion-card-header
                 >
+              </ion-card>
+                <ion-card>
                 <ion-card-subtitle
                   class="ion-padding ion-text-center"
                   color="tertiary"
@@ -622,6 +617,8 @@
                 <ion-card-header color="tertiary"
                   ><strong>3.2 Income from Crops(Rs)-Kharif</strong></ion-card-header
                 >
+              </ion-card>
+                <ion-card>
                 <ion-card-content>
                   <ion-select
                     aria-label="Crop Grown"
@@ -768,6 +765,8 @@
                 <ion-card-header color="tertiary"
                   ><strong>3.3 Income from Crops(Rs)-Rabi</strong></ion-card-header
                 >
+              </ion-card>
+                <ion-card>
                 <ion-card-content>
                   <ion-select
                     aria-label="Crop Grown"
@@ -910,13 +909,26 @@
                   ></ion-input>
                 </ion-card-content>
               </ion-card>
-            </ion-col>
+              <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 4">
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>4.Livestock Details</strong></ion-card-header
               >
+            </ion-card>
+              <ion-card>
               <ion-card-content>
                 <ion-select
                     aria-label="Crop Grown"
@@ -985,12 +997,25 @@
                 ></ion-input>
               </ion-card-content>
             </ion-card>
+            <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 5">
             <fifthPage />
             <ion-button
-              class="ion-margin-top"
+              class="ion-margin"
               expand="block"
+              color="primary"
               @click="addRows()"
               ><ion-icon
                 class="ion-margin-end"
@@ -1006,8 +1031,9 @@
           <div v-if="step === 7">
             <SeventhPage />
             <ion-button
-              class="ion-margin-top"
+              class="ion-margin"
               expand="block"
+              color="primary"
               @click="addRows()"
               ><ion-icon
                 class="ion-margin-end"
@@ -1019,54 +1045,258 @@
           </div>
           <div v-if="step === 8">
             <Eighthpage />
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 9">
             <NinthPage />
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              @click="addRows()"
+              color="primary"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 10">
             <TenthPage />
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 11">
             <EleventhPage></EleventhPage>
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 12">
             <TwelvethPage></TwelvethPage>
+            <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 13">
             <ThirteenthPage></ThirteenthPage>
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 14">
             <FourteenthPage></FourteenthPage>
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 15">
             <FifteenthPage></FifteenthPage>
+            <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 16">
             <SixteenthPage></SixteenthPage>
+            <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 17">
             <SeventeenthPage></SeventeenthPage>
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 18">
             <EighteenthPage></EighteenthPage>
+            <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 19">
             <NinteenthPage></NinteenthPage>
+            <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 20">
             <TwentythPage></TwentythPage>
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 21">
             <TwentyfirstPage></TwentyfirstPage>
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              @click="addRows()"
+              color="primary"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 22">
             <TwentysecondPage></TwentysecondPage>
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              @click="addRows()"
+              color="primary"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 23">
             <TwentythirdPage></TwentythirdPage>
+            <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 24">
             <TwentyfourthPage></TwentyfourthPage>
+            <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
           </div>
           <div v-if="step === 25">
             <TwentyfifthPage></TwentyfifthPage>
@@ -1075,20 +1305,20 @@
       </div>
     </ion-content>
     <ion-footer>
-      <div class="ion-margin-bottom">
-        <ion-button class="ion-margin-start" v-if="currentStep !== 1" @click="prevStep()"
+      <div>
+        <ion-button color="primary" class="ion-margin" v-if="currentStep !== 1" size="small" @click="prevStep()"
           ><ion-icon name="carat-back-outline"></ion-icon>Previous</ion-button
         >
         <ion-button
-          class="nextButton ion-margin-end"
+          class="nextButton ion-margin" size="small" color="primary"
           v-if="currentStep !== totalSteps"
           @click="nextStep()"
           >Next<ion-icon name="caret-forward-outline"></ion-icon
         ></ion-button>
 
-        <ion-button
+        <ion-button size="small" color="primary"
           v-else-if="currentStep === totalSteps"
-          class="nextButton ion-margin-end"
+          class="nextButton ion-margin"
           @click="submitForm"
           ><ion-icon name="checkmark-outline"></ion-icon>Submit</ion-button
         >
@@ -1304,13 +1534,17 @@ export default {
 </script>
 
 <style scoped>
+
 .nextButton {
   float: right;
 }
+
 .header {
-  display: contents;
+  /* display: contents; */
   text-align: center;
+  display:inline-block
 }
+
 .styled-list {
   list-style-type: none;
   padding: 0;
@@ -1341,15 +1575,29 @@ export default {
   font-size: 1.5rem;
   color: red;
 }
+
 .rsiImgSize {
-  height: 2rem;
-  width: 27rem;
+  height: 1rem;
+  width: 3rem;
+  text-align: center;
 }
+
 /* ion-toolbar{
   background: var(--ion-header-color);
 } */
+
 .custom-header {
     font-weight: bold;
     color: #999;
   }
+
+.titleText {
+  font-size: 1.23vh;
+  color:rgb(210, 210, 210)
+}
+
+ion-card {
+  border-radius: 1.2rem;
+  box-shadow:0.1rem 0.1rem 0.7rem rgb(96, 96, 161);
+}
 </style>
