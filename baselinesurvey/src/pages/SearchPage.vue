@@ -51,6 +51,7 @@
         :item="selectedItem"
         :household="householdinfo"
         :landparticular="landparticulars"
+        :incomeFromKharif="incomeKharif"
         @item-updated="onItemUpdated"
       ></edit-survey>
     </ion-content>
@@ -108,6 +109,7 @@ export default {
       items: [],
       householdinfo: [],
       landparticulars: [],
+      incomeKharif: [],
       selectedItem: null,
       RsiLogo: Logo,
     };
@@ -164,10 +166,29 @@ export default {
             params: { id: id },
           }
         );
-        this.landparticulars = response.data;
+        if (response.data) {
+          this.landparticulars = response.data;
+        } else {
+          this.landparticulars = id;
+        }
         console.log("landparticulars from search page", this.landparticulars);
       } catch (error) {
         console.error(error);
+      }
+    },
+    async getIncomeCropKharif() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/items/incomecropsfromkharif`,
+          {
+            params: { id: id },
+          }
+        );
+        this.incomeKharif = response.data;
+        console.log("income from kharif from search page", this.incomeKharif);
+      } catch (error) {
+        console.log("Error is Getting from Income Kharif", error);
       }
     },
     clearSearch() {
@@ -179,6 +200,7 @@ export default {
       this.selectedItem = { ...item }; // Copy the selected item
       this.getHouseHoldInfo();
       this.getLandPerticularsInfo();
+      this.getIncomeCropKharif();
       this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {

@@ -625,21 +625,19 @@
                 <ion-card-header color="tertiary"
                   >3.Land Particulars</ion-card-header
                 >
-                <ion-card-subtitle
-                  class="ion-padding ion-text-center"
-                  color="tertiary"
-                  >3.1 Cultivated Area(Acres)</ion-card-subtitle
-                >
+
                 <ion-card-content>
                   <ion-list>
                     <ion-item
                       v-for="item in landparticular"
                       :key="item.id"
-                      @click="selectItem(item)"
+                      @click="selectLandParticular(item)"
                     >
                       {{ item.cultivated_area }}
                       {{ item.rainfed }}
                       {{ item.irrigated }}
+                      {{ item.total }}
+                      {{ item.Type_of_ownership }}
                     </ion-item>
                   </ion-list>
                   <ion-select
@@ -649,14 +647,15 @@
                     label-placement="floating"
                     placeholder="Cultivated Area"
                     fill="outline"
+                    v-model="newRowLandParticular.cultivated_area"
                   >
-                    <ion-select-option value="Own"
+                    <ion-select-option value="Owned Land"
                       >Owned Land</ion-select-option
                     >
-                    <ion-select-option value="Rent"
+                    <ion-select-option value="Leased –in"
                       >Leased-In</ion-select-option
                     >
-                    <ion-select-option value="Rent"
+                    <ion-select-option value="Leased – out"
                       >Leased-Out</ion-select-option
                     >
                   </ion-select>
@@ -666,6 +665,7 @@
                     fill="outline"
                     label="Rainfed(Acres)"
                     label-placement="floating"
+                    v-model="newRowLandParticular.rainfed"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -673,6 +673,7 @@
                     fill="outline"
                     label="Irrigated(Acres)"
                     label-placement="floating"
+                    v-model="newRowLandParticular.irrigated"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -680,6 +681,7 @@
                     label="Total"
                     fill="outline"
                     label-placement="floating"
+                    v-model="newRowLandParticular.total"
                   ></ion-input>
                   <ion-select
                     class="ion-margin-top"
@@ -689,22 +691,64 @@
                     label-placement="floating"
                     placeholder="Type of Ownership"
                     fill="outline"
+                    v-model="newRowLandParticular.Type_of_ownership"
                   >
-                    <ion-select-option value="Own">Own</ion-select-option>
-                    <ion-select-option value="Rent">Rent</ion-select-option>
+                    <ion-select-option value="Patta">Patta</ion-select-option>
+                    <ion-select-option value="Assigned"
+                      >Assigned</ion-select-option
+                    >
+                    <ion-select-option value="Possession Land"
+                      >Possession Land</ion-select-option
+                    >
                   </ion-select>
+                  <ion-button
+                    class="ion-margin-top"
+                    expand="full"
+                    @click="updateLandrows()"
+                    ><ion-icon
+                      class="ion-margin-end"
+                      name="add-circle"
+                      slot="icon-only"
+                    ></ion-icon
+                    >Update Land Particulars</ion-button
+                  >
+                  <ul class="styled-list">
+                    <li v-for="(row, index) in landParticularRows" :key="index">
+                      <span class="row-details">
+                        {{ row.cultivated_area }}, {{ row.rainfed }},
+                        {{ row.irrigated }}, {{ row.total }}, {{ row.age }},
+                        {{ row.Type_of_ownership }}
+                      </span>
+                      <ion-button
+                        expand="block"
+                        class="remove-button"
+                        color="danger"
+                        @click="removeLandParticularRow(index)"
+                        fill="clear"
+                      >
+                        <ion-icon name="close-circle-outline"></ion-icon>
+                      </ion-button>
+                    </li>
+                  </ul>
                 </ion-card-content>
               </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
                   >3.2 Income from Crops(Rs)-Kharif</ion-card-header
                 >
-                <ion-card-subtitle
-                  class="ion-padding ion-text-center"
-                  color="tertiary"
-                  >Rainfed(Acres)
-                </ion-card-subtitle>
                 <ion-card-content>
+                  <ion-list>
+                    <ion-item
+                      v-for="item in incomeFromKharif"
+                      :key="item.id"
+                      @click="selectLandParticular(item)"
+                    >
+                      {{ item.crop_grown }}
+                      {{ item.rainfed_area }}
+                      {{ item.rainfed_yeild }}
+                      {{ item.rainfed_cost_of_cultivation }}
+                    </ion-item>
+                  </ion-list>
                   <ion-select
                     aria-label="Crop Grown"
                     interface="popover"
@@ -712,6 +756,7 @@
                     label-placement="floating"
                     placeholder="Select Crop Item"
                     fill="outline"
+                    class="ion-margin-top"
                   >
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -742,6 +787,11 @@
                       >Sunflower</ion-select-option
                     >
                   </ion-select>
+                  <ion-card-subtitle
+                    class="ion-padding ion-text-center"
+                    color="tertiary"
+                    >Rainfed(Acres)
+                  </ion-card-subtitle>
                   <ion-input
                     class="ion-margin-top"
                     placeholder="Rainfed(Acres)"
@@ -781,7 +831,7 @@
                     class="ion-margin-top"
                     placeholder="Total Rainfed Net income"
                     fill="outline"
-                    label="Total Rainfed Net Income(7-5)"
+                    label="Rainfed(Acres) Net Income(7-5)"
                     label-placement="floating"
                   ></ion-input>
                   <ion-card-subtitle
@@ -817,28 +867,18 @@
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
                   ></ion-input>
-                  <ion-card-subtitle
-                    class="ion-padding-top ion-text-center"
-                    color="tertiary"
-                    >Irrigated(Acres) Gross Income :</ion-card-subtitle
-                  >
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Total Irrigated Net Income"
+                    placeholder="Irrigated(Acres) Gross Income"
                     fill="outline"
-                    label="Total Irrigated Net Income"
+                    label="Total Irrigated(Acres) Gross Income"
                     label-placement="floating"
                   ></ion-input>
-                  <ion-card-subtitle
-                    class="ion-padding-top ion-text-center"
-                    color="tertiary"
-                    >Irrigated(Acres) Net Income(13-11) :</ion-card-subtitle
-                  >
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Total Irrigated Net Income"
+                    placeholder="Total Irrigated Net Income(13-11)"
                     fill="outline"
-                    label="Total Irrigated Net Income"
+                    label="Total Irrigated Net Income(13-11)"
                     label-placement="floating"
                   ></ion-input>
                   <ion-input
@@ -848,6 +888,17 @@
                     fill="outline"
                     label-placement="floating"
                   ></ion-input>
+                  <ion-button
+                    class="ion-margin-top"
+                    expand="full"
+                    @click="updateLandrows()"
+                    ><ion-icon
+                      class="ion-margin-end"
+                      name="add-circle"
+                      slot="icon-only"
+                    ></ion-icon
+                    >Update Income From Kharif</ion-button
+                  >
                 </ion-card-content>
               </ion-card>
               <ion-card>
@@ -855,19 +906,14 @@
                   >3.3 Income from Crops(Rs)-Rabi</ion-card-header
                 >
                 <ion-card-content>
-                  <ion-card-subtitle
-                    class="ion-padding ion-text-center"
-                    color="tertiary"
-                    >Rainfed(Acres)
-                  </ion-card-subtitle>
                   <ion-select
-                    class="ion-margin-top"
                     aria-label="Crop Grown"
                     interface="popover"
                     label="Crop Grown"
                     label-placement="floating"
                     placeholder="Select Crop Item"
                     fill="outline"
+                    class="ion-margin-top"
                   >
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -898,6 +944,11 @@
                       >Sunflower</ion-select-option
                     >
                   </ion-select>
+                  <ion-card-subtitle
+                    class="ion-padding ion-text-center"
+                    color="tertiary"
+                    >Rainfed(Acres)
+                  </ion-card-subtitle>
                   <ion-input
                     class="ion-margin-top"
                     placeholder="Rainfed(Acres)"
@@ -914,7 +965,7 @@
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Enter Rainfed(Acres) Cost of Cultivation(Rs)"
+                    placeholder="Enter v"
                     fill="outline"
                     label="Rainfed(Acres) Cost of Cultivation(Rs)"
                     label-placement="floating"
@@ -937,7 +988,7 @@
                     class="ion-margin-top"
                     placeholder="Total Rainfed Net income"
                     fill="outline"
-                    label="Total Rainfed Net Income(7-5)"
+                    label="Rainfed(Acres) Net Income(7-5)"
                     label-placement="floating"
                   ></ion-input>
                   <ion-card-subtitle
@@ -973,37 +1024,38 @@
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
                   ></ion-input>
-                  <ion-card-subtitle
-                    class="ion-padding-top ion-text-center"
-                    color="tertiary"
-                    >Irrigated(Acres) Gross Income :</ion-card-subtitle
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated(Acres) Gross Income"
+                    fill="outline"
+                    label="Total Irrigated(Acres) Gross Income"
+                    label-placement="floating"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Total Irrigated Net Income(13-11)"
+                    fill="outline"
+                    label="Total Irrigated Net Income(13-11)"
+                    label-placement="floating"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Rabhi Grand Total Income"
+                    label="Rabhi Grand Total Income"
+                    fill="outline"
+                    label-placement="floating"
+                  ></ion-input>
+                  <ion-button
+                    class="ion-margin-top"
+                    expand="full"
+                    @click="updateLandrows()"
+                    ><ion-icon
+                      class="ion-margin-end"
+                      name="add-circle"
+                      slot="icon-only"
+                    ></ion-icon
+                    >Update Income From Rabhi</ion-button
                   >
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Total Irrigated Net Income"
-                    fill="outline"
-                    label="Total Irrigated Net Income"
-                    label-placement="floating"
-                  ></ion-input>
-                  <ion-card-subtitle
-                    class="ion-padding-top ion-text-center"
-                    color="tertiary"
-                    >Irrigated(Acres) Net Income(13-11) :</ion-card-subtitle
-                  >
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Total Irrigated Net Income"
-                    fill="outline"
-                    label="Total Irrigated Net Income"
-                    label-placement="floating"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Kharif Grand Total Income"
-                    label="Kharif Grand Total Income"
-                    fill="outline"
-                    label-placement="floating"
-                  ></ion-input>
                 </ion-card-content>
               </ion-card>
             </ion-col>
@@ -1805,6 +1857,7 @@ export default {
     item: Object,
     household: Object,
     landparticular: Object,
+    incomeFromKharif: Object,
   },
   data() {
     return {
@@ -1852,7 +1905,16 @@ export default {
         membership: "",
       },
       rows: [],
-
+      newRowLandParticular: {
+        id: "",
+        headId: "",
+        cultivated_area: "",
+        rainfed: "",
+        irrigated: "",
+        total: "",
+        Type_of_ownership: "",
+      },
+      landParticularRows: [],
       //   head_of_the_family: "",
       editedItem: null,
       houseHoldEditItem: [],
@@ -1963,6 +2025,25 @@ export default {
         this.clearFields(); // Clear the input fields
       }
     },
+    updateLandrows() {
+      // Check if any field is not empty
+      if (
+        Object.values(this.newRowLandParticular).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ) {
+        this.landParticularRows.push({ ...this.newRowLandParticular }); // Add a copy of newRow to rows
+        console.log("this rows", this.rows);
+        this.updateLandParticularsItem();
+        this.clearFieldsLandParticular(); // Clear the input fields
+      }
+    },
     clearFields() {
       this.newRow = {
         id: "",
@@ -1978,8 +2059,22 @@ export default {
         membership: "",
       };
     },
+    clearFieldsLandParticular() {
+      this.newRowLandParticular = {
+        id: "",
+        headId: "",
+        cultivated_area: "",
+        rainfed: "",
+        irrigated: "",
+        total: "",
+        Type_of_ownership: "",
+      };
+    },
     removeRow(index) {
       this.rows.splice(index, 1);
+    },
+    removeLandParticularRow(index) {
+      this.landParticularRows.splice(index, 1);
     },
 
     selectItem(item) {
@@ -1998,6 +2093,16 @@ export default {
       this.newRow.membership = item.membership;
     },
 
+    selectLandParticular(item) {
+      this.newRowLandParticular.id = item.id;
+      this.newRowLandParticular.headId = item.headId;
+      this.newRowLandParticular.cultivated_area = item.cultivated_area;
+      this.newRowLandParticular.rainfed = item.rainfed;
+      this.newRowLandParticular.irrigated = item.irrigated;
+      this.newRowLandParticular.total = item.total;
+      this.newRowLandParticular.Type_of_ownership = item.Type_of_ownership;
+    },
+
     async updateItem() {
       try {
         const rowsWithCommaSeparatedOccupation = this.rows.map((row) => ({
@@ -2010,6 +2115,30 @@ export default {
         console.log("updated rows *****************", data);
         const response = await axios.put(
           `http://localhost:5000/items/updatehouseholdmember`,
+          data
+        );
+        console.log("Item updated:", response.data);
+        this.$emit("item-updated", response.data); // Emit event with updated item
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    },
+    async updateLandParticularsItem() {
+      try {
+        // const rowsWithCommaSeparatedOccupation = this.landParticularRows.map((row) => ({
+        //   ...row,
+        //   occupation: row.occupation.join(", "),
+        // }));
+        const data = {
+          rows: this.landParticularRows, // Assuming rows_land_less_labourers contains your table data
+        };
+        console.log("land particular updated rows *****************", data);
+        console.log(
+          "updated rows *****************",
+          this.newRowLandParticular
+        );
+        const response = await axios.put(
+          `http://localhost:5000/items/updatelandparticular`,
           data
         );
         console.log("Item updated:", response.data);
