@@ -741,7 +741,7 @@
                     <ion-item
                       v-for="item in incomeFromKharif"
                       :key="item.id"
-                      @click="selectLandParticular(item)"
+                      @click="selectIncomeKharif(item)"
                     >
                       {{ item.crop_grown }}
                       {{ item.rainfed_area }}
@@ -1914,7 +1914,25 @@ export default {
         total: "",
         Type_of_ownership: "",
       },
+      newRowIncomeKharif: {
+        id: "",
+        headId: "",
+        crop_grown: "",
+        rainfed_area: "",
+        rainfed_yeild: "",
+        rainfed_cost_of_cultivation: "",
+        rainfed_rate_per_qtls: "",
+        rainfed_gross_income: "",
+        rainfed_net_income: "",
+        irrigated_area: "",
+        irrigated_yield: "",
+        irrigated_cost_of_cultivation: "",
+        irrigated_rate_per_qtls: "",
+        irrigated_gross_income: "",
+        irrigated_net_income: "",
+      },
       landParticularRows: [],
+      incomeKharifRows: [],
       //   head_of_the_family: "",
       editedItem: null,
       houseHoldEditItem: [],
@@ -2044,6 +2062,24 @@ export default {
         this.clearFieldsLandParticular(); // Clear the input fields
       }
     },
+    updateIncomeKharifrows() {
+      // Check if any field is not empty
+      if (
+        Object.values(this.newRowIncomeKharif).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ) {
+        this.incomeKharifRows.push({ ...this.newRowIncomeKharif }); // Add a copy of newRow to rows
+        console.log("this rows", this.rows);
+        this.clearFieldsLandParticular(); // Clear the input fields
+      }
+    },
     clearFields() {
       this.newRow = {
         id: "",
@@ -2103,6 +2139,29 @@ export default {
       this.newRowLandParticular.Type_of_ownership = item.Type_of_ownership;
     },
 
+    selectIncomeKharif(item) {
+      this.newRowIncomeKharif.id = item.id;
+      this.newRowIncomeKharif.headId = item.headId;
+      this.newRowIncomeKharif.crop_grown = item.crop_grown;
+      this.newRowIncomeKharif.rainfed_area = item.rainfed_area;
+      this.newRowIncomeKharif.rainfed_yeild = item.rainfed_yeild;
+      this.newRowIncomeKharif.rainfed_cost_of_cultivation =
+        item.rainfed_cost_of_cultivation;
+      this.newRowIncomeKharif.rainfed_rate_per_qtls =
+        item.rainfed_rate_per_qtls;
+      this.newRowIncomeKharif.rainfed_gross_income = item.rainfed_gross_income;
+      this.newRowIncomeKharif.rainfed_net_income = item.rainfed_net_income;
+      this.newRowIncomeKharif.irrigated_area = item.irrigated_area;
+      this.newRowIncomeKharif.irrigated_yield = item.irrigated_yield;
+      this.newRowIncomeKharif.irrigated_cost_of_cultivation =
+        item.irrigated_cost_of_cultivation;
+      this.newRowIncomeKharif.irrigated_rate_per_qtls =
+        item.irrigated_rate_per_qtls;
+      this.newRowIncomeKharif.irrigated_gross_income =
+        item.irrigated_gross_income;
+      this.newRowIncomeKharif.irrigated_net_income = item.irrigated_net_income;
+    },
+
     async updateItem() {
       try {
         const rowsWithCommaSeparatedOccupation = this.rows.map((row) => ({
@@ -2145,6 +2204,25 @@ export default {
         this.$emit("item-updated", response.data); // Emit event with updated item
       } catch (error) {
         console.error("Error updating item:", error);
+      }
+    },
+    async updateIncomeFromKharif() {
+      this.updateIncomeKharifrows();
+      const data = {
+        rows: this.incomeKharifRows, // Assuming rows_land_less_labourers contains your table data
+      };
+      if (this.incomeFromKharif === null) {
+        const response = await axios.post(
+          `http://localhost:5000/items/asjdfkjdkfaksdjfkadfskljsdlfjklsdfjalkjsdlkfjdasf`,
+          data
+        );
+        console.log(response.data);
+      } else {
+        const response = await axios.put(
+          `http://localhost:5000/items/askjdfksadjkfjsadjfkjsdkfljsdkfjsdjkfjskdfkjsdkfjkjdsfj`,
+          data
+        );
+        console.log(response.data);
       }
     },
   },
