@@ -56,7 +56,7 @@ export default{}
 </script>
 <style>
 ion-card {
-  border-radius: 1.2rem;
-  box-shadow:0.1rem 0.1rem 0.7rem rgb(96, 96, 161);
+  border-radius: 8px;
+  box-shadow:1px 1px 6px rgb(96, 96, 161);
 }
 </style>

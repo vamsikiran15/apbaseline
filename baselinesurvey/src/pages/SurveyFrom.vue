@@ -27,15 +27,11 @@
                       label-placement="floating"
                       placeholder="Select District"
                       fill="outline"
+                      v-model="selectedDistrict"
+                      @update:modelValue="getWcc();getMandal();onDistrictSelected()"
                     >
-                      <ion-select-option value="apples"
-                        >District 1</ion-select-option
-                      >
-                      <ion-select-option value="oranges"
-                        >District 2</ion-select-option
-                      >
-                      <ion-select-option value="bananas"
-                        >District 3</ion-select-option
+                    <ion-select-option v-for="items in district" :key="items.id" :value="items.id"
+                        >{{items.dist_name }}</ion-select-option
                       >
                     </ion-select>
                     </ion-row>
@@ -47,15 +43,11 @@
                       label-placement="floating"
                       placeholder="Select WCC"
                       fill="outline"
+                      v-model="selectedWccNo"
+                      @update:modelValue="getProject();onWccSelected()"
                     >
-                      <ion-select-option value="apples"
-                        >District 1</ion-select-option
-                      >
-                      <ion-select-option value="oranges"
-                        >District 2</ion-select-option
-                      >
-                      <ion-select-option value="bananas"
-                        >District 3</ion-select-option
+                      <ion-select-option v-for="items in wcc" :key="items.id" :value="items.id"
+                        >{{items.wcc_name}}</ion-select-option
                       >
                     </ion-select>
                   </ion-row>
@@ -63,19 +55,15 @@
                     <ion-select
                       aria-label="District"
                       interface="popover"
-                      label="Select WCC"
+                      label="Select Project"
                       label-placement="floating"
-                      placeholder="Select WCC"
+                      placeholder="Select Project"
                       fill="outline"
+                      v-model="selectedProjectNo"
+                      @update:modelValue="getWaterShedVillage();onProjectSelected()"
                     >
-                      <ion-select-option value="apples"
-                        >District 1</ion-select-option
-                      >
-                      <ion-select-option value="oranges"
-                        >District 2</ion-select-option
-                      >
-                      <ion-select-option value="bananas"
-                        >District 3</ion-select-option
+                      <ion-select-option v-for="items in project" :key="items.id" :value="items.id"
+                        >{{items.project_name}}</ion-select-option
                       >
                     </ion-select>
                   </ion-row>
@@ -87,17 +75,29 @@
                       label-placement="floating"
                       placeholder="Name of the Micro Watershed Village"
                       fill="outline"
+                      v-model="nameOfTheMicroWatershed"
+                      @update:modelValue="getHabitation();getGramPanchayat();onMicroWatershed()"
                     >
-                      <ion-select-option value="apples"
-                        >District 1</ion-select-option
-                      >
-                      <ion-select-option value="oranges"
-                        >District 2</ion-select-option
-                      >
-                      <ion-select-option value="bananas"
-                        >District 3</ion-select-option
+                      <ion-select-option v-for="items in watershed" :key="items.id" :value="items.id"
+                        >{{items.micro_watershed_name}}</ion-select-option
                       >
                     </ion-select>
+                  </ion-row>
+                  <ion-row>
+                    <ion-select
+                    class="ion-margin-top"
+                    aria-label="Gender"
+                    interface="popover"
+                    label="Name of Habitation"
+                    label-placement="floating"
+                    placeholder="Enter name of Habitation"
+                    fill="outline"
+                    v-model="nameOfHabitation"
+                    @update:modelValue="onHabitation()"
+                  >
+                  <ion-select-option v-for="names in habitation" :key="names.id" :value="names.id"
+                        >{{names.habitation_name}}</ion-select-option
+                      ></ion-select>
                   </ion-row>
                   <ion-row class="ion-padding-top">
                     <ion-select
@@ -107,15 +107,11 @@
                       label-placement="floating"
                       placeholder="Select Mandal"
                       fill="outline"
+                      v-model = "selectedMandal"
+                      @update:modelValue="onMandal()"
                     >
-                      <ion-select-option value="apples"
-                        >District 1</ion-select-option
-                      >
-                      <ion-select-option value="oranges"
-                        >District 2</ion-select-option
-                      >
-                      <ion-select-option value="bananas"
-                        >District 3</ion-select-option
+                      <ion-select-option v-for="names in mandal" :key="names.id" :value="names.id"
+                        >{{names.mandal_name}}</ion-select-option
                       >
                     </ion-select>
                   </ion-row>
@@ -127,27 +123,13 @@
                       label-placement="floating"
                       placeholder="Name of the Gram Panchayat"
                       fill="outline"
+                      v-model = "selectedGramPanchayat"
+                      @update:modelValue="onGramPanchayat()"
                     >
-                      <ion-select-option value="apples"
-                        >District 1</ion-select-option
-                      >
-                      <ion-select-option value="oranges"
-                        >District 2</ion-select-option
-                      >
-                      <ion-select-option value="bananas"
-                        >District 3</ion-select-option
+                      <ion-select-option v-for="names in gramPanchayat" :key="names.id" :value="names.id"
+                        >{{names.grampanchayat_name}}</ion-select-option
                       >
                     </ion-select>
-                    <ion-select
-                    class="ion-margin-top"
-                    aria-label="Gender"
-                    interface="popover"
-                    label="Name of Habitation"
-                    label-placement="floating"
-                    placeholder="Enter name of Habitation"
-                    fill="outline"
-                    v-model="newRow.gender"
-                  ></ion-select>
                   </ion-row>
                 </ion-card-content>
               </ion-card>
@@ -164,6 +146,7 @@
                     label-placement="floating"
                     fill="outline"
                     placeholder="Name of the Household"
+                    v-model="nameofthehousehold"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -172,6 +155,7 @@
                     fill="outline"
                     interface="popover"
                     placeholder="Household No./Door No"
+                    v-model="householdDoorNo"
                   ></ion-input>
                   <ion-input
                     type="number"
@@ -180,6 +164,7 @@
                     label-placement="floating"
                     fill="outline"
                     placeholder="Contact No (Mobile)"
+                    v-model="ContactNumber"
                   ></ion-input>
                   <ion-input
                     type="number"
@@ -188,6 +173,7 @@
                     label-placement="floating"
                     fill="outline"
                     placeholder="Enter Aadhaar Card No"
+                    v-model="aadharNumber"
                   ></ion-input>
                   <ion-input
                     type="number"
@@ -196,12 +182,13 @@
                     label-placement="floating"
                     fill="outline"
                     placeholder="Job Card No"
+                    v-model="jobCardNo"
                   ></ion-input>
 
                   <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center"
                     >Economic Status</ion-card-subtitle
                   >
-                  <ion-radio-group value="PoP">
+                  <ion-radio-group value="PoP" v-model="economicStatus">
                     <ion-radio
                       value="PoP"
                       label-placement="fixed"
@@ -232,11 +219,11 @@
                     >Occupation</ion-card-subtitle
                   >
                   <ion-item>
-                    <ion-checkbox  mode="ios">Agriculture</ion-checkbox>
+                    <ion-checkbox justify="space-between" mode="ios">Agriculture</ion-checkbox>
                   </ion-item>
 
                   <ion-item>
-                    <ion-checkbox  mode="ios">Ag Labour</ion-checkbox>
+                    <ion-checkbox  justify="space-between" mode="ios">Ag Labour</ion-checkbox>
                   </ion-item>
 
                   <ion-item>
@@ -259,7 +246,7 @@
                     >Location</ion-card-subtitle
                   >
                   <ion-grid>
-                    <ion-radio-group value="Ridge">
+                    <ion-radio-group value="Ridge" v-model="location">
                       <ion-row>
                       <ion-col size="4">
                         <ion-radio value="Ridge" label-placement="start"
@@ -284,7 +271,7 @@
                     >Social Status</ion-card-subtitle
                   >
                   <ion-grid>
-                    <ion-radio-group value="SC">
+                    <ion-radio-group value="SC" v-model="SocialStatus">
                       <ion-row>
                       <ion-col>
                         <ion-radio value="SC" label-placement="start"
@@ -323,6 +310,7 @@
                           label-placement="floating"
                           fill="outline"
                           placeholder="Rainfed"
+                          v-model="totalRainfedArea"
                         ></ion-input>
                       </ion-col>
                       <ion-col class="ion-margin-end">
@@ -333,20 +321,21 @@
                           label-placement="floating"
                           fill="outline"
                           placeholder="Irrigated"
+                          v-model="totalIrrigatedArea"
                         ></ion-input>
                       </ion-col>
                     </ion-row >
                   <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center">Type of House</ion-card-subtitle>
                   <ion-grid>
                   <ion-row>
-                    <ion-radio-group value="house">
+                    <ion-radio-group value="house" v-model="houseType">
                       <ion-col>
-                        <ion-radio value="SC" label-placement="start"
+                        <ion-radio value="puccahouse" label-placement="start"
                           >Pucca House</ion-radio
                         >
                       </ion-col>
                       <ion-col>
-                        <ion-radio value="ST" label-placement="start"
+                        <ion-radio value="semipucca" label-placement="start"
                           >Semi Pucca</ion-radio
                         >
                       </ion-col>
@@ -356,7 +345,7 @@
                   <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center">Own/Rented</ion-card-subtitle>
                  <ion-grid>
                   <ion-row>
-                    <ion-radio-group value="house">
+                    <ion-radio-group value="subType" >
                       <ion-col>
                         <ion-radio value="SC" label-placement="start"
                           >Own</ion-radio
@@ -1319,7 +1308,7 @@
         <ion-button size="small" color="primary"
           v-else-if="currentStep === totalSteps"
           class="nextButton ion-margin"
-          @click="submitForm"
+          @click="submitData()"
           ><ion-icon name="checkmark-outline"></ion-icon>Submit</ion-button
         >
         <ion-ripple-effect></ion-ripple-effect>
@@ -1374,6 +1363,7 @@ import TwentysecondPage from "./twentysecondPage.vue";
 import TwentythirdPage from "./twentythirdPage.vue";
 import TwentyfourthPage from "./twentyfourthPage.vue";
 import TwentyfifthPage from "./twentyfifthPage.vue";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -1391,10 +1381,6 @@ export default {
         membership: "",
       },
       rows: [],
-
-      head_of_the_family: "",
-
-        selectedValue: "",
     groupedData: 
     [
         {
@@ -1437,6 +1423,39 @@ export default {
           ],
         },
       ],
+      district:[],
+      wcc:[],
+      selectedDistrict : null,
+      selectedWccNo :null,
+      project:[],
+      selectedProjectNo :null,
+      watershed:[],
+      nameOfTheMicroWatershed:null,
+      habitation:[],
+      mandal:[],
+      gramPanchayat:[],
+      selectedMandalName:"",
+      selectedGramPanchayatName:"",
+         nameofthehousehold:"",
+         selectedDistrictName :"",
+         wccName:"",
+         selectedProjectName:"",
+         selectedMicroWatershed:"",
+        selectedHabitation:"",
+        selectedMandal:"",
+         householdDoorNo:"",
+         aadharNumber:"",
+         economicStatus:"",
+         occupationString:"",
+         location:"",
+         selectedGramPanchayat:"",
+         jobCardNo:"",
+         SocialStatus:"",
+         ContactNumber:"",
+         totalRainfedArea:"",
+         totalIrrigatedArea:"",
+         totalHoldingArea:"",
+         houseType:"",
     };
   },
   components: {
@@ -1484,6 +1503,8 @@ export default {
     TwentyfifthPage,
     IonItem
   },
+  created(){ this.getDistricts()
+  },
   methods: {
     nextStep() {
       if (this.currentStep < this.totalSteps) {
@@ -1495,6 +1516,105 @@ export default {
         this.currentStep--;
       }
     },
+    async getDistricts(){
+      try {
+        const response = await axios.get("http://localhost:5000/api/districts")
+        this.district = response.data
+      } catch (error) {
+        console.error("error in get districts function",error)
+      }
+    },
+    async getWcc(){
+      try {
+        const response = await axios.get("http://localhost:5000/api/wcc",{params:{id:this.selectedDistrict}})
+        this.wcc = response.data
+      } catch (error) {
+        console.error("error in getwcc function",error)
+      }
+    },
+    async getProject(){
+      try {
+        const response =  await axios.get("http://localhost:5000/api/projects",{params:{id:this.selectedWccNo}})  
+        this.project=response.data
+      } catch (error) {
+        console.error("Error in getProject function",error)
+      }
+    },
+    async getWaterShedVillage(){
+      try {
+        const response = await axios.get("http://localhost:5000/api/watershed",{params:{id:this.selectedProjectNo}})
+        this.watershed = response.data
+      } catch (error) {
+        console.error("error in getwatershedvillage function",error)  
+      }
+    },
+    async getHabitation(){
+      try {
+        const response = await axios.get("http://localhost:5000/api/habitation",{params:{id:this.nameOfTheMicroWatershed}})
+        this.habitation = response.data
+      } catch (error) {
+        console.error("error in gethabitation function",error)
+      }
+    },
+    async getMandal(){
+      try {
+        const response = await axios.get("http://localhost:5000/api/mandal",{params:{id:this.selectedDistrict}})
+        this.mandal=response.data
+      } catch (error) {
+        console.error("error in getMandal function",error)
+      }
+    },
+    async getGramPanchayat(){
+      try {
+        const response = await axios.get("http://localhost:5000/api/grampanchayat",{params:{id:this.nameOfTheMicroWatershed}})
+        this.gramPanchayat = response.data
+      } catch (error) {
+        console.error("error in getgrampanchayat function",error)
+      }
+    },
+    onDistrictSelected() {
+      const selectedDistrictData = this.district.find(item => item.id === this.selectedDistrict);
+      if (selectedDistrictData) {
+        this.selectedDistrictName = selectedDistrictData.dist_name;
+      }
+    },
+    onWccSelected(){
+      const selectedWccData = this.wcc.find(item=> item.id === this.selectedWccNo);
+      if(selectedWccData){
+        this.wccName = selectedWccData.wcc_name;
+      }
+    },
+    onProjectSelected(){
+      const selectedProjectData = this.project.find(item=> item.id === this.selectedProjectNo);
+      if(selectedProjectData){
+        this.selectedProjectName = selectedProjectData.project_name
+    }
+  },
+  onMicroWatershed(){
+    const selectedMicroWatershedData = this.watershed.find(name => name.id === this.nameOfTheMicroWatershed)
+    if(selectedMicroWatershedData){
+      this.selectedMicroWatershed = selectedMicroWatershedData.micro_watershed_name
+    }
+  },
+  onHabitation(){
+    const selectedHabitationData = this.habitation.find(name => name.id === this.nameOfHabitation)
+    if(selectedHabitationData){
+      this.selectedHabitation = selectedHabitationData.habitation_name
+    }
+  },
+  onMandal(){
+    const selectedMandalData = this.mandal.find(name => name.id === this.selectedMandal)
+    if(selectedMandalData){
+      this.selectedMandalName = selectedMandalData.mandal_name
+    }
+  },
+  onGramPanchayat(){
+    const selectedGramPanchayatdata = this.gramPanchayat.find(name => name.id === this.selectedGramPanchayat)
+    if(selectedGramPanchayatdata){
+      this.selectedGramPanchayatName = selectedGramPanchayatdata.grampanchayat_name
+      console.log('wcc name',selectedGramPanchayatdata.grampanchayat_name)
+    }
+  },
     addRows() {
       // Check if any field is not empty
       if (
@@ -1529,6 +1649,38 @@ export default {
     removeRow(index) {
       this.rows.splice(index, 1);
     },
+    async submitData(){
+      try{
+           await axios.post(`http://localhost:5000/api/individualinformation`,
+        {  
+           district: this.selectedDistrictName,
+           wcc_name:this.wccName,
+           name_of_project:this.selectedProjectName,
+           name_of_the_micro_watershed: this.selectedMicroWatershed,
+           head_of_the_family: this.nameofthehousehold,
+            name_of_habitation: this.selectedHabitation,
+            mandal: this.selectedMandalName,
+            household_door_no: this.householdDoorNo,
+            aadhar_number: this.aadharNumber,
+            economic_status: this.economicStatus,
+            occupation: this.occupationString,
+            location: this.location,
+            name_of_the_grampanchayat: this.selectedGramPanchayatName,
+            job_card_no: this.jobCardNo,
+            social_status: this.SocialStatus,
+            conatact_number: this.ContactNumber,
+            total_rainfed_area: this.totalRainfedArea,
+            total_irrigated_area: this.totalIrrigatedArea,
+            total_holding_area: this.totalHoldingArea,
+            type_of_house: this.houseType,
+            own_or_rented: this.subType,
+            habitationId: this.selectedHabitation
+        })
+      }
+      catch(error){
+        console.error("error in submitdata function",error)
+      }
+    }
   },
 };
 </script>
