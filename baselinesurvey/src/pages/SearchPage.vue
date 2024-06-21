@@ -54,6 +54,10 @@
         :incomeFromKharif="incomeKharif"
         :incomeFromRabhi="incomeRabhi"
         :livestock="livestockdetails"
+        :migrations="migrationdetails"
+        :landless="landlessdetails"
+        :govtbenefits="govtbenefitdetails"
+        :manurechemicaldetails="manurechemical"
         @item-updated="onItemUpdated"
       ></edit-survey>
     </ion-content>
@@ -114,6 +118,10 @@ export default {
       incomeKharif: [],
       incomeRabhi: [],
       livestockdetails: [],
+      migrationdetails: [],
+      landlessdetails: [],
+      govtbenefitdetails: [],
+      manurechemical: [],
       selectedItem: null,
       RsiLogo: Logo,
     };
@@ -223,15 +231,78 @@ export default {
         );
         this.livestockdetails = response.data;
         console.log("income rabhi data", response.data);
-        console.log(
-          "income from livestockdetails from search page",
-          this.livestockdetails
-        );
+        console.log("livestockdetails from search page", this.livestockdetails);
       } catch (error) {
-        console.log("Error is Getting from Income livestockdetails", error);
+        console.log("Error is Getting from livestockdetails", error);
       }
     },
-
+    async getMigrationDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/items/migrationdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.migrationdetails = response.data;
+        console.log("migrationdetails rabhi data", response.data);
+        console.log(
+          " migrationdetails from search page",
+          this.migrationdetails
+        );
+      } catch (error) {
+        console.log("Error is Getting from migrationdetails", error);
+      }
+    },
+    async getLandLessDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/api/landlessdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.landlessdetails = response.data;
+        console.log("landless data", response.data);
+        console.log(" landless from search page", this.landlessdetails);
+      } catch (error) {
+        console.log("Error is Getting from landless details", error);
+      }
+    },
+    async getGovtBenefitDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/api/govtbenefitdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.govtbenefitdetails = response.data;
+        console.log("govtbenefits data", response.data);
+        console.log(" govtbenefits from search page", this.govtbenefitdetails);
+      } catch (error) {
+        console.log("Error is Getting from govtbenefits details", error);
+      }
+    },
+    async getManureChemicalDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/api/manurechemicaldetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.manurechemical = response.data;
+        console.log("manurechemical data", response.data);
+        console.log(" manurechemical from search page", this.manurechemical);
+      } catch (error) {
+        console.log("Error is Getting from manurechemical details", error);
+      }
+    },
     clearSearch() {
       this.query = ""; // Clear the search bar
       this.items = []; // Clear the item list
@@ -244,6 +315,10 @@ export default {
       this.getIncomeCropKharif();
       this.getIncomeCropRabhi();
       this.getLiveStockDetails();
+      this.getMigrationDetails();
+      this.getLandLessDetails();
+      this.getGovtBenefitDetails();
+      this.getManureChemicalDetails();
       this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {

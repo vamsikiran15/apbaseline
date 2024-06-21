@@ -1248,32 +1248,19 @@
             >
           </div>
           <div v-if="step === 5">
-            <fifthPage />
-            <ion-button class="ion-margin-top" expand="block" @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Family Member Details</ion-button
-            >
+            <fifthPage :migrations="migrations" :editedItem="editedItem" />
           </div>
           <div v-if="step === 6">
-            <SixthPage />
+            <SixthPage :landless="landless" :editedItem="editedItem" />
           </div>
           <div v-if="step === 7">
-            <SeventhPage />
-            <ion-button class="ion-margin-top" expand="block" @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
+            <SeventhPage :govtbenefit="govtbenefits" :editedItem="editedItem" />
           </div>
           <div v-if="step === 8">
-            <Eighthpage />
+            <Eighthpage
+              :manurechemicaldetails="manurechemicaldetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 9">
             <NinthPage />
@@ -1379,9 +1366,9 @@ import {
   IonFooter,
   IonItem,
 } from "@ionic/vue";
-import fifthPage from "./fifthPage.vue";
-import SixthPage from "./sixthPage.vue";
-import SeventhPage from "./seventhPage.vue";
+import fifthPage from "./editpages/fifthPage.vue";
+import SixthPage from "./editpages/sixthPage.vue";
+import SeventhPage from "./editpages/seventhPage.vue";
 import Eighthpage from "./eighthpage.vue";
 import NinthPage from "./ninthPage.vue";
 import TenthPage from "./tenthPage.vue";
@@ -1409,6 +1396,10 @@ export default {
     incomeFromKharif: Object,
     incomeFromRabhi: Object,
     livestock: Object,
+    migrations: Object,
+    landless: Object,
+    govtbenefits: Object,
+    manurechemicaldetails: Object,
   },
   data() {
     return {
@@ -1421,7 +1412,7 @@ export default {
         "3 Land Particulars",
         "4 Livestock details",
         "5 Migration status",
-        "6 If land less labourers",
+        "6 If land less labourers, Given the details on the number of days employment availed",
         "7 Benefits from Government Schemes",
         "8 Use of manure and chemical fertilizers",
         "9 Pest and Disease control measures",
