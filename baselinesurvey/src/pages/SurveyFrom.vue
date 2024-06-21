@@ -27,8 +27,8 @@
                       label-placement="floating"
                       placeholder="Select District"
                       fill="outline"
-                      v-model="selectedItem"
-                      @update:modelValue="getWcc();getMandal()"
+                      v-model="selectedDistrict"
+                      @update:modelValue="getWcc();getMandal();onDistrictSelected()"
                     >
                     <ion-select-option v-for="items in district" :key="items.id" :value="items.id"
                         >{{items.dist_name }}</ion-select-option
@@ -43,8 +43,8 @@
                       label-placement="floating"
                       placeholder="Select WCC"
                       fill="outline"
-                      v-model="projectItem"
-                      @update:modelValue="getProject()"
+                      v-model="selectedWccNo"
+                      @update:modelValue="getProject();onWccSelected()"
                     >
                       <ion-select-option v-for="items in wcc" :key="items.id" :value="items.id"
                         >{{items.wcc_name}}</ion-select-option
@@ -59,8 +59,8 @@
                       label-placement="floating"
                       placeholder="Select Project"
                       fill="outline"
-                      v-model="watershedItem"
-                      @update:modelValue="getWaterShedVillage()"
+                      v-model="selectedProjectNo"
+                      @update:modelValue="getWaterShedVillage();onProjectSelected()"
                     >
                       <ion-select-option v-for="items in project" :key="items.id" :value="items.id"
                         >{{items.project_name}}</ion-select-option
@@ -76,7 +76,7 @@
                       placeholder="Name of the Micro Watershed Village"
                       fill="outline"
                       v-model="nameOfTheMicroWatershed"
-                      @update:modelValue="getHabitation();getGramPanchayat()"
+                      @update:modelValue="getHabitation();getGramPanchayat();onMicroWatershed()"
                     >
                       <ion-select-option v-for="items in watershed" :key="items.id" :value="items.id"
                         >{{items.micro_watershed_name}}</ion-select-option
@@ -93,6 +93,7 @@
                     placeholder="Enter name of Habitation"
                     fill="outline"
                     v-model="nameOfHabitation"
+                    @update:modelValue="onHabitation()"
                   >
                   <ion-select-option v-for="names in habitation" :key="names.id" :value="names.id"
                         >{{names.habitation_name}}</ion-select-option
@@ -106,6 +107,8 @@
                       label-placement="floating"
                       placeholder="Select Mandal"
                       fill="outline"
+                      v-model = "selectedMandal"
+                      @update:modelValue="onMandal()"
                     >
                       <ion-select-option v-for="names in mandal" :key="names.id" :value="names.id"
                         >{{names.mandal_name}}</ion-select-option
@@ -120,6 +123,8 @@
                       label-placement="floating"
                       placeholder="Name of the Gram Panchayat"
                       fill="outline"
+                      v-model = "selectedGramPanchayat"
+                      @update:modelValue="onGramPanchayat()"
                     >
                       <ion-select-option v-for="names in gramPanchayat" :key="names.id" :value="names.id"
                         >{{names.grampanchayat_name}}</ion-select-option
@@ -325,12 +330,12 @@
                   <ion-row>
                     <ion-radio-group value="house" v-model="houseType">
                       <ion-col>
-                        <ion-radio value="puccahouse" label-placement="start" v-model="subType"
+                        <ion-radio value="puccahouse" label-placement="start"
                           >Pucca House</ion-radio
                         >
                       </ion-col>
                       <ion-col>
-                        <ion-radio value="semipucca" label-placement="start" v-model="subType"
+                        <ion-radio value="semipucca" label-placement="start"
                           >Semi Pucca</ion-radio
                         >
                       </ion-col>
@@ -340,7 +345,7 @@
                   <ion-card-subtitle color="tertiary" class="ion-padding ion-text-center">Own/Rented</ion-card-subtitle>
                  <ion-grid>
                   <ion-row>
-                    <ion-radio-group value="house">
+                    <ion-radio-group value="subType" >
                       <ion-col>
                         <ion-radio value="SC" label-placement="start"
                           >Own</ion-radio
@@ -1303,7 +1308,7 @@
         <ion-button size="small" color="primary"
           v-else-if="currentStep === totalSteps"
           class="nextButton ion-margin"
-          @click="submitForm"
+          @click="submitData()"
           ><ion-icon name="checkmark-outline"></ion-icon>Submit</ion-button
         >
         <ion-ripple-effect></ion-ripple-effect>
@@ -1376,10 +1381,6 @@ export default {
         membership: "",
       },
       rows: [],
-
-      head_of_the_family: "",
-
-        selectedValue: "",
     groupedData: 
     [
         {
@@ -1424,15 +1425,37 @@ export default {
       ],
       district:[],
       wcc:[],
-      selectedItem:null,
-      projectItem:null,
+      selectedDistrict : null,
+      selectedWccNo :null,
       project:[],
-      watershedItem:null,
+      selectedProjectNo :null,
       watershed:[],
       nameOfTheMicroWatershed:null,
       habitation:[],
       mandal:[],
-      gramPanchayat:[]
+      gramPanchayat:[],
+      selectedMandalName:"",
+      selectedGramPanchayatName:"",
+         nameofthehousehold:"",
+         selectedDistrictName :"",
+         wccName:"",
+         selectedProjectName:"",
+         selectedMicroWatershed:"",
+        selectedHabitation:"",
+        selectedMandal:"",
+         householdDoorNo:"",
+         aadharNumber:"",
+         economicStatus:"",
+         occupationString:"",
+         location:"",
+         selectedGramPanchayat:"",
+         jobCardNo:"",
+         SocialStatus:"",
+         ContactNumber:"",
+         totalRainfedArea:"",
+         totalIrrigatedArea:"",
+         totalHoldingArea:"",
+         houseType:"",
     };
   },
   components: {
@@ -1503,7 +1526,7 @@ export default {
     },
     async getWcc(){
       try {
-        const response = await axios.get("http://localhost:5000/api/wcc",{params:{id:this.selectedItem}})
+        const response = await axios.get("http://localhost:5000/api/wcc",{params:{id:this.selectedDistrict}})
         this.wcc = response.data
       } catch (error) {
         console.error("error in getwcc function",error)
@@ -1511,7 +1534,7 @@ export default {
     },
     async getProject(){
       try {
-        const response =  await axios.get("http://localhost:5000/api/projects",{params:{id:this.projectItem}})  
+        const response =  await axios.get("http://localhost:5000/api/projects",{params:{id:this.selectedWccNo}})  
         this.project=response.data
       } catch (error) {
         console.error("Error in getProject function",error)
@@ -1519,7 +1542,7 @@ export default {
     },
     async getWaterShedVillage(){
       try {
-        const response = await axios.get("http://localhost:5000/api/watershed",{params:{id:this.watershedItem}})
+        const response = await axios.get("http://localhost:5000/api/watershed",{params:{id:this.selectedProjectNo}})
         this.watershed = response.data
       } catch (error) {
         console.error("error in getwatershedvillage function",error)  
@@ -1535,7 +1558,7 @@ export default {
     },
     async getMandal(){
       try {
-        const response = await axios.get("http://localhost:5000/api/mandal",{params:{id:this.selectedItem}})
+        const response = await axios.get("http://localhost:5000/api/mandal",{params:{id:this.selectedDistrict}})
         this.mandal=response.data
       } catch (error) {
         console.error("error in getMandal function",error)
@@ -1545,11 +1568,53 @@ export default {
       try {
         const response = await axios.get("http://localhost:5000/api/grampanchayat",{params:{id:this.nameOfTheMicroWatershed}})
         this.gramPanchayat = response.data
-        console.log("============================= response",response.data)
       } catch (error) {
         console.error("error in getgrampanchayat function",error)
       }
     },
+    onDistrictSelected() {
+      const selectedDistrictData = this.district.find(item => item.id === this.selectedDistrict);
+      if (selectedDistrictData) {
+        this.selectedDistrictName = selectedDistrictData.dist_name;
+      }
+    },
+    onWccSelected(){
+      const selectedWccData = this.wcc.find(item=> item.id === this.selectedWccNo);
+      if(selectedWccData){
+        this.wccName = selectedWccData.wcc_name;
+      }
+    },
+    onProjectSelected(){
+      const selectedProjectData = this.project.find(item=> item.id === this.selectedProjectNo);
+      if(selectedProjectData){
+        this.selectedProjectName = selectedProjectData.project_name
+    }
+  },
+  onMicroWatershed(){
+    const selectedMicroWatershedData = this.watershed.find(name => name.id === this.nameOfTheMicroWatershed)
+    if(selectedMicroWatershedData){
+      this.selectedMicroWatershed = selectedMicroWatershedData.micro_watershed_name
+    }
+  },
+  onHabitation(){
+    const selectedHabitationData = this.habitation.find(name => name.id === this.nameOfHabitation)
+    if(selectedHabitationData){
+      this.selectedHabitation = selectedHabitationData.habitation_name
+    }
+  },
+  onMandal(){
+    const selectedMandalData = this.mandal.find(name => name.id === this.selectedMandal)
+    if(selectedMandalData){
+      this.selectedMandalName = selectedMandalData.mandal_name
+    }
+  },
+  onGramPanchayat(){
+    const selectedGramPanchayatdata = this.gramPanchayat.find(name => name.id === this.selectedGramPanchayat)
+    if(selectedGramPanchayatdata){
+      this.selectedGramPanchayatName = selectedGramPanchayatdata.grampanchayat_name
+      console.log('wcc name',selectedGramPanchayatdata.grampanchayat_name)
+    }
+  },
     addRows() {
       // Check if any field is not empty
       if (
@@ -1586,19 +1651,21 @@ export default {
     },
     async submitData(){
       try{
-        const response = await axios.post(`http://183.82.109.39:5000/api/v1/generalInfo`,
-        {
-          head_of_the_family: this.nameofthehousehold,
-            name_of_habitation: this.nameOfHabitation,
-            mandal: this.mandal,
+           await axios.post(`http://localhost:5000/api/individualinformation`,
+        {  
+           district: this.selectedDistrictName,
+           wcc_name:this.wccName,
+           name_of_project:this.selectedProjectName,
+           name_of_the_micro_watershed: this.selectedMicroWatershed,
+           head_of_the_family: this.nameofthehousehold,
+            name_of_habitation: this.selectedHabitation,
+            mandal: this.selectedMandalName,
             household_door_no: this.householdDoorNo,
             aadhar_number: this.aadharNumber,
             economic_status: this.economicStatus,
             occupation: this.occupationString,
             location: this.location,
-            name_of_the_micro_watershed: this.nameOfTheMicroWatershed,
-            name_of_the_grampanchayat: this.NameOfGramPanchayat,
-            district: this.district,
+            name_of_the_grampanchayat: this.selectedGramPanchayatName,
             job_card_no: this.jobCardNo,
             social_status: this.SocialStatus,
             conatact_number: this.ContactNumber,
@@ -1607,7 +1674,7 @@ export default {
             total_holding_area: this.totalHoldingArea,
             type_of_house: this.houseType,
             own_or_rented: this.subType,
-            habitationId: this.selectedHabitation,
+            habitationId: this.selectedHabitation
         })
       }
       catch(error){
