@@ -52,6 +52,8 @@
         :household="householdinfo"
         :landparticular="landparticulars"
         :incomeFromKharif="incomeKharif"
+        :incomeFromRabhi="incomeRabhi"
+        :livestock="livestockdetails"
         @item-updated="onItemUpdated"
       ></edit-survey>
     </ion-content>
@@ -110,6 +112,8 @@ export default {
       householdinfo: [],
       landparticulars: [],
       incomeKharif: [],
+      incomeRabhi: [],
+      livestockdetails: [],
       selectedItem: null,
       RsiLogo: Logo,
     };
@@ -186,11 +190,48 @@ export default {
           }
         );
         this.incomeKharif = response.data;
+        console.log("income kharif data", response.data);
         console.log("income from kharif from search page", this.incomeKharif);
       } catch (error) {
         console.log("Error is Getting from Income Kharif", error);
       }
     },
+    async getIncomeCropRabhi() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/items/incomecropsfromrabhi`,
+          {
+            params: { id: id },
+          }
+        );
+        this.incomeRabhi = response.data;
+        console.log("income rabhi data", response.data);
+        console.log("income from rabhi from search page", this.incomeRabhi);
+      } catch (error) {
+        console.log("Error is Getting from Income rabhi", error);
+      }
+    },
+    async getLiveStockDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/items/livestockdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.livestockdetails = response.data;
+        console.log("income rabhi data", response.data);
+        console.log(
+          "income from livestockdetails from search page",
+          this.livestockdetails
+        );
+      } catch (error) {
+        console.log("Error is Getting from Income livestockdetails", error);
+      }
+    },
+
     clearSearch() {
       this.query = ""; // Clear the search bar
       this.items = []; // Clear the item list
@@ -201,6 +242,8 @@ export default {
       this.getHouseHoldInfo();
       this.getLandPerticularsInfo();
       this.getIncomeCropKharif();
+      this.getIncomeCropRabhi();
+      this.getLiveStockDetails();
       this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {
