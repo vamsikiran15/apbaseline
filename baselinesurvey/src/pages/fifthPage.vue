@@ -10,6 +10,7 @@
             fill="outline"
             label="Name of the Person Migrating "
             label-placement="floating"
+            v-model = "nameOfThePerson"
           ></ion-input>
           <ion-select
             class="ion-margin-top"
@@ -19,6 +20,7 @@
             label-placement="floating"
             placeholder="Gender"
             fill="outline"
+            v-model = "gender"
           >
             <ion-select-option value="male">Male</ion-select-option>
             <ion-select-option value="female">Female</ion-select-option>
@@ -29,6 +31,7 @@
             fill="outline"
             label="No of the Days Migrating per Year "
             label-placement="floating"
+            v-model = "noOfDaysMigratingPerYear"
           ></ion-input>
           <ion-select
             class="ion-margin-top"
@@ -38,6 +41,7 @@
             label-placement="floating"
             placeholder="Enter reasons for migrating"
             fill="outline"
+            v-model="reasonsForMigrating"
           >
             <ion-select-option value="distress">Distress</ion-select-option>
             <ion-select-option value="betterlivelihoodoptions">Better Livelihood options</ion-select-option>
@@ -51,6 +55,7 @@
             label-placement="floating"
             placeholder="Enter place for migrating"
             fill="outline"
+            v-model ="placeOfMigration"
           >
             <ion-select-option value="withindistrict">Within District</ion-select-option>
             <ion-select-option value="outsidedistrict">Outside District</ion-select-option>
@@ -64,6 +69,7 @@
             label-placement="floating"
             placeholder="Enter occupation for migrating"
             fill="outline"
+            v-model="occupationDuringMigration"
           >
             <ion-select-option value="agri">Agri</ion-select-option>
             <ion-select-option value="industriallabour">Industrial Labour</ion-select-option>
@@ -75,9 +81,21 @@
             fill="outline"
             label="Income from Such Occupation "
             label-placement="floating"
+            v-model = "incomeFromOccupation"
           ></ion-input>
     </ion-card-content>
   </ion-card>
+  <ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Migration Status</ion-button
+            >
 </template>
 <script>
 import {
@@ -101,9 +119,22 @@ import {
   IonRadio,
   IonList,
 } from "@ionic/vue";
+import axios from "axios";
 export default{
-    components:{
-        IonPage,
+  data(){
+  return{
+    nameOfThePerson:"",
+    gender:"",
+    noOfDaysMigratingPerYear:"",
+    reasonsForMigrating:"",
+    placeOfMigration:"",
+    occupationDuringMigration:"",
+    incomeFromOccupation:""
+  }
+},
+
+components:{
+  IonPage,
   IonHeader,
   IonToolbar,
   IonTitle,
@@ -122,6 +153,27 @@ export default{
   IonRadioGroup,
   IonRadio,
   IonList,
+    },
+
+methods :{
+    async migrationStatusData(){
+      try {
+          const response =  await axios.post("http://localhost:5000/api/insertmigrate",
+          {
+            // headId: req.body.headId,
+            name_of_the_person_migrating: this.nameOfThePerson,
+            male_or_female: this.gender,
+            no_of_person_migrating_per_year:this.noOfDaysMigratingPerYear,
+            reasons_for_migrating: this.reasonsForMigrating,
+            place_of_migrating: this.placeOfMigration,
+            occupation_during_migration: this.occupationDuringMigration,
+            income_for_such_occupation: this.incomeFromOccupation,
+          }
+        )
+      } catch (error) {
+          console.error("error in migrationStatusData function",error)
+      }
     }
-}
+},
+};
 </script>
