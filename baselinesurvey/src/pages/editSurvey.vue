@@ -1263,10 +1263,16 @@
             />
           </div>
           <div v-if="step === 9">
-            <NinthPage />
+            <NinthPage
+              :pestdiseasedetails="pestdiseasedetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 10">
-            <TenthPage />
+            <TenthPage
+              :loanparticulardetails="loanparticular"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 11">
             <EleventhPage></EleventhPage>
@@ -1369,10 +1375,10 @@ import {
 import fifthPage from "./editpages/fifthPage.vue";
 import SixthPage from "./editpages/sixthPage.vue";
 import SeventhPage from "./editpages/seventhPage.vue";
-import Eighthpage from "./eighthpage.vue";
-import NinthPage from "./ninthPage.vue";
-import TenthPage from "./tenthPage.vue";
-import EleventhPage from "./eleventhPage.vue";
+import Eighthpage from "./editpages/eighthpage.vue";
+import NinthPage from "./editpages/ninthPage.vue";
+import TenthPage from "./editpages/tenthPage.vue";
+import EleventhPage from "./editpages/eleventhPage.vue";
 import TwelvethPage from "./twelvethPage.vue";
 import ThirteenthPage from "./thirteenthPage.vue";
 import FourteenthPage from "./fourteenthPage.vue";
@@ -1400,6 +1406,9 @@ export default {
     landless: Object,
     govtbenefits: Object,
     manurechemicaldetails: Object,
+    pestdiseasedetails: Object,
+    pestdiseasedetails: Object,
+    loanparticular: Object,
   },
   data() {
     return {

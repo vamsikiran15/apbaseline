@@ -58,6 +58,8 @@
         :landless="landlessdetails"
         :govtbenefits="govtbenefitdetails"
         :manurechemicaldetails="manurechemical"
+        :pestdiseasedetails="pestdisease"
+        :loanparticular="loanparticulars"
         @item-updated="onItemUpdated"
       ></edit-survey>
     </ion-content>
@@ -122,6 +124,8 @@ export default {
       landlessdetails: [],
       govtbenefitdetails: [],
       manurechemical: [],
+      pestdisease: [],
+      loanparticulars: [],
       selectedItem: null,
       RsiLogo: Logo,
     };
@@ -303,6 +307,41 @@ export default {
         console.log("Error is Getting from manurechemical details", error);
       }
     },
+    async getPestDiseaseDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/api/pestdiseasedetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.pestdisease = response.data;
+        console.log("pestdiseasedetails data", response.data);
+        console.log(" pestdiseasedetails from search page", this.pestdisease);
+      } catch (error) {
+        console.log("Error is Getting from pestdiseasedetails details", error);
+      }
+    },
+    async getLoanParticularsDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/api/loanparticulardetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.loanparticulars = response.data;
+        console.log("pestdiseasedetails data", response.data);
+        console.log(
+          " pestdiseasedetails from search page",
+          this.loanparticulars
+        );
+      } catch (error) {
+        console.log("Error is Getting from pestdiseasedetails details", error);
+      }
+    },
     clearSearch() {
       this.query = ""; // Clear the search bar
       this.items = []; // Clear the item list
@@ -319,6 +358,8 @@ export default {
       this.getLandLessDetails();
       this.getGovtBenefitDetails();
       this.getManureChemicalDetails();
+      this.getPestDiseaseDetails();
+      this.getLoanParticularsDetails();
       this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {
