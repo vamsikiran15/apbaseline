@@ -556,6 +556,7 @@
                     label-placement="floating"
                     placeholder="Cultivated Area"
                     fill="outline"
+                    v-model="cultivatedArea"
                   >
                     <ion-select-option value="Own"
                       >Owned Land</ion-select-option
@@ -573,6 +574,7 @@
                     fill="outline"
                     label="Rainfed(Acres)"
                     label-placement="floating"
+                    v-model="rainfedArea"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -580,6 +582,7 @@
                     fill="outline"
                     label="Irrigated(Acres)"
                     label-placement="floating"
+                    v-model="irrigatedArea"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -587,6 +590,7 @@
                     label="Total"
                     fill="outline"
                     label-placement="floating"
+                    v-model="total"
                   ></ion-input>
                   <ion-select
                     class="ion-margin-top"
@@ -596,6 +600,7 @@
                     label-placement="floating"
                     placeholder="Type of Ownership"
                     fill="outline"
+                    v-model="typeofOwnership"
                   >
                     <ion-select-option value="Own">Own</ion-select-option>
                     <ion-select-option value="Rent">Rent</ion-select-option>
@@ -617,6 +622,7 @@
                     placeholder="Select Crop Item"
                     fill="outline"
                     class="ion-margin-top"
+                    v-model="cropGrownKharif"
                   >
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -658,6 +664,7 @@
                     fill="outline"
                     label="Rainfed(Acres)"
                     label-placement="floating"
+                    v-model="rainfedKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -665,6 +672,7 @@
                     label="Rainfed Yield(Qtls)"
                     fill="outline"
                     label-placement="floating"
+                    v-model="rainfedYieldKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -672,6 +680,7 @@
                     fill="outline"
                     label="Rainfed(Acres) Cost of Cultivation(Rs)"
                     label-placement="floating"
+                    v-model="rainfedCostKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -679,6 +688,7 @@
                     fill="outline"
                     label="Rainfed(Acres) Rate per Qtls(Rs)"
                     label-placement="floating"
+                    v-model = "rainfedPerQtlsKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -686,6 +696,7 @@
                     fill="outline"
                     label="Rainfed(Acres) Gross Income"
                     label-placement="floating"
+                    v-model = "rainfedGrossIncomeKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -693,6 +704,7 @@
                     fill="outline"
                     label="Rainfed(Acres) Net Income(7-5)"
                     label-placement="floating"
+                    v-model = "rainfedNetIncomeKharif"
                   ></ion-input>
                   <ion-card-subtitle
                   class="ion-padding ion-text-center"
@@ -705,6 +717,7 @@
                     fill="outline"
                     label="Irrigated Area(Acres)"
                     label-placement="floating"
+                    v-model = "irrigatedaAreaKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -712,6 +725,7 @@
                     label="Irrigated Yield(Qtls)"
                     fill="outline"
                     label-placement="floating"
+                    v-model = "irrigatedYieldKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -719,6 +733,7 @@
                     label="Irrigated(Acres) Cost of Cultiation(Rs)"
                     fill="outline"
                     label-placement="floating"
+                    v-model = "irrigatedCoostofCultivationKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -726,6 +741,7 @@
                     fill="outline"
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
+                    v-model = "irrigatedRatePerQtlsKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -733,6 +749,7 @@
                     fill="outline"
                     label="Total Irrigated(Acres) Gross Income"
                     label-placement="floating"
+                    v-model = "irrigatedGrossIncomeKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -740,6 +757,7 @@
                     fill="outline"
                     label="Total Irrigated Net Income(13-11)"
                     label-placement="floating"
+                    v-model = "irrigatedNetIncomeKharif"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -765,6 +783,7 @@
                     placeholder="Select Crop Item"
                     fill="outline"
                     class="ion-margin-top"
+                    v-model = "cropGrownRabhi"
                   >
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -806,6 +825,7 @@
                     fill="outline"
                     label="Rainfed(Acres)"
                     label-placement="floating"
+                    v-model = "rainfedAcresRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -813,6 +833,7 @@
                     label="Rainfed Yield(Qtls)"
                     fill="outline"
                     label-placement="floating"
+                    v-model = "rainfedYieldRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -820,6 +841,7 @@
                     fill="outline"
                     label="Rainfed(Acres) Cost of Cultivation(Rs)"
                     label-placement="floating"
+                    v-model = "rainfedCostofCultivationRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -827,6 +849,7 @@
                     fill="outline"
                     label="Rainfed(Acres) Rate per Qtls(Rs)"
                     label-placement="floating"
+                    v-model = "rainfedRatePerQtlsRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -834,6 +857,7 @@
                     fill="outline"
                     label="Rainfed(Acres) Gross Income"
                     label-placement="floating"
+                    v-model = "rainfedGrossIncomeRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -841,6 +865,7 @@
                     fill="outline"
                     label="Rainfed(Acres) Net Income(7-5)"
                     label-placement="floating"
+                    v-model = "rainfedNetIncomeRabhi"
                   ></ion-input>
                   <ion-card-subtitle
                   class="ion-padding ion-text-center"
@@ -853,6 +878,7 @@
                     fill="outline"
                     label="Irrigated Area(Acres)"
                     label-placement="floating"
+                    v-model = "irrigatedAreaRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -860,6 +886,7 @@
                     label="Irrigated Yield(Qtls)"
                     fill="outline"
                     label-placement="floating"
+                    v-model = "irrigatedYieldRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -867,6 +894,7 @@
                     label="Irrigated(Acres) Cost of Cultiation(Rs)"
                     fill="outline"
                     label-placement="floating"
+                    v-model = "irrigatedCostofCultivationRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -874,6 +902,7 @@
                     fill="outline"
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
+                    v-model = "irrigatedRateperQtlsRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -881,6 +910,7 @@
                     fill="outline"
                     label="Total Irrigated(Acres) Gross Income"
                     label-placement="floating"
+                    v-model = "irrigatedGrossIncomeRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -888,6 +918,7 @@
                     fill="outline"
                     label="Total Irrigated Net Income(13-11)"
                     label-placement="floating"
+                    v-model = "irrigatedNetIncomeRabhi"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -927,7 +958,7 @@
                     placeholder="Select Name of the Animal"
                     fill="outline"
                     class="ion-margin-top"
-                    v-model="selectedValue"
+                    v-model="nameOfTheAnimal"
                   >
                   <template v-for="group in groupedData" :key="group.label">
                   <ion-select-option disabled>{{
@@ -948,6 +979,7 @@
                   fill="outline"
                   label="Existing No"
                   label-placement="floating"
+                  v-model = "existingNo"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -955,6 +987,7 @@
                   fill="outline"
                   label="Milk Production(Ltrs/Day) if applicable"
                   label-placement="floating"
+                  v-model = "milkProductionLitresPerDay"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -962,6 +995,7 @@
                   fill="outline"
                   label="Milk Consumed(Ltrs/Day)"
                   label-placement="floating"
+                  v-model = "milkConsumedLitresPerday"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -969,6 +1003,7 @@
                   fill="outline"
                   label="Quantity Sold by Year"
                   label-placement="floating"
+                  v-model = "quantitySoldByYear"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -976,6 +1011,7 @@
                   fill="outline"
                   label="Unit Value(Rs)"
                   label-placement="floating"
+                  v-model = "unitValue"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -983,6 +1019,7 @@
                   fill="outline"
                   label="Income Generated during Last Year"
                   label-placement="floating"
+                  v-model = "incomeGeneratedDuringLastYear"
                 ></ion-input>
               </ion-card-content>
             </ion-card>
@@ -1001,18 +1038,6 @@
           </div>
           <div v-if="step === 5">
             <fifthPage />
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Migration Status</ion-button
-            >
           </div>
           <div v-if="step === 6">
             <SixthPage />
@@ -1308,7 +1333,6 @@
         <ion-button size="small" color="primary"
           v-else-if="currentStep === totalSteps"
           class="nextButton ion-margin"
-          @click="submitData()"
           ><ion-icon name="checkmark-outline"></ion-icon>Submit</ion-button
         >
         <ion-ripple-effect></ion-ripple-effect>
@@ -1441,8 +1465,8 @@ export default {
          wccName:"",
          selectedProjectName:"",
          selectedMicroWatershed:"",
-        selectedHabitation:"",
-        selectedMandal:"",
+         selectedHabitation:"",
+         selectedMandal:"",
          householdDoorNo:"",
          aadharNumber:"",
          economicStatus:"",
@@ -1456,6 +1480,44 @@ export default {
          totalIrrigatedArea:"",
          totalHoldingArea:"",
          houseType:"",
+         cultivatedArea:"",
+         rainfedArea:"",
+         irrigatedArea:"",
+         total:"",
+         typeofOwnership:"",
+         cropGrownKharif:"",
+         rainfedKharif:"",
+         rainfedYieldKharif:"",
+         rainfedCostKharif:"",
+         rainfedPerQtlsKharif:"",
+         rainfedGrossIncomeKharif:"",
+         rainfedNetIncomeKharif:"",
+         irrigatedaAreaKharif:"",
+         irrigatedYieldKharif:"",
+         irrigatedCoostofCultivationKharif:"",
+         irrigatedRatePerQtlsKharif:"",
+         irrigatedGrossIncomeKharif:"",
+         irrigatedNetIncomeKharif:"",
+         cropGrownRabhi:"",
+         rainfedAcresRabhi:"",
+         rainfedYieldRabhi:"",
+         rainfedCostofCultivationRabhi:"",
+         rainfedRatePerQtlsRabhi:"",
+         rainfedGrossIncomeRabhi:"",
+         rainfedNetIncomeRabhi:"",
+         irrigatedAreaRabhi:"",
+         irrigatedYieldRabhi:"",
+         irrigatedCostofCultivationRabhi:"",
+         irrigatedRateperQtlsRabhi:"",
+         irrigatedGrossIncomeRabhi:"",
+         irrigatedNetIncomeRabhi:"",
+         nameOfTheAnimal:"",
+         existingNo:"",
+         milkProductionLitresPerDay:"",
+         milkConsumedLitresPerday:"",
+         quantitySoldByYear:"",
+         unitValue:"",
+         incomeGeneratedDuringLastYear:""
     };
   },
   components: {
@@ -1680,7 +1742,94 @@ export default {
       catch(error){
         console.error("error in submitdata function",error)
       }
-    }
+    },
+    async householdDetailsSubmitData(){
+      try {
+           await axios.post(`http://localhost:5000/api/householdDetails`,
+        {
+          name_of_the_family_member:this.newRow.name_of_the_family_member,
+            relationship_with_head:this.newRow.relationship_with_head,
+            disability:this.newRow.disability,
+            gender:this.newRow.gender,
+            age:this.newRow.age,
+            level_of_education:this.newRow.level_of_education,
+            occupation:this.newRow.occupation,
+            membership:this.newRow.membership,
+            annual_gross_income:this.newRow.annual_gross_income
+        })
+      } catch (error) {
+        console.error("error in householddetailssubmitdata function",error)
+      }
+    },
+    async landParticularsSubmitData(){
+      try {
+            await axios.post("http://localhost:5000/api/landparticulars",
+          {
+            cultivated_area:this.cultivatedArea,
+            rainfed:this.rainfedArea,
+            irrigated:this.irrigatedArea,
+            total:this.total,
+            Type_of_ownership:this.typeofOwnership
+          }
+        )
+             await axios.post("http://localhost:5000/api/insertIncomeKharif",
+          {
+            crop_grown : this.cropGrownKharif,
+            rainfed_area : this.rainfedKharif,
+            rainfed_yield : this.rainfedYieldKharif,
+            rainfed_cost_of_cultivation : this.rainfedCostKharif,
+            rainfed_rate_per_qtls : this.rainfedPerQtlsKharif,
+            rainfed_gross_income : this.rainfedGrossIncomeKharif,
+            rainfed_net_income : this.rainfedNetIncomeKharif,
+            irrigated_area : this.irrigatedaAreaKharif,
+            irrigated_yield : this.irrigatedYieldKharif,
+            irrigated_cost_of_cultivation : this.irrigatedCoostofCultivationKharif,
+            irrigated_rate_per_qtls : this.irrigatedRatePerQtlsKharif,
+            irrigated_gross_income : this.irrigatedGrossIncomeKharif,
+            irrigated_net_income : this.irrigatedNetIncomeKharif,
+            // headId : req.body.headId
+          }
+        )
+               await axios.post("http://localhost:5000/api/insertIncomeRabhi",
+          {
+            crop_grown : this.cropGrownRabhi,
+            rainfed_area : this.rainfedAcresRabhi,
+            rainfed_yield : this.rainfedYieldRabhi,
+            rainfed_cost_of_cultivation : this.rainfedCostofCultivationRabhi,
+            rainfed_rate_per_qtls : this.rainfedRatePerQtlsRabhi,
+            rainfed_gross_income : this.rainfedGrossIncomeRabhi,
+            rainfed_net_income : this.rainfedNetIncomeRabhi,
+            irrigated_area : this.irrigatedAreaRabhi,
+            irrigated_yield : this.irrigatedYieldRabhi,
+            irrigated_cost_of_cultivation : this.irrigatedCostofCultivationRabhi,
+            irrigated_rate_per_qtls : this.irrigatedRateperQtlsRabhi,
+            irrigated_gross_income : this.irrigatedGrossIncomeRabhi,
+            irrigated_net_income : this.irrigatedNetIncomeRabhi,
+            // headId : req.body.headId
+          }
+        )
+      } catch (error) {
+        console.error("error in landParticularsSubmitButton function",error)
+      }
+    },
+    async liveStockDetailsData(){
+        try {
+            await axios.post("http://localhost:5000/api/insertLiveStock",
+            {
+              // headId: req.body.headId,
+              existing_no: this.existingNo,
+              income_generated_during_last_year:this.incomeGeneratedDuringLastYear,
+              milk_production: this.milkProductionLitresPerDay,
+              milk_quantity_sold: this.quantitySoldByYear,
+              mill_consumed: this.milkConsumedLitresPerday,
+              name_of_the_animal: this.nameOfTheAnimal,
+              value_of_animals: this.unitValue,
+            }
+          )
+        } catch (error) {
+          console.error("error in livestockdetailsdata function",error)
+        }
+    },
   },
 };
 </script>
