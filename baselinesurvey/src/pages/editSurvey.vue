@@ -1275,37 +1275,72 @@
             />
           </div>
           <div v-if="step === 11">
-            <EleventhPage></EleventhPage>
+            <EleventhPage
+              :familyexpenditure="familyexpendituredetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 12">
-            <TwelvethPage></TwelvethPage>
+            <TwelvethPage
+              :differentsource="differentsourcedetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 13">
-            <ThirteenthPage></ThirteenthPage>
+            <ThirteenthPage
+              :availabledrinkingwaterdetails="availabledrinkingwaterdetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 14">
-            <FourteenthPage></FourteenthPage>
+            <FourteenthPage
+              :sourcequalitywaterdetails="sourcequalitywaterdetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 15">
-            <FifteenthPage></FifteenthPage>
+            <FifteenthPage
+              :agricultureimplementsdetails="agricultureimplementsdetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 16">
-            <SixteenthPage></SixteenthPage>
+            <SixteenthPage
+              :horticulturedetails="horticulturedetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 17">
-            <SeventeenthPage></SeventeenthPage>
+            <SeventeenthPage
+              :fodderfeeddetails="fodderfeeddetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 18">
-            <EighteenthPage></EighteenthPage>
+            <EighteenthPage
+              :fodderfueldetails="fodderfueldetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 19">
-            <NinteenthPage></NinteenthPage>
+            <NinteenthPage
+              :grazecattlecommunitydetails="grazecattlecommunitydetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 20">
-            <TwentythPage></TwentythPage>
+            <TwentythPage
+              :householdassetdetails="householdassetdetails"
+              :editedItem="editedItem"
+            ></TwentythPage>
           </div>
           <div v-if="step === 21">
-            <TwentyfirstPage></TwentyfirstPage>
+            <TwentyfirstPage
+              :participationcommunityprogramdetails="
+                participationcommunityprogramdetails
+              "
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 22">
             <TwentysecondPage></TwentysecondPage>
@@ -1379,16 +1414,16 @@ import Eighthpage from "./editpages/eighthpage.vue";
 import NinthPage from "./editpages/ninthPage.vue";
 import TenthPage from "./editpages/tenthPage.vue";
 import EleventhPage from "./editpages/eleventhPage.vue";
-import TwelvethPage from "./twelvethPage.vue";
-import ThirteenthPage from "./thirteenthPage.vue";
-import FourteenthPage from "./fourteenthPage.vue";
-import FifteenthPage from "./fifteenthPage.vue";
-import SixteenthPage from "./sixteenthPage.vue";
-import SeventeenthPage from "./seventeenthPage.vue";
-import EighteenthPage from "./eighteenthPage.vue";
-import NinteenthPage from "./ninteenthPage.vue";
-import TwentythPage from "./twentythPage.vue";
-import TwentyfirstPage from "./twentyfirstPage.vue";
+import TwelvethPage from "./editpages/twelvethPage.vue";
+import ThirteenthPage from "./editpages/thirteenthPage.vue";
+import FourteenthPage from "./editpages/fourteenthPage.vue";
+import FifteenthPage from "./editpages/fifteenthPage.vue";
+import SixteenthPage from "./editpages/sixteenthPage.vue";
+import SeventeenthPage from "./editpages/seventeenthPage.vue";
+import EighteenthPage from "./editpages/eighteenthPage.vue";
+import NinteenthPage from "./editpages/ninteenthPage.vue";
+import TwentythPage from "./editpages/twentythPage.vue";
+import TwentyfirstPage from "./editpages/twentyfirstPage.vue";
 import TwentysecondPage from "./twentysecondPage.vue";
 import TwentythirdPage from "./twentythirdPage.vue";
 import TwentyfourthPage from "./twentyfourthPage.vue";
@@ -1409,6 +1444,17 @@ export default {
     pestdiseasedetails: Object,
     pestdiseasedetails: Object,
     loanparticular: Object,
+    familyexpendituredetails: Object,
+    differentsourcedetails: Object,
+    availabledrinkingwaterdetails: Object,
+    sourcequalitywaterdetails: Object,
+    agricultureimplementsdetails: Object,
+    horticulturedetails: Object,
+    fodderfeeddetails: Object,
+    fodderfueldetails: Object,
+    grazecattlecommunitydetails: Object,
+    householdassetdetails: Object,
+    participationcommunityprogramdetails: Object,
   },
   data() {
     return {
@@ -1982,7 +2028,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/insertIncomeKharif",
+          "http://localhost:5000/api/insertIncomeKharif",
 
           {
             id: row.id,
@@ -2010,7 +2056,7 @@ export default {
     async updateIncomeKharif(row) {
       try {
         const response = await axios.put(
-          `http://183.82.109.39:5000/api/updateIncomeKharif/${row.id}`,
+          `http://localhost:5000/api/updateIncomeKharif/${row.id}`,
           row
         );
         console.log("Row updated:", response);
@@ -2042,7 +2088,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/insertIncomeRabhi",
+          "http://localhost:5000/api/insertIncomeRabhi",
 
           {
             id: row.id,
@@ -2070,7 +2116,7 @@ export default {
     async updateIncomeRabhi(row) {
       try {
         const response = await axios.put(
-          `http://183.82.109.39:5000/api/updateIncomeRabhi/${row.id}`,
+          `http://localhost:5000/api/updateIncomeRabhi/${row.id}`,
           row
         );
         console.log("Rabhi Row updated:", response);
@@ -2103,7 +2149,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/insertLiveStock",
+          "http://localhost:5000/api/insertLiveStock",
 
           {
             id: row.id,
@@ -2126,7 +2172,7 @@ export default {
     async updateLiveStock(row) {
       try {
         const response = await axios.put(
-          `http://183.82.109.39:5000/api/updateLiveStock/${row.id}`,
+          `http://localhost:5000/api/updateLiveStock/${row.id}`,
           row
         );
         console.log("Live stock Row updated:", response);

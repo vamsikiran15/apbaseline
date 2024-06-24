@@ -212,7 +212,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/insertlandlessdetails",
+          "http://localhost:5000/api/insertlandlessdetails",
 
           {
             id: row.id,
@@ -231,7 +231,7 @@ export default {
     async updateLandLess(row) {
       try {
         const response = await axios.put(
-          `http://183.82.109.39:5000/api/updatelandlessdetails/${row.id}`,
+          `http://localhost:5000/api/updatelandlessdetails/${row.id}`,
           row
         );
         console.log("Land Less Row updated:", response);

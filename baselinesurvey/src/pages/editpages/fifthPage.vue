@@ -262,7 +262,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/insertmigrate",
+          "http://localhost:5000/api/insertmigrate",
 
           {
             id: row.id,
@@ -285,7 +285,7 @@ export default {
     async updateMigrate(row) {
       try {
         const response = await axios.put(
-          `http://183.82.109.39:5000/api/updatemigrate/${row.id}`,
+          `http://localhost:5000/api/updatemigrate/${row.id}`,
           row
         );
         console.log("migrate Row updated:", response);

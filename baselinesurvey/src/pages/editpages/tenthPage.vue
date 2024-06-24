@@ -343,7 +343,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/insertloanparticular",
+          "http://localhost:5000/api/insertloanparticular",
           {
             id: row.id,
             headId: row.headId,
@@ -370,7 +370,7 @@ export default {
     async updateLoanParticular(row) {
       try {
         const response = await axios.put(
-          `http://183.82.109.39:5000/api/updateloanparticular/${row.id}`,
+          `http://localhost:5000/api/updateloanparticular/${row.id}`,
           row
         );
         console.log("LoanParticular Row updated:", response);
