@@ -60,6 +60,17 @@
         :manurechemicaldetails="manurechemical"
         :pestdiseasedetails="pestdisease"
         :loanparticular="loanparticulars"
+        :familyexpendituredetails="familyexpenditure"
+        :differentsourcedetails="differentsource"
+        :availabledrinkingwaterdetails="availabledrinkingwater"
+        :sourcequalitywaterdetails="sourcequalitywater"
+        :agricultureimplementsdetails="agricultureimplements"
+        :horticulturedetails="horticulture"
+        :fodderfeeddetails="fodderfeed"
+        :fodderfueldetails="fodderfuel"
+        :grazecattlecommunitydetails="grazecattlecommunity"
+        :householdassetdetails="householdasset"
+        :participationcommunityprogramdetails="participationcommunityprogram"
         @item-updated="onItemUpdated"
       ></edit-survey>
     </ion-content>
@@ -126,6 +137,17 @@ export default {
       manurechemical: [],
       pestdisease: [],
       loanparticulars: [],
+      familyexpenditure: [],
+      differentsource: [],
+      availabledrinkingwater: [],
+      sourcequalitywater: [],
+      agricultureimplements: [],
+      horticulture: [],
+      fodderfeed: [],
+      fodderfuel: [],
+      grazecattlecommunity: [],
+      householdasset: [],
+      participationcommunityprogram: [],
       selectedItem: null,
       RsiLogo: Logo,
     };
@@ -138,7 +160,7 @@ export default {
       }
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/items/searchByName`,
+          `http://localhost:5000/items/searchByName`,
           {
             params: { query: this.query },
           }
@@ -157,7 +179,7 @@ export default {
       // }
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/items/householdinfo`,
+          `http://localhost:5000/items/householdinfo`,
           {
             params: { id: id },
           }
@@ -177,7 +199,7 @@ export default {
       // }
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/items/landparticulars`,
+          `http://localhost:5000/items/landparticulars`,
           {
             params: { id: id },
           }
@@ -196,7 +218,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/items/incomecropsfromkharif`,
+          `http://localhost:5000/items/incomecropsfromkharif`,
           {
             params: { id: id },
           }
@@ -212,7 +234,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/items/incomecropsfromrabhi`,
+          `http://localhost:5000/items/incomecropsfromrabhi`,
           {
             params: { id: id },
           }
@@ -228,7 +250,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/items/livestockdetails`,
+          `http://localhost:5000/items/livestockdetails`,
           {
             params: { id: id },
           }
@@ -244,7 +266,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/items/migrationdetails`,
+          `http://localhost:5000/items/migrationdetails`,
           {
             params: { id: id },
           }
@@ -263,7 +285,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/api/landlessdetails`,
+          `http://localhost:5000/api/landlessdetails`,
           {
             params: { id: id },
           }
@@ -279,7 +301,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/api/govtbenefitdetails`,
+          `http://localhost:5000/api/govtbenefitdetails`,
           {
             params: { id: id },
           }
@@ -295,7 +317,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/api/manurechemicaldetails`,
+          `http://localhost:5000/api/manurechemicaldetails`,
           {
             params: { id: id },
           }
@@ -311,7 +333,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/api/pestdiseasedetails`,
+          `http://localhost:5000/api/pestdiseasedetails`,
           {
             params: { id: id },
           }
@@ -327,7 +349,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/api/loanparticulardetails`,
+          `http://localhost:5000/api/loanparticulardetails`,
           {
             params: { id: id },
           }
@@ -340,6 +362,233 @@ export default {
         );
       } catch (error) {
         console.log("Error is Getting from pestdiseasedetails details", error);
+      }
+    },
+    async getFamilyExpenditureDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/familyexpendituredetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.familyexpenditure = response.data;
+        console.log("familyexpendituredetails data", response.data);
+        console.log(
+          " familyexpendituredetails from search page",
+          this.familyexpenditure
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from familyexpendituredetails details",
+          error
+        );
+      }
+    },
+    async getDifferentSourceDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/differentsourceincomedetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.differentsource = response.data;
+        console.log("getAvailableDrinkingWaterDetails data", response.data);
+        console.log(
+          " getAvailableDrinkingWaterDetails from search page",
+          this.differentsource
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from getAvailableDrinkingWaterDetails details",
+          error
+        );
+      }
+    },
+    async getAvailableDrinkingWaterDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/drinkingwaterdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.availabledrinkingwater = response.data;
+        console.log("availabledrinkingwater data", response.data);
+        console.log(
+          " availabledrinkingwater from search page",
+          this.availabledrinkingwater
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from availabledrinkingwater details",
+          error
+        );
+      }
+    },
+    async getSourceQualityWaterDetails() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/sourcequalitywaterdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.sourcequalitywater = response.data;
+        console.log("sourcequalitywaterdetails data", response.data);
+        console.log(
+          " sourcequalitywaterdetails from search page",
+          this.sourcequalitywater
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from sourcequalitywaterdetails details",
+          error
+        );
+      }
+    },
+    async getAgriImplements() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/agricultureimplementsdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.agricultureimplements = response.data;
+        console.log("agricultureimplementsdetails data", response.data);
+        console.log(
+          " agricultureimplementsdetails from search page",
+          this.agricultureimplements
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from agricultureimplementsdetails details",
+          error
+        );
+      }
+    },
+    async getHorticulture() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/horticulturedetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.horticulture = response.data;
+        console.log("horticulturedetails data", response.data);
+        console.log(
+          " horticulturedetails from search page",
+          this.horticulturedetails
+        );
+      } catch (error) {
+        console.log("Error is Getting from horticulturedetails details", error);
+      }
+    },
+    async getFodderAndFeed() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/fodderfeeddetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.fodderfeed = response.data;
+        console.log("fodderfeed data", response.data);
+        console.log(" fodderfeed from search page", this.fodderfeed);
+      } catch (error) {
+        console.log("Error is Getting from fodderfeed details", error);
+      }
+    },
+    async getFodderAndFuel() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/fodderfueldetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.fodderfuel = response.data;
+        console.log("fodderfueldetails data", response.data);
+        console.log(" fodderfueldetails from search page", this.fodderfuel);
+      } catch (error) {
+        console.log("Error is Getting from fodderfueldetails details", error);
+      }
+    },
+    async getGrazeCattleAnimal() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/grazecattlecommunitydetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.grazecattlecommunity = response.data;
+        console.log("grazecattlecommunitydetails data", response.data);
+        console.log(
+          " grazecattlecommunitydetails from search page",
+          this.grazecattlecommunity
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from grazecattlecommunitydetails details",
+          error
+        );
+      }
+    },
+    async getHouseHoldAssets() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/grazecattlecommunitydetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.householdasset = response.data;
+        console.log("householdassetdetails data", response.data);
+        console.log(
+          " householdassetdetails from search page",
+          this.householdasset
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from householdassetdetails details",
+          error
+        );
+      }
+    },
+    async getParticipationCommunity() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/participationcommunityprogramdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.participationcommunityprogram = response.data;
+        console.log("participationcommunityprogram data", response.data);
+        console.log(
+          " participationcommunityprogram from search page",
+          this.participationcommunityprogram
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from participationcommunityprogram details",
+          error
+        );
       }
     },
     clearSearch() {
@@ -360,6 +609,16 @@ export default {
       this.getManureChemicalDetails();
       this.getPestDiseaseDetails();
       this.getLoanParticularsDetails();
+      this.getFamilyExpenditureDetails();
+      this.getDifferentSourceDetails();
+      this.getAvailableDrinkingWaterDetails();
+      this.getSourceQualityWaterDetails();
+      this.getAgriImplements();
+      this.getHorticulture();
+      this.getFodderAndFeed();
+      this.getFodderAndFuel();
+      this.getGrazeCattleAnimal();
+      this.getHouseHoldAssets();
       this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {

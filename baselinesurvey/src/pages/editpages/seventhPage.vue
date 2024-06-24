@@ -181,7 +181,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/insertgovtbenefit",
+          "http://localhost:5000/api/insertgovtbenefit",
 
           {
             id: row.id,
@@ -199,7 +199,7 @@ export default {
     async updateGovtBenefit(row) {
       try {
         const response = await axios.put(
-          `http://183.82.109.39:5000/api/updategovtbenefit/${row.id}`,
+          `http://localhost:5000/api/updategovtbenefit/${row.id}`,
           row
         );
         console.log("govt banefit Row updated:", response);

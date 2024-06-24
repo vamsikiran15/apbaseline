@@ -9,15 +9,14 @@
       <ion-card-content>
         <ion-list>
           <ion-item
-            v-for="item in loanparticulardetails"
+            v-for="item in familyexpenditure"
             :key="item.id"
-            @click="selectLoanParticulars(item)"
+            @click="selectFamilyExp(item)"
           >
-            {{ item.loan_particular }}
-            {{ item.source_bank }}
+            {{ item.items }}
+            {{ item.expenditure_per_last_year }}
           </ion-item>
         </ion-list>
-
         <ion-select
           class="ion-margin-top"
           interface="popover"
@@ -25,7 +24,7 @@
           label-placement="floating"
           placeholder="Items"
           fill="outline"
-          v-model="newRowLoanParticulars.loan_particular"
+          v-model="newRowFamilyExp.items"
         >
           <ion-select-option value="Food">Food</ion-select-option>
           <ion-select-option value="Education">Education</ion-select-option>
@@ -57,8 +56,19 @@
           fill="outline"
           label="Expenditure Per Last Year"
           label-placement="floating"
-          v-model="newRowLoanParticulars.source_total"
+          v-model="newRowFamilyExp.expenditure_per_last_year"
         ></ion-input>
+        <ion-button
+          class="ion-margin-top"
+          expand="block"
+          @click="UpdateFamilyExpData()"
+          ><ion-icon
+            class="ion-margin-end"
+            name="add-circle"
+            slot="icon-only"
+          ></ion-icon
+          >Update Family Expenditure Details</ion-button
+        >
       </ion-card-content>
     </ion-card>
   </div>
@@ -90,28 +100,17 @@ import axios from "axios";
 export default {
   props: {
     editedItem: Object,
-    loanparticulardetails: Object,
+    familyexpenditure: Object,
   },
   data() {
     return {
-      newRowLoanParticulars: {
-        loan_particular: "",
+      newRowFamilyExp: {
+        items: "",
         headId: "",
         id: "",
-        source_bank: "",
-        source_money_lender: "",
-        source_dealer: "",
-        source_fellow_farmer: "",
-        source_shg: "",
-        other_source: "",
-        source_total: "",
-        purpose_agriculture: "",
-        purpose_consumtion: "",
-        education: "",
-        marriage: "",
-        others: "",
+        expenditure_per_last_year: "",
       },
-      loanparticularRows: [],
+      familyExpRows: [],
     };
   },
   components: {
@@ -137,28 +136,17 @@ export default {
     IonButton,
   },
   methods: {
-    selectLoanParticulars(item) {
-      this.newRowLoanParticulars.id = item.id;
-      this.newRowLoanParticulars.headId = item.headId;
-      this.newRowLoanParticulars.loan_particular = item.loan_particular;
-      this.newRowLoanParticulars.source_bank = item.source_bank;
-      this.newRowLoanParticulars.source_money_lender = item.source_money_lender;
-      this.newRowLoanParticulars.source_dealer = item.source_dealer;
-      this.newRowLoanParticulars.source_fellow_farmer =
-        item.source_fellow_farmer;
-      this.newRowLoanParticulars.source_shg = item.source_shg;
-      this.newRowLoanParticulars.other_source = item.other_source;
-      this.newRowLoanParticulars.source_total = item.source_total;
-      this.newRowLoanParticulars.purpose_agriculture = item.purpose_agriculture;
-      this.newRowLoanParticulars.purpose_consumtion = item.purpose_consumtion;
-      this.newRowLoanParticulars.education = item.education;
-      this.newRowLoanParticulars.marriage = item.marriage;
-      this.newRowLoanParticulars.others = item.others;
+    selectFamilyExp(item) {
+      this.newRowFamilyExp.id = item.id;
+      this.newRowFamilyExp.headId = item.headId;
+      this.newRowFamilyExp.items = item.items;
+      this.newRowFamilyExp.expenditure_per_last_year =
+        item.expenditure_per_last_year;
     },
-    updateLoanParticularrows() {
+    updateFamilyExprows() {
       // Check if any field is not empty
       if (
-        Object.values(this.newRowLoanParticulars).some((field) => {
+        Object.values(this.newRowFamilyExp).some((field) => {
           if (typeof field === "string") {
             return field.trim() !== "";
           } else if (Array.isArray(field)) {
@@ -168,36 +156,25 @@ export default {
           }
         })
       ) {
-        this.loanparticularRows.push({ ...this.newRowLoanParticulars }); // Add a copy of newRow to rows
-        this.clearLoanParticularFields(); // Clear the input fields
+        this.familyExpRows.push({ ...this.newRowFamilyExp }); // Add a copy of newRow to rows
+        this.clearFamilyExpFields(); // Clear the input fields
       }
     },
-    clearLoanParticularFields() {
-      this.newRowLoanParticulars = {
-        loan_particular: "",
+    clearFamilyExpFields() {
+      this.newRowFamilyExp = {
+        items: "",
         headId: "",
         id: "",
-        source_bank: "",
-        source_money_lender: "",
-        source_dealer: "",
-        source_fellow_farmer: "",
-        source_shg: "",
-        other_source: "",
-        source_total: "",
-        purpose_agriculture: "",
-        purpose_consumtion: "",
-        education: "",
-        marriage: "",
-        others: "",
+        expenditure_per_last_year: "",
       };
     },
-    removeLoanParticular(index) {
-      this.loanparticularRows.splice(index, 1);
+    removeFamilyExp(index) {
+      this.familyExpRows.splice(index, 1);
     },
     // migrate data updation
-    async UpdateLoanParticularData() {
-      this.updateLoanParticularrows();
-      const newData = this.loanparticularRows.map((row) => ({
+    async UpdateFamilyExpData() {
+      this.updateFamilyExprows();
+      const newData = this.familyExpRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
       }));
@@ -205,53 +182,42 @@ export default {
       for (const row of newData) {
         if (row.id) {
           // Update existing row
-          console.log("LoanParticular ", row);
-          await this.updateLoanParticular(row);
+          console.log("updateFamilyExp ", row);
+          await this.updateFamilyExp(row);
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
-          console.log("LoanParticular updated data", row);
-          await this.insertLoanParticular(row);
+          console.log("insertFamilyExp  data", row);
+          await this.insertFamilyExp(row);
         }
       }
     },
-    async insertLoanParticular(row) {
+    async insertFamilyExp(row) {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/insertloanparticular",
+          "http://localhost:5000/api/insertfamilyexpenditure",
           {
             id: row.id,
             headId: row.headId,
-            loan_particular: row.loan_particular,
-            source_bank: row.source_bank,
-            source_money_lender: row.source_money_lender,
-            source_dealer: row.source_dealer,
-            source_fellow_farmer: row.source_fellow_farmer,
-            source_shg: row.source_shg,
-            other_source: row.other_source,
-            source_total: row.source_total,
-            purpose_agriculture: row.purpose_agriculture,
-            purpose_consumtion: row.purpose_consumtion,
-            education: row.education,
-            marriage: row.marriage,
-            others: row.others,
+            items: row.items,
+            expenditure_per_last_year: row.expenditure_per_last_year,
           }
         );
-        console.log("LoanParticular inserted:", response);
+        console.log("familyexpenditure inserted:", response);
       } catch (error) {
-        console.error("Error inserting LoanParticular row:", error);
+        console.error("Error inserting familyexpenditure row:", error);
       }
     },
-    async updateLoanParticular(row) {
+    async updateFamilyExp(row) {
       try {
         const response = await axios.put(
-          `http://183.82.109.39:5000/api/updateloanparticular/${row.id}`,
+          `http://localhost:5000/api/updatefamilyexpenditure/${row.id}`,
           row
         );
-        console.log("LoanParticular Row updated:", response);
+        console.log("familyexpenditure Row updated:", response);
       } catch (error) {
-        console.error("Error updating LoanParticular row:", error);
+        console.error("Error updating familyexpenditure row:", error);
       }
     },
   },
