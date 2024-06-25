@@ -1343,16 +1343,33 @@
             />
           </div>
           <div v-if="step === 22">
-            <TwentysecondPage></TwentysecondPage>
+            <TwentysecondPage
+              :awarenessadoptiontechnologydetails="
+                awarenessadoptiontechnologydetails
+              "
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 23">
-            <TwentythirdPage></TwentythirdPage>
+            <TwentythirdPage
+              :membershipdetails="membershipdetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 24">
-            <TwentyfourthPage></TwentyfourthPage>
+            <TwentyfourthPage
+              :anyschemepreviousprojectdetails="anyschemepreviousprojectdetails"
+              :editedItem="editedItem"
+            />
           </div>
           <div v-if="step === 25">
-            <TwentyfifthPage></TwentyfifthPage>
+            <TwentyfifthPage
+              :awarewatershedstatusdetails="awarewatershedstatusdetails"
+              :receivedtrainingwatershedstatusdetails="
+                receivedtrainingwatershedstatusdetails
+              "
+              :editedItem="editedItem"
+            />
           </div>
         </div>
       </div>
@@ -1424,10 +1441,10 @@ import EighteenthPage from "./editpages/eighteenthPage.vue";
 import NinteenthPage from "./editpages/ninteenthPage.vue";
 import TwentythPage from "./editpages/twentythPage.vue";
 import TwentyfirstPage from "./editpages/twentyfirstPage.vue";
-import TwentysecondPage from "./twentysecondPage.vue";
-import TwentythirdPage from "./twentythirdPage.vue";
-import TwentyfourthPage from "./twentyfourthPage.vue";
-import TwentyfifthPage from "./twentyfifthPage.vue";
+import TwentysecondPage from "./editpages/twentysecondPage.vue";
+import TwentythirdPage from "./editpages/twentythirdPage.vue";
+import TwentyfourthPage from "./editpages/twentyfourthPage.vue";
+import TwentyfifthPage from "./editpages/twentyfifthPage.vue";
 import axios from "axios";
 export default {
   props: {
@@ -1455,6 +1472,11 @@ export default {
     grazecattlecommunitydetails: Object,
     householdassetdetails: Object,
     participationcommunityprogramdetails: Object,
+    awarenessadoptiontechnologydetails: Object,
+    membershipdetails: Object,
+    anyschemepreviousprojectdetails: Object,
+    awarewatershedstatusdetails: Object,
+    receivedtrainingwatershedstatusdetails: Object,
   },
   data() {
     return {

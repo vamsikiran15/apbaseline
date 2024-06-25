@@ -70,7 +70,14 @@
         :fodderfueldetails="fodderfuel"
         :grazecattlecommunitydetails="grazecattlecommunity"
         :householdassetdetails="householdasset"
+        :awarenessadoptiontechnologydetails="awarenessadoptiontechnology"
+        :membershipdetails="membership"
         :participationcommunityprogramdetails="participationcommunityprogram"
+        :anyschemepreviousprojectdetails="anyschemepreviousproject"
+        :awarewatershedstatusdetails="awarewatershedstatus"
+        :receivedtrainingwatershedstatusdetails="
+          receivedtrainingwatershedstatus
+        "
         @item-updated="onItemUpdated"
       ></edit-survey>
     </ion-content>
@@ -148,6 +155,11 @@ export default {
       grazecattlecommunity: [],
       householdasset: [],
       participationcommunityprogram: [],
+      awarenessadoptiontechnology: [],
+      membership: [],
+      anyschemepreviousproject: [],
+      awarewatershedstatus: [],
+      receivedtrainingwatershedstatus: [],
       selectedItem: null,
       RsiLogo: Logo,
     };
@@ -591,6 +603,113 @@ export default {
         );
       }
     },
+    async getAwarenessAdoption() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/awarenessadoptiontechnologydetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.awarenessadoptiontechnology = response.data;
+        console.log("awarenessadoptiontechnologydetails data", response.data);
+        console.log(
+          " awarenessadoptiontechnologydetails from search page",
+          this.awarenessadoptiontechnology
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from awarenessadoptiontechnologydetails details",
+          error
+        );
+      }
+    },
+    async getMembership() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/membershipdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.membership = response.data;
+        console.log("membershipdetails data", response.data);
+        console.log(" membershipdetails from search page", this.membership);
+      } catch (error) {
+        console.log("Error is Getting from membershipdetails details", error);
+      }
+    },
+    async getAnyScheme() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/anyschemepreviousprojectdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.anyschemepreviousproject = response.data;
+        console.log("anyschemepreviousprojectdetails data", response.data);
+        console.log(
+          " anyschemepreviousprojectdetails from search page",
+          this.anyschemepreviousprojectdetails
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from anyschemepreviousprojectdetails details",
+          error
+        );
+      }
+    },
+    async getAwareWaterShedStatus() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/awarewatershedstatusdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.awarewatershedstatus = response.data;
+        console.log("awarewatershedstatusdetails data", response.data);
+        console.log(
+          " awarewatershedstatusdetails from search page",
+          this.awarewatershedstatus
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from awarewatershedstatusdetails details",
+          error
+        );
+      }
+    },
+    async getReceivedTrainingWaterShedStatus() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/receivedtrainingwatershedstatusdetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.receivedtrainingwatershedstatus = response.data;
+        console.log(
+          "receivedtrainingwatershedstatusdetails data",
+          response.data
+        );
+        console.log(
+          " receivedtrainingwatershedstatusdetails from search page",
+          this.awarewatershedstatus
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from receivedtrainingwatershedstatusdetails details",
+          error
+        );
+      }
+    },
     clearSearch() {
       this.query = ""; // Clear the search bar
       this.items = []; // Clear the item list
@@ -619,6 +738,12 @@ export default {
       this.getFodderAndFuel();
       this.getGrazeCattleAnimal();
       this.getHouseHoldAssets();
+      this.getParticipationCommunity();
+      this.getAwarenessAdoption();
+      this.getMembership();
+      this.getAnyScheme();
+      this.getAwareWaterShedStatus();
+      this.getReceivedTrainingWaterShedStatus();
       this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {
