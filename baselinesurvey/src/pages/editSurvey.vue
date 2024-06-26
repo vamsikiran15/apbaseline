@@ -43,9 +43,16 @@
                       label-placement="floating"
                       placeholder="Select District"
                       fill="outline"
+                      v-model="editedItem.dist_name"
+                      @update:modelValue="
+                        getWcc();
+                        getMandal();
+                      "
                     >
-                      <ion-select-option value="apples"
-                        >District 1</ion-select-option
+                      <ion-select-option
+                        v-for="items in district"
+                        :key="items.id"
+                        >{{ items.dist_name }}</ion-select-option
                       >
                     </ion-select>
                   </ion-row>
@@ -57,16 +64,11 @@
                       label-placement="floating"
                       placeholder="Select WCC"
                       fill="outline"
+                      v-model="editedItem.wcc_name"
                     >
-                      <ion-select-option value="apples"
-                        >District 1</ion-select-option
-                      >
-                      <ion-select-option value="oranges"
-                        >District 2</ion-select-option
-                      >
-                      <ion-select-option value="bananas"
-                        >District 3</ion-select-option
-                      >
+                      <ion-select-option v-for="items in wcc" :key="items.id">{{
+                        items.wcc_name
+                      }}</ion-select-option>
                     </ion-select>
                   </ion-row>
                   <ion-row class="ion-padding-top">
@@ -1512,6 +1514,13 @@ export default {
         "24 Have been the beneficiary of any scheme of project previously",
         "25 Soil, Land & Water Conservation",
       ],
+      district: [],
+      wcc: [],
+      project: [],
+      habitation: [],
+      microwatershed: [],
+      mandal: [],
+      gramPanchayat: [],
       newRow: {
         id: "",
         headId: "",
@@ -1696,6 +1705,12 @@ export default {
       },
     },
   },
+  created() {
+    this.getDistricts();
+    this.getWcc();
+    this.getProject();
+    this.getWaterShedVillage();
+  },
   methods: {
     nextStep() {
       if (this.currentStep < this.steps.length) {
@@ -1711,6 +1726,77 @@ export default {
     },
     navigateToStep(event) {
       this.currentStep = event.detail.value;
+    },
+    async getDistricts() {
+      try {
+        const response = await axios.get("http://localhost:5000/api/districts");
+        this.district = response.data;
+      } catch (error) {
+        console.error("error in get districts function", error);
+      }
+    },
+    async getWcc() {
+      try {
+        const response = await axios.get("http://localhost:5000/api/wcc", {
+          params: { id: this.editedItem.dist_id },
+        });
+        this.wcc = response.data;
+      } catch (error) {
+        console.error("error in getwcc function", error);
+      }
+    },
+    async getProject() {
+      try {
+        const response = await axios.get("http://localhost:5000/api/projects", {
+          params: { id: this.editedItem.wcc_id },
+        });
+        this.project = response.data;
+      } catch (error) {
+        console.error("Error in getProject function", error);
+      }
+    },
+    async getWaterShedVillage() {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/watershed",
+          { params: { id: this.editedItem.project_id } }
+        );
+        this.watershed = response.data;
+      } catch (error) {
+        console.error("error in getwatershedvillage function", error);
+      }
+    },
+    async getHabitation() {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/habitation",
+          { params: { id: this.editedItem.micro_watershed_id } }
+        );
+        this.habitation = response.data;
+      } catch (error) {
+        console.error("error in gethabitation function", error);
+      }
+    },
+    async getMandal() {
+      try {
+        const response = await axios.get("http://localhost:5000/api/mandal", {
+          params: { id: this.selectedDistrict },
+        });
+        this.mandal = response.data;
+      } catch (error) {
+        console.error("error in getMandal function", error);
+      }
+    },
+    async getGramPanchayat() {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/grampanchayat",
+          { params: { id: this.nameOfTheMicroWatershed } }
+        );
+        this.gramPanchayat = response.data;
+      } catch (error) {
+        console.error("error in getgrampanchayat function", error);
+      }
     },
     addRows() {
       // Check if any field is not empty

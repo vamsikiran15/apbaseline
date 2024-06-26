@@ -20,6 +20,24 @@
               <h4>HOUSEHOLD SOCIO - ECONOMIC SURVEY</h4>
             </div>
             <ion-searchbar
+              v-model="projectquery"
+              @ionInput="searchProject"
+              @ionClear="clearSearch"
+              debounce="500"
+              placeholder="Enter Project Name"
+            ></ion-searchbar>
+            <ion-list>
+              <ion-item
+                v-for="item in projects"
+                :key="item.id"
+                @click="selectProject(item)"
+              >
+                {{ item.project_name }}
+              </ion-item>
+            </ion-list>
+
+            <ion-searchbar
+              v-if="selectedProject"
               v-model="query"
               @ionInput="searchInfo"
               @ionClear="clearSearch"
@@ -133,7 +151,9 @@ export default {
   data() {
     return {
       query: "",
+      projectquery: "",
       items: [],
+      projects: [],
       householdinfo: [],
       landparticulars: [],
       incomeKharif: [],
@@ -163,10 +183,30 @@ export default {
       receivedtrainingwatershedstatus: [],
       dateserveyorname: [],
       selectedItem: null,
+      selectedProject: null,
       RsiLogo: Logo,
     };
   },
   methods: {
+    async searchProject() {
+      if (this.projectquery.trim() === "") {
+        this.projects = [];
+        return;
+      }
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/items/searchByProject`,
+          {
+            params: { query: this.projectquery },
+          }
+        );
+        this.projects = response.data;
+        console.log("^^^^^^^^^^^^^^^^^^^^^", this.projects);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     async searchInfo() {
       if (this.query.trim() === "") {
         this.items = [];
@@ -738,6 +778,10 @@ export default {
       this.query = ""; // Clear the search bar
       this.items = []; // Clear the item list
       this.selectedItem = null; // Clear the selected item
+    },
+    selectProject(item) {
+      this.selectedProject = { ...item };
+      this.projects = [];
     },
     selectItem(item) {
       this.selectedItem = { ...item }; // Copy the selected item
