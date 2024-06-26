@@ -1368,6 +1368,7 @@
               :receivedtrainingwatershedstatusdetails="
                 receivedtrainingwatershedstatusdetails
               "
+              :dateserveyornamedetails="dateserveyornamedetails"
               :editedItem="editedItem"
             />
           </div>
@@ -1477,6 +1478,7 @@ export default {
     anyschemepreviousprojectdetails: Object,
     awarewatershedstatusdetails: Object,
     receivedtrainingwatershedstatusdetails: Object,
+    dateserveyornamedetails: Object,
   },
   data() {
     return {

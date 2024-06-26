@@ -22,7 +22,10 @@
           26.Have you received any training in watershed development programs
           soil,land & water conservation
         </ion-row>
-        <ion-radio-group value="awarenessprograms">
+        <ion-radio-group
+          value="havereceived"
+          v-model="selectedOptionHaveReceived"
+        >
           <ion-radio value="Yes" label-placement="fixed" class="ion-padding"
             >Yes</ion-radio
           >
@@ -31,10 +34,13 @@
           >
         </ion-radio-group>
 
-        <ion-text>Date And Time</ion-text>
+        <ion-text>Date And Time {{ selectedDateServeyorName.date }}</ion-text>
         <ion-datetime-button datetime="datetime"></ion-datetime-button>
         <ion-modal :keep-contents-mounted="true">
-          <ion-datetime id="datetime"></ion-datetime>
+          <ion-datetime
+            id="datetime"
+            v-model="selectedDateServeyorName.date"
+          ></ion-datetime>
         </ion-modal>
 
         <ion-input
@@ -43,14 +49,20 @@
           fill="outline"
           label="Name of the Surveyor"
           label-placement="floating"
+          v-model="selectedDateServeyorName.serveyor_name"
         ></ion-input>
-        <ion-button class="ion-margin-top" expand="block" @click="saveData"
+        <ion-button
+          class="ion-margin-top"
+          expand="block"
+          @click="
+            saveData(), saveHaveReceivedData(), saveUpdateDateServeyouName()
+          "
           ><ion-icon
             class="ion-margin-end"
             name="add-circle"
             slot="icon-only"
           ></ion-icon
-          >Update Awareness</ion-button
+          >Update Conclusion</ion-button
         >
       </ion-card-content>
     </ion-card>
@@ -81,6 +93,8 @@ import {
   IonDatetime,
   IonDatetimeButton,
   IonModal,
+  IonText,
+  IonIcon,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -88,26 +102,27 @@ export default {
     editedItem: Object,
     awarewatershedstatusdetails: Object,
     receivedtrainingwatershedstatusdetails: Object,
+    dateserveyornamedetails: Object,
   },
   data() {
     return {
       selectedOption: null,
+      selectedOptionHaveReceived: null,
+      selectedDateServeyorName: null,
     };
   },
   created() {
-    if (this.awarewatershedstatusdetails.length > 0) {
-      console.log("$$$$$$$$$$", this.awarewatershedstatusdetails.length);
-      this.selectedOption = this.awarewatershedstatusdetails[0].status;
-    } else {
-      this.awarewatershedstatusdetails[0] = [
-        {
-          status: this.selectedOption,
-          id: "",
-          headId: this.editedItem.id,
-        },
-      ];
-      console.log("*********************", this.awarewatershedstatusdetails[0]);
-    }
+    this.awarefunc();
+    this.haveReceived();
+  },
+  watch: {
+    dateserveyornamedetails: {
+      immediate: true,
+      handler(newVal) {
+        // Ensure to make a deep copy of the received item
+        this.selectedDateServeyorName = newVal ? { ...newVal } : null;
+      },
+    },
   },
   components: {
     IonPage,
@@ -133,12 +148,66 @@ export default {
     IonDatetime,
     IonDatetimeButton,
     IonModal,
+    IonText,
+    IonIcon,
   },
 
   methods: {
+    awarefunc() {
+      if (this.awarewatershedstatusdetails.length > 0) {
+        console.log("$$$$$$$$$$", this.awarewatershedstatusdetails.length);
+        this.selectedOption = this.awarewatershedstatusdetails[0].status;
+      } else {
+        this.awarewatershedstatusdetails[0] = [
+          {
+            status: this.selectedOption,
+            id: "",
+            headId: this.editedItem.id,
+          },
+        ];
+        console.log(
+          "*********************",
+          this.awarewatershedstatusdetails[0]
+        );
+      }
+    },
+    haveReceived() {
+      if (this.receivedtrainingwatershedstatusdetails.length > 0) {
+        console.log(
+          "$$$$$$$$$$",
+          this.receivedtrainingwatershedstatusdetails.length
+        );
+        this.selectedOptionHaveReceived =
+          this.receivedtrainingwatershedstatusdetails[0].status;
+      } else {
+        this.receivedtrainingwatershedstatusdetails[0] = [
+          {
+            status: this.selectedOptionHaveReceived,
+            id: "",
+            headId: this.editedItem.id,
+          },
+        ];
+        console.log(
+          "*********************",
+          this.receivedtrainingwatershedstatusdetails[0]
+        );
+      }
+    },
     async saveData() {
       try {
-        if (!this.awarewatershedstatusdetails[0].status) {
+        const resp = await axios.get(
+          `http://localhost:5000/api/awarewatershedstatusdetails`,
+          {
+            params: { id: this.editedItem.id },
+          }
+        );
+        console.log(
+          "__________________id",
+          this.editedItem.id,
+          "&&&&&&&&&&",
+          resp.data
+        );
+        if (resp.data.length === 0) {
           // If status is null or undefined, perform an insert (POST request)
           await axios.post(
             `http://localhost:5000/api/insertawarewatershedstatus`,
@@ -149,11 +218,22 @@ export default {
             }
           );
         } else {
+          console.log(
+            "__________________update id",
+            this.editedItem.id,
+            "&&&&&&&&&&",
+            resp.data
+          );
           // If status is not null, perform an update (PUT request)
           this.awarewatershedstatusdetails[0].status = this.selectedOption; // Update responseData locally
           await axios.put(
-            `http://localhost:5000/api/updateawarewatershedstatus/${this.awarewatershedstatusdetails[0].id}`,
-            this.awarewatershedstatusdetails[0]
+            `http://localhost:5000/api/updateawarewatershedstatus/${this.editedItem.id}`,
+            {
+              id: this.editedItem.id,
+              status: this.selectedOption,
+              headId: this.editedItem.id,
+              // Add other properties if necessary for insert
+            }
           );
         }
         console.log("Data saved successfully");
@@ -161,34 +241,101 @@ export default {
         console.error("Error saving data:", error);
       }
     },
-
-    // async insertAwareWatershedStatus(row) {
-    //   try {
-    //     console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
-    //     const response = await axios.post(
-    //       "http://localhost:5000/api/insertawarewatershedstatus",
-    //       {
-    //         id: row.id,
-    //         headId: row.headId,
-    //         status: row.status,
-    //       }
-    //     );
-    //     console.log("AwareWatershedStatus inserted:", response);
-    //   } catch (error) {
-    //     console.error("Error inserting AwareWatershedStatus row:", error);
-    //   }
-    // },
-    // async updateAwareWatershedStatus(row) {
-    //   try {
-    //     const response = await axios.put(
-    //       `http://localhost:5000/api/updateawarewatershedstatus/${row.id}`,
-    //       row
-    //     );
-    //     console.log("AwareWatershedStatus Row updated:", response);
-    //   } catch (error) {
-    //     console.error("Error updating AwareWatershedStatus row:", error);
-    //   }
-    // },
+    async saveHaveReceivedData() {
+      try {
+        const resp = await axios.get(
+          `http://localhost:5000/api/receivedtrainingwatershedstatusdetails`,
+          {
+            params: { id: this.editedItem.id },
+          }
+        );
+        console.log(
+          "__________________id",
+          this.editedItem.id,
+          "&&&&&&&&&&",
+          resp.data
+        );
+        if (resp.data.length === 0) {
+          // If status is null or undefined, perform an insert (POST request)
+          await axios.post(
+            `http://localhost:5000/api/insertreceivedtrainingwatershedstatus`,
+            {
+              status: this.selectedOptionHaveReceived,
+              headId: this.editedItem.id,
+              // Add other properties if necessary for insert
+            }
+          );
+        } else {
+          console.log(
+            "__________________update id",
+            this.editedItem.id,
+            "&&&&&&&&&&",
+            resp.data
+          );
+          // If status is not null, perform an update (PUT request)
+          this.receivedtrainingwatershedstatusdetails[0].status =
+            this.selectedOptionHaveReceived; // Update responseData locally
+          await axios.put(
+            `http://localhost:5000/api/updatereceivedtrainingwatershedstatus/${this.editedItem.id}`,
+            {
+              id: this.editedItem.id,
+              status: this.selectedOptionHaveReceived,
+              headId: this.editedItem.id,
+              // Add other properties if necessary for insert
+            }
+          );
+        }
+        console.log("Data saved successfully");
+      } catch (error) {
+        console.error("Error saving data:", error);
+      }
+    },
+    async saveUpdateDateServeyouName() {
+      const resp = await axios.get(
+        `http://localhost:5000/api/dateserveyornamedetails`,
+        {
+          params: { id: this.editedItem.id },
+        }
+      );
+      if (resp.data.length === 0) {
+        this.insertDateServename();
+      } else {
+        this.updateDateServeName();
+      }
+    },
+    async insertDateServename() {
+      try {
+        console.log("&&&&&&&&&&&&&&&&&&&&&&");
+        const response = await axios.post(
+          "http://localhost:5000/api/insertdateserveyor",
+          {
+            id: this.selectedDateServeyorName.id,
+            headId: this.editedItem.id,
+            date: this.selectedDateServeyorName.date,
+            serveyor_name: this.selectedDateServeyorName.serveyor_name,
+          }
+        );
+        console.log("insertdateserveyor inserted:", response);
+      } catch (error) {
+        console.error("Error inserting insertdateserveyor row:", error);
+      }
+    },
+    async updateDateServeName() {
+      try {
+        const response = await axios.put(
+          `http://localhost:5000/api/updatedateserveyor/${this.editedItem.id}`,
+          {
+            id: this.editedItem.id,
+            headId: this.editedItem.headId,
+            date: this.selectedDateServeyorName.date,
+            serveyor_name: this.selectedDateServeyorName.serveyor_name,
+          }
+        );
+        console.log("updatedateserveyor Row updated:", response);
+      } catch (error) {
+        console.error("Error updating updatedateserveyor row:", error);
+      }
+    },
   },
 };
 </script>

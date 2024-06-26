@@ -78,6 +78,7 @@
         :receivedtrainingwatershedstatusdetails="
           receivedtrainingwatershedstatus
         "
+        :dateserveyornamedetails="dateserveyorname"
         @item-updated="onItemUpdated"
       ></edit-survey>
     </ion-content>
@@ -160,6 +161,7 @@ export default {
       anyschemepreviousproject: [],
       awarewatershedstatus: [],
       receivedtrainingwatershedstatus: [],
+      dateserveyorname: [],
       selectedItem: null,
       RsiLogo: Logo,
     };
@@ -710,6 +712,28 @@ export default {
         );
       }
     },
+    async getDateServeyorName() {
+      const id = this.selectedItem.id;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/dateserveyornamedetails`,
+          {
+            params: { id: id },
+          }
+        );
+        this.dateserveyorname = response.data;
+        console.log("dateserveyornamedetails data", response.data);
+        console.log(
+          " dateserveyornamedetails from search page",
+          this.dateserveyorname
+        );
+      } catch (error) {
+        console.log(
+          "Error is Getting from dateserveyornamedetails details",
+          error
+        );
+      }
+    },
     clearSearch() {
       this.query = ""; // Clear the search bar
       this.items = []; // Clear the item list
@@ -744,6 +768,7 @@ export default {
       this.getAnyScheme();
       this.getAwareWaterShedStatus();
       this.getReceivedTrainingWaterShedStatus();
+      this.getDateServeyorName();
       this.items = []; // Clear the item list
     },
     onItemUpdated(updatedItem) {
