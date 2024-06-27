@@ -3,10 +3,10 @@
     <ion-header>
       <ion-toolbar>
         <ion-img :src="RsiLogo" class="imgsize"></ion-img>
-        <ion-title style="font-size: 1.5vh"> </ion-title>
-        <ion-buttons slot="start">
+        <!-- <ion-title style="font-size: 1.5vh"> </ion-title> -->
+        <!-- <ion-buttons slot="start">
           <ion-back-button default-href="/" />
-        </ion-buttons>
+        </ion-buttons> -->
         <!-- <div class="ion-text-center">
           <h4>RSI LLP</h4>
         </div> -->
@@ -28,7 +28,7 @@
             ></ion-searchbar>
             <ion-list>
               <ion-item
-                v-for="item in projects"
+                v-for="item in filteredProjects"
                 :key="item.id"
                 @click="selectProject(item)"
               >
@@ -39,14 +39,13 @@
             <ion-searchbar
               v-if="selectedProject"
               v-model="query"
-              @ionInput="searchInfo"
               @ionClear="clearSearch"
               debounce="500"
               placeholder="Enter Aadhar Number"
             ></ion-searchbar>
             <ion-list>
               <ion-item
-                v-for="item in items"
+                v-for="item in sortedFilteredfilteredNames"
                 :key="item.id"
                 @click="selectItem(item)"
               >
@@ -125,7 +124,7 @@ import {
 import axios from "axios";
 import EditItem from "@/pages/editPage.vue";
 import EditSurvey from "@/pages/editSurvey.vue";
-import Logo from "../assets/img/rsilogotwo.jpg";
+import Logo from "../assets/img/RSIWHITEL_Logo.png";
 export default {
   components: {
     IonPage,
@@ -187,6 +186,26 @@ export default {
       RsiLogo: Logo,
     };
   },
+  computed: {
+    filteredProjects() {
+      return this.projects.filter((project) =>
+        project.project_name
+          .toLowerCase()
+          .includes(this.projectquery.toLowerCase())
+      );
+    },
+    filteredNames() {
+      if (!this.selectedProject) return [];
+      return this.items.filter((item) =>
+        item.head_of_the_family.toLowerCase().includes(this.query)
+      );
+    },
+    sortedFilteredfilteredNames() {
+      return this.filteredNames.sort((a, b) =>
+        a.head_of_the_family.localeCompare(b.head_of_the_family)
+      );
+    },
+  },
   methods: {
     async searchProject() {
       if (this.projectquery.trim() === "") {
@@ -201,25 +220,23 @@ export default {
           }
         );
         this.projects = response.data;
-        console.log("^^^^^^^^^^^^^^^^^^^^^", this.projects);
+        console.log("^^^^^^^^^^^^^^^^^^^^^", this.selectedProject);
       } catch (error) {
         console.error(error);
       }
     },
 
-    async searchInfo() {
-      if (this.query.trim() === "") {
-        this.items = [];
-        return;
-      }
+    async fetchItemsForProject(id) {
+      console.log("filster name for project", id);
       try {
         const response = await axios.get(
-          `http://localhost:5000/items/searchByName`,
+          `http://localhost:5000/items/searchAadharByProject`,
           {
-            params: { query: this.query },
+            params: { query: id },
           }
         );
         this.items = response.data;
+        console.log("name filter ", this.items);
       } catch (error) {
         console.error(error);
       }
@@ -774,14 +791,23 @@ export default {
         );
       }
     },
+    searchInfo() {
+      // Additional logic for info search can go here
+    },
     clearSearch() {
       this.query = ""; // Clear the search bar
       this.items = []; // Clear the item list
       this.selectedItem = null; // Clear the selected item
     },
+
     selectProject(item) {
+      // this.selectedProject = { ...item };
+      // console.log("selected project is ", this.selectedProject);
+      // this.projects = [];
+
       this.selectedProject = { ...item };
-      this.projects = [];
+      console.log("asdfjlkasjdfkdsajklf", this.selectedProject.id);
+      this.fetchItemsForProject(this.selectedProject.id);
     },
     selectItem(item) {
       this.selectedItem = { ...item }; // Copy the selected item
@@ -829,6 +855,6 @@ export default {
 <style>
 .imgsize {
   height: 6vh;
-  width: 28vh;
+  width: 15vh;
 }
 </style>
