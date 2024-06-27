@@ -219,7 +219,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertparticipationcommunityprogram",
+          "http://183.82.109.39:5000/api/insertparticipationcommunityprogram",
           {
             id: row.id,
             headId: row.headId,
@@ -239,7 +239,7 @@ export default {
     async updateParticipationCommunityProgram(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updateparticipationcommunityprogram/${row.id}`,
+          `http://183.82.109.39:5000/api/updateparticipationcommunityprogram/${row.id}`,
           row
         );
         console.log("ParticipationCommunityProgram Row updated:", response);

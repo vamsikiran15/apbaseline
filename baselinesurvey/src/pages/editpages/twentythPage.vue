@@ -203,7 +203,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/inserthouseholdasset",
+          "http://183.82.109.39:5000/api/inserthouseholdasset",
           {
             id: row.id,
             headId: row.headId,
@@ -220,7 +220,7 @@ export default {
     async updateHouseholdAssets(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updatehouseholdassets/${row.id}`,
+          `http://183.82.109.39:5000/api/updatehouseholdassets/${row.id}`,
           row
         );
         console.log("HouseholdAssets Row updated:", response);

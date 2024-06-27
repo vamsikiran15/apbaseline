@@ -2,10 +2,11 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import HomePage from '../views/HomePage.vue';
 import SurveyFrom from '../pages/SurveyFrom.vue';
 import SearchView from '../views/SearchView.vue';
+import LandingPage from '../pages/LandingPage.vue';
 const routes = [
   {
     path: '/',
-    redirect: '/search'
+    redirect: '/landingpage'
   },
   {
     path: '/home',
@@ -21,6 +22,11 @@ const routes = [
     path: '/search',
     name: 'Search',
     component : SearchView
+  },
+  {
+    path: '/landingpage',
+    name: 'homepage',
+    component : LandingPage
   }
 ]
 

@@ -197,7 +197,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertgrazecattlecommunity",
+          "http://183.82.109.39:5000/api/insertgrazecattlecommunity",
           {
             id: row.id,
             headId: row.headId,
@@ -214,7 +214,7 @@ export default {
     async updateGrazeCattle(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updategrazecattlecommunity/${row.id}`,
+          `http://183.82.109.39:5000/api/updategrazecattlecommunity/${row.id}`,
           row
         );
         console.log("GrazeCattle Row updated:", response);

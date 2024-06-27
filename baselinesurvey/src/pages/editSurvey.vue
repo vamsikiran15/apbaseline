@@ -1787,7 +1787,9 @@ export default {
     },
     async getDistricts() {
       try {
-        const response = await axios.get("http://localhost:5000/api/districts");
+        const response = await axios.get(
+          "http://183.82.109.39:5000/api/districts"
+        );
         this.district = response.data;
       } catch (error) {
         console.error("error in get districts function", error);
@@ -1795,7 +1797,7 @@ export default {
     },
     async getWcc() {
       try {
-        const response = await axios.get("http://localhost:5000/api/wcc", {
+        const response = await axios.get("http://183.82.109.39:5000/api/wcc", {
           params: { id: this.selectedDistrictNo },
         });
         this.wcc = response.data;
@@ -1805,9 +1807,12 @@ export default {
     },
     async getProject() {
       try {
-        const response = await axios.get("http://localhost:5000/api/projects", {
-          params: { id: this.selectedWccNo },
-        });
+        const response = await axios.get(
+          "http://183.82.109.39:5000/api/projects",
+          {
+            params: { id: this.selectedWccNo },
+          }
+        );
         this.project = response.data;
       } catch (error) {
         console.error("Error in getProject function", error);
@@ -1816,7 +1821,7 @@ export default {
     async getWaterShedVillage() {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/watershed",
+          "http://183.82.109.39:5000/api/watershed",
           { params: { id: this.selectedProjectNo } }
         );
         this.microwatershed = response.data;
@@ -1827,7 +1832,7 @@ export default {
     async getHabitation() {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/habitation",
+          "http://183.82.109.39:5000/api/habitation",
           { params: { id: this.selectedMicroWatershedNo } }
         );
         this.habitation = response.data;
@@ -1837,9 +1842,12 @@ export default {
     },
     async getMandal() {
       try {
-        const response = await axios.get("http://localhost:5000/api/mandal", {
-          params: { id: this.selectedDistrictNo },
-        });
+        const response = await axios.get(
+          "http://183.82.109.39:5000/api/mandal",
+          {
+            params: { id: this.selectedDistrictNo },
+          }
+        );
         this.mandal = response.data;
       } catch (error) {
         console.error("error in getMandal function", error);
@@ -1848,7 +1856,7 @@ export default {
     async getGramPanchayat() {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/grampanchayat",
+          "http://183.82.109.39:5000/api/grampanchayat",
           { params: { id: this.selectedMicroWatershedNo } }
         );
         this.gramPanchayat = response.data;
@@ -2194,7 +2202,7 @@ export default {
         // };
         // const occupationString = this.editedItem.occupation.join(",");
         const response = await axios.put(
-          `http://localhost:5000/api/updateIndividualInfo/${this.editedItem.id}`,
+          `http://183.82.109.39:5000/api/updateIndividualInfo/${this.editedItem.id}`,
           {
             dist_name: this.editedItem.dist_name,
             wcc_name: this.editedItem.wcc_name,
@@ -2237,7 +2245,7 @@ export default {
         };
         console.log("updated rows *****************", data);
         const response = await axios.put(
-          `http://localhost:5000/items/updatehouseholdmember`,
+          `http://183.82.109.39:5000/items/updatehouseholdmember`,
           data
         );
         console.log("Item updated:", response.data);
@@ -2261,7 +2269,7 @@ export default {
           this.newRowLandParticular
         );
         const response = await axios.put(
-          `http://localhost:5000/items/updatelandparticular`,
+          `http://183.82.109.39:5000/items/updatelandparticular`,
           data
         );
         console.log("Item updated:", response.data);
@@ -2302,7 +2310,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertIncomeKharif",
+          "http://183.82.109.39:5000/api/insertIncomeKharif",
 
           {
             id: row.id,
@@ -2330,7 +2338,7 @@ export default {
     async updateIncomeKharif(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updateIncomeKharif/${row.id}`,
+          `http://183.82.109.39:5000/api/updateIncomeKharif/${row.id}`,
           row
         );
         console.log("Row updated:", response);
@@ -2362,7 +2370,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertIncomeRabhi",
+          "http://183.82.109.39:5000/api/insertIncomeRabhi",
 
           {
             id: row.id,
@@ -2390,7 +2398,7 @@ export default {
     async updateIncomeRabhi(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updateIncomeRabhi/${row.id}`,
+          `http://183.82.109.39:5000/api/updateIncomeRabhi/${row.id}`,
           row
         );
         console.log("Rabhi Row updated:", response);
@@ -2423,7 +2431,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertLiveStock",
+          "http://183.82.109.39:5000/api/insertLiveStock",
 
           {
             id: row.id,
@@ -2446,7 +2454,7 @@ export default {
     async updateLiveStock(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updateLiveStock/${row.id}`,
+          `http://183.82.109.39:5000/api/updateLiveStock/${row.id}`,
           row
         );
         console.log("Live stock Row updated:", response);

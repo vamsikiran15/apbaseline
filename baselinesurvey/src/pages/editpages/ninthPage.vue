@@ -287,7 +287,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertpestdisease",
+          "http://183.82.109.39:5000/api/insertpestdisease",
           {
             id: row.id,
             headId: row.headId,
@@ -308,7 +308,7 @@ export default {
     async updatePestDisease(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updatepestdisease/${row.id}`,
+          `http://183.82.109.39:5000/api/updatepestdisease/${row.id}`,
           row
         );
         console.log("pest disease Row updated:", response);
