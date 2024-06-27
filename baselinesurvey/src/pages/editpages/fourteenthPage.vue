@@ -293,7 +293,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertsourcequalitywater",
+          "http://183.82.109.39:5000/api/insertsourcequalitywater",
           {
             id: row.id,
             headId: row.headId,
@@ -318,7 +318,7 @@ export default {
     async updateSourceQualityWater(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updatesourcequalitywater/${row.id}`,
+          `http://183.82.109.39:5000/api/updatesourcequalitywater/${row.id}`,
           row
         );
         console.log("SourceQualityWater Row updated:", response);

@@ -223,7 +223,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertdrinkingwater",
+          "http://183.82.109.39:5000/api/insertdrinkingwater",
           {
             id: row.id,
             headId: row.headId,
@@ -241,7 +241,7 @@ export default {
     async updateAvailableDrinkingWater(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updatedrinkingwater/${row.id}`,
+          `http://183.82.109.39:5000/api/updatedrinkingwater/${row.id}`,
           row
         );
         console.log("AvailableDrinkingWater Row updated:", response);

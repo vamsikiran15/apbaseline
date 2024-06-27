@@ -189,7 +189,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertanyschemepreviousproject",
+          "http://183.82.109.39:5000/api/insertanyschemepreviousproject",
           {
             id: row.id,
             headId: row.headId,
@@ -206,7 +206,7 @@ export default {
     async updateAnyScheme(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updateanyschemepreviousproject/${row.id}`,
+          `http://183.82.109.39:5000/api/updateanyschemepreviousproject/${row.id}`,
           row
         );
         console.log("AnyScheme Row updated:", response);

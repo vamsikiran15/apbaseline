@@ -220,7 +220,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertawarenessadoptiontechnology",
+          "http://183.82.109.39:5000/api/insertawarenessadoptiontechnology",
           {
             id: row.id,
             headId: row.headId,
@@ -236,7 +236,7 @@ export default {
     async updateAwarenessAdoption(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updateawarenessadoptiontechnology/${row.id}`,
+          `http://183.82.109.39:5000/api/updateawarenessadoptiontechnology/${row.id}`,
           row
         );
         console.log("AwarenessAdoption Row updated:", response);

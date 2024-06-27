@@ -184,7 +184,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertmembership",
+          "http://183.82.109.39:5000/api/insertmembership",
           {
             id: row.id,
             headId: row.headId,
@@ -200,7 +200,7 @@ export default {
     async updateMembership(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updatemembership/${row.id}`,
+          `http://183.82.109.39:5000/api/updatemembership/${row.id}`,
           row
         );
         console.log("Membership Row updated:", response);

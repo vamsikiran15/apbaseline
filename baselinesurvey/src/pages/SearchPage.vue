@@ -3,10 +3,10 @@
     <ion-header>
       <ion-toolbar>
         <ion-img :src="RsiLogo" class="imgsize"></ion-img>
-        <ion-title style="font-size: 1.5vh"> </ion-title>
-        <ion-buttons slot="start">
+        <!-- <ion-title style="font-size: 1.5vh"> </ion-title> -->
+        <!-- <ion-buttons slot="start">
           <ion-back-button default-href="/" />
-        </ion-buttons>
+        </ion-buttons> -->
         <!-- <div class="ion-text-center">
           <h4>RSI LLP</h4>
         </div> -->
@@ -28,7 +28,7 @@
             ></ion-searchbar>
             <ion-list>
               <ion-item
-                v-for="item in projects"
+                v-for="item in filteredProjects"
                 :key="item.id"
                 @click="selectProject(item)"
               >
@@ -39,14 +39,13 @@
             <ion-searchbar
               v-if="selectedProject"
               v-model="query"
-              @ionInput="searchInfo"
               @ionClear="clearSearch"
               debounce="500"
               placeholder="Enter Aadhar Number"
             ></ion-searchbar>
             <ion-list>
               <ion-item
-                v-for="item in items"
+                v-for="item in sortedFilteredfilteredNames"
                 :key="item.id"
                 @click="selectItem(item)"
               >
@@ -125,7 +124,7 @@ import {
 import axios from "axios";
 import EditItem from "@/pages/editPage.vue";
 import EditSurvey from "@/pages/editSurvey.vue";
-import Logo from "../assets/img/rsilogotwo.jpg";
+import Logo from "../assets/img/RSIWHITEL_Logo.png";
 export default {
   components: {
     IonPage,
@@ -187,6 +186,26 @@ export default {
       RsiLogo: Logo,
     };
   },
+  computed: {
+    filteredProjects() {
+      return this.projects.filter((project) =>
+        project.project_name
+          .toLowerCase()
+          .includes(this.projectquery.toLowerCase())
+      );
+    },
+    filteredNames() {
+      if (!this.selectedProject) return [];
+      return this.items.filter((item) =>
+        item.head_of_the_family.toLowerCase().includes(this.query)
+      );
+    },
+    sortedFilteredfilteredNames() {
+      return this.filteredNames.sort((a, b) =>
+        a.head_of_the_family.localeCompare(b.head_of_the_family)
+      );
+    },
+  },
   methods: {
     async searchProject() {
       if (this.projectquery.trim() === "") {
@@ -195,31 +214,29 @@ export default {
       }
       try {
         const response = await axios.get(
-          `http://localhost:5000/items/searchByProject`,
+          `http://183.82.109.39:5000/items/searchByProject`,
           {
             params: { query: this.projectquery },
           }
         );
         this.projects = response.data;
-        console.log("^^^^^^^^^^^^^^^^^^^^^", this.projects);
+        console.log("^^^^^^^^^^^^^^^^^^^^^", this.selectedProject);
       } catch (error) {
         console.error(error);
       }
     },
 
-    async searchInfo() {
-      if (this.query.trim() === "") {
-        this.items = [];
-        return;
-      }
+    async fetchItemsForProject(id) {
+      console.log("filster name for project", id);
       try {
         const response = await axios.get(
-          `http://localhost:5000/items/searchByName`,
+          `http://183.82.109.39:5000/items/searchAadharByProject`,
           {
-            params: { query: this.query },
+            params: { query: id },
           }
         );
         this.items = response.data;
+        console.log("name filter ", this.items);
       } catch (error) {
         console.error(error);
       }
@@ -233,7 +250,7 @@ export default {
       // }
       try {
         const response = await axios.get(
-          `http://localhost:5000/items/householdinfo`,
+          `http://183.82.109.39:5000/items/householdinfo`,
           {
             params: { id: id },
           }
@@ -253,7 +270,7 @@ export default {
       // }
       try {
         const response = await axios.get(
-          `http://localhost:5000/items/landparticulars`,
+          `http://183.82.109.39:5000/items/landparticulars`,
           {
             params: { id: id },
           }
@@ -272,7 +289,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/items/incomecropsfromkharif`,
+          `http://183.82.109.39:5000/items/incomecropsfromkharif`,
           {
             params: { id: id },
           }
@@ -288,7 +305,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/items/incomecropsfromrabhi`,
+          `http://183.82.109.39:5000/items/incomecropsfromrabhi`,
           {
             params: { id: id },
           }
@@ -304,7 +321,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/items/livestockdetails`,
+          `http://183.82.109.39:5000/items/livestockdetails`,
           {
             params: { id: id },
           }
@@ -320,7 +337,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/items/migrationdetails`,
+          `http://183.82.109.39:5000/items/migrationdetails`,
           {
             params: { id: id },
           }
@@ -339,7 +356,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/landlessdetails`,
+          `http://183.82.109.39:5000/api/landlessdetails`,
           {
             params: { id: id },
           }
@@ -355,7 +372,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/govtbenefitdetails`,
+          `http://183.82.109.39:5000/api/govtbenefitdetails`,
           {
             params: { id: id },
           }
@@ -371,7 +388,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/manurechemicaldetails`,
+          `http://183.82.109.39:5000/api/manurechemicaldetails`,
           {
             params: { id: id },
           }
@@ -387,7 +404,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/pestdiseasedetails`,
+          `http://183.82.109.39:5000/api/pestdiseasedetails`,
           {
             params: { id: id },
           }
@@ -403,7 +420,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/loanparticulardetails`,
+          `http://183.82.109.39:5000/api/loanparticulardetails`,
           {
             params: { id: id },
           }
@@ -422,7 +439,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/familyexpendituredetails`,
+          `http://183.82.109.39:5000/api/familyexpendituredetails`,
           {
             params: { id: id },
           }
@@ -444,7 +461,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/differentsourceincomedetails`,
+          `http://183.82.109.39:5000/api/differentsourceincomedetails`,
           {
             params: { id: id },
           }
@@ -466,7 +483,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/drinkingwaterdetails`,
+          `http://183.82.109.39:5000/api/drinkingwaterdetails`,
           {
             params: { id: id },
           }
@@ -488,7 +505,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/sourcequalitywaterdetails`,
+          `http://183.82.109.39:5000/api/sourcequalitywaterdetails`,
           {
             params: { id: id },
           }
@@ -510,7 +527,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/agricultureimplementsdetails`,
+          `http://183.82.109.39:5000/api/agricultureimplementsdetails`,
           {
             params: { id: id },
           }
@@ -532,7 +549,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/horticulturedetails`,
+          `http://183.82.109.39:5000/api/horticulturedetails`,
           {
             params: { id: id },
           }
@@ -551,7 +568,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/fodderfeeddetails`,
+          `http://183.82.109.39:5000/api/fodderfeeddetails`,
           {
             params: { id: id },
           }
@@ -567,7 +584,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/fodderfueldetails`,
+          `http://183.82.109.39:5000/api/fodderfueldetails`,
           {
             params: { id: id },
           }
@@ -583,7 +600,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/grazecattlecommunitydetails`,
+          `http://183.82.109.39:5000/api/grazecattlecommunitydetails`,
           {
             params: { id: id },
           }
@@ -605,7 +622,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/grazecattlecommunitydetails`,
+          `http://183.82.109.39:5000/api/grazecattlecommunitydetails`,
           {
             params: { id: id },
           }
@@ -627,7 +644,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/participationcommunityprogramdetails`,
+          `http://183.82.109.39:5000/api/participationcommunityprogramdetails`,
           {
             params: { id: id },
           }
@@ -649,7 +666,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/awarenessadoptiontechnologydetails`,
+          `http://183.82.109.39:5000/api/awarenessadoptiontechnologydetails`,
           {
             params: { id: id },
           }
@@ -671,7 +688,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/membershipdetails`,
+          `http://183.82.109.39:5000/api/membershipdetails`,
           {
             params: { id: id },
           }
@@ -687,7 +704,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/anyschemepreviousprojectdetails`,
+          `http://183.82.109.39:5000/api/anyschemepreviousprojectdetails`,
           {
             params: { id: id },
           }
@@ -709,7 +726,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/awarewatershedstatusdetails`,
+          `http://183.82.109.39:5000/api/awarewatershedstatusdetails`,
           {
             params: { id: id },
           }
@@ -731,7 +748,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/receivedtrainingwatershedstatusdetails`,
+          `http://183.82.109.39:5000/api/receivedtrainingwatershedstatusdetails`,
           {
             params: { id: id },
           }
@@ -756,7 +773,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/dateserveyornamedetails`,
+          `http://183.82.109.39:5000/api/dateserveyornamedetails`,
           {
             params: { id: id },
           }
@@ -774,14 +791,23 @@ export default {
         );
       }
     },
+    searchInfo() {
+      // Additional logic for info search can go here
+    },
     clearSearch() {
       this.query = ""; // Clear the search bar
       this.items = []; // Clear the item list
       this.selectedItem = null; // Clear the selected item
     },
+
     selectProject(item) {
+      // this.selectedProject = { ...item };
+      // console.log("selected project is ", this.selectedProject);
+      // this.projects = [];
+
       this.selectedProject = { ...item };
-      this.projects = [];
+      console.log("asdfjlkasjdfkdsajklf", this.selectedProject.id);
+      this.fetchItemsForProject(this.selectedProject.id);
     },
     selectItem(item) {
       this.selectedItem = { ...item }; // Copy the selected item
@@ -829,6 +855,6 @@ export default {
 <style>
 .imgsize {
   height: 6vh;
-  width: 28vh;
+  width: 15vh;
 }
 </style>

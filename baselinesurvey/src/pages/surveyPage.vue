@@ -1815,7 +1815,7 @@ export default {
     async updateItem() {
       try {
         const response = await axios.put(
-          `http://localhost:5000/items/${this.editedItem.id}`,
+          `http://183.82.109.39:5000/items/${this.editedItem.id}`,
           this.editedItem
         );
         console.log("Item updated:", response.data);

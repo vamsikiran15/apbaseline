@@ -196,7 +196,7 @@ export default {
     async saveData() {
       try {
         const resp = await axios.get(
-          `http://localhost:5000/api/awarewatershedstatusdetails`,
+          `http://183.82.109.39:5000/api/awarewatershedstatusdetails`,
           {
             params: { id: this.editedItem.id },
           }
@@ -210,7 +210,7 @@ export default {
         if (resp.data.length === 0) {
           // If status is null or undefined, perform an insert (POST request)
           await axios.post(
-            `http://localhost:5000/api/insertawarewatershedstatus`,
+            `http://183.82.109.39:5000/api/insertawarewatershedstatus`,
             {
               status: this.selectedOption,
               headId: this.editedItem.id,
@@ -227,7 +227,7 @@ export default {
           // If status is not null, perform an update (PUT request)
           this.awarewatershedstatusdetails[0].status = this.selectedOption; // Update responseData locally
           await axios.put(
-            `http://localhost:5000/api/updateawarewatershedstatus/${this.editedItem.id}`,
+            `http://183.82.109.39:5000/api/updateawarewatershedstatus/${this.editedItem.id}`,
             {
               id: this.editedItem.id,
               status: this.selectedOption,
@@ -244,7 +244,7 @@ export default {
     async saveHaveReceivedData() {
       try {
         const resp = await axios.get(
-          `http://localhost:5000/api/receivedtrainingwatershedstatusdetails`,
+          `http://183.82.109.39:5000/api/receivedtrainingwatershedstatusdetails`,
           {
             params: { id: this.editedItem.id },
           }
@@ -258,7 +258,7 @@ export default {
         if (resp.data.length === 0) {
           // If status is null or undefined, perform an insert (POST request)
           await axios.post(
-            `http://localhost:5000/api/insertreceivedtrainingwatershedstatus`,
+            `http://183.82.109.39:5000/api/insertreceivedtrainingwatershedstatus`,
             {
               status: this.selectedOptionHaveReceived,
               headId: this.editedItem.id,
@@ -276,7 +276,7 @@ export default {
           this.receivedtrainingwatershedstatusdetails[0].status =
             this.selectedOptionHaveReceived; // Update responseData locally
           await axios.put(
-            `http://localhost:5000/api/updatereceivedtrainingwatershedstatus/${this.editedItem.id}`,
+            `http://183.82.109.39:5000/api/updatereceivedtrainingwatershedstatus/${this.editedItem.id}`,
             {
               id: this.editedItem.id,
               status: this.selectedOptionHaveReceived,
@@ -292,7 +292,7 @@ export default {
     },
     async saveUpdateDateServeyouName() {
       const resp = await axios.get(
-        `http://localhost:5000/api/dateserveyornamedetails`,
+        `http://183.82.109.39:5000/api/dateserveyornamedetails`,
         {
           params: { id: this.editedItem.id },
         }
@@ -307,7 +307,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&");
         const response = await axios.post(
-          "http://localhost:5000/api/insertdateserveyor",
+          "http://183.82.109.39:5000/api/insertdateserveyor",
           {
             id: this.selectedDateServeyorName.id,
             headId: this.editedItem.id,
@@ -323,7 +323,7 @@ export default {
     async updateDateServeName() {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updatedateserveyor/${this.editedItem.id}`,
+          `http://183.82.109.39:5000/api/updatedateserveyor/${this.editedItem.id}`,
           {
             id: this.editedItem.id,
             headId: this.editedItem.headId,

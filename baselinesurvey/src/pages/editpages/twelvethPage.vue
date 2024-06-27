@@ -218,7 +218,7 @@ export default {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
         const response = await axios.post(
-          "http://localhost:5000/api/insertdifferentsourceincome",
+          "http://183.82.109.39:5000/api/insertdifferentsourceincome",
           {
             id: row.id,
             headId: row.headId,
@@ -234,7 +234,7 @@ export default {
     async updateDifferentSource(row) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/updatedifferentsourceincome/${row.id}`,
+          `http://183.82.109.39:5000/api/updatedifferentsourceincome/${row.id}`,
           row
         );
         console.log("different source Row updated:", response);
