@@ -583,7 +583,7 @@
                 name="add-circle"
                 slot="icon-only"
               ></ion-icon
-              >Add Family Member Details</ion-button
+              >Add Household Details</ion-button
             >
             <ul class="styled-list">
               <li v-for="(row, index) in rows" :key="index">
@@ -721,60 +721,120 @@
                     >Sunflower</ion-select-option
                   >
                 </ion-select>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
                 <ion-card-subtitle
                   class="ion-padding ion-text-center"
                   color="tertiary"
-                  >Rainfed(Acres)
-                </ion-card-subtitle>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed(Acres)"
-                  fill="outline"
-                  label="Rainfed(Acres)"
-                  label-placement="floating"
-                  v-model="rainfedKharif"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed Yield(Qtls)"
-                  label="Rainfed Yield(Qtls)"
-                  fill="outline"
-                  label-placement="floating"
-                  v-model="rainfedYieldKharif"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter v"
-                  fill="outline"
-                  label="Rainfed(Acres) Cost of Cultivation(Rs)"
-                  label-placement="floating"
-                  v-model="rainfedCostKharif"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
-                  fill="outline"
-                  label="Rainfed(Acres) Rate per Qtls(Rs)"
-                  label-placement="floating"
-                  v-model="rainfedPerQtlsKharif"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Rainfed Gross income"
-                  fill="outline"
-                  label="Rainfed(Acres) Gross Income"
-                  label-placement="floating"
-                  v-model="rainfedGrossIncomeKharif"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Rainfed Net income"
-                  fill="outline"
-                  label="Rainfed(Acres) Net Income(7-5)"
-                  label-placement="floating"
-                  v-model="rainfedNetIncomeKharif"
-                ></ion-input>
-                <ion-card-subtitle
+                  ><strong>3.1 Cultivated Area(Acres)</strong></ion-card-subtitle
+                >
+                <ion-card-content>
+                  <ion-select
+                    aria-label="Type of Ownership"
+                    interface="popover"
+                    label="Cultivated Area"
+                    label-placement="floating"
+                    placeholder="Cultivated Area"
+                    fill="outline"
+                    v-model="cultivatedAreaRows.cultivatedArea"
+                  >
+                    <ion-select-option value="Own"
+                      >Owned Land</ion-select-option
+                    >
+                    <ion-select-option value="Rent"
+                      >Leased-In</ion-select-option
+                    >
+                    <ion-select-option value="Rent"
+                      >Leased-Out</ion-select-option
+                    >
+                  </ion-select>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Rainfed(Acres)"
+                    fill="outline"
+                    label="Rainfed(Acres)"
+                    label-placement="floating"
+                    v-model="cultivatedAreaRows.rainfedArea"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated(Acres)"
+                    fill="outline"
+                    label="Irrigated(Acres)"
+                    label-placement="floating"
+                    v-model="cultivatedAreaRows.irrigatedArea"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Total"
+                    label="Total"
+                    fill="outline"
+                    label-placement="floating"
+                    v-model="cultivatedAreaRows.total"
+                  ></ion-input>
+                  <ion-select
+                    class="ion-margin-top"
+                    aria-label="Type of Ownership"
+                    interface="popover"
+                    label="Type of Ownership"
+                    label-placement="floating"
+                    placeholder="Type of Ownership"
+                    fill="outline"
+                    v-model="cultivatedAreaRows.typeofOwnership"
+                  >
+                    <ion-select-option value="Own">Own</ion-select-option>
+                    <ion-select-option value="Rent">Rent</ion-select-option>
+                  </ion-select>
+                </ion-card-content>
+              </ion-card>
+              <ion-card>
+                <ion-card-header color="tertiary"
+                  ><strong>3.2 Income from Crops(Rs)-Kharif</strong></ion-card-header
+                >
+              </ion-card>
+                <ion-card>
+                <ion-card-content>
+                  <ion-select
+                    aria-label="Crop Grown"
+                    interface="popover"
+                    label="Crop Grown"
+                    label-placement="floating"
+                    placeholder="Select Crop Item"
+                    fill="outline"
+                    class="ion-margin-top"
+                    v-model="cultivatedAreaRows.cropGrownKharif"
+                  >
+                    <ion-select-option value="Paddy">Paddy</ion-select-option>
+                    <ion-select-option value="Meeze">Meeze</ion-select-option>
+                    <ion-select-option value="Jower">Jower</ion-select-option>
+                    <ion-select-option value="Cotton">Cotton</ion-select-option>
+                    <ion-select-option value="Mirchi">Mirchi</ion-select-option>
+                    <ion-select-option value="Groundnut"
+                      >Groundnut</ion-select-option
+                    >
+                    <ion-select-option value="Red Gram"
+                      >Red Gram</ion-select-option
+                    >
+                    <ion-select-option value="Black Gram"
+                      >Black Gram</ion-select-option
+                    >
+                    <ion-select-option value="Green Gram"
+                      >Green Gram</ion-select-option
+                    >
+                    <ion-select-option value="Mango">Mango</ion-select-option>
+                    <ion-select-option value="Sapota">Sapota</ion-select-option>
+                    <ion-select-option value="Chinny">Chinny</ion-select-option>
+                    <ion-select-option value="Neem">Neem</ion-select-option>
+                    <ion-select-option value="Cashew">Cashew</ion-select-option>
+                    <ion-select-option value="Vegetables"
+                      >Vegetables</ion-select-option
+                    >
+                    <ion-select-option value="Sunflower"
+                      >Sunflower</ion-select-option
+                    >
+                  </ion-select>
+                  <ion-card-subtitle
                   class="ion-padding ion-text-center"
                   color="tertiary"
                   >Irrigated(Acres)
@@ -861,7 +921,134 @@
                   <ion-select-option value="Cotton">Cotton</ion-select-option>
                   <ion-select-option value="Mirchi">Mirchi</ion-select-option>
                   <ion-select-option value="Groundnut"
-                    >Groundnut</ion-select-option
+                    >Groundnut</ion-select-option>
+                    </ion-select>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Rainfed(Acres)"
+                    fill="outline"
+                    label="Rainfed(Acres)"
+                    label-placement="floating"
+                    v-model="cultivatedAreaRows.rainfedKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Rainfed Yield(Qtls)"
+                    label="Rainfed Yield(Qtls)"
+                    fill="outline"
+                    label-placement="floating"
+                    v-model="cultivatedAreaRows.rainfedYieldKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Enter v"
+                    fill="outline"
+                    label="Rainfed(Acres) Cost of Cultivation(Rs)"
+                    label-placement="floating"
+                    v-model="cultivatedAreaRows.rainfedCostKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
+                    fill="outline"
+                    label="Rainfed(Acres) Rate per Qtls(Rs)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.rainfedPerQtlsKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Total Rainfed Gross income"
+                    fill="outline"
+                    label="Rainfed(Acres) Gross Income"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.rainfedGrossIncomeKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Total Rainfed Net income"
+                    fill="outline"
+                    label="Rainfed(Acres) Net Income(7-5)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.rainfedNetIncomeKharif"
+                  ></ion-input>
+                  <ion-card-subtitle
+                  class="ion-padding ion-text-center"
+                  color="tertiary"
+                  >Irrigated(Acres) </ion-card-subtitle
+                >
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated Area(Acres)"
+                    fill="outline"
+                    label="Irrigated Area(Acres)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedaAreaKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irigated Yield(Qtls)"
+                    label="Irrigated Yield(Qtls)"
+                    fill="outline"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedYieldKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
+                    label="Irrigated(Acres) Cost of Cultiation(Rs)"
+                    fill="outline"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedCoostofCultivationKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
+                    fill="outline"
+                    label="Irrigated(Acres) Rate per Qtls(Rs) "
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedRatePerQtlsKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated(Acres) Gross Income"
+                    fill="outline"
+                    label="Total Irrigated(Acres) Gross Income"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedGrossIncomeKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Total Irrigated Net Income(13-11)"
+                    fill="outline"
+                    label="Total Irrigated Net Income(13-11)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedNetIncomeKharif"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Kharif Grand Total Income"
+                    label="Kharif Grand Total Income"
+                    fill="outline"
+                    label-placement="floating"
+                  ></ion-input>
+                </ion-card-content>
+              </ion-card>
+              <ion-card>
+                <ion-card-header color="tertiary"
+                  ><strong>3.3 Income from Crops(Rs)-Rabi</strong></ion-card-header
+                >
+              </ion-card>
+                <ion-card>
+                <ion-card-content>
+                  <ion-select
+                    aria-label="Crop Grown"
+                    interface="popover"
+                    label="Crop Grown"
+                    label-placement="floating"
+                    placeholder="Select Crop Item"
+                    fill="outline"
+                    class="ion-margin-top"
+                    v-model = "cultivatedAreaRows.cropGrownRabhi"
                   >
                   <ion-select-option value="Red Gram"
                     >Red Gram</ion-select-option
@@ -887,119 +1074,119 @@
                 <ion-card-subtitle
                   class="ion-padding ion-text-center"
                   color="tertiary"
-                  >Rainfed(Acres)
-                </ion-card-subtitle>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed(Acres)"
-                  fill="outline"
-                  label="Rainfed(Acres)"
-                  label-placement="floating"
-                  v-model="rainfedAcresRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed Yield(Qtls)"
-                  label="Rainfed Yield(Qtls)"
-                  fill="outline"
-                  label-placement="floating"
-                  v-model="rainfedYieldRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter v"
-                  fill="outline"
-                  label="Rainfed(Acres) Cost of Cultivation(Rs)"
-                  label-placement="floating"
-                  v-model="rainfedCostofCultivationRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
-                  fill="outline"
-                  label="Rainfed(Acres) Rate per Qtls(Rs)"
-                  label-placement="floating"
-                  v-model="rainfedRatePerQtlsRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Rainfed Gross income"
-                  fill="outline"
-                  label="Rainfed(Acres) Gross Income"
-                  label-placement="floating"
-                  v-model="rainfedGrossIncomeRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Rainfed Net income"
-                  fill="outline"
-                  label="Rainfed(Acres) Net Income(7-5)"
-                  label-placement="floating"
-                  v-model="rainfedNetIncomeRabhi"
-                ></ion-input>
-                <ion-card-subtitle
+                  >Rainfed(Acres) </ion-card-subtitle
+                >
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Rainfed(Acres)"
+                    fill="outline"
+                    label="Rainfed(Acres)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.rainfedAcresRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Rainfed Yield(Qtls)"
+                    label="Rainfed Yield(Qtls)"
+                    fill="outline"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.rainfedYieldRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Enter v"
+                    fill="outline"
+                    label="Rainfed(Acres) Cost of Cultivation(Rs)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.rainfedCostofCultivationRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
+                    fill="outline"
+                    label="Rainfed(Acres) Rate per Qtls(Rs)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.rainfedRatePerQtlsRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Total Rainfed Gross income"
+                    fill="outline"
+                    label="Rainfed(Acres) Gross Income"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.rainfedGrossIncomeRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Total Rainfed Net income"
+                    fill="outline"
+                    label="Rainfed(Acres) Net Income(7-5)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.rainfedNetIncomeRabhi"
+                  ></ion-input>
+                  <ion-card-subtitle
                   class="ion-padding ion-text-center"
                   color="tertiary"
-                  >Irrigated(Acres)
-                </ion-card-subtitle>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated Area(Acres)"
-                  fill="outline"
-                  label="Irrigated Area(Acres)"
-                  label-placement="floating"
-                  v-model="irrigatedAreaRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irigated Yield(Qtls)"
-                  label="Irrigated Yield(Qtls)"
-                  fill="outline"
-                  label-placement="floating"
-                  v-model="irrigatedYieldRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
-                  label="Irrigated(Acres) Cost of Cultiation(Rs)"
-                  fill="outline"
-                  label-placement="floating"
-                  v-model="irrigatedCostofCultivationRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
-                  fill="outline"
-                  label="Irrigated(Acres) Rate per Qtls(Rs) "
-                  label-placement="floating"
-                  v-model="irrigatedRateperQtlsRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres) Gross Income"
-                  fill="outline"
-                  label="Total Irrigated(Acres) Gross Income"
-                  label-placement="floating"
-                  v-model="irrigatedGrossIncomeRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Irrigated Net Income(13-11)"
-                  fill="outline"
-                  label="Total Irrigated Net Income(13-11)"
-                  label-placement="floating"
-                  v-model="irrigatedNetIncomeRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Kharif Grand Total Income"
-                  label="Kharif Grand Total Income"
-                  fill="outline"
-                  label-placement="floating"
-                ></ion-input>
-              </ion-card-content>
-            </ion-card>
-            <ion-button
+                  >Irrigated(Acres) </ion-card-subtitle
+                >
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated Area(Acres)"
+                    fill="outline"
+                    label="Irrigated Area(Acres)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedAreaRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irigated Yield(Qtls)"
+                    label="Irrigated Yield(Qtls)"
+                    fill="outline"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedYieldRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
+                    label="Irrigated(Acres) Cost of Cultiation(Rs)"
+                    fill="outline"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedCostofCultivationRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
+                    fill="outline"
+                    label="Irrigated(Acres) Rate per Qtls(Rs) "
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedRateperQtlsRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Irrigated(Acres) Gross Income"
+                    fill="outline"
+                    label="Total Irrigated(Acres) Gross Income"
+                    label-placement="floating"
+                    v-model = "irrigatedGrossIncomeRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Total Irrigated Net Income(13-11)"
+                    fill="outline"
+                    label="Total Irrigated Net Income(13-11)"
+                    label-placement="floating"
+                    v-model = "cultivatedAreaRows.irrigatedNetIncomeRabhi"
+                  ></ion-input>
+                  <ion-input
+                    class="ion-margin-top"
+                    placeholder="Kharif Grand Total Income"
+                    label="Kharif Grand Total Income"
+                    fill="outline"
+                    label-placement="floating"
+                  ></ion-input>
+                </ion-card-content>
+              </ion-card>
+              <ion-button
               class="ion-margin"
               expand="block"
               color="primary"
@@ -1009,7 +1196,7 @@
                 name="add-circle"
                 slot="icon-only"
               ></ion-icon
-              >Add Government Scheme Details</ion-button
+              >Add Land Particulars Details</ion-button
             >
           </div>
           <div v-if="step === 4">
@@ -1021,15 +1208,15 @@
             <ion-card>
               <ion-card-content>
                 <ion-select
-                  aria-label="Crop Grown"
-                  interface="popover"
-                  label-placement="floating"
-                  label="Name of the Animal"
-                  placeholder="Select Name of the Animal"
-                  fill="outline"
-                  class="ion-margin-top"
-                  v-model="nameOfTheAnimal"
-                >
+                    aria-label="Crop Grown"
+                    interface="popover"
+                    label-placement="floating"
+                    label="Name of the Animal"
+                    placeholder="Select Name of the Animal"
+                    fill="outline"
+                    class="ion-margin-top"
+                    v-model="addLivestockDetails.nameOfTheAnimal"
+                  >
                   <template v-for="group in groupedData" :key="group.label">
                     <ion-select-option disabled>{{
                       group.label
@@ -1049,7 +1236,7 @@
                   fill="outline"
                   label="Existing No"
                   label-placement="floating"
-                  v-model="existingNo"
+                  v-model = "addLivestockDetails.existingNo"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1057,7 +1244,7 @@
                   fill="outline"
                   label="Milk Production(Ltrs/Day) if applicable"
                   label-placement="floating"
-                  v-model="milkProductionLitresPerDay"
+                  v-model = "addLivestockDetails.milkProductionLitresPerDay"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1065,7 +1252,7 @@
                   fill="outline"
                   label="Milk Consumed(Ltrs/Day)"
                   label-placement="floating"
-                  v-model="milkConsumedLitresPerday"
+                  v-model = "addLivestockDetails.milkConsumedLitresPerday"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1073,7 +1260,7 @@
                   fill="outline"
                   label="Quantity Sold by Year"
                   label-placement="floating"
-                  v-model="quantitySoldByYear"
+                  v-model = "addLivestockDetails.quantitySoldByYear"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1081,7 +1268,7 @@
                   fill="outline"
                   label="Unit Value(Rs)"
                   label-placement="floating"
-                  v-model="unitValue"
+                  v-model = "addLivestockDetails.unitValue"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1089,7 +1276,7 @@
                   fill="outline"
                   label="Income Generated during Last Year"
                   label-placement="floating"
-                  v-model="incomeGeneratedDuringLastYear"
+                  v-model = "addLivestockDetails.incomeGeneratedDuringLastYear"
                 ></ion-input>
               </ion-card-content>
             </ion-card>
@@ -1097,13 +1284,13 @@
               class="ion-margin"
               color="primary"
               expand="block"
-              @click="addRows()"
+              @click="livestockData()"
               ><ion-icon
                 class="ion-margin-end"
                 name="add-circle"
                 slot="icon-only"
               ></ion-icon
-              >Add Government Scheme Details</ion-button
+              >Add Livestock Details</ion-button
             >
           </div>
           <div v-if="step === 5">
@@ -1114,273 +1301,57 @@
           </div>
           <div v-if="step === 7">
             <SeventhPage />
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 8">
             <Eighthpage />
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 9">
             <NinthPage />
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              @click="addRows()"
-              color="primary"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 10">
             <TenthPage />
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 11">
             <EleventhPage></EleventhPage>
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 12">
             <TwelvethPage></TwelvethPage>
-            <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="block"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 13">
             <ThirteenthPage></ThirteenthPage>
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 14">
             <FourteenthPage></FourteenthPage>
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 15">
             <FifteenthPage></FifteenthPage>
-            <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="block"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 16">
             <SixteenthPage></SixteenthPage>
-            <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="block"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 17">
             <SeventeenthPage></SeventeenthPage>
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 18">
             <EighteenthPage></EighteenthPage>
-            <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="block"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 19">
             <NinteenthPage></NinteenthPage>
-            <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="block"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 20">
             <TwentythPage></TwentythPage>
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 21">
             <TwentyfirstPage></TwentyfirstPage>
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              @click="addRows()"
-              color="primary"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 22">
             <TwentysecondPage></TwentysecondPage>
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              @click="addRows()"
-              color="primary"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 23">
             <TwentythirdPage></TwentythirdPage>
-            <ion-button
-              class="ion-margin"
-              expand="block"
-              color="primary"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 24">
             <TwentyfourthPage></TwentyfourthPage>
-            <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="block"
-              @click="addRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
           </div>
           <div v-if="step === 25">
             <TwentyfifthPage></TwentyfifthPage>
@@ -1484,7 +1455,51 @@ export default {
         membership: "",
       },
       rows: [],
-      groupedData: [
+      addLivestockDetails:{
+        nameOfTheAnimal:"",
+        existingNo:"",
+        milkProductionLitresPerDay:"",
+        milkConsumedLitresPerday:"",
+        quantitySoldByYear:"",
+        unitValue:"",
+        incomeGeneratedDuringLastYear:""
+      },
+      livestockRows:[],
+      cultivatedAreaRows:{
+            cultivatedArea:"",
+            rainfedArea:"",
+            irrigatedArea:"",
+            total:"",
+            typeofOwnership:"",
+            cropGrownKharif:"",
+            rainfedKharif:"",
+            rainfedYieldKharif:"",
+            rainfedCostKharif:"",
+            rainfedPerQtlsKharif:"",
+            rainfedGrossIncomeKharif:"",
+            rainfedNetIncomeKharif:"",
+            irrigatedaAreaKharif:"",
+            irrigatedYieldKharif:"",
+            irrigatedCoostofCultivationKharif:"",
+            irrigatedRatePerQtlsKharif:"",
+            irrigatedGrossIncomeKharif:"",
+            irrigatedNetIncomeKharif:"",
+            cropGrownRabhi:"",
+            rainfedAcresRabhi:"",
+            rainfedYieldRabhi:"",
+            rainfedCostofCultivationRabhi:"",
+            rainfedRatePerQtlsRabhi:"",
+            rainfedGrossIncomeRabhi:"",
+            rainfedNetIncomeRabhi:"",
+            irrigatedAreaRabhi:"",
+            irrigatedYieldRabhi:"",
+            irrigatedCostofCultivationRabhi:"",
+            irrigatedRateperQtlsRabhi:"",
+            irrigatedNetIncomeRabhi:""
+      },
+      cultivatedAreaRowsData:[],
+    groupedData: 
+    [
         {
           label: "Dairy",
           options: [
@@ -1653,7 +1668,23 @@ export default {
         this.currentStep--;
       }
     },
-    async getDistricts() {
+    async livestockData(){
+     this.livestockRows.push({...this.addLivestockDetails});
+      this.clearLiveStockFields()
+    },
+
+    clearLiveStockFields(){
+      this.addLivestockDetails = {
+        nameOfTheAnimal:"",
+        existingNo:"",
+        milkProductionLitresPerDay:"",
+        milkConsumedLitresPerday:"",
+        quantitySoldByYear:"",
+        unitValue:"",
+        incomeGeneratedDuringLastYear:""
+      }
+    },
+    async getDistricts(){
       try {
         const response = await axios.get(
           "http://183.82.109.39:5000/api/districts"
@@ -1847,30 +1878,48 @@ export default {
             total_holding_area: this.totalHoldingArea,
             type_of_house: this.houseType,
             own_or_rented: this.subType,
-            habitationId: this.selectedHabitation,
-          }
-        );
+            habitationId: this.selectedHabitation
+        })
+      }
+      catch(error){
+        console.error("error in submitdata function",error)
+      }
+    },
+    async householdDetailsSubmitData(){
+      try {
+           await axios.post(`http://localhost:5000/api/bulkinsertionhouseholddetails`,
+        {
+          name_of_the_family_member:this.newRow.name_of_the_family_member,
+            relationship_with_head:this.newRow.relationship_with_head,
+            disability:this.newRow.disability,
+            gender:this.newRow.gender,
+            age:this.newRow.age,
+            level_of_education:this.newRow.level_of_education,
+            occupation:this.newRow.occupation,
+            membership:this.newRow.membership,
+            annual_gross_income:this.newRow.annual_gross_income
+        })
       } catch (error) {
         console.error("error in submitdata function", error);
       }
     },
-    async householdDetailsSubmitData() {
-      try {
-        await axios.post(`http://183.82.109.39:5000/api/householdDetails`, {
-          name_of_the_family_member: this.newRow.name_of_the_family_member,
-          relationship_with_head: this.newRow.relationship_with_head,
-          disability: this.newRow.disability,
-          gender: this.newRow.gender,
-          age: this.newRow.age,
-          level_of_education: this.newRow.level_of_education,
-          occupation: this.newRow.occupation,
-          membership: this.newRow.membership,
-          annual_gross_income: this.newRow.annual_gross_income,
-        });
-      } catch (error) {
-        console.error("error in householddetailssubmitdata function", error);
-      }
-    },
+    // async householdDetailsSubmitData() {
+    //   try {
+    //     await axios.post(`http://183.82.109.39:5000/api/householdDetails`, {
+    //       name_of_the_family_member: this.newRow.name_of_the_family_member,
+    //       relationship_with_head: this.newRow.relationship_with_head,
+    //       disability: this.newRow.disability,
+    //       gender: this.newRow.gender,
+    //       age: this.newRow.age,
+    //       level_of_education: this.newRow.level_of_education,
+    //       occupation: this.newRow.occupation,
+    //       membership: this.newRow.membership,
+    //       annual_gross_income: this.newRow.annual_gross_income,
+    //     });
+    //   } catch (error) {
+    //     console.error("error in householddetailssubmitdata function", error);
+    //   }
+    // },
     async landParticularsSubmitData() {
       try {
         await axios.post("http://183.82.109.39:5000/api/landparticulars", {
@@ -1916,21 +1965,28 @@ export default {
         console.error("error in landParticularsSubmitButton function", error);
       }
     },
-    async liveStockDetailsData() {
-      try {
-        await axios.post("http://183.82.109.39:5000/api/insertLiveStock", {
-          // headId: req.body.headId,
-          existing_no: this.existingNo,
-          income_generated_during_last_year: this.incomeGeneratedDuringLastYear,
-          milk_production: this.milkProductionLitresPerDay,
-          milk_quantity_sold: this.quantitySoldByYear,
-          mill_consumed: this.milkConsumedLitresPerday,
-          name_of_the_animal: this.nameOfTheAnimal,
-          value_of_animals: this.unitValue,
-        });
-      } catch (error) {
-        console.error("error in livestockdetailsdata function", error);
-      }
+    // async liveStockDetailsData() {
+    //   try {
+    //     await axios.post("http://183.82.109.39:5000/api/insertLiveStock", {
+    //       // headId: req.body.headId,
+    //       existing_no: this.existingNo,
+    //       income_generated_during_last_year: this.incomeGeneratedDuringLastYear,
+    //       milk_production: this.milkProductionLitresPerDay,
+    //       milk_quantity_sold: this.quantitySoldByYear,
+    //       mill_consumed: this.milkConsumedLitresPerday,
+    //       name_of_the_animal: this.nameOfTheAnimal,
+    //       value_of_animals: this.unitValue,
+    //     });
+    //   } catch (error) {
+    //     console.error("error in livestockdetailsdata function", error);
+    //   }
+    // },
+    async liveStockDetailsData(){
+        try {
+            await axios.post("http://localhost:5000/api/insertLiveStock",this.livestockRows)
+        } catch (error) {
+          console.error("error in livestockdetailsdata function",error)
+        }
     },
   },
 };

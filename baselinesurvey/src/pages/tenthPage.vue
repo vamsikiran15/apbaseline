@@ -7,10 +7,11 @@
       <ion-select
                       class="ion-margin-top"
                       interface="popover"
-                      label="Agriculture"
+                      label="Particulars"
                       label-placement="floating"
                       placeholder="Agriculture"
                       fill="outline"
+                      v-model = "loanParticularsRows.particulars"
                     >
                       <ion-select-option value="Paddy">Amount Borrowed</ion-select-option>
                       <ion-select-option value="Meeze">Amount Repaid</ion-select-option>
@@ -22,6 +23,7 @@
             fill="outline"
             label="Bank"
             label-placement="floating"
+            v-model = "loanParticularsRows.bank"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -29,6 +31,7 @@
             fill="outline"
             label="Money Lender"
             label-placement="floating"
+            v-model = "loanParticularsRows.moneyLender"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -36,6 +39,7 @@
             fill="outline"
             label="Dealer"
             label-placement="floating"
+            v-model = "loanParticularsRows.dealer"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -43,6 +47,7 @@
             fill="outline"
             label="Fellow Farmer"
             label-placement="floating"
+            v-model = "loanParticularsRows.fellowfarmer"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -50,6 +55,7 @@
             fill="outline"
             label="SHG"
             label-placement="floating"
+            v-model = "loanParticularsRows.shg"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -57,6 +63,7 @@
             fill="outline"
             label="Others(specify)"
             label-placement="floating"
+            v-model = "loanParticularsRows.others"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -64,6 +71,7 @@
             fill="outline"
             label="Total"
             label-placement="floating"
+            v-model="loanParticularsRows.total"
           ></ion-input>
           <ion-card-subtitle color="tertiary" class="ion-text-center ion-margin-top">Purpose</ion-card-subtitle>
         <ion-select
@@ -73,6 +81,7 @@
                       label-placement="floating"
                       placeholder="Agriculture"
                       fill="outline"
+                      v-model = "loanParticularsRows.agriculture"
                     >
                       <ion-select-option value="Paddy">Paddy</ion-select-option>
                       <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -120,6 +129,7 @@
                       label-placement="floating"
                       placeholder="Consumption"
                       fill="outline"
+                      v-model="loanParticularsRows.consumption"
                     >
                       <ion-select-option value="Paddy">Paddy</ion-select-option>
                       <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -168,6 +178,7 @@
                     label-placement="floating"
                     placeholder="Select Education"
                     fill="outline"
+                    v-model = "loanParticularsRows.education"
                   >
                     <ion-select-option value="illiterate"
                       >Illiterate</ion-select-option
@@ -195,6 +206,7 @@
                     label-placement="floating"
                     placeholder="Marriage"
                     fill="outline"
+                    v-model = "loanParticularsRows.marriage"
                     >
                     <ion-select-option value="married">Married</ion-select-option>
                     <ion-select-option value="unmarried">Unmarried</ion-select-option>
@@ -206,6 +218,7 @@
                       label-placement="floating"
                       placeholder="Others"
                       fill="outline"
+                      v-model = "loanParticularsRows.others2"
                     >
                       <ion-select-option value="Paddy">Paddy</ion-select-option>
                       <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -253,10 +266,135 @@
     <ion-input  placeholder="Outstanding Amount"
             fill="outline"
             label="Outstanding Amount"
-            label-placement="floating"></ion-input>
+            label-placement="floating"
+            v-model = "loanParticularsRows.outstandingAmount"
+            ></ion-input>
           </ion-card-content>
    </ion-card>
+   <ion-button
+              class="ion-margin"
+              expand="block"
+              @click="addLoanParticularsRows()"
+              color="primary"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Loan Particulars Details</ion-button
+            >
 </template>
 <script>
-export default{}
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+} from "@ionic/vue";
+import axios from "axios";
+
+export default{
+  components:{
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+    },
+
+  data(){
+    return{
+      particulars:"",
+      bank:"",
+      moneyLender:"",
+      dealer:"",
+      fellowfarmer:"",
+      shg:"",
+      others:"",
+      total:"",
+      agriculture:"",
+      consumption:"",
+      education:"",
+      marriage:"",
+      others2:"",
+      loanParticularsRows:{
+        particulars:"",
+        bank:"",
+        moneyLender:"",
+        dealer:"",
+        fellowfarmer:"",
+        shg:"",
+        others:"",
+        total:"",
+        agriculture:"",
+        consumption:"",
+        education:"",
+        marriage:"",
+        others2:"",
+      },
+      loanParticularsRowsData:[]
+    }
+  },
+
+  methods : {
+    async loanParticularsData(){
+      try {
+        await axios.post("http://localhost:5000/api/bulkinsertionloanparticulars",this.loanParticularsRowsData)
+      } catch (error) {
+        console.error("error in loanParticularsData function",error)
+      }
+    },
+    addLoanParticularsRows(){
+      this.loanParticularsRowsData.push({...this.loanParticularsRows})
+      console.log("&&&&&&&&&&&DATA&&&&&&&&&&",this.loanParticularsRowsData)
+      this.clearLoanParticularsRows()
+    },
+    clearLoanParticularsRows(){
+      this.loanParticularsRows={
+        particulars:"",
+        bank:"",
+        moneyLender:"",
+        dealer:"",
+        fellowfarmer:"",
+        shg:"",
+        others:"",
+        total:"",
+        agriculture:"",
+        consumption:"",
+        education:"",
+        marriage:"",
+        others2:"",
+      }
+    },
+  }
+}
 </script>

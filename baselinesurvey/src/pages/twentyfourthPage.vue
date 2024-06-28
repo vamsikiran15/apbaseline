@@ -10,6 +10,7 @@
             fill="outline"
             label="Name of the Scheme/Project"
             label-placement="floating"
+            v-model = "beneficiarySchemeRows.nameofTheScheme"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -17,6 +18,7 @@
             fill="outline"
             label="Details of the Benefits Obtained"
             label-placement="floating"
+            v-model = "beneficiarySchemeRows.detailsoftheBenfits"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -24,12 +26,107 @@
             fill="outline"
             label="Value of the Benefit(Rs)"
             label-placement="floating"
+            v-model = "beneficiarySchemeRows.valueoftheBenfits"
           ></ion-input>
         </ion-card-content>
     </ion-card>
+    <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addBeneficiarySchemeRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Beneficiary Scheme Data</ion-button
+            >
 </template>
 <script>
-export default{}
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+} from "@ionic/vue";
+import axios from "axios";
+export default{
+  components: {
+    IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+  },
+  data(){
+    return{
+      nameofTheScheme:"",
+      detailsoftheBenfits:"",
+      valueoftheBenfits:"",
+      beneficiarySchemeRows:{
+        nameofTheScheme:"",
+        detailsoftheBenfits:"",
+        valueoftheBenfits:"",
+      },
+      beneficiarySchemeRowsData:[]
+    }
+  },
+
+  methods : {
+    async beneficiarySchemeData(){
+      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+      try {
+        await axios.post("http://localhost:5000/api/bulkinsertionpreviousproject",this.beneficiarySchemeRowsData
+        )
+      } 
+      catch (error) {
+        console.error("error in beneficiarySchemeData function",error)
+      }
+    },
+    addBeneficiarySchemeRows(){
+      this.beneficiarySchemeRowsData.push({...this.beneficiarySchemeRows})
+      console.log("$$$$$$$$$$$$$$$$$DATA$$$$$$$$$$$$$$$$",this.beneficiarySchemeRowsData)
+      this.clearBeneficiarySchemeRows()
+      },
+      clearBeneficiarySchemeRows(){
+        this.beneficiarySchemeRows={
+        nameofTheScheme:"",
+        detailsoftheBenfits:"",
+        valueoftheBenfits:"",
+      }
+      },
+    }
+  }
 </script>
 <style>
 .iconSize{

@@ -10,10 +10,11 @@
                       label-placement="floating"
                       placeholder="Select Grazing of Cattle/Animals"
                       fill="outline"
+                      v-model = "grazeCattleRows.grazingOfCattle"
                     >
-                      <ion-select-option value="ownland">In Community Land</ion-select-option>
-                      <ion-select-option value="community">Fed in the House</ion-select-option>
-                      <ion-select-option value="purchased">In Own Lands</ion-select-option>
+                      <ion-select-option value="In Community Land">In Community Land</ion-select-option>
+                      <ion-select-option value="Fed in the House">Fed in the House</ion-select-option>
+                      <ion-select-option value="In Own Lands">In Own Lands</ion-select-option>
                       </ion-select>
     <ion-input
             class="ion-margin-top"
@@ -21,6 +22,7 @@
             fill="outline"
             label="Number of Cattle/Animals"
             label-placement="floating"
+            v-model = "grazeCattleRows.numberOfCattle"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -28,10 +30,102 @@
             fill="outline"
             label="How many days in a Year"
             label-placement="floating"
+            v-model = "grazeCattleRows.daysInAYear"
           ></ion-input>
         </ion-card-content>
 </ion-card>
+<ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addGrazeCattleRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Government Scheme Details</ion-button
+            >
 </template>
 <script>
-export default{}
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+} from "@ionic/vue";
+import axios from "axios";
+export default{
+  components: {
+    IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+  },
+  data(){
+    return{
+      grazingOfCattle:"",               
+      numberOfCattle:"",
+      daysInAYear:"",
+      grazeCattleRows:{
+        grazingOfCattle:"",               
+        numberOfCattle:"",
+        daysInAYear:"",
+      },
+      grazeCattleRowsData:[]
+    }
+  },
+  methods : {
+    async grazeCattleData(){
+        try {
+           await axios.post("http://localhost:5000/api/bulkinsertiongrazecattle",this.grazeCattleRowsData
+          )
+        } catch (error) {
+          console.error("error in grazecattledata function",error)
+        }
+      },
+      addGrazeCattleRows(){
+        this.grazeCattleRowsData.push({...this.grazeCattleRows})
+        console.log("%%%%%%%%%DATA%%%%%%%%%%%%%%",this.grazeCattleRowsData)
+        this.clearGrazeCattleRows()
+      },
+      clearGrazeCattleRows(){
+        this.grazeCattleRows = {
+        grazingOfCattle:"",               
+        numberOfCattle:"",
+        daysInAYear:"",
+      }
+      },
+  }
+}
 </script>
