@@ -15,6 +15,7 @@
                       label-placement="floating"
                       placeholder="Select Crop Item"
                       fill="outline"
+                      v-model = "pestandDiseaseRows.crops"
                     >
                       <ion-select-option value="Paddy">Paddy</ion-select-option>
                       <ion-select-option value="Meeze">Meeze</ion-select-option>
@@ -61,6 +62,7 @@
             fill="outline"
             label="Name of the Pest/Disease"
             label-placement="floating"
+            v-model = "pestandDiseaseRows.nameOfThePest"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -68,6 +70,7 @@
             fill="outline"
             label="Biological"
             label-placement="floating"
+            v-model = "pestandDiseaseRows.biological"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -75,6 +78,7 @@
             fill="outline"
             label="Chemical"
             label-placement="floating"
+            v-model = "pestandDiseaseRows.chemical"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -82,6 +86,7 @@
             fill="outline"
             label="Others(Name Them)"
             label-placement="floating"
+            v-model = "pestandDiseaseRows.others"
           ></ion-input>
         </ion-card-content>
     </ion-card>
@@ -97,6 +102,7 @@
             fill="outline"
             label="Material"
             label-placement="floating"
+            v-model = "pestandDiseaseRows.material"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -104,6 +110,7 @@
             fill="outline"
             label="Wages"
             label-placement="floating"
+            v-model = "pestandDiseaseRows.wages"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -111,6 +118,7 @@
             fill="outline"
             label="Total Material"
             label-placement="floating"
+            v-model = "pestandDiseaseRows.totalMaterial"
           ></ion-input>
           <ion-input
             class="ion-margin-top"
@@ -118,6 +126,7 @@
             fill="outline"
             label="Total Wages"
             label-placement="floating"
+            v-model = "pestandDiseaseRows.totalWages"
           ></ion-input>
         </ion-card-content>
     </ion-card>
@@ -132,7 +141,118 @@
           ></ion-input>
         </ion-card-content>
     </ion-card>
+    <ion-button
+              class="ion-margin"
+              expand="block"
+              @click="addPestDiseaseRows()"
+              color="primary"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Pest and Disease Control Details</ion-button
+            >
 </template>
 <script>
-export default{}
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+} from "@ionic/vue";
+import axios from "axios";
+export default{
+  data(){
+    return{
+      crops:"",
+      nameOfThePest:"",
+      biological:"",
+      chemical:"",
+      others:"",
+      material:"",
+      wages:"",
+      totalMaterial:"",
+      totalWages:"",
+      pestandDiseaseRows:{
+      crops:"",
+      nameOfThePest:"",
+      biological:"",
+      chemical:"",
+      others:"",
+      material:"",
+      wages:"",
+      totalMaterial:"",
+      totalWages:""
+    },
+    pestandDiseaseRowsData:[]
+    }
+  },
+
+  components:{
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+    },
+
+  methods : {
+    async controlMeasuresData(){
+      try {
+         await axios.post("http://localhost:5000/api/bulkinsertionpest",this.pestandDiseaseRowsData
+        )
+      } catch (error) {
+        console.error("error in controlMeasuresData function",error)
+      }
+    },
+    addPestDiseaseRows(){
+        this.pestandDiseaseRowsData.push({...this.pestandDiseaseRows})
+        console.log("%%%%DATA%%%%%%%%%",this.pestandDiseaseRowsData)
+        this.clearPestDisease()
+      },
+    clearPestDisease(){
+     this.pestandDiseaseRows = {
+      crops:"",
+      nameOfThePest:"",
+      biological:"",
+      chemical:"",
+      others:"",
+      material:"",
+      wages:"",
+      totalMaterial:"",
+      totalWages:""
+    }
+    },
+  }
+}
 </script>

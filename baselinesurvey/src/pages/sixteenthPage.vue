@@ -11,6 +11,7 @@
                       label-placement="floating"
                       placeholder="Select Details"
                       fill="outline"
+                      v-model="horticultureDetailsRows.details"
                     >
                       <ion-select-option value="HorticulturePlantsTrees">Horticulture Plants/Trees</ion-select-option>
                       <ion-select-option value="mango">Mango</ion-select-option>
@@ -36,10 +37,100 @@
             fill="outline"
             label="Number of Details"
             label-placement="floating"
+            v-model="horticultureDetailsRows.numberofDetails"
           ></ion-input>
         </ion-card-content>
     </ion-card>
+    <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addHorticultureRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Horticulture Details</ion-button
+            >
 </template>
 <script>
-export default{}
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+} from "@ionic/vue";
+import axios from "axios";
+export default{
+  components: {
+    IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+  },
+  
+  data(){
+    return{
+      details:"",
+      numberofDetails:"",
+      horticultureDetailsRows:{
+        details:"",
+        numberofDetails:"",
+      },
+      horticultureDetailsRowsData:[],
+    }
+  },
+  methods : {
+    async horticultureDetailsData(){
+      try {
+        await axios.post("http://localhost:5000/api/bulkinsertionhorticulture",this.horticultureDetailsRowsData
+        )
+      } catch (error) {
+        console.error("error in horticultureDetailsData function",error)
+      }
+    },
+    addHorticultureRows(){
+      this.horticultureDetailsRowsData.push({...this.horticultureDetailsRows})
+      console.log("%%%%%%%%%%%DATA%%%%%%%%%%",this.horticultureDetailsRowsData)
+      this.clearHorticultureDetailsRowsData()
+    },
+    clearHorticultureDetailsRowsData(){
+      this.horticultureDetailsRows = {
+        details:"",
+        numberofDetails:"",
+      }
+    },
+  }
+}
 </script>

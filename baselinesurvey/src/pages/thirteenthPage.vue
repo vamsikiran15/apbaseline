@@ -6,41 +6,38 @@
   </ion-card>
     <ion-card>
     <ion-card-content>
-        <ion-input
-            class="ion-margin-top"
-            placeholder="Enter Quantity"
-            fill="outline"
-            label="Litres/Day"
-            label-placement="floating"
-          ></ion-input>
+      <ion-select
+                      class="ion-margin-top"
+                      aria-label="Source of Drinking Water"
+                      interface="popover"
+                      label="Drinking Water Item"
+                      label-placement="floating"
+                      placeholder="Select Drinking Water Item"
+                      fill="outline"
+                      v-model = "drinkingWaterAvailabilityRows.drinkingwateritem"
+                    >
+                      <ion-select-option value="presentavailability">Present Availability of Drinking Water</ion-select-option>
+          </ion-select>
           <ion-select
                       class="ion-margin-top"
                       aria-label="Source of Drinking Water"
                       interface="popover"
-                      label="Source of Drinking Water"
+                      label="Drinking Water Units"
                       label-placement="floating"
-                      placeholder=""
+                      placeholder="Select Drinking Water Units"
                       fill="outline"
+                      v-model = "drinkingWaterAvailabilityRows.drinkingwaterunits"
                     >
-                      <ion-select-option value="borewell">Borewell</ion-select-option>
-                      <ion-select-option value="tank">Tank</ion-select-option>
-                      <ion-select-option value="publictank">Public Tap</ion-select-option>
-                      <ion-select-option value="openwell">Open Well</ion-select-option>
-                      <ion-select-option value="canalwater">Canal Water</ion-select-option>
+                      <ion-select-option value="litres">Litres/Day</ion-select-option>
+                      <ion-select-option value="months">No of Months in a Year</ion-select-option>
           </ion-select>
-        </ion-card-content>
-        </ion-card>
-<ion-card>
-    <ion-card-header color="tertiary"><strong>Present Availability of Drinking Water</strong></ion-card-header>
-  </ion-card>
-    <ion-card>
-    <ion-card-content>
         <ion-input
             class="ion-margin-top"
-            placeholder="Enter No of Months in a Year"
+            placeholder="Enter Quantity"
             fill="outline"
-            label="No of Months in a Year"
+            label="Quantity"
             label-placement="floating"
+            v-model = "drinkingWaterAvailabilityRows.litresPerDay"
           ></ion-input>
           <ion-select
                       class="ion-margin-top"
@@ -50,6 +47,7 @@
                       label-placement="floating"
                       placeholder="Select source of drinking water"
                       fill="outline"
+                      v-model = "drinkingWaterAvailabilityRows.sourceDrinkingWater"
                     >
                     <ion-select-option value="borewell">Borewell</ion-select-option>
                       <ion-select-option value="tank">Tank</ion-select-option>
@@ -58,8 +56,104 @@
                       <ion-select-option value="canalwater">Canal Water</ion-select-option>
           </ion-select>
         </ion-card-content>
-</ion-card>
+        </ion-card>
+<ion-button
+              class="ion-margin"
+              expand="block"
+              color="primary"
+              @click="addDrinkingWaterAvailabilityRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Availability of Drinking Water Details</ion-button
+            >
 </template>
 <script>
-export default{}
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+} from "@ionic/vue";
+import axios from "axios";
+export default{
+  
+  components:{
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+    },
+
+  data(){
+    return{
+      drinkingwateritem:"",
+      drinkingwaterunits:"",
+      litresPerDay:"",
+      sourceDrinkingWater:"",
+      drinkingWaterAvailabilityRows:{
+        drinkingwateritem:"",
+        drinkingwaterunits:"",
+        litresPerDay:"",
+        sourceDrinkingWater:"",
+      },
+      drinkingWaterAvailabilityRowsData:[]    
+    }
+  },
+  methods : {
+    async availabilityofDrinkingWaterData(){
+      try {
+        await axios.post("http://localhost:5000/api/bulkinsertiondrinkingwater",this.drinkingWaterAvailabilityRowsData
+      )
+      } catch (error) {
+        console.error("error in availabilityofDrinkingWaterData function",error)
+      }
+    },
+    addDrinkingWaterAvailabilityRows(){
+      this.drinkingWaterAvailabilityRowsData.push({...this.drinkingWaterAvailabilityRows})
+      console.log("^^^^^^^^^^^^^DATA&&&&&&&&&&&&&&&",this.drinkingWaterAvailabilityRowsData)
+      this.clearDrinkingWaterRows()
+    },
+    clearDrinkingWaterRows(){
+      this.drinkingWaterAvailabilityRows = {
+        drinkingwateritem:"",
+        drinkingwaterunits:"",
+        litresPerDay:"",
+        sourceDrinkingWater:"",
+      }
+    },
+  }
+}
 </script>

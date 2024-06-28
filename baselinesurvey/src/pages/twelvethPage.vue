@@ -7,127 +7,169 @@
       </ion-card>
         <ion-card>
         <ion-card-content>
-        <ion-input
-            class="ion-margin-top"
-            placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Household Member's Income"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-             placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Agriculture-Kharif"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-             placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Agriculture-Rabi"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Dairy"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-           placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Livestock"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-           placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Fisheries"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-           placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Poultry"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-           placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Wages-Migration"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-           placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Landless Labourers-Wages"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-           placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Benefits from Government Schemes"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Expenditure of Manure and Chemical Fertilizers"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Expenditure of Pesticide"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-           placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Family Expenditure"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-           placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Family Indebtedness"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-            placeholder="Enter Income during the Year(Rs)"
-            label="Business"
-              fill="outline"
-            label-placement="floating"
-          ></ion-input>
-          <ion-input
-            class="ion-margin-top"
-          placeholder="Enter Income during the Year(Rs)"
-            fill="outline"
-            label="Others(Specify)"
-            label-placement="floating"
-          ></ion-input>
+          <ion-select
+                    class="ion-margin-top"
+                    interface="popover"
+                    label="Source"
+                    label-placement="floating"
+                    placeholder="Select Source"
+                    fill="outline"
+                    v-model="sourceofIncomeRows.source"
+                  >
+                    <ion-select-option value="HouseholdMemberIncome"
+                      >Household Member's Income</ion-select-option
+                    >
+                    <ion-select-option value="AgriculturKharif"
+                      >Agriculture-Kharif</ion-select-option
+                    >
+                    <ion-select-option value="AgriculturRabi"
+                      >Agriculture-Rabi</ion-select-option
+                    >
+                    <ion-select-option value="Dairy"
+                      >Dairy</ion-select-option
+                    >
+                    <ion-select-option value="Livestock"
+                      >Livestock</ion-select-option
+                    >
+                    <ion-select-option value="Fisheries"
+                      >Fisheries</ion-select-option
+                    >
+                    <ion-select-option value="Poultry"
+                      >Poultry</ion-select-option
+                    >
+                    <ion-select-option value="WagesMigration">Wages-Migration</ion-select-option>
+                    <ion-select-option value="LandlessLabourerWages"
+                      >Landless Labourers-Wages</ion-select-option
+                    >
+                    <ion-select-option value="BenefitsfromGovernmentSchemes"
+                      >Benefits from Government Schemes</ion-select-option
+                    >
+                    <ion-select-option value="ExpenditureofManureandChemicalFertilizers"
+                      >Expenditure of Manure and Chemical Fertilizers</ion-select-option
+                    >
+                    <ion-select-option value="ExpenditureofPesticide"
+                      >Expenditure of Pesticide</ion-select-option
+                    >
+                    <ion-select-option value="FamilyExpenditure"
+                      >Family Expenditure</ion-select-option
+                    >
+                    <ion-select-option value="FamilyIndebtedness"
+                      >Family Indebtedness</ion-select-option
+                    >
+                    <ion-select-option value="Poultry"
+                      >Poultry</ion-select-option
+                    >
+                    <ion-select-option value="Business"
+                      >Business</ion-select-option
+                    >
+                  </ion-select>
           <ion-input
             class="ion-margin-top"
             fill="outline"
-            label="Total Income"
+            label="Enter Income during the Year(Rs)"
             label-placement="floating"
+            v-model = "sourceofIncomeRows.income"
           ></ion-input>
         </ion-card-content>
     </ion-card>
+    <ion-button
+              class="ion-margin"
+              color="primary"
+              expand="block"
+              @click="addSourceofIncomeRows()"
+              ><ion-icon
+                class="ion-margin-end"
+                name="add-circle"
+                slot="icon-only"
+              ></ion-icon
+              >Add Source of Income and Family Details</ion-button
+            >
 </template>
 <script>
-export default{}
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+} from "@ionic/vue";
+import axios from "axios";
+
+export default{
+  
+  components:{
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonLabel,
+  IonRadioGroup,
+  IonRadio,
+  IonList,
+    },
+    
+  data(){
+    return{
+          source:"",
+          income:"",
+          sourceofIncomeRows:{
+            source:"",
+            income:"",
+          },
+          sourceofIncomeRowsData:[]
+    }
+  },
+
+ methods : {
+  async sourceofIncomeData(){
+    try {
+       await axios.post("http://localhost:5000/api/sourceofincome",
+        {
+          // headId: req.body.headId,
+          source:this.source,
+          income_during_the_year:this.income
+        }
+      )
+    } catch (error) {
+      console.error("error in sourceofIncomeData fucntion",error )
+    }
+  },
+  addSourceofIncomeRows(){
+    this.sourceofIncomeRowsData.push({...this.sourceofIncomeRows})
+    console.log("^^^^^^^^^^^^^DATA^^^^^^^^^^^^^^^",this.sourceofIncomeRowsData)
+    this.clearSourceofIncomeRows()
+  },
+  clearSourceofIncomeRows(){
+    this.sourceofIncomeRows={
+            source:"",
+            income:"",
+          }
+  },
+ } 
+}
 </script>
