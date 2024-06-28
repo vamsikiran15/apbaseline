@@ -2,7 +2,10 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-img :src="RsiLogo" class="imgsize"></ion-img>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/landingpage"></ion-back-button>
+        </ion-buttons>
+        <!-- <ion-img :src="RsiLogo" class="imgsize"></ion-img> -->
         <!-- <ion-title style="font-size: 1.5vh"> </ion-title> -->
         <!-- <ion-buttons slot="start">
           <ion-back-button default-href="/" />
@@ -808,6 +811,7 @@ export default {
       this.selectedProject = { ...item };
       console.log("asdfjlkasjdfkdsajklf", this.selectedProject.id);
       this.fetchItemsForProject(this.selectedProject.id);
+      this.projects = []; // Clear the item list
     },
     selectItem(item) {
       this.selectedItem = { ...item }; // Copy the selected item

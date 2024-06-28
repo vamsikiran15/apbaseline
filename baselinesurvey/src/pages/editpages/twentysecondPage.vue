@@ -82,6 +82,7 @@
         <ion-button
           class="ion-margin-top"
           expand="block"
+          color="primary"
           @click="UpdateAwarenessAdoptionData"
           ><ion-icon
             class="ion-margin-end"

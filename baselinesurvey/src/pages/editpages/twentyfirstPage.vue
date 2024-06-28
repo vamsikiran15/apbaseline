@@ -77,6 +77,7 @@
         <ion-button
           class="ion-margin-top"
           expand="block"
+          color="primary"
           @click="UpdateParticipationCommunityProgramData"
           ><ion-icon
             class="ion-margin-end"

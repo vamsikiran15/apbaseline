@@ -55,6 +55,7 @@
         <ion-button
           class="ion-margin-top"
           expand="block"
+          color="primary"
           @click="UpdateGrazeCattleData"
           ><ion-icon
             class="ion-margin-end"
