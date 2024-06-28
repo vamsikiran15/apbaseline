@@ -463,6 +463,7 @@
                   <ion-button
                     class="ion-margin-top"
                     expand="full"
+                    color="primary"
                     @click="updateHouseIndividualInfo()"
                     ><ion-icon
                       class="ion-margin-end"
@@ -629,7 +630,8 @@
                   <ion-button
                     class="ion-margin-top"
                     expand="full"
-                    @click="addRows()"
+                    color="primary"
+                    @click="UpdateHouseHoldMemberData()"
                     ><ion-icon
                       class="ion-margin-end"
                       name="add-circle"
@@ -749,7 +751,8 @@
                   <ion-button
                     class="ion-margin-top"
                     expand="full"
-                    @click="updateLandrows()"
+                    color="primary"
+                    @click="UpdateLandParticularsData()"
                     ><ion-icon
                       class="ion-margin-end"
                       name="add-circle"
@@ -960,6 +963,7 @@
                   <ion-button
                     class="ion-margin-top"
                     expand="full"
+                    color="primary"
                     @click="UpdateKharifData()"
                     ><ion-icon
                       class="ion-margin-end"
@@ -1158,6 +1162,7 @@
                   <ion-button
                     class="ion-margin-top"
                     expand="full"
+                    color="primary"
                     @click="UpdateRabhiData()"
                     ><ion-icon
                       class="ion-margin-end"
@@ -1422,10 +1427,11 @@
     </ion-content>
     <ion-footer>
       <div class="ion-padding">
-        <ion-button v-if="currentStep !== 1" @click="prevStep()"
+        <ion-button color="primary" v-if="currentStep !== 1" @click="prevStep()"
           ><ion-icon name="carat-back-outline"></ion-icon>Previous</ion-button
         >
         <ion-button
+          color="primary"
           class="nextButton"
           v-if="currentStep !== totalSteps"
           @click="nextStep()"
@@ -1433,6 +1439,7 @@
         ></ion-button>
 
         <ion-button
+          color="primary"
           v-else-if="currentStep === totalSteps"
           class="nextButton"
           @click="submitForm"
@@ -1961,7 +1968,6 @@ export default {
       ) {
         this.landParticularRows.push({ ...this.newRowLandParticular }); // Add a copy of newRow to rows
         console.log("this rows", this.rows);
-        this.updateLandParticularsItem();
         this.clearFieldsLandParticular(); // Clear the input fields
       }
     },
@@ -2254,38 +2260,127 @@ export default {
         console.error("Error updating item:", error);
       }
     },
-    async updateLandParticularsItem() {
-      try {
-        // const rowsWithCommaSeparatedOccupation = this.landParticularRows.map((row) => ({
-        //   ...row,
-        //   occupation: row.occupation.join(", "),
-        // }));
-        const data = {
-          rows: this.landParticularRows, // Assuming rows_land_less_labourers contains your table data
-        };
-        console.log("land particular updated rows *****************", data);
-        console.log(
-          "updated rows *****************",
-          this.newRowLandParticular
-        );
-        const response = await axios.put(
-          `http://183.82.109.39:5000/items/updatelandparticular`,
-          data
-        );
-        console.log("Item updated:", response.data);
-        this.$emit("item-updated", response.data); // Emit event with updated item
-      } catch (error) {
-        console.error("Error updating item:", error);
+
+    // update and insert the household members
+
+    async UpdateHouseHoldMemberData() {
+      this.addRows();
+      const newData = this.rows.map((row) => ({
+        ...row,
+        occupation: row.occupation.join(","),
+        headId: this.editedItem.id,
+      }));
+
+      for (const row of newData) {
+        if (row.id) {
+          // Update existing row
+          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+          await this.updateHouseholdMembers(row);
+        } else {
+          // Insert new row
+          // this.landParticularRows.push(row);
+          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+          await this.insertHouseholdMembers(row);
+        }
       }
     },
-    // addIncomeKharif() {
-    //   this.updateIncomeKharifrows();
-    //   // this.updateIncomeKharifrows();
-    //   const newData = this.incomeKharifRows.map((row) => ({
-    //     ...row,
-    //     headId: this.editedItem.id,
-    //   }));
-    // },
+    async insertHouseholdMembers(row) {
+      try {
+        console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
+        const response = await axios.post(
+          "http://183.82.109.39:5000/api/inserthouseholdDetails",
+
+          {
+            headId: row.headId,
+            name_of_the_family_member: row.name_of_the_family_member,
+            relationship_with_head: row.relationship_with_head,
+            disability: row.disability,
+            gender: row.gender,
+            age: row.age,
+            level_of_education: row.level_of_education,
+            occupation: row.occupation,
+            membership: row.membership,
+            annual_gross_income: row.annual_gross_income,
+          }
+        );
+        console.log("Row inserted:", response);
+      } catch (error) {
+        console.error("Error inserting row:", error);
+      }
+    },
+    async updateHouseholdMembers(row) {
+      try {
+        console.log("updated row", row);
+        const response = await axios.put(
+          `http://183.82.109.39:5000/api/updatehouseholdDetails/${row.id}`,
+          row
+        );
+        console.log("Row updated:", response);
+      } catch (error) {
+        console.error("Error updating row:", error);
+      }
+    },
+
+    // end update and insert the household member
+
+    // update and insert the landparticulars
+
+    async UpdateLandParticularsData() {
+      this.updateLandrows();
+      const newData = this.landParticularRows.map((row) => ({
+        ...row,
+        headId: this.editedItem.id,
+      }));
+
+      for (const row of newData) {
+        if (row.id) {
+          // Update existing row
+          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+          await this.updateLandParticular(row);
+        } else {
+          // Insert new row
+          // this.landParticularRows.push(row);
+          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+          await this.insertLandParticular(row);
+        }
+      }
+    },
+    async insertLandParticular(row) {
+      try {
+        console.log("&&&&&&&&&&&&&&&&&&&&&&", row);
+        const response = await axios.post(
+          "http://183.82.109.39:5000/api/insertlandParticulars",
+
+          {
+            id: row.id,
+            headId: row.headId,
+            cultivated_area: row.cultivated_area,
+            rainfed: row.rainfed,
+            irrigated: row.irrigated,
+            total: row.total,
+            Type_of_ownership: row.Type_of_ownership,
+          }
+        );
+        console.log("Row inserted:", response);
+      } catch (error) {
+        console.error("Error inserting row:", error);
+      }
+    },
+    async updateLandParticular(row) {
+      try {
+        console.log("updated row", row);
+        const response = await axios.put(
+          `http://183.82.109.39:5000/api/updatelandparticular/${row.id}`,
+          row
+        );
+        console.log("Row updated:", response);
+      } catch (error) {
+        console.error("Error updating row:", error);
+      }
+    },
+
+    // end update and insert the landParticulars
+
     async UpdateKharifData() {
       this.updateIncomeKharifrows();
       const newData = this.incomeKharifRows.map((row) => ({
@@ -2300,7 +2395,7 @@ export default {
           await this.updateIncomeKharif(row);
         } else {
           // Insert new row
-          this.landParticularRows.push(row);
+          // this.landParticularRows.push(row);
           console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
           await this.insertIncomeKharif(row);
         }
@@ -2337,6 +2432,7 @@ export default {
     },
     async updateIncomeKharif(row) {
       try {
+        console.log("updated row", row);
         const response = await axios.put(
           `http://183.82.109.39:5000/api/updateIncomeKharif/${row.id}`,
           row
@@ -2360,7 +2456,7 @@ export default {
           await this.updateIncomeRabhi(row);
         } else {
           // Insert new row
-          this.landParticularRows.push(row);
+          // this.landParticularRows.push(row);
           console.log("Rabhi updated data", row);
           await this.insertIncomeRabhi(row);
         }
@@ -2421,7 +2517,7 @@ export default {
           await this.updateLiveStock(row);
         } else {
           // Insert new row
-          this.landParticularRows.push(row);
+          // this.landParticularRows.push(row);
           console.log("Live Stock updated data", row);
           await this.insertLiveStock(row);
         }

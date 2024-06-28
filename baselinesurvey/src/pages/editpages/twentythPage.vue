@@ -63,6 +63,7 @@
         <ion-button
           class="ion-margin-top"
           expand="block"
+          color="primary"
           @click="UpdateHouseholdAssetsData"
           ><ion-icon
             class="ion-margin-end"

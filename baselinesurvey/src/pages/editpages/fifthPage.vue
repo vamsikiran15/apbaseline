@@ -111,6 +111,7 @@
         <ion-button
           class="ion-margin-top"
           expand="block"
+          color="primary"
           @click="UpdateMigrateData()"
           ><ion-icon
             class="ion-margin-end"

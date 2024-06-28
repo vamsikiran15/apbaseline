@@ -2,59 +2,47 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-grid>
-          <ion-row>
-            <!-- <ion-col>
-              <ion-title size="small" id="titleFont"
-                >Welcome, {{ memberName }}</ion-title
-              >
-            </ion-col> -->
-            <ion-col id="SegmentBg">
-              <ion-segment @ionChange="clicked($event)" v-model="component">
-                <ion-segment-button value="Repurchase">
-                  <ion-img
-                    :src="RsiLogo"
-                    class="imgsize"
-                    alt="Repurchase"
-                    title="Repurchase"
-                  />
-                </ion-segment-button>
-                <ion-segment-button value="Registration">
-                  <ion-img
-                    :src="watershedLogoOne"
-                    class="imgsize"
-                    alt="Registration"
-                    title="Registration"
-                  />
-                </ion-segment-button>
-                <ion-segment-button value="TripPoint">
-                  <ion-img
-                    :src="watershedLogoTwo"
-                    class="imgsize"
-                    alt="Trip Point"
-                    title="Trip Point"
-                  />
-                </ion-segment-button>
-              </ion-segment>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-
         <!-- <ion-img :slot="start" :src="RsiLogo" class="imgsize"></ion-img>
         <ion-img :slot="end" :src="watershedLogoTwo" class="imgsize"></ion-img> -->
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding">
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4" class="ion-text-start">
+            <ion-img
+              :src="watershedLogo"
+              style="width: 12wh; height: 12vh"
+            ></ion-img>
+          </ion-col>
+          <ion-col size="4" class="ion-text-center">
+            <ion-img
+              :src="watershedLogoOne"
+              style="width: 12wh; height: 12vh"
+            ></ion-img>
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            <ion-img
+              :src="watershedLogoTwo"
+              class="ion-padding-top"
+              style="height: 11.5vh"
+            ></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="ion-text-center">
+            <p>
+              Monitoring, Evaluation, Learning and Documentation (MEL&D)
+              Services under Watershed Development Component - Pradhan Mantri
+              Krishi Sinchayee Yojana 2.0 (WDC-PMKSY 2.0)
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
       <ion-card>
         <ion-card-header style="text-align: center">
-          <ion-card-title>
-            <ion-img
-              style="display: inline-block"
-              :src="watershedLogo"
-              class="imgsize"
-              alt="Trip Point"
-              title="Trip Point"
-          /></ion-card-title>
+          <ion-card-title> </ion-card-title>
           <ion-card-subtitle
             ><strong style="color: white"
               >HOUSEHOLD SOCIO-ECONOMIC SURVEY</strong
@@ -63,7 +51,11 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-button class="ion-margin-top" expand="full" router-link="/survey"
+          <ion-button
+            class="ion-margin-top"
+            color="primary"
+            expand="full"
+            router-link="/survey"
             ><ion-icon
               class="ion-margin-end"
               name="add-circle"
@@ -71,7 +63,11 @@
             ></ion-icon
             >NEW SURVEY</ion-button
           >
-          <ion-button class="ion-margin-top" expand="full" router-link="/search"
+          <ion-button
+            class="ion-margin-top"
+            expand="full"
+            router-link="/search"
+            color="primary"
             ><ion-icon
               class="ion-margin-end"
               name="create-outline"
@@ -94,6 +90,17 @@
       ></ion-alert>
       <!-- IonAlert for exit confirmation -->
     </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto">
+              <ion-img :src="RsiLogo"></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-toolbar>
+    </ion-footer>
   </ion-page>
 </template>
 <script>
@@ -124,8 +131,9 @@ import {
   IonItem,
   IonImg,
   IonAlert,
+  IonGrid,
 } from "@ionic/vue";
-import Logo from "../assets/img/RSIWHITEL_Logo.png";
+import Logo from "../assets/img/RSILLP Logo Final.jpg";
 import LogoWatershed from "../assets/img/watershed.png";
 import LogoWatershedOne from "../assets/img/watershed1.png";
 import LogoWatershedTwo from "../assets/img/watershed2.png";
@@ -138,7 +146,7 @@ export default {
     const showExitAlert = ref(false);
 
     const handleBackButton = () => {
-      if (router.currentRoute.value.path === "/main") {
+      if (router.currentRoute.value.path === "/landingpage") {
         showExitAlert.value = true;
       } else {
         router.back();
@@ -202,6 +210,7 @@ export default {
     IonItem,
     IonImg,
     IonAlert,
+    IonGrid,
   },
   data() {
     return {
@@ -214,8 +223,33 @@ export default {
 };
 </script>
 <style>
+ion-img {
+  width: 100%;
+  height: auto;
+}
 .imgsize {
-  height: 6vh;
-  width: 15vh;
+  height: 11vh;
+  width: 12vh;
+}
+.imgsize1 {
+  height: 10vh;
+  width: 20vh;
+}
+/* ion-img {
+  width: 100%;
+  height: auto;
+} */
+
+ion-footer ion-img {
+  width: auto;
+  height: 50px; /* Adjust this value as needed */
+  display: block;
+  margin: auto;
+}
+
+p {
+  margin-top: 16px;
+  font-size: 16px;
+  text-align: center;
 }
 </style>

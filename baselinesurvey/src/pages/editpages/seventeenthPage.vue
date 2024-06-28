@@ -71,6 +71,7 @@
         <ion-button
           class="ion-margin-top"
           expand="block"
+          color="primary"
           @click="UpdateFodderFeedData"
           ><ion-icon
             class="ion-margin-end"

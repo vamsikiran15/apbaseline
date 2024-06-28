@@ -73,6 +73,7 @@
         <ion-button
           class="ion-margin-top"
           expand="block"
+          color="primary"
           @click="UpdateFodderFuelData"
           ><ion-icon
             class="ion-margin-end"

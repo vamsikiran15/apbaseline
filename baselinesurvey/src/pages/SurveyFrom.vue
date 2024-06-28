@@ -2,13 +2,16 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-img
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/landingpage"></ion-back-button>
+        </ion-buttons>
+        <!-- <ion-img
           class="rsiImgSize"
           src="../src/assets/img/RSIWHITEL_Logo2.png"
         ></ion-img>
         <ion-title class="ion-text-justify ion-margin-end titleText">
           <strong>HOUSEHOLD SOCIO-ECONOMIC SURVEY</strong>
-        </ion-title>
+        </ion-title> -->
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -1415,6 +1418,7 @@ import {
   IonButton,
   IonButtons,
   IonItem,
+  IonBackButton,
 } from "@ionic/vue";
 import fifthPage from "./fifthPage.vue";
 import SixthPage from "./sixthPage.vue";
@@ -1653,6 +1657,8 @@ export default {
     IonButton,
     TwentyfifthPage,
     IonItem,
+    IonButtons,
+    IonBackButton,
   },
   created() {
     this.getDistricts();

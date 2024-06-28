@@ -109,6 +109,7 @@
         <ion-button
           class="ion-margin-top"
           expand="block"
+          color="primary"
           @click="UpdatePestDiseaseData()"
           ><ion-icon
             class="ion-margin-end"

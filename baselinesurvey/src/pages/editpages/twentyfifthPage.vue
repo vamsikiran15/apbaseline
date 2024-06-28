@@ -52,6 +52,7 @@
           v-model="selectedDateServeyorName.serveyor_name"
         ></ion-input>
         <ion-button
+          color="primary"
           class="ion-margin-top"
           expand="block"
           @click="
