@@ -457,14 +457,19 @@
                   placeholder="Relationship"
                   v-model="newRow.relationship_with_head"
                 ></ion-input>
-                <ion-input
+                <ion-select
                   class="ion-margin-top"
+                  aria-label="Disability"
+                  interface="popover"
                   label="Disability"
                   label-placement="floating"
+                  placeholder="Select Disability"
                   fill="outline"
-                  placeholder="Disability"
                   v-model="newRow.disability"
-                ></ion-input>
+                >
+                  <ion-select-option value="yes">Yes</ion-select-option>
+                  <ion-select-option value="no">No</ion-select-option>
+                </ion-select>
                 <ion-select
                   class="ion-margin-top"
                   aria-label="Gender"
@@ -577,7 +582,7 @@
               class="ion-margin"
               color="primary"
               expand="block"
-              @click="addRows()"
+              @click="addHouseholdDetailsRows()"
               ><ion-icon
                 class="ion-margin-end"
                 name="add-circle"
@@ -1234,6 +1239,7 @@ export default {
         annual_gross_income: "",
         membership: "",
       },
+      householdDetailsRowsData:[],
       rows: [],
       addLivestockDetails:{
         nameOfTheAnimal:"",
@@ -1623,6 +1629,13 @@ export default {
         this.clearFields(); // Clear the input fields
       }
     },
+    async addHouseholdDetailsRows(){
+      try {
+        this.householdDetailsRowsData.push({...this.newRow});
+      } catch (error) {
+        console.error("error in addHouseholdDetailsRows function",error)
+      }
+    },
     clearFields() {
       this.newRow = {
         name_of_the_family_member: "",
@@ -1674,18 +1687,7 @@ export default {
     },
     async householdDetailsSubmitData(){
       try {
-           await axios.post(`http://localhost:5000/api/bulkinsertionhouseholddetails`,
-        {
-          name_of_the_family_member:this.newRow.name_of_the_family_member,
-            relationship_with_head:this.newRow.relationship_with_head,
-            disability:this.newRow.disability,
-            gender:this.newRow.gender,
-            age:this.newRow.age,
-            level_of_education:this.newRow.level_of_education,
-            occupation:this.newRow.occupation,
-            membership:this.newRow.membership,
-            annual_gross_income:this.newRow.annual_gross_income
-        })
+           await axios.post(`http://localhost:5000/api/bulkinsertionhouseholddetails`,this.householdDetailsRowsData)
       } catch (error) {
         console.error("error in submitdata function", error);
       }
