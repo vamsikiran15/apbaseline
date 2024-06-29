@@ -64,9 +64,6 @@
             v-model = "surveyor"></ion-input>
         </ion-card-content>
         </ion-card>
-        <ion-button
-        @click="soilWaterLandConservationData()"
-        >Update Buton</ion-button>
 </template>
 <script>
 import {
