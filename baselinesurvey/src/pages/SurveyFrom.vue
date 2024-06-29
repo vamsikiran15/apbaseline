@@ -1719,10 +1719,9 @@ export default {
     async addLandParticularsRows(){
       try {
         this.cultivatedAreaRowsData.push({...this.cultivatedAreaRows})
-        console.log("^^^^^^CULTIVATED AREA^^^^^^^^",this.cultivatedAreaRowsData)
+        this.clearCultivatedRows()
       } catch (error) {
         console.error("error in addLandParticularsRows function",error)
-        this.clearCultivatedRows()
       }
     },
     clearCultivatedRows(){
@@ -1737,7 +1736,6 @@ export default {
     async incomeKharifRows(){
       try {
         this.incomefromCropsKharifRowsData.push({...this.incomefromCropsKharifRows})
-        console.log("^^^^^^^^^KHARIF^^^^^^^^^",this.incomefromCropsKharifRowsData)
         this.clearIncomeKharifRows()
       } catch (error) {
         console.error("error in incomeKharif function",error)
@@ -1763,7 +1761,6 @@ export default {
     async incomeRabiRows(){
       try {
         this.incomefromCropsRabiRowsData.push({...this.incomefromCropsRabiRows})
-        console.log("^^^^^^^^^^^INCOMERABI^^^^^^^^^^^^^^",this.incomefromCropsRabiRowsData)
         this.clearIncomeRabiRows()
       } catch (error) {
         console.log("error in incomerabi function",error)
