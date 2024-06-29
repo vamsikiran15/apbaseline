@@ -37,8 +37,8 @@
           v-model="newRowManureChemical.crops"
         >
           <ion-select-option value="Paddy">Paddy</ion-select-option>
-          <ion-select-option value="Meeze">Meeze</ion-select-option>
-          <ion-select-option value="Jower">Jower</ion-select-option>
+          <ion-select-option value="maize">maize</ion-select-option>
+          <ion-select-option value="jowar">jowar</ion-select-option>
           <ion-select-option value="Cotton">Cotton</ion-select-option>
           <ion-select-option value="Mirchi">Mirchi</ion-select-option>
           <ion-select-option value="Groundnut">Groundnut</ion-select-option>
@@ -52,6 +52,7 @@
           <ion-select-option value="Cashew">Cashew</ion-select-option>
           <ion-select-option value="Vegetables">Vegetables</ion-select-option>
           <ion-select-option value="Sunflower">Sunflower</ion-select-option>
+          <ion-select-option value="Other">Other</ion-select-option>
         </ion-select>
         <ion-input
           class="ion-margin-top"

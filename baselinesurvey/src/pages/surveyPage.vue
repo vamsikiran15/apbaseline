@@ -657,8 +657,8 @@
                   fill="outline"
                 >
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="Meeze">Meeze</ion-select-option>
-                  <ion-select-option value="Jower">Jower</ion-select-option>
+                  <ion-select-option value="maize">maize</ion-select-option>
+                  <ion-select-option value="jowar">jowar</ion-select-option>
                   <ion-select-option value="Cotton">Cotton</ion-select-option>
                   <ion-select-option value="Mirchi">Mirchi</ion-select-option>
                   <ion-select-option value="Groundnut"
@@ -783,8 +783,8 @@
                   fill="outline"
                 >
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="Meeze">Meeze</ion-select-option>
-                  <ion-select-option value="Jower">Jower</ion-select-option>
+                  <ion-select-option value="maize">maize</ion-select-option>
+                  <ion-select-option value="jowar">jowar</ion-select-option>
                   <ion-select-option value="Cotton">Cotton</ion-select-option>
                   <ion-select-option value="Mirchi">Mirchi</ion-select-option>
                   <ion-select-option value="Groundnut"

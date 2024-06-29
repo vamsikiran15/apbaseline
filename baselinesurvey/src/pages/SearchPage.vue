@@ -811,10 +811,12 @@ export default {
       this.selectedProject = { ...item };
       console.log("asdfjlkasjdfkdsajklf", this.selectedProject.id);
       this.fetchItemsForProject(this.selectedProject.id);
+      this.projectquery = this.selectedProject.project_name;
       this.projects = []; // Clear the item list
     },
     selectItem(item) {
       this.selectedItem = { ...item }; // Copy the selected item
+      console.log("printing the selected item", this.selectedItem);
       this.getHouseHoldInfo();
       this.getLandPerticularsInfo();
       this.getIncomeCropKharif();
