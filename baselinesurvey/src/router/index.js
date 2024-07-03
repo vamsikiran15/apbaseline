@@ -3,6 +3,8 @@ import HomePage from '../views/HomePage.vue';
 import SurveyFrom from '../pages/SurveyFrom.vue';
 import SearchView from '../views/SearchView.vue';
 import LandingPage from '../pages/LandingPage.vue';
+import ParentPage from '../pages/parent.vue';
+
 const routes = [
   {
     path: '/',
@@ -27,6 +29,11 @@ const routes = [
     path: '/landingpage',
     name: 'homepage',
     component : LandingPage
+  },
+  {
+    path: '/parentpage',
+    name: 'parentpage',
+    component : ParentPage
   }
 ]
 

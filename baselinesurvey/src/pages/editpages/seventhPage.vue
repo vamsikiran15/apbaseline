@@ -111,6 +111,7 @@ import {
   IonRadio,
   IonList,
   IonButton,
+  IonItem,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -151,9 +152,11 @@ export default {
     IonRadio,
     IonList,
     IonButton,
+    IonItem,
   },
   methods: {
     selectGovtBenefit(item) {
+      console.log("govtasdkfjasdkf");
       this.newRowGovtBenefit.id = item.id;
       this.newRowGovtBenefit.headId = item.headId;
       this.newRowGovtBenefit.name_of_familymember = item.name_of_familymember;
