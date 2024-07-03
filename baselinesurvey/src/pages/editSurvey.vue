@@ -210,7 +210,6 @@
                     v-model="editedItem.household_door_no"
                   ></ion-input>
                   <ion-input
-                    type="number"
                     class="ion-margin-top"
                     label="Contact No (Mobile)"
                     label-placement="floating"
@@ -272,6 +271,23 @@
                     >
                   </ion-radio-group>
 
+                  <!-- <label for="ds">Data Structures</label><br />
+                  <input
+                    v-model="editedItem.occupation"
+                    type="checkbox"
+                    value="Algorithms"
+                    name="al"
+                  />
+                  <label for="al">Algorithms</label><br />
+                  <input
+                    v-model="editedItem.occupation"
+                    type="checkbox"
+                    value="Machine Learning"
+                    name="ml"
+                  />
+                  <label for="ml">Machine Learning</label> -->
+                  <p>Tutorials: {{ this.editedItem.occupation }}</p>
+
                   <ion-card-subtitle
                     color="tertiary"
                     class="ion-padding ion-text-center"
@@ -279,50 +295,116 @@
                   >
                   <ion-item>
                     <ion-label>Agriculture</ion-label>
+                    <input
+                      v-model="editedItem.occupation"
+                      type="checkbox"
+                      value="Agricultur"
+                      name="Agricultur"
+                      true-value="Agricultur"
+                      false-value="no"
+                    />
+                    <!-- <ion-label>Agriculture</ion-label>
                     <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
-                    ></ion-checkbox>
+                      :true-value="'Ag Labour'"
+                    ></ion-checkbox> -->
                   </ion-item>
 
                   <ion-item>
                     <ion-label>Ag Labour</ion-label>
-                    <ion-checkbox
-                      slot="end"
+                    <input
                       v-model="editedItem.occupation"
-                    ></ion-checkbox>
+                      type="checkbox"
+                      value="Ag Labour"
+                      name="Agricultur"
+                      true-value="Ag Labour"
+                      false-value="no"
+                    />
+                    <!-- <ion-checkbox
+                      slot="end"
+                      value="Ag Labour"
+                      v-model="editedItem.occupation"
+                    ></ion-checkbox> -->
                   </ion-item>
 
                   <ion-item>
                     <ion-label>Non –Ag labour</ion-label>
-                    <ion-checkbox
+                    <input
+                      v-model="editedItem.occupation"
+                      type="checkbox"
+                      value="Non–Ag labour"
+                      name="Agricultur"
+                      true-value="Non–Ag labour"
+                      false-value="no"
+                    />
+                    <!-- <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
-                    ></ion-checkbox>
+                    ></ion-checkbox> -->
                   </ion-item>
 
                   <ion-item>
                     <ion-label>Employee</ion-label>
-                    <ion-checkbox
+                    <input
+                      v-model="editedItem.occupation"
+                      type="checkbox"
+                      value="Employee"
+                      name="Employee"
+                      true-value="Employee"
+                      false-value="no"
+                    />
+                    <!-- <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
-                    ></ion-checkbox>
+                    ></ion-checkbox> -->
                   </ion-item>
 
                   <ion-item>
                     <ion-label>Business</ion-label>
-                    <ion-checkbox
+                    <input
+                      v-model="editedItem.occupation"
+                      type="checkbox"
+                      value="Business"
+                      name="Business"
+                      true-value="Business"
+                      false-value="no"
+                    />
+                    <!-- <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
-                    ></ion-checkbox>
+                    ></ion-checkbox> -->
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Student</ion-label>
+                    <input
+                      v-model="editedItem.occupation"
+                      type="checkbox"
+                      value="Student"
+                      name="Student"
+                      true-value="Student"
+                      false-value="no"
+                    />
+                    <!-- <ion-checkbox
+                      slot="end"
+                      v-model="editedItem.occupation"
+                    ></ion-checkbox> -->
                   </ion-item>
 
                   <ion-item>
                     <ion-label>Others</ion-label>
-                    <ion-checkbox
+                    <input
+                      v-model="editedItem.occupation"
+                      type="checkbox"
+                      value="Others"
+                      name="Others"
+                      true-value="Others"
+                      false-value="no"
+                    />
+                    <!-- <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
-                    ></ion-checkbox>
+                    ></ion-checkbox> -->
                   </ion-item>
 
                   <ion-card-subtitle
@@ -503,22 +585,73 @@
                     placeholder="Name of Family Member"
                     v-model="newRow.name_of_the_family_member"
                   ></ion-input>
-                  <ion-input
+                  <ion-select
                     class="ion-margin-top"
+                    aria-label="Relationship"
+                    interface="popover"
                     label="Relationship"
                     label-placement="floating"
+                    placeholder="Select Relationship"
                     fill="outline"
-                    placeholder="Relationship"
                     v-model="newRow.relationship_with_head"
-                  ></ion-input>
-                  <ion-input
+                  >
+                    <ion-select-option value="Father">Father</ion-select-option>
+                    <ion-select-option value="Mother">Mother</ion-select-option>
+                    <ion-select-option value="Husband"
+                      >Husband</ion-select-option
+                    >
+                    <ion-select-option value="Wife">Wife</ion-select-option>
+                    <ion-select-option value="Son">Son</ion-select-option>
+                    <ion-select-option value="Son-In-Law"
+                      >Son-In-Law</ion-select-option
+                    >
+                    <ion-select-option value="Daughter"
+                      >Daughter</ion-select-option
+                    >
+                    <ion-select-option value="Daughter-In-Law"
+                      >Daughter-In-Law</ion-select-option
+                    >
+                    <ion-select-option value="Brother"
+                      >Brother</ion-select-option
+                    >
+                    <ion-select-option value="Brother-In-Law"
+                      >Brother-In-Law</ion-select-option
+                    >
+                    <ion-select-option value="Sister">Sister</ion-select-option>
+                    <ion-select-option value="Sister-In-Law"
+                      >Sister-In-Law</ion-select-option
+                    >
+                    <ion-select-option value="Grandfather"
+                      >Grandfather</ion-select-option
+                    >
+                    <ion-select-option value="Grandmother"
+                      >Grandmother</ion-select-option
+                    >
+                    <ion-select-option value="Grandson"
+                      >Grandson</ion-select-option
+                    >
+                    <ion-select-option value="Uncle">Uncle</ion-select-option>
+                    <ion-select-option value="Aunt">Aunt</ion-select-option>
+                    <ion-select-option value="Nephew">Nephew</ion-select-option>
+                    <ion-select-option value="Niece">Niece</ion-select-option>
+                    <ion-select-option value="Cousins"
+                      >Cousins</ion-select-option
+                    >
+                    <ion-select-option value="Uncle">Uncle</ion-select-option>
+                  </ion-select>
+                  <ion-select
                     class="ion-margin-top"
+                    aria-label="Disability"
+                    interface="popover"
                     label="Disability"
                     label-placement="floating"
+                    placeholder="Select Disability"
                     fill="outline"
-                    placeholder="Disability"
                     v-model="newRow.disability"
-                  ></ion-input>
+                  >
+                    <ion-select-option value="Male">Yes</ion-select-option>
+                    <ion-select-option value="Female">No</ion-select-option>
+                  </ion-select>
                   <ion-select
                     class="ion-margin-top"
                     aria-label="Gender"
@@ -601,6 +734,9 @@
                     >
                     <ion-select-option value="Rural Artician"
                       >Rural Artician</ion-select-option
+                    >
+                    <ion-select-option value="Student"
+                      >Student</ion-select-option
                     >
                     <ion-select-option value="Others">Others</ion-select-option>
                   </ion-select>
@@ -808,8 +944,8 @@
                     v-model="newRowIncomeKharif.crop_grown"
                   >
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
-                    <ion-select-option value="Meeze">Meeze</ion-select-option>
-                    <ion-select-option value="Jower">Jower</ion-select-option>
+                    <ion-select-option value="maize">maize</ion-select-option>
+                    <ion-select-option value="jowar">jowar</ion-select-option>
                     <ion-select-option value="Cotton">Cotton</ion-select-option>
                     <ion-select-option value="Mirchi">Mirchi</ion-select-option>
                     <ion-select-option value="Groundnut"
@@ -1018,8 +1154,8 @@
                     v-model="newRowIncomeRabhi.crop_grown"
                   >
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
-                    <ion-select-option value="Meeze">Meeze</ion-select-option>
-                    <ion-select-option value="Jower">Jower</ion-select-option>
+                    <ion-select-option value="maize">maize</ion-select-option>
+                    <ion-select-option value="jowar">jowar</ion-select-option>
                     <ion-select-option value="Cotton">Cotton</ion-select-option>
                     <ion-select-option value="Mirchi">Mirchi</ion-select-option>
                     <ion-select-option value="Groundnut"
@@ -1476,6 +1612,7 @@ import {
   IonButtons,
   IonFooter,
   IonItem,
+  IonCheckbox,
 } from "@ionic/vue";
 import fifthPage from "./editpages/fifthPage.vue";
 import SixthPage from "./editpages/sixthPage.vue";
@@ -1949,7 +2086,6 @@ export default {
       ) {
         this.rows.push({ ...this.newRow }); // Add a copy of newRow to rows
         console.log("this rows", this.rows);
-        this.updateHouseHoldMembers();
         this.clearFields(); // Clear the input fields
       }
     },
@@ -2206,7 +2342,7 @@ export default {
         // const data = {
         //   rows: rowsWithCommaSeparatedOccupation, // Assuming rows_land_less_labourers contains your table data
         // };
-        // const occupationString = this.editedItem.occupation.join(",");
+        const occupationString = this.editedItem.occupation.join(",");
         const response = await axios.put(
           `http://183.82.109.39:5000/api/updateIndividualInfo/${this.editedItem.id}`,
           {
@@ -2217,15 +2353,15 @@ export default {
             habitation_name: this.editedItem.habitation_name,
             mandal_name: this.editedItem.mandal_name,
             grampanchayat_name: this.editedItem.grampanchayat_name,
-            name_of_household: this.editedItem.name_of_household,
+            head_of_the_family: this.editedItem.head_of_the_family,
             household_door_no: this.editedItem.household_door_no,
-            contact_number: this.editedItem.contact_number,
+            conatact_number: this.editedItem.contact_number,
             aadhar_number: this.editedItem.aadhar_number,
             job_card_no: this.editedItem.job_card_no,
             economic_status: this.editedItem.economic_status,
-            // occupation: occupationString,
+            occupation: occupationString,
             location: this.editedItem.location,
-            socialstatus: this.editedItem.socialstatus,
+            social_status: this.editedItem.social_status,
             total_rainfed_area: this.editedItem.total_rainfed_area,
             total_irrigated_area: this.editedItem.total_irrigated_area,
             type_of_house: this.editedItem.type_of_house,
@@ -2240,26 +2376,30 @@ export default {
       }
     },
 
-    async updateHouseHoldMembers() {
-      try {
-        const rowsWithCommaSeparatedOccupation = this.rows.map((row) => ({
-          ...row,
-          occupation: row.occupation.join(", "),
-        }));
-        const data = {
-          rows: rowsWithCommaSeparatedOccupation, // Assuming rows_land_less_labourers contains your table data
-        };
-        console.log("updated rows *****************", data);
-        const response = await axios.put(
-          `http://183.82.109.39:5000/items/updatehouseholdmember`,
-          data
-        );
-        console.log("Item updated:", response.data);
-        this.$emit("item-updated", response.data); // Emit event with updated item
-      } catch (error) {
-        console.error("Error updating item:", error);
-      }
-    },
+    // async updateHouseHoldMembers() {
+    //   try {
+    //     console.log(
+    //       "%%%%%%%%%%%% Occu %%%%%%%%%%%%",
+    //       this.editedItem.occupation
+    //     );
+    //     const rowsWithCommaSeparatedOccupation = this.rows.map((row) => ({
+    //       ...row,
+    //       occupation: row.occupation.join(", "),
+    //     }));
+    //     const data = {
+    //       rows: rowsWithCommaSeparatedOccupation, // Assuming rows_land_less_labourers contains your table data
+    //     };
+    //     console.log("updated rows *****************", data);
+    //     const response = await axios.put(
+    //       `http://183.82.109.39:5000/items/updatehouseholdmember`,
+    //       data
+    //     );
+    //     console.log("Item updated:", response.data);
+    //     this.$emit("item-updated", response.data); // Emit event with updated item
+    //   } catch (error) {
+    //     console.error("Error updating item:", error);
+    //   }
+    // },
 
     // update and insert the household members
 
@@ -2276,11 +2416,13 @@ export default {
           // Update existing row
           console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
           await this.updateHouseholdMembers(row);
+          this.rows = [];
         } else {
           // Insert new row
           // this.landParticularRows.push(row);
           console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
           await this.insertHouseholdMembers(row);
+          this.rows = [];
         }
       }
     },
@@ -2309,6 +2451,7 @@ export default {
       }
     },
     async updateHouseholdMembers(row) {
+      console.log("updateding ");
       try {
         console.log("updated row", row);
         const response = await axios.put(
@@ -2557,6 +2700,11 @@ export default {
       } catch (error) {
         console.error("Error updating Live Stock row:", error);
       }
+    },
+    submitForm() {
+      this.$router.push({ path: "/search" }).then(() => {
+        this.$router.go(0);
+      });
     },
   },
 };

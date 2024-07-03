@@ -38,7 +38,7 @@
           <ion-select-option value="Ploughs">Ploughs</ion-select-option>
           <ion-select-option value="Sickles">Sickles</ion-select-option>
           <ion-select-option value="CrowBar">Crow Bar</ion-select-option>
-          <ion-select-option value="BullockCar">Bullock Car</ion-select-option>
+          <ion-select-option value="BullockCar">Bullock Cart</ion-select-option>
           <ion-select-option value="others">Others</ion-select-option>
         </ion-select>
         <ion-select

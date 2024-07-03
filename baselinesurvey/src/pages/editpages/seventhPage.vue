@@ -25,14 +25,46 @@
           label-placement="floating"
           v-model="newRowGovtBenefit.name_of_familymember"
         ></ion-input>
-        <ion-input
+        <ion-select
           class="ion-margin-top"
-          placeholder="Enter scheme name"
-          fill="outline"
+          interface="popover"
           label="Scheme Name"
           label-placement="floating"
+          placeholder="Enter scheme name"
+          fill="outline"
           v-model="newRowGovtBenefit.scheme_name"
-        ></ion-input>
+        >
+          <ion-select-option value="Amma Vodi">Amma Vodi</ion-select-option>
+          <ion-select-option value="YSR Asara">YSR Asara</ion-select-option>
+          <ion-select-option value="Ban on alcohol"
+            >Ban on alcohol</ion-select-option
+          >
+          <ion-select-option value="Jagananna Ammavodi"
+            >Jagananna Ammavodi</ion-select-option
+          >
+          <ion-select-option value="YSR Pension Kanuka"
+            >YSR Pension Kanuka</ion-select-option
+          >
+          <ion-select-option value="Fee Reimbursement Scheme"
+            >Fee Reimbursement Scheme</ion-select-option
+          >
+          <ion-select-option value="Paydalandariki Illu"
+            >Paydalandariki Illu</ion-select-option
+          >
+          <ion-select-option value="Pensionla Pempu"
+            >Pensionla Pempu</ion-select-option
+          >
+          <ion-select-option value="BullockCar">YSR Bima</ion-select-option>
+          <ion-select-option value="others">YSR Cheyutha</ion-select-option>
+
+          <ion-select-option value="YSR Kanti velugu"
+            >"YSR Kanti velugu"</ion-select-option
+          >
+          <ion-select-option value="YSR Rythu Bharosa"
+            >YSR Rythu Bharosa</ion-select-option
+          >
+          <ion-select-option value="Others">Others</ion-select-option>
+        </ion-select>
         <ion-input
           class="ion-margin-top"
           placeholder="Enter days"
