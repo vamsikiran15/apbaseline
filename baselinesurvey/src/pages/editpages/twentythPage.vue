@@ -70,7 +70,7 @@
             name="add-circle"
             slot="icon-only"
           ></ion-icon
-          >Update Graze</ion-button
+          >Update Household Assets</ion-button
         >
       </ion-card-content>
     </ion-card>

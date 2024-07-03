@@ -28,13 +28,15 @@
           fill="outline"
           v-model="newGrazeCattle.grazing_of_cattle_or_animal"
         >
-          <ion-select-option value="ownland"
+          <ion-select-option value="In Community Land"
             >In Community Land</ion-select-option
           >
-          <ion-select-option value="community"
+          <ion-select-option value="Fed in the House"
             >Fed in the House</ion-select-option
           >
-          <ion-select-option value="purchased">In Own Lands</ion-select-option>
+          <ion-select-option value="In Own Lands"
+            >In Own Lands</ion-select-option
+          >
         </ion-select>
         <ion-input
           class="ion-margin-top"

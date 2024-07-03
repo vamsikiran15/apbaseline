@@ -10,7 +10,8 @@ ion-toolbar {
   
   ion-card-header {
     background: var(--ion-card-header-color);
-    color : var(--ion-color-step-50)
+    color : var(--ion-color-primary-contrast);
+    font-size: 18px;
   }
 
   ion-footer {

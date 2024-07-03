@@ -32,7 +32,7 @@
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary">
-                  1 General Information
+                  <strong>1 General Information</strong>
                 </ion-card-header>
                 <ion-card-content>
                   <ion-row class="ion-padding-top">
@@ -286,8 +286,6 @@
                     name="ml"
                   />
                   <label for="ml">Machine Learning</label> -->
-                  <p>Tutorials: {{ this.editedItem.occupation }}</p>
-
                   <ion-card-subtitle
                     color="tertiary"
                     class="ion-padding ion-text-center"
@@ -298,9 +296,7 @@
                     <input
                       v-model="editedItem.occupation"
                       type="checkbox"
-                      value="Agricultur"
-                      true-value="Agricultur"
-                      false-value="no"
+                      :value="'Agricultur'"
                     />
                     <!-- <ion-label>Agriculture</ion-label>
                     <ion-checkbox
@@ -315,9 +311,7 @@
                     <input
                       v-model="editedItem.occupation"
                       type="checkbox"
-                      value="Ag Labour"
-                      true-value="Ag Labour"
-                      false-value="no"
+                      :value="'Ag Labour'"
                     />
                     <!-- <ion-checkbox
                       slot="end"
@@ -331,9 +325,7 @@
                     <input
                       v-model="editedItem.occupation"
                       type="checkbox"
-                      value="Non–Ag labour"
-                      true-value="Non–Ag labour"
-                      false-value="no"
+                      :value="'Non–Ag labour'"
                     />
                     <!-- <ion-checkbox
                       slot="end"
@@ -346,9 +338,7 @@
                     <input
                       v-model="editedItem.occupation"
                       type="checkbox"
-                      value="Employee"
-                      true-value="Employee"
-                      false-value="no"
+                      :value="'Employee'"
                     />
                     <!-- <ion-checkbox
                       slot="end"
@@ -361,9 +351,7 @@
                     <input
                       v-model="editedItem.occupation"
                       type="checkbox"
-                      value="Business"
-                      true-value="Business"
-                      false-value="no"
+                      :value="'Business'"
                     />
                     <!-- <ion-checkbox
                       slot="end"
@@ -375,9 +363,7 @@
                     <input
                       v-model="editedItem.occupation"
                       type="checkbox"
-                      value="Student"
-                      true-value="Student"
-                      false-value="no"
+                      :value="'Student'"
                     />
                     <!-- <ion-checkbox
                       slot="end"
@@ -390,9 +376,7 @@
                     <input
                       v-model="editedItem.occupation"
                       type="checkbox"
-                      value="Others"
-                      true-value="Others"
-                      false-value="no"
+                      :value="'Others'"
                     />
                     <!-- <ion-checkbox
                       slot="end"
@@ -556,7 +540,7 @@
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >2.Household Details</ion-card-header
+                  ><strong>2.Household Details</strong></ion-card-header
                 >
                 <ion-card-content>
                   <ion-list>
@@ -799,7 +783,7 @@
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >3.Land Particulars</ion-card-header
+                  ><strong>3.1 Land Particulars</strong></ion-card-header
                 >
 
                 <ion-card-content>
@@ -911,7 +895,9 @@
               </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >3.2 Income from Crops(Rs)-Kharif</ion-card-header
+                  ><strong
+                    >3.2 Income from Crops(Rs)-Kharif</strong
+                  ></ion-card-header
                 >
                 <ion-card-content>
                   <ion-list>
@@ -1121,7 +1107,9 @@
               </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >3.3 Income from Crops(Rs)-Rabi</ion-card-header
+                  ><strong
+                    >3.3 Income from Crops(Rs)-Rabi</strong
+                  ></ion-card-header
                 >
                 <ion-card-content>
                   <ion-list>
@@ -1555,13 +1543,17 @@
       </div>
     </ion-content>
     <ion-footer>
-      <div class="ion-padding">
-        <ion-button color="primary" v-if="currentStep !== 1" @click="prevStep()"
+      <div>
+        <ion-button
+          class="ion-margin"
+          color="primary"
+          v-if="currentStep !== 1"
+          @click="prevStep()"
           ><ion-icon name="carat-back-outline"></ion-icon>Previous</ion-button
         >
         <ion-button
           color="primary"
-          class="nextButton"
+          class="nextButton ion-margin"
           v-if="currentStep !== totalSteps"
           @click="nextStep()"
           >Next<ion-icon name="caret-forward-outline"></ion-icon
@@ -1570,7 +1562,7 @@
         <ion-button
           color="primary"
           v-else-if="currentStep === totalSteps"
-          class="nextButton"
+          class="nextButton ion-margin"
           @click="submitForm"
           ><ion-icon name="checkmark-outline"></ion-icon>Submit</ion-button
         >
@@ -1891,7 +1883,21 @@ export default {
       immediate: true,
       handler(newVal) {
         // Ensure to make a deep copy of the received item
-        this.editedItem = newVal ? { ...newVal } : null;
+        // this.editedItem = newVal ? { ...newVal } : null;
+        // this.editedItem = newVal ? { ...newVal, occupation: newVal.occupation || [] } : null;
+        if (newVal) {
+          this.editedItem = { ...newVal };
+          // Split the occupation string into an array if it's a string
+          if (typeof newVal.occupation === "string") {
+            this.editedItem.occupation = newVal.occupation
+              .split(",")
+              .map((item) => item.trim());
+          } else {
+            this.editedItem.occupation = newVal.occupation || [];
+          }
+        } else {
+          this.editedItem = null;
+        }
       },
     },
     household: {
@@ -2352,7 +2358,7 @@ export default {
             aadhar_number: this.editedItem.aadhar_number,
             job_card_no: this.editedItem.job_card_no,
             economic_status: this.editedItem.economic_status,
-            occupation: this.editedItem.occupation,
+            occupation: occupationString,
             location: this.editedItem.location,
             social_status: this.editedItem.social_status,
             total_rainfed_area: this.editedItem.total_rainfed_area,

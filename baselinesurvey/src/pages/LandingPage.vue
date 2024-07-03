@@ -133,7 +133,7 @@ import {
   IonAlert,
   IonGrid,
 } from "@ionic/vue";
-import Logo from "../assets/img/RSILLP Logo Final.jpg";
+import Logo from "../assets/img/rsilogotworemovebg.png";
 import LogoWatershed from "../assets/img/watershed.png";
 import LogoWatershedOne from "../assets/img/watershed1.png";
 import LogoWatershedTwo from "../assets/img/watershed2.png";
