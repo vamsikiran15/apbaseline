@@ -67,7 +67,7 @@
         </ion-select>
         <ion-input
           class="ion-margin-top"
-          placeholder="Enter days"
+          placeholder="Enter Amount"
           fill="outline"
           label="Amount"
           label-placement="floating"
@@ -83,7 +83,7 @@
             name="add-circle"
             slot="icon-only"
           ></ion-icon
-          >Add Government Scheme Details</ion-button
+          >Update Government Scheme Details</ion-button
         >
       </ion-card-content>
     </ion-card>

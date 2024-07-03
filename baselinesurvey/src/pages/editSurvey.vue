@@ -299,7 +299,6 @@
                       v-model="editedItem.occupation"
                       type="checkbox"
                       value="Agricultur"
-                      name="Agricultur"
                       true-value="Agricultur"
                       false-value="no"
                     />
@@ -317,7 +316,6 @@
                       v-model="editedItem.occupation"
                       type="checkbox"
                       value="Ag Labour"
-                      name="Agricultur"
                       true-value="Ag Labour"
                       false-value="no"
                     />
@@ -334,7 +332,6 @@
                       v-model="editedItem.occupation"
                       type="checkbox"
                       value="Non–Ag labour"
-                      name="Agricultur"
                       true-value="Non–Ag labour"
                       false-value="no"
                     />
@@ -350,7 +347,6 @@
                       v-model="editedItem.occupation"
                       type="checkbox"
                       value="Employee"
-                      name="Employee"
                       true-value="Employee"
                       false-value="no"
                     />
@@ -366,7 +362,6 @@
                       v-model="editedItem.occupation"
                       type="checkbox"
                       value="Business"
-                      name="Business"
                       true-value="Business"
                       false-value="no"
                     />
@@ -381,7 +376,6 @@
                       v-model="editedItem.occupation"
                       type="checkbox"
                       value="Student"
-                      name="Student"
                       true-value="Student"
                       false-value="no"
                     />
@@ -397,7 +391,6 @@
                       v-model="editedItem.occupation"
                       type="checkbox"
                       value="Others"
-                      name="Others"
                       true-value="Others"
                       false-value="no"
                     />
@@ -2359,7 +2352,7 @@ export default {
             aadhar_number: this.editedItem.aadhar_number,
             job_card_no: this.editedItem.job_card_no,
             economic_status: this.editedItem.economic_status,
-            occupation: occupationString,
+            occupation: this.editedItem.occupation,
             location: this.editedItem.location,
             social_status: this.editedItem.social_status,
             total_rainfed_area: this.editedItem.total_rainfed_area,

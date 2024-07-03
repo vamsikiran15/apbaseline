@@ -698,11 +698,11 @@
                   placeholder="Select Crop Item"
                   fill="outline"
                   class="ion-margin-top"
-                  v-model="cropGrownKharif"
+                  v-model="incomefromCropsKharifRows.cropGrownKharif"
                 >
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="maize">maize</ion-select-option>
-                  <ion-select-option value="jowar">jowar</ion-select-option>
+                  <ion-select-option value="Meeze">Meeze</ion-select-option>
+                  <ion-select-option value="Jower">Jower</ion-select-option>
                   <ion-select-option value="Cotton">Cotton</ion-select-option>
                   <ion-select-option value="Mirchi">Mirchi</ion-select-option>
                   <ion-select-option value="Groundnut"
@@ -728,28 +728,6 @@
                   <ion-select-option value="Sunflower"
                     >Sunflower</ion-select-option
                   >
-                </ion-select>
-              </ion-card-content>
-            </ion-card>
-            <ion-card>
-              <ion-card-subtitle
-                class="ion-padding ion-text-center"
-                color="tertiary"
-                ><strong>3.1 Cultivated Area(Acres)</strong></ion-card-subtitle
-              >
-              <ion-card-content>
-                <ion-select
-                  aria-label="Type of Ownership"
-                  interface="popover"
-                  label="Cultivated Area"
-                  label-placement="floating"
-                  placeholder="Cultivated Area"
-                  fill="outline"
-                  v-model="cultivatedAreaRows.cultivatedArea"
-                >
-                  <ion-select-option value="Own">Owned Land</ion-select-option>
-                  <ion-select-option value="Rent">Leased-In</ion-select-option>
-                  <ion-select-option value="Rent">Leased-Out</ion-select-option>
                 </ion-select>
                 <ion-input
                   class="ion-margin-top"
@@ -757,184 +735,49 @@
                   fill="outline"
                   label="Rainfed(Acres)"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedArea"
+                  v-model="incomefromCropsKharifRows.rainfedKharif"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
-                  placeholder="Irrigated(Acres)"
+                  placeholder="Rainfed Yield(Qtls)"
+                  label="Rainfed Yield(Qtls)"
                   fill="outline"
-                  label="Irrigated(Acres)"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedArea"
+                  v-model="incomefromCropsKharifRows.rainfedYieldKharif"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
-                  placeholder="Total"
-                  label="Total"
+                  placeholder="Enter v"
                   fill="outline"
+                  label="Rainfed(Acres) Cost of Cultivation(Rs)"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.total"
+                  v-model="incomefromCropsKharifRows.rainfedCostKharif"
                 ></ion-input>
-                <ion-select
+                <ion-input
                   class="ion-margin-top"
-                  aria-label="Type of Ownership"
-                  interface="popover"
-                  label="Type of Ownership"
-                  label-placement="floating"
-                  placeholder="Type of Ownership"
+                  placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
                   fill="outline"
-                  v-model="cultivatedAreaRows.typeofOwnership"
-                >
-                  <ion-select-option value="Own">Own</ion-select-option>
-                  <ion-select-option value="Rent">Rent</ion-select-option>
-                </ion-select>
-              </ion-card-content>
-            </ion-card>
-            <ion-card>
-              <ion-card-header color="tertiary"
-                ><strong
-                  >3.2 Income from Crops(Rs)-Kharif</strong
-                ></ion-card-header
-              >
-            </ion-card>
-            <ion-card>
-              <ion-card-content>
-                <ion-select
-                  aria-label="Crop Grown"
-                  interface="popover"
-                  label="Crop Grown"
+                  label="Rainfed(Acres) Rate per Qtls(Rs)"
                   label-placement="floating"
-                  placeholder="Select Crop Item"
-                  fill="outline"
+                  v-model="incomefromCropsKharifRows.rainfedPerQtlsKharif"
+                ></ion-input>
+                <ion-input
                   class="ion-margin-top"
-                  v-model="cultivatedAreaRows.cropGrownKharif"
-                >
-                  <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="maize">maize</ion-select-option>
-                  <ion-select-option value="jowar">jowar</ion-select-option>
-                  <ion-select-option value="Cotton">Cotton</ion-select-option>
-                  <ion-select-option value="Mirchi">Mirchi</ion-select-option>
-                  <ion-select-option value="Groundnut"
-                    >Groundnut</ion-select-option
-                  >
-                  <ion-select-option value="Red Gram"
-                    >Red Gram</ion-select-option
-                  >
-                  <ion-select-option value="Black Gram"
-                    >Black Gram</ion-select-option
-                  >
-                  <ion-select-option value="Green Gram"
-                    >Green Gram</ion-select-option
-                  >
-                  <ion-select-option value="Mango">Mango</ion-select-option>
-                  <ion-select-option value="Sapota">Sapota</ion-select-option>
-                  <ion-select-option value="Chinny">Chinny</ion-select-option>
-                  <ion-select-option value="Neem">Neem</ion-select-option>
-                  <ion-select-option value="Cashew">Cashew</ion-select-option>
-                  <ion-select-option value="Vegetables"
-                    >Vegetables</ion-select-option
-                  >
-                  <ion-select-option value="Sunflower"
-                    >Sunflower</ion-select-option
-                  >
-                </ion-select>
+                  placeholder="Total Rainfed Gross income"
+                  fill="outline"
+                  label="Rainfed(Acres) Gross Income"
+                  label-placement="floating"
+                  v-model="incomefromCropsKharifRows.rainfedGrossIncomeKharif"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  placeholder="Total Rainfed Net income"
+                  fill="outline"
+                  label="Rainfed(Acres) Net Income(7-5)"
+                  label-placement="floating"
+                  v-model="incomefromCropsKharifRows.rainfedNetIncomeKharif"
+                ></ion-input>
                 <ion-card-subtitle
-              <ion-card>
-                <ion-card-header color="tertiary"
-                  ><strong>3.2 Income from Crops(Rs)-Kharif</strong></ion-card-header
-                >
-              </ion-card>
-                <ion-card>
-                <ion-card-content>
-                  <ion-select
-                    aria-label="Crop Grown"
-                    interface="popover"
-                    label="Crop Grown"
-                    label-placement="floating"
-                    placeholder="Select Crop Item"
-                    fill="outline"
-                    class="ion-margin-top"
-                    v-model="incomefromCropsKharifRows.cropGrownKharif"
-                  >
-                    <ion-select-option value="Paddy">Paddy</ion-select-option>
-                    <ion-select-option value="Meeze">Meeze</ion-select-option>
-                    <ion-select-option value="Jower">Jower</ion-select-option>
-                    <ion-select-option value="Cotton">Cotton</ion-select-option>
-                    <ion-select-option value="Mirchi">Mirchi</ion-select-option>
-                    <ion-select-option value="Groundnut"
-                      >Groundnut</ion-select-option
-                    >
-                    <ion-select-option value="Red Gram"
-                      >Red Gram</ion-select-option
-                    >
-                    <ion-select-option value="Black Gram"
-                      >Black Gram</ion-select-option
-                    >
-                    <ion-select-option value="Green Gram"
-                      >Green Gram</ion-select-option
-                    >
-                    <ion-select-option value="Mango">Mango</ion-select-option>
-                    <ion-select-option value="Sapota">Sapota</ion-select-option>
-                    <ion-select-option value="Chinny">Chinny</ion-select-option>
-                    <ion-select-option value="Neem">Neem</ion-select-option>
-                    <ion-select-option value="Cashew">Cashew</ion-select-option>
-                    <ion-select-option value="Vegetables"
-                      >Vegetables</ion-select-option
-                    >
-                    <ion-select-option value="Sunflower"
-                      >Sunflower</ion-select-option
-                    >
-                  </ion-select>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Rainfed(Acres)"
-                    fill="outline"
-                    label="Rainfed(Acres)"
-                    label-placement="floating"
-                    v-model="incomefromCropsKharifRows.rainfedKharif"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Rainfed Yield(Qtls)"
-                    label="Rainfed Yield(Qtls)"
-                    fill="outline"
-                    label-placement="floating"
-                    v-model="incomefromCropsKharifRows.rainfedYieldKharif"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Enter v"
-                    fill="outline"
-                    label="Rainfed(Acres) Cost of Cultivation(Rs)"
-                    label-placement="floating"
-                    v-model="incomefromCropsKharifRows.rainfedCostKharif"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
-                    fill="outline"
-                    label="Rainfed(Acres) Rate per Qtls(Rs)"
-                    label-placement="floating"
-                    v-model = "incomefromCropsKharifRows.rainfedPerQtlsKharif"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Total Rainfed Gross income"
-                    fill="outline"
-                    label="Rainfed(Acres) Gross Income"
-                    label-placement="floating"
-                    v-model = "incomefromCropsKharifRows.rainfedGrossIncomeKharif"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Total Rainfed Net income"
-                    fill="outline"
-                    label="Rainfed(Acres) Net Income(7-5)"
-                    label-placement="floating"
-                    v-model = "incomefromCropsKharifRows.rainfedNetIncomeKharif"
-                  ></ion-input>
-                  <ion-card-subtitle
-
                   class="ion-padding ion-text-center"
                   color="tertiary"
                   >Irrigated(Acres)
@@ -961,7 +804,9 @@
                   label="Irrigated(Acres) Cost of Cultiation(Rs)"
                   fill="outline"
                   label-placement="floating"
-                  v-model="incomefromCropsKharifRows.irrigatedCoostofCultivationKharif"
+                  v-model="
+                    incomefromCropsKharifRows.irrigatedCoostofCultivationKharif
+                  "
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1016,12 +861,11 @@
                   v-model="incomefromCropsRabiRows.cropGrownRabhi"
                 >
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="maize">maize</ion-select-option>
-                  <ion-select-option value="jowar">jowar</ion-select-option>
+                  <ion-select-option value="Meeze">Meeze</ion-select-option>
+                  <ion-select-option value="Jower">Jower</ion-select-option>
                   <ion-select-option value="Cotton">Cotton</ion-select-option>
                   <ion-select-option value="Mirchi">Mirchi</ion-select-option>
                   <ion-select-option value="Groundnut"
-
                     >Groundnut</ion-select-option
                   >
                 </ion-select>
@@ -1031,7 +875,7 @@
                   fill="outline"
                   label="Rainfed(Acres)"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedKharif"
+                  v-model="incomefromCropsRabiRows.rainfedRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1039,7 +883,7 @@
                   label="Rainfed Yield(Qtls)"
                   fill="outline"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedYieldKharif"
+                  v-model="incomefromCropsRabiRows.rainfedYieldRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1047,7 +891,7 @@
                   fill="outline"
                   label="Rainfed(Acres) Cost of Cultivation(Rs)"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedCostKharif"
+                  v-model="incomefromCropsRabiRows.rainfedCostRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1055,7 +899,7 @@
                   fill="outline"
                   label="Rainfed(Acres) Rate per Qtls(Rs)"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedPerQtlsKharif"
+                  v-model="incomefromCropsRabiRows.rainfedPerQtlsRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1063,7 +907,7 @@
                   fill="outline"
                   label="Rainfed(Acres) Gross Income"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedGrossIncomeKharif"
+                  v-model="incomefromCropsRabiRows.rainfedGrossIncomeRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1071,7 +915,7 @@
                   fill="outline"
                   label="Rainfed(Acres) Net Income(7-5)"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedNetIncomeKharif"
+                  v-model="incomefromCropsRabiRows.rainfedNetIncomeRabi"
                 ></ion-input>
                 <ion-card-subtitle
                   class="ion-padding ion-text-center"
@@ -1084,7 +928,7 @@
                   fill="outline"
                   label="Irrigated Area(Acres)"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedaAreaKharif"
+                  v-model="incomefromCropsRabiRows.irrigatedaAreaRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1092,7 +936,7 @@
                   label="Irrigated Yield(Qtls)"
                   fill="outline"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedYieldKharif"
+                  v-model="incomefromCropsRabiRows.irrigatedYieldRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1100,7 +944,9 @@
                   label="Irrigated(Acres) Cost of Cultiation(Rs)"
                   fill="outline"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedCoostofCultivationKharif"
+                  v-model="
+                    incomefromCropsRabiRows.irrigatedCoostofCultivationRabi
+                  "
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1108,7 +954,7 @@
                   fill="outline"
                   label="Irrigated(Acres) Rate per Qtls(Rs) "
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedRatePerQtlsKharif"
+                  v-model="incomefromCropsRabiRows.irrigatedRatePerQtlsRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1116,7 +962,7 @@
                   fill="outline"
                   label="Total Irrigated(Acres) Gross Income"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedGrossIncomeKharif"
+                  v-model="incomefromCropsRabiRows.irrigatedGrossIncomeRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
@@ -1124,288 +970,18 @@
                   fill="outline"
                   label="Total Irrigated Net Income(13-11)"
                   label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedNetIncomeKharif"
+                  v-model="incomefromCropsRabiRows.irrigatedNetIncomeRabi"
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
-                  placeholder="Kharif Grand Total Income"
-                  label="Kharif Grand Total Income"
-                  fill="outline"
-                  label-placement="floating"
-                ></ion-input>
-              </ion-card-content>
-            </ion-card>
-            <ion-card>
-              <ion-card-header color="tertiary"
-                ><strong
-                  >3.3 Income from Crops(Rs)-Rabi</strong
-                ></ion-card-header
-              >
-            </ion-card>
-            <ion-card>
-              <ion-card-content>
-                <ion-select
-                  aria-label="Crop Grown"
-                  interface="popover"
-                  label="Crop Grown"
-                  label-placement="floating"
-                  placeholder="Select Crop Item"
-                  fill="outline"
-                  class="ion-margin-top"
-                  v-model="cultivatedAreaRows.cropGrownRabhi"
-                >
-                  <ion-select-option value="Red Gram"
-                    >Red Gram</ion-select-option
-                  >
-                  <ion-select-option value="Black Gram"
-                    >Black Gram</ion-select-option
-                  >
-                  <ion-select-option value="Green Gram"
-                    >Green Gram</ion-select-option
-                  >
-                  <ion-select-option value="Mango">Mango</ion-select-option>
-                  <ion-select-option value="Sapota">Sapota</ion-select-option>
-                  <ion-select-option value="Chinny">Chinny</ion-select-option>
-                  <ion-select-option value="Neem">Neem</ion-select-option>
-                  <ion-select-option value="Cashew">Cashew</ion-select-option>
-                  <ion-select-option value="Vegetables"
-                    >Vegetables</ion-select-option
-                  >
-                  <ion-select-option value="Sunflower"
-                    >Sunflower</ion-select-option
-                  >
-                </ion-select>
-                <ion-card-subtitle
-                  class="ion-padding ion-text-center"
-                  color="tertiary"
-                  >Rainfed(Acres)
-                </ion-card-subtitle>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed(Acres)"
-                  fill="outline"
-                  label="Rainfed(Acres)"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedAcresRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Rainfed Yield(Qtls)"
-                  label="Rainfed Yield(Qtls)"
-                  fill="outline"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedYieldRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter v"
-                  fill="outline"
-                  label="Rainfed(Acres) Cost of Cultivation(Rs)"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedCostofCultivationRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
-                  fill="outline"
-                  label="Rainfed(Acres) Rate per Qtls(Rs)"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedRatePerQtlsRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Rainfed Gross income"
-                  fill="outline"
-                  label="Rainfed(Acres) Gross Income"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedGrossIncomeRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Rainfed Net income"
-                  fill="outline"
-                  label="Rainfed(Acres) Net Income(7-5)"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.rainfedNetIncomeRabhi"
-                ></ion-input>
-                <ion-card-subtitle
-                  class="ion-padding ion-text-center"
-                  color="tertiary"
-                  >Irrigated(Acres)
-                </ion-card-subtitle>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated Area(Acres)"
-                  fill="outline"
-                  label="Irrigated Area(Acres)"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedAreaRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irigated Yield(Qtls)"
-                  label="Irrigated Yield(Qtls)"
-                  fill="outline"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedYieldRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
-                  label="Irrigated(Acres) Cost of Cultiation(Rs)"
-                  fill="outline"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedCostofCultivationRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
-                  fill="outline"
-                  label="Irrigated(Acres) Rate per Qtls(Rs) "
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedRateperQtlsRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Irrigated(Acres) Gross Income"
-                  fill="outline"
-                  label="Total Irrigated(Acres) Gross Income"
-                  label-placement="floating"
-                  v-model="irrigatedGrossIncomeRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Total Irrigated Net Income(13-11)"
-                  fill="outline"
-                  label="Total Irrigated Net Income(13-11)"
-                  label-placement="floating"
-                  v-model="cultivatedAreaRows.irrigatedNetIncomeRabhi"
-                ></ion-input>
-                <ion-input
-                  class="ion-margin-top"
-                  placeholder="Kharif Grand Total Income"
-                  label="Kharif Grand Total Income"
+                  placeholder="Rabi Grand Total Income"
+                  label="Rabi Grand Total Income"
                   fill="outline"
                   label-placement="floating"
                 ></ion-input>
               </ion-card-content>
             </ion-card>
             <ion-button
-
-                    >Groundnut</ion-select-option>
-                    </ion-select>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Rainfed(Acres)"
-                    fill="outline"
-                    label="Rainfed(Acres)"
-                    label-placement="floating"
-                    v-model="incomefromCropsRabiRows.rainfedRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Rainfed Yield(Qtls)"
-                    label="Rainfed Yield(Qtls)"
-                    fill="outline"
-                    label-placement="floating"
-                    v-model="incomefromCropsRabiRows.rainfedYieldRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Enter v"
-                    fill="outline"
-                    label="Rainfed(Acres) Cost of Cultivation(Rs)"
-                    label-placement="floating"
-                    v-model="incomefromCropsRabiRows.rainfedCostRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
-                    fill="outline"
-                    label="Rainfed(Acres) Rate per Qtls(Rs)"
-                    label-placement="floating"
-                    v-model = "incomefromCropsRabiRows.rainfedPerQtlsRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Total Rainfed Gross income"
-                    fill="outline"
-                    label="Rainfed(Acres) Gross Income"
-                    label-placement="floating"
-                    v-model = "incomefromCropsRabiRows.rainfedGrossIncomeRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Total Rainfed Net income"
-                    fill="outline"
-                    label="Rainfed(Acres) Net Income(7-5)"
-                    label-placement="floating"
-                    v-model = "incomefromCropsRabiRows.rainfedNetIncomeRabi"
-                  ></ion-input>
-                  <ion-card-subtitle
-                  class="ion-padding ion-text-center"
-                  color="tertiary"
-                  >Irrigated(Acres) </ion-card-subtitle
-                >
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Irrigated Area(Acres)"
-                    fill="outline"
-                    label="Irrigated Area(Acres)"
-                    label-placement="floating"
-                    v-model = "incomefromCropsRabiRows.irrigatedaAreaRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Irigated Yield(Qtls)"
-                    label="Irrigated Yield(Qtls)"
-                    fill="outline"
-                    label-placement="floating"
-                    v-model = "incomefromCropsRabiRows.irrigatedYieldRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
-                    label="Irrigated(Acres) Cost of Cultiation(Rs)"
-                    fill="outline"
-                    label-placement="floating"
-                    v-model = "incomefromCropsRabiRows.irrigatedCoostofCultivationRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
-                    fill="outline"
-                    label="Irrigated(Acres) Rate per Qtls(Rs) "
-                    label-placement="floating"
-                    v-model = "incomefromCropsRabiRows.irrigatedRatePerQtlsRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Irrigated(Acres) Gross Income"
-                    fill="outline"
-                    label="Total Irrigated(Acres) Gross Income"
-                    label-placement="floating"
-                    v-model = "incomefromCropsRabiRows.irrigatedGrossIncomeRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Total Irrigated Net Income(13-11)"
-                    fill="outline"
-                    label="Total Irrigated Net Income(13-11)"
-                    label-placement="floating"
-                    v-model = "incomefromCropsRabiRows.irrigatedNetIncomeRabi"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    placeholder="Rabi Grand Total Income"
-                    label="Rabi Grand Total Income"
-                    fill="outline"
-                    label-placement="floating"
-                  ></ion-input>
-                </ion-card-content>
-              </ion-card>
-              <ion-button
-
               class="ion-margin"
               expand="block"
               color="primary"
@@ -1674,7 +1250,7 @@ export default {
         annual_gross_income: "",
         membership: "",
       },
-      householdDetailsRowsData:[],
+      householdDetailsRowsData: [],
       rows: [],
       addLivestockDetails: {
         nameOfTheAnimal: "",
@@ -1685,7 +1261,6 @@ export default {
         unitValue: "",
         incomeGeneratedDuringLastYear: "",
       },
-
       livestockRows: [],
       cultivatedAreaRows: {
         cultivatedArea: "",
@@ -1693,6 +1268,9 @@ export default {
         irrigatedArea: "",
         total: "",
         typeofOwnership: "",
+      },
+      cultivatedAreaRowsData: [],
+      incomefromCropsKharifRows: {
         cropGrownKharif: "",
         rainfedKharif: "",
         rainfedYieldKharif: "",
@@ -1706,66 +1284,25 @@ export default {
         irrigatedRatePerQtlsKharif: "",
         irrigatedGrossIncomeKharif: "",
         irrigatedNetIncomeKharif: "",
+      },
+      incomefromCropsKharifRowsData: [],
+      incomefromCropsRabiRows: {
         cropGrownRabhi: "",
-        rainfedAcresRabhi: "",
-        rainfedYieldRabhi: "",
-        rainfedCostofCultivationRabhi: "",
-        rainfedRatePerQtlsRabhi: "",
-        rainfedGrossIncomeRabhi: "",
-        rainfedNetIncomeRabhi: "",
-        irrigatedAreaRabhi: "",
-        irrigatedYieldRabhi: "",
-        irrigatedCostofCultivationRabhi: "",
-        irrigatedRateperQtlsRabhi: "",
-        irrigatedNetIncomeRabhi: "",
+        rainfedRabi: "",
+        rainfedYieldRabi: "",
+        rainfedCostRabi: "",
+        rainfedPerQtlsRabi: "",
+        rainfedGrossIncomeRabi: "",
+        rainfedNetIncomeRabi: "",
+        irrigatedaAreaRabi: "",
+        irrigatedYieldRabi: "",
+        irrigatedCoostofCultivationRabi: "",
+        irrigatedRatePerQtlsRabi: "",
+        irrigatedGrossIncomeRabi: "",
+        irrigatedNetIncomeRabi: "",
       },
-      cultivatedAreaRowsData: [],
+      incomefromCropsRabiRowsData: [],
       groupedData: [
-
-      livestockRows:[],
-      cultivatedAreaRows:{
-            cultivatedArea:"",
-            rainfedArea:"",
-            irrigatedArea:"",
-            total:"",
-            typeofOwnership:"",
-      },
-      cultivatedAreaRowsData:[],
-      incomefromCropsKharifRows:{
-        cropGrownKharif:"",
-        rainfedKharif:"",
-        rainfedYieldKharif:"",
-        rainfedCostKharif:"",
-        rainfedPerQtlsKharif:"",
-        rainfedGrossIncomeKharif:"",
-        rainfedNetIncomeKharif:"",
-        irrigatedaAreaKharif:"",
-        irrigatedYieldKharif:"",
-        irrigatedCoostofCultivationKharif:"",
-        irrigatedRatePerQtlsKharif:"",
-        irrigatedGrossIncomeKharif:"",
-        irrigatedNetIncomeKharif:""
-      },
-      incomefromCropsKharifRowsData:[],
-      incomefromCropsRabiRows:{
-        cropGrownRabhi:"",
-        rainfedRabi:"",
-        rainfedYieldRabi:"",
-        rainfedCostRabi:"",
-        rainfedPerQtlsRabi:"",
-        rainfedGrossIncomeRabi:"",
-        rainfedNetIncomeRabi:"",
-        irrigatedaAreaRabi:"",
-        irrigatedYieldRabi:"",
-        irrigatedCoostofCultivationRabi:"",
-        irrigatedRatePerQtlsRabi:"",
-        irrigatedGrossIncomeRabi:"",
-        irrigatedNetIncomeRabi:""
-      },
-      incomefromCropsRabiRowsData:[],
-    groupedData: 
-    [
-
         {
           label: "Dairy",
           options: [
@@ -1919,8 +1456,8 @@ export default {
     IonButton,
     TwentyfifthPage,
     IonItem,
-    IonButtons,
     IonBackButton,
+    IonButtons,
   },
   created() {
     this.getDistricts();
@@ -2104,11 +1641,11 @@ export default {
         this.clearFields(); // Clear the input fields
       }
     },
-    async addHouseholdDetailsRows(){
+    async addHouseholdDetailsRows() {
       try {
-        this.householdDetailsRowsData.push({...this.newRow});
+        this.householdDetailsRowsData.push({ ...this.newRow });
       } catch (error) {
-        console.error("error in addHouseholdDetailsRows function",error)
+        console.error("error in addHouseholdDetailsRows function", error);
       }
     },
     clearFields() {
@@ -2162,24 +1699,10 @@ export default {
     },
     async householdDetailsSubmitData() {
       try {
-
         await axios.post(
           `http://localhost:5000/api/bulkinsertionhouseholddetails`,
-          {
-            name_of_the_family_member: this.newRow.name_of_the_family_member,
-            relationship_with_head: this.newRow.relationship_with_head,
-            disability: this.newRow.disability,
-            gender: this.newRow.gender,
-            age: this.newRow.age,
-            level_of_education: this.newRow.level_of_education,
-            occupation: this.newRow.occupation,
-            membership: this.newRow.membership,
-            annual_gross_income: this.newRow.annual_gross_income,
-          }
+          this.householdDetailsRowsData
         );
-
-           await axios.post(`http://localhost:5000/api/bulkinsertionhouseholddetails`,this.householdDetailsRowsData)
-
       } catch (error) {
         console.error("error in submitdata function", error);
       }
@@ -2203,87 +1726,99 @@ export default {
     // },
     async landParticularsData() {
       try {
-        await axios.post("http://localhost:5000/api/bulkinsertionloanparticulars",this.cultivatedAreaRowsData);
-        await axios.post("http://localhost:5000/api/bulkinsertionlandparticulars",this.incomefromCropsKharifRowsData);
-        await axios.post("http://localhost:5000/api/bulkinsertionrabi",this.incomefromCropsRabiRowsData);
+        await axios.post(
+          "http://localhost:5000/api/bulkinsertionloanparticulars",
+          this.cultivatedAreaRowsData
+        );
+        await axios.post(
+          "http://localhost:5000/api/bulkinsertionlandparticulars",
+          this.incomefromCropsKharifRowsData
+        );
+        await axios.post(
+          "http://localhost:5000/api/bulkinsertionrabi",
+          this.incomefromCropsRabiRowsData
+        );
       } catch (error) {
         console.error("error in addLandParticularsRows function", error);
       }
     },
-    async addLandParticularsRows(){
+    async addLandParticularsRows() {
       try {
-        this.cultivatedAreaRowsData.push({...this.cultivatedAreaRows})
-        this.clearCultivatedRows()
+        this.cultivatedAreaRowsData.push({ ...this.cultivatedAreaRows });
+        this.clearCultivatedRows();
       } catch (error) {
-        console.error("error in addLandParticularsRows function",error)
+        console.error("error in addLandParticularsRows function", error);
       }
     },
-    clearCultivatedRows(){
+    clearCultivatedRows() {
       this.cultivatedAreaRows = {
-            cultivatedArea:"",
-            rainfedArea:"",
-            irrigatedArea:"",
-            total:"",
-            typeofOwnership:"",
-      }
+        cultivatedArea: "",
+        rainfedArea: "",
+        irrigatedArea: "",
+        total: "",
+        typeofOwnership: "",
+      };
     },
-    async incomeKharifRows(){
+    async incomeKharifRows() {
       try {
-        this.incomefromCropsKharifRowsData.push({...this.incomefromCropsKharifRows})
-        this.clearIncomeKharifRows()
+        this.incomefromCropsKharifRowsData.push({
+          ...this.incomefromCropsKharifRows,
+        });
+        this.clearIncomeKharifRows();
       } catch (error) {
-        console.error("error in incomeKharif function",error)
+        console.error("error in incomeKharif function", error);
       }
     },
-    clearIncomeKharifRows(){
-            this.incomefromCropsKharifRows = {
-            cropGrownKharif:"",
-            rainfedKharif:"",
-            rainfedYieldKharif:"",
-            rainfedCostKharif:"",
-            rainfedPerQtlsKharif:"",
-            rainfedGrossIncomeKharif:"",
-            rainfedNetIncomeKharif:"",
-            irrigatedaAreaKharif:"",
-            irrigatedYieldKharif:"",
-            irrigatedCoostofCultivationKharif:"",
-            irrigatedRatePerQtlsKharif:"",
-            irrigatedGrossIncomeKharif:"",
-            irrigatedNetIncomeKharif:"",
-      }
+    clearIncomeKharifRows() {
+      this.incomefromCropsKharifRows = {
+        cropGrownKharif: "",
+        rainfedKharif: "",
+        rainfedYieldKharif: "",
+        rainfedCostKharif: "",
+        rainfedPerQtlsKharif: "",
+        rainfedGrossIncomeKharif: "",
+        rainfedNetIncomeKharif: "",
+        irrigatedaAreaKharif: "",
+        irrigatedYieldKharif: "",
+        irrigatedCoostofCultivationKharif: "",
+        irrigatedRatePerQtlsKharif: "",
+        irrigatedGrossIncomeKharif: "",
+        irrigatedNetIncomeKharif: "",
+      };
     },
-    async incomeRabiRows(){
+    async incomeRabiRows() {
       try {
-        this.incomefromCropsRabiRowsData.push({...this.incomefromCropsRabiRows})
-        this.clearIncomeRabiRows()
+        this.incomefromCropsRabiRowsData.push({
+          ...this.incomefromCropsRabiRows,
+        });
+        this.clearIncomeRabiRows();
       } catch (error) {
-        console.log("error in incomerabi function",error)
+        console.log("error in incomerabi function", error);
       }
     },
-    clearIncomeRabiRows(){
-            this.incomefromCropsRabiRows = {
-            cropGrownRabhi:"",
-            rainfedAcresRabhi:"",
-            rainfedYieldRabhi:"",
-            rainfedCostofCultivationRabhi:"",
-            rainfedRatePerQtlsRabhi:"",
-            rainfedGrossIncomeRabhi:"",
-            rainfedNetIncomeRabhi:"",
-            irrigatedAreaRabhi:"",
-            irrigatedYieldRabhi:"",
-            irrigatedCostofCultivationRabhi:"",
-            irrigatedRateperQtlsRabhi:"",
-            irrigatedNetIncomeRabhi:""
-      }
+    clearIncomeRabiRows() {
+      this.incomefromCropsRabiRows = {
+        cropGrownRabhi: "",
+        rainfedAcresRabhi: "",
+        rainfedYieldRabhi: "",
+        rainfedCostofCultivationRabhi: "",
+        rainfedRatePerQtlsRabhi: "",
+        rainfedGrossIncomeRabhi: "",
+        rainfedNetIncomeRabhi: "",
+        irrigatedAreaRabhi: "",
+        irrigatedYieldRabhi: "",
+        irrigatedCostofCultivationRabhi: "",
+        irrigatedRateperQtlsRabhi: "",
+        irrigatedNetIncomeRabhi: "",
+      };
     },
-    async landParticularsRowsSubmit(){
+    async landParticularsRowsSubmit() {
       try {
         await this.addLandParticularsRows(),
-        await this.incomeKharifRows(),
-        await this.incomeRabiRows()
-
+          await this.incomeKharifRows(),
+          await this.incomeRabiRows();
       } catch (error) {
-        console.error("error in landParticularsRowsSubmit function",error)
+        console.error("error in landParticularsRowsSubmit function", error);
       }
     },
     // async liveStockDetailsData() {
@@ -2313,14 +1848,11 @@ export default {
       }
     },
 
-    async finalSubmitButton(){
+    async finalSubmitButton() {
       try {
-        this.landParticularsRowsSubmit(),
-        this.livestockData()
-
-
+        this.landParticularsRowsSubmit(), this.livestockData();
       } catch (error) {
-        console.error("error in finalSubmitButton function",error)
+        console.error("error in finalSubmitButton function", error);
       }
     },
   },
