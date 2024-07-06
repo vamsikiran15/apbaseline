@@ -203,7 +203,8 @@
                   v-model="householdDoorNo"
                 ></ion-input>
                 <ion-input
-                  type="number"
+                  type="tel"
+                  maxlength="10"
                   class="ion-margin-top"
                   label="Contact No (Mobile)"
                   label-placement="floating"
@@ -211,6 +212,7 @@
                   placeholder="Contact No (Mobile)"
                   v-model="ContactNumber"
                 ></ion-input>
+                <ion-text v-if="!isValidPhoneNumber" color= "danger">Please enter a valid phone number.</ion-text>
                 <ion-input
                   type="number"
                   class="ion-margin-top"
@@ -3515,6 +3517,12 @@ export default {
   },
   created() {
     this.getDistricts();
+  },
+  computed:{
+    isValidPhoneNumber() {
+      // Regular expression for a basic phone number validation
+       return /^[0-9]{10}$/.test(this.ContactNumber);
+    }
   },
   methods: {
     // async callChildFromParent() {
