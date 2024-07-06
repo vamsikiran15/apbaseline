@@ -129,9 +129,10 @@ export default{
     }
   },
   methods : {
-    async fodderFuelUsageData(){
+    async fodderFuelUsageData(id){
       try {
-         await axios.post("http://localhost:5000/api/bulkinsertionfuel",this.fodderFuelRowsData
+        const data = {id:id,rows:this.fodderFuelRowsData}
+         await axios.post("http://localhost:5000/api/bulkinsertionfuel",data
         )
       } catch (error) {
         console.error("error in fodderFuelUsageData function",error)

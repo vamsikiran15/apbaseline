@@ -1,4 +1,5 @@
-<template><ion-card>
+<template>
+<ion-card>
     <ion-card-header class="ion-text-center" color="tertiary"><strong>25.Soil,Land & Water Conservation</strong></ion-card-header>
 </ion-card>
 <ion-card>
@@ -136,19 +137,19 @@ export default{
       try {
         const response = await axios.post("http://localhost:5000/api/awarewatershed",
         {
-          // headId: req.body.headId,
+            headId: req.body.headId,
             status: this.awarenessprograms
         }
       )
       const response1 = await axios.post("http://localhost:5000/api/bulkinsertiontrainingwatershed",
         {
-          // headId: req.body.headId,
+            headId: req.body.headId,
             status: this.receivedawarenessprograms
         }
       )
       const response2 = await axios.post("http://localhost:5000/api/concludedate",
         {
-          // headId: req.body.headId,
+            headId: req.body.headId,
             date: this.dateA,
             serveyor_name: this.surveyor
         }

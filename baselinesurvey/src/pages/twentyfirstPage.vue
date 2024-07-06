@@ -1,4 +1,5 @@
-<template><ion-card>
+<template>
+<ion-card>
     <ion-card-header color="tertiary"><strong>21.Participation in Community Programs</strong></ion-card-header>
 </ion-card>
 <ion-card>
@@ -119,9 +120,10 @@ export default{
     }
   },
   methods : {
-    async communityProgramsData(){
+    async communityProgramsData(id){
       try {
-           await axios.post("http://localhost:5000/api/bulkinsertionprogram",this.participationinCommunityProgramsRowsData
+        const data = {id:id,rows:this.participationinCommunityProgramsRowsData}
+           await axios.post("http://localhost:5000/api/bulkinsertionprogram",data
       )
       } catch (error) {
         console.error("error in communityProgramsData function",error)

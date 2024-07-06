@@ -105,9 +105,10 @@ export default{
     },
 
   methods : {
-    async governmentSchemesData(){
+    async governmentSchemesData(id){
       try {
-          await axios.post("http://localhost:5000/api/bulkinsertiongovt",this.governmentSchemesRowsData
+        const data = {id:id,rows:this.governmentSchemesRowsData}
+          await axios.post("http://localhost:5000/api/bulkinsertiongovt",data
       )
       } catch (error) {
         console.error("error in governmentSchemesData function",error)

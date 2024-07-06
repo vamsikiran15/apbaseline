@@ -309,11 +309,12 @@ export default {
   },
 
   methods: {
-    async loanParticularsData() {
+    async loanParticularsData(id) {
       try {
+        const data = {id:id,rows:  this.loanParticularsRowsData}
         await axios.post(
-          "http://localhost:5000/api/bulkinsertionloanparticulars",
-          this.loanParticularsRowsData
+          "http://localhost:5000/api/bulkinsertionloanparticulars",data
+        
         );
       } catch (error) {
         console.error("error in loanParticularsData function", error);

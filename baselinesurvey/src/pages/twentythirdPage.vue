@@ -100,9 +100,10 @@ export default{
     }
   },
   methods : {
-    async membershipDetailsData(){
+    async membershipDetailsData(id){
       try {
-        const response = await axios.post("http://localhost:5000/api/bulkinsertionmembership",this.membershipDetailsRowsData
+        const data = {id:id,rows:this.membershipDetailsRowsData}
+        const response = await axios.post("http://localhost:5000/api/bulkinsertionmembership",data
       )
       console.log("%%%%%%%%%%%DATA%%%%%%%%%%%%%",response)
       } catch (error) {

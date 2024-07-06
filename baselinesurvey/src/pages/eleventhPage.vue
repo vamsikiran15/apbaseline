@@ -112,7 +112,8 @@ export default{
   methods:{
     async familyExpenditure(){
       try {
-        await axios.post("http://localhost:5000/api/bulkinsertionfamily",this.familyExpenditureRowsData)
+        const data = {id:id,rows:this.familyExpenditureRowsData}
+        await axios.post("http://localhost:5000/api/bulkinsertionfamily",data)
       } catch (error) {
         console.error("error in familyExpenditure function",error)
       }

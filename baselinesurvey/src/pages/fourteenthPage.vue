@@ -178,9 +178,10 @@ export default{
     },
 
  methods:{
-        async quantityofWaterData(){
+        async quantityofWaterData(id){
             try {
-                await axios.post("http://localhost:5000/api/bulkinsertionwater",this.sourceandQualityofWaterRowsData
+              const data = {id:id,rows:this.sourceandQualityofWaterRowsData}
+                await axios.post("http://localhost:5000/api/bulkinsertionwater",data
               )
             } catch (error) {
               console.error("error in quantityofWaterData function",error)

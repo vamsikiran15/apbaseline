@@ -1,4 +1,5 @@
-<template><ion-card>
+<template>
+<ion-card>
     <ion-card-header class="ion-text-center" color="tertiary"><strong>13.Availability of Drinking Water(Drinking Water requirement @ 5Litres per Day/Person)</strong></ion-card-header>
 </ion-card>
 <ion-card>
@@ -133,9 +134,10 @@ export default{
     }
   },
   methods : {
-    async availabilityofDrinkingWaterData(){
+    async availabilityofDrinkingWaterData(id){
       try {
-        await axios.post("http://localhost:5000/api/bulkinsertiondrinkingwater",this.drinkingWaterAvailabilityRowsData
+        const data = {id:id,rows:this.drinkingWaterAvailabilityRowsData}
+        await axios.post("http://localhost:5000/api/bulkinsertiondrinkingwater",data
       )
       } catch (error) {
         console.error("error in availabilityofDrinkingWaterData function",error)

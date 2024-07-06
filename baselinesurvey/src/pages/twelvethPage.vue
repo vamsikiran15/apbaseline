@@ -146,14 +146,15 @@ export default{
   },
 
  methods : {
-  async sourceofIncomeData(){
+  async sourceofIncomeData(id){
     try {
-       await axios.post("http://localhost:5000/api/sourceofincome",
-        {
-          // headId: req.body.headId,
-          source:this.source,
-          income_during_the_year:this.income
-        }
+      const data = {id:id,rows:sourceofIncomeRowsData}
+       await axios.post("http://localhost:5000/api/sourceofincome",data
+        // {
+        //   headId: req.body.headId,
+        //   source:this.source,
+        //   income_during_the_year:this.income
+        // }
       )
     } catch (error) {
       console.error("error in sourceofIncomeData fucntion",error )

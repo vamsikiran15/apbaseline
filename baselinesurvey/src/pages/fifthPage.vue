@@ -1,4 +1,5 @@
 <template>
+  <div>
   <ion-card>
     <ion-card-header color="tertiary"
       ><strong>5.Migration Status</strong></ion-card-header
@@ -104,6 +105,7 @@
                 <li>{{ item.nameOfThePerson}}</li>
               </ul>
             </div> -->
+          </div>
 </template>
 <script>
 import {
@@ -126,8 +128,11 @@ import {
   IonRadioGroup,
   IonRadio,
   IonList,
+  IonButton,
+  IonIcon
 } from "@ionic/vue";
 import axios from "axios";
+import { ref } from "vue";
 export default{
   data(){
   return{
@@ -171,13 +176,23 @@ export default{
     IonRadioGroup,
     IonRadio,
     IonList,
+    IonButton,
+    IonIcon
   },
 
   methods: {
-    async migrationStatusData() {
+    childMethod() {
+      console.log("child method execution");
+    },
+    testMethod(){
+      console.log("TESTING")
+    },
+    async migrationStatusData(id) {
       try {
-         await axios.post("http://localhost:5000/api/bulkinsertionmigrate",this.migrationStatusRowsData
+        const data = {id:id , rows:this.migrationStatusRowsData}
+        const response =  await axios.post("http://localhost:5000/api/bulkinsertionmigrate",data
         )
+        console.log("FIFTH PAGE CALLED",response.data)
       } catch (error) {
         console.error("error in migrationStatusData function", error);
       }

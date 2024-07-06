@@ -129,9 +129,10 @@ export default{
   },
 
   methods:{
-    async agricultureImplementsData(){
+    async agricultureImplementsData(id){
       try {
-           await axios.post("http://localhost:5000/api/bulkinsertionagriimplements",this.agriculturalImplementsRowsData
+        const data = {id:id,rows:this.agriculturalImplementsRowsData}
+           await axios.post("http://localhost:5000/api/bulkinsertionagriimplements",data
       )
       } catch (error) {
         console.error("error in agricultureImplements function",error)
