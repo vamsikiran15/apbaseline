@@ -134,9 +134,10 @@ export default {
 
 
   methods : {
-      async landLessDetails(){
+      async landLessDetails(id){
         try {
-           await axios.post("http://localhost:5000/api/bulkinsertionlandless",this.landLessData
+          const data = {id:id,rows:this.landLessData}
+           await axios.post("http://localhost:5000/api/bulkinsertionlandless",data
         )
         } catch (error) {
           console.error("error in landLessDetails function",error)
@@ -161,12 +162,6 @@ export default {
   },
 };
 </script>
-<style>
-ion-card {
-  border-radius: 8px;
-  box-shadow: 1px 1px 6px rgb(96, 96, 161);
-}
-</style>
 <style>
 ion-card {
   border-radius: 8px;

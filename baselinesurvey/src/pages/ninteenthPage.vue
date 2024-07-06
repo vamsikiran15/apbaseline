@@ -1,4 +1,5 @@
-<template><ion-card>
+<template>
+<ion-card>
     <ion-card-header color="tertiary" class="ion-text-center"><strong>19.Do you Graze your Cattle in the Community Land? Yes/No</strong></ion-card-header>
 </ion-card>
 <ion-card>
@@ -106,9 +107,10 @@ export default{
     }
   },
   methods : {
-    async grazeCattleData(){
+    async grazeCattleData(id){
         try {
-           await axios.post("http://localhost:5000/api/bulkinsertiongrazecattle",this.grazeCattleRowsData
+          const data = {id:id,rows:this.grazeCattleRowsData}
+           await axios.post("http://localhost:5000/api/bulkinsertiongrazecattle",data
           )
         } catch (error) {
           console.error("error in grazecattledata function",error)

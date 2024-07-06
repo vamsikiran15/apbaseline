@@ -103,10 +103,11 @@ export default{
   },
 
   methods : {
-    async beneficiarySchemeData(){
+    async beneficiarySchemeData(id){
       console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
       try {
-        await axios.post("http://localhost:5000/api/bulkinsertionpreviousproject",this.beneficiarySchemeRowsData
+        const data = {id:id,rows:this.beneficiarySchemeRowsData}
+        await axios.post("http://localhost:5000/api/bulkinsertionpreviousproject",data
         )
       } 
       catch (error) {

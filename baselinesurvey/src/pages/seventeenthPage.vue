@@ -1,4 +1,5 @@
-<template><ion-card>
+<template>
+<ion-card>
     <ion-card-header color="tertiary"><strong>17.Fodder and Feed Availability</strong></ion-card-header>
 </ion-card>
 <ion-card>
@@ -124,9 +125,10 @@ export default{
   },
 
   methods : {
-    async fodderFeedAvailabilityData(){
+    async fodderFeedAvailabilityData(id){
       try {
-          await axios.post("http://localhost:5000/api/bulkinsertionfodder",this.fodderandFeedAvailabilityRowsData
+        const data = {id:id,rows:this.fodderandFeedAvailabilityRowsData}
+          await axios.post("http://localhost:5000/api/bulkinsertionfodder",data
         )
       } catch (error) {
         console.error("error in fodderFeedAvailabilityData function",error)

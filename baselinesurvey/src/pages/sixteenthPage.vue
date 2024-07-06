@@ -112,9 +112,10 @@ export default{
     }
   },
   methods : {
-    async horticultureDetailsData(){
+    async horticultureDetailsData(id){
       try {
-        await axios.post("http://localhost:5000/api/bulkinsertionhorticulture",this.horticultureDetailsRowsData
+        const data = {id:id,rows:this.horticultureDetailsRowsData}
+        await axios.post("http://localhost:5000/api/bulkinsertionhorticulture",data
         )
       } catch (error) {
         console.error("error in horticultureDetailsData function",error)

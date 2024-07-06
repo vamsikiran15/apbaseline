@@ -109,9 +109,10 @@ export default{
     }
   },
   methods:{
-    async awarenessonTechnologyData(){
+    async awarenessonTechnologyData(id){
       try {
-        const response = await axios.post("http://localhost:5000/api/bulkinsertionadoptiontechnology",this.awarenessTechnologyRowsData
+        const data = {id:id,rows:this.awarenessTechnologyRowsData}
+        const response = await axios.post("http://localhost:5000/api/bulkinsertionadoptiontechnology",data
       )
       console.log("################DATA$$$$$$$$$$$$$$$$$$",response)
       } catch (error) {

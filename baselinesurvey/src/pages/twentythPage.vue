@@ -113,9 +113,10 @@ export default{
     }
   },
   methods : {
-      async householdAssets(){
+      async householdAssets(id){
         try {
-           await axios.post("http://localhost:5000/api/bulkinsertionhouseholdassets",this.householdRowsData
+          const data = {id:id,rows:this.householdRowsData}
+           await axios.post("http://localhost:5000/api/bulkinsertionhouseholdassets",data
     )
     } 
     catch (error) {
