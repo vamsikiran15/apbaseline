@@ -205,11 +205,13 @@ export default {
           // Update existing row
           console.log("govt banefit ", row);
           await this.updateGovtBenefit(row);
+          this.GovtBenefitRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("govt banefit updated data", row);
           await this.insertGovtBenefit(row);
+          this.GovtBenefitRows = [];
         }
       }
     },

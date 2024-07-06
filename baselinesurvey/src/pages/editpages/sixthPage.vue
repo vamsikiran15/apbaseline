@@ -201,11 +201,13 @@ export default {
           // Update existing row
           console.log("land less ", row);
           await this.updateLandLess(row);
+          this.landLessRows = [];
         } else {
           // Insert new row
           this.landLessRows.push(row);
           console.log("Land Less updated data", row);
           await this.insertLandLess(row);
+          this.landLessRows = [];
         }
       }
     },

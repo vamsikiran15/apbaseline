@@ -204,11 +204,13 @@ export default {
           // Update existing row
           console.log("FodderFeed ", row);
           await this.updateFodderFeed(row);
+          this.FodderFeedRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("FodderFeed  data", row);
           await this.insertFodderFeed(row);
+          this.FodderFeedRows = [];
         }
       }
     },

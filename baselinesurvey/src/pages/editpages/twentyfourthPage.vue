@@ -178,11 +178,13 @@ export default {
           // Update existing row
           console.log("AnyScheme ", row);
           await this.updateAnyScheme(row);
+          this.AnySchemeRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("AnyScheme  data", row);
           await this.insertAnyScheme(row);
+          this.AnySchemeRows = [];
         }
       }
     },

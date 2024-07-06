@@ -212,11 +212,13 @@ export default {
           // Update existing row
           console.log("AvailableDrinkingWater ", row);
           await this.updateAvailableDrinkingWater(row);
+          this.AvailableDrinkingWaterpRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("AvailableDrinkingWater  data", row);
           await this.insertAvailableDrinkingWater(row);
+          this.AvailableDrinkingWaterpRows = [];
         }
       }
     },

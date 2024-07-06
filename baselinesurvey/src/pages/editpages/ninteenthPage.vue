@@ -188,11 +188,13 @@ export default {
           // Update existing row
           console.log("GrazeCattle ", row);
           await this.updateGrazeCattle(row);
+          this.GrazeCattleRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("GrazeCattle  data", row);
           await this.insertGrazeCattle(row);
+          this.GrazeCattleRows = [];
         }
       }
     },

@@ -3,7 +3,7 @@
     <ion-card>
       <ion-card-header class="ion-text-center" color="tertiary"
         ><strong
-          >12.Difference Source of Income,Expenditure and Family Debt
+          >12.Different Source of Income,Expenditure and Family Debt
           Details</strong
         ></ion-card-header
       >
@@ -207,11 +207,13 @@ export default {
           // Update existing row
           console.log("update different source ", row);
           await this.updateDifferentSource(row);
+          this.differentsourceRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("insert different source data", row);
           await this.insertDifferentSource(row);
+          this.differentsourceRows = [];
         }
       }
     },

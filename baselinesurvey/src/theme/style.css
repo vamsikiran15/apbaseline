@@ -5,7 +5,7 @@ ion-toolbar {
 
   ion-card {
     background : var(--ion-color-success-contrast);
-    color:var(--ion-text-color)
+    color:var(--ion-text-color);
   }
   
   ion-card-header {

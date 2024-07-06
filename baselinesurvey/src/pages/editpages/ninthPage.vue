@@ -277,11 +277,13 @@ export default {
           // Update existing row
           console.log("pest disease ", row);
           await this.updatePestDisease(row);
+          this.pestDiseaseRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("pest disease updated data", row);
           await this.insertPestDisease(row);
+          this.pestDiseaseRows = [];
         }
       }
     },

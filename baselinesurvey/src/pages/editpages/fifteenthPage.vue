@@ -201,11 +201,13 @@ export default {
           // Update existing row
           console.log("AgriImplements ", row);
           await this.updateAgriImplements(row);
+          this.AgriImplementsRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("AgriImplements  data", row);
           await this.insertAgriImplements(row);
+          this.AgriImplementsRows = [];
         }
       }
     },

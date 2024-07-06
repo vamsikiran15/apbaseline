@@ -173,11 +173,13 @@ export default {
           // Update existing row
           console.log("Membership ", row);
           await this.updateMembership(row);
+          this.MembershipRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("Membership  data", row);
           await this.insertMembership(row);
+          this.MembershipRows = [];
         }
       }
     },

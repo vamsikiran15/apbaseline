@@ -192,11 +192,13 @@ export default {
           // Update existing row
           console.log("HouseholdAssets ", row);
           await this.updateHouseholdAssets(row);
+          this.HouseholdAssetsRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("HouseholdAssets  data", row);
           await this.insertHouseholdAssets(row);
+          this.HouseholdAssetsRows = [];
         }
       }
     },

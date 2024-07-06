@@ -332,11 +332,13 @@ export default {
           // Update existing row
           console.log("LoanParticular ", row);
           await this.updateLoanParticular(row);
+          this.loanparticularRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("LoanParticular updated data", row);
           await this.insertLoanParticular(row);
+          this.loanparticularRows = [];
         }
       }
     },

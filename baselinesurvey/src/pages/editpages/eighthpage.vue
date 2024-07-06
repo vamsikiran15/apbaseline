@@ -264,11 +264,13 @@ export default {
           // Update existing row
           console.log("manureChemical ", row);
           await this.updateManureChemical(row);
+          this.manureChemicalRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("manureChemical updated data", row);
           await this.insertManureChemical(row);
+          this.manureChemicalRows = [];
         }
       }
     },
