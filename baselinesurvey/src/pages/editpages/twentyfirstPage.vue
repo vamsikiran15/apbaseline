@@ -208,11 +208,13 @@ export default {
           // Update existing row
           console.log("ParticipationCommunityProgram ", row);
           await this.updateParticipationCommunityProgram(row);
+          this.ParticipationCommunityProgramRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("ParticipationCommunityProgram  data", row);
           await this.insertParticipationCommunityProgram(row);
+          this.ParticipationCommunityProgramRows = [];
         }
       }
     },

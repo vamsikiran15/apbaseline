@@ -251,11 +251,13 @@ export default {
           // Update existing row
           console.log("Live stock ", row);
           await this.updateMigrate(row);
+          this.migrateRows = [];
         } else {
           // Insert new row
           this.migrateRows.push(row);
           console.log("Live Stock updated data", row);
           await this.insertMigrate(row);
+          this.migrateRows = [];
         }
       }
     },

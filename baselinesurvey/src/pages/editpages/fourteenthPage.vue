@@ -32,13 +32,13 @@
           fill="outline"
           v-model="newRowSourceQualityWater.water_source"
         >
-          <ion-select-option value="borewell">Open</ion-select-option>
-          <ion-select-option value="tank">Borewell</ion-select-option>
-          <ion-select-option value="publictank">Tank</ion-select-option>
-          <ion-select-option value="openwell"
+          <ion-select-option value="Open Well">Open Well</ion-select-option>
+          <ion-select-option value="Borewell">Borewell</ion-select-option>
+          <ion-select-option value="Tank">Tank</ion-select-option>
+          <ion-select-option value="Drip(Specify Crop)"
             >Drip(Specify Crop)</ion-select-option
           >
-          <ion-select-option value="canalwater">Others</ion-select-option>
+          <ion-select-option value="Others">Others</ion-select-option>
         </ion-select>
         <ion-input
           class="ion-margin-top"
@@ -122,6 +122,21 @@
           label-placement="floating"
           v-model="newRowSourceQualityWater.horticulture"
         ></ion-input>
+        <ion-select
+          class="ion-margin-top"
+          aria-label="Water Quality"
+          interface="popover"
+          label="Water Quality"
+          label-placement="floating"
+          placeholder="select Water Quality"
+          fill="outline"
+          v-model="newRowSourceQualityWater.water_quality"
+        >
+          <ion-select-option value="Polluted">Polluted</ion-select-option>
+          <ion-select-option value="Non-Polluted"
+            >Non-Polluted</ion-select-option
+          >
+        </ion-select>
         <ion-button
           class="ion-margin-top"
           expand="block"
@@ -182,6 +197,7 @@ export default {
         irrigated_agri_summer: "",
         other_corps: "",
         horticulture: "",
+        water_quality: "",
       },
       SourceQualityWaterRows: [],
     };
@@ -229,6 +245,7 @@ export default {
         item.irrigated_agri_summer;
       this.newRowSourceQualityWater.other_corps = item.other_corps;
       this.newRowSourceQualityWater.horticulture = item.horticulture;
+      this.newRowSourceQualityWater.water_quality = item.water_quality;
     },
 
     updateSourceQualityWaterrows() {
@@ -264,6 +281,7 @@ export default {
         irrigated_agri_summer: "",
         other_corps: "",
         horticulture: "",
+        water_quality: "",
       };
     },
     removeSourceQualityWater(index) {
@@ -282,11 +300,13 @@ export default {
           // Update existing row
           console.log("SourceQualityWater ", row);
           await this.updateSourceQualityWater(row);
+          this.SourceQualityWaterRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("AvaiSourceQualityWaterlableDrinkingWater  data", row);
           await this.insertSourceQualityWater(row);
+          this.SourceQualityWaterRows = [];
         }
       }
     },
@@ -309,6 +329,7 @@ export default {
             irrigated_agri_summer: row.irrigated_agri_summer,
             other_corps: row.other_corps,
             horticulture: row.horticulture,
+            water_quality: row.water_quality,
           }
         );
         console.log("SourceQualityWater inserted:", response);

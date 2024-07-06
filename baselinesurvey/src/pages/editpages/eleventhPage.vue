@@ -185,11 +185,13 @@ export default {
           // Update existing row
           console.log("updateFamilyExp ", row);
           await this.updateFamilyExp(row);
+          this.familyExpRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("insertFamilyExp  data", row);
           await this.insertFamilyExp(row);
+          this.familyExpRows = [];
         }
       }
     },

@@ -186,11 +186,13 @@ export default {
           // Update existing row
           console.log("Horticulture ", row);
           await this.updateHorticulture(row);
+          this.HorticultureRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("Horticulture  data", row);
           await this.insertHorticulture(row);
+          this.HorticultureRows = [];
         }
       }
     },

@@ -208,11 +208,13 @@ export default {
           // Update existing row
           console.log("FodderFuel ", row);
           await this.updateFodderFuel(row);
+          this.FodderFuelRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("FodderFuel  data", row);
           await this.insertFodderFuel(row);
+          this.FodderFuelRows = [];
         }
       }
     },

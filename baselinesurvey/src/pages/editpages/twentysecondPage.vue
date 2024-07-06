@@ -209,11 +209,13 @@ export default {
           // Update existing row
           console.log("AwarenessAdoption ", row);
           await this.updateAwarenessAdoption(row);
+          this.AwarenessAdoptionRows = [];
         } else {
           // Insert new row
           // this.GovtBenefitRows.push(row);
           console.log("AwarenessAdoption  data", row);
           await this.insertAwarenessAdoption(row);
+          this.AwarenessAdoptionRows = [];
         }
       }
     },

@@ -3,7 +3,10 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/landingpage"></ion-back-button>
+          <ion-back-button defaultHref="/landingpage">Back</ion-back-button>
+          <div v-if="latitude && longitude">
+            <p>Latitude: {{ latitude }} / Longitude: {{ longitude }}</p>
+          </div>
         </ion-buttons>
         <!-- <ion-img :src="RsiLogo" class="imgsize"></ion-img> -->
         <!-- <ion-title style="font-size: 1.5vh"> </ion-title> -->
@@ -44,13 +47,14 @@
               v-model="query"
               @ionClear="clearSearch"
               debounce="500"
-              placeholder="Enter Aadhar Number"
+              placeholder="Enter Name"
             ></ion-searchbar>
             <ion-list>
               <ion-item
                 v-for="item in sortedFilteredfilteredNames"
                 :key="item.id"
                 @click="selectItem(item)"
+                :class="getColorClass(item)"
               >
                 {{ item.head_of_the_family }}
                 {{ item.household_door_no }}
@@ -189,6 +193,7 @@ export default {
       RsiLogo: Logo,
     };
   },
+
   computed: {
     filteredProjects() {
       return this.projects.filter((project) =>
@@ -210,6 +215,16 @@ export default {
     },
   },
   methods: {
+    getColorClass(item) {
+      console.log("$$$$$$$$$$$$$$$$$$$$$$");
+      const createdDate = item.createdAt;
+      const updatedDate = item.updatedAt;
+      console.log("$$$$$$$$$$$$$$$$$$$$$$", item, updatedDate);
+      if (updatedDate != createdDate) {
+        return "recently-updated";
+      }
+      return "";
+    },
     async searchProject() {
       if (this.projectquery.trim() === "") {
         this.projects = [];
@@ -625,7 +640,7 @@ export default {
       const id = this.selectedItem.id;
       try {
         const response = await axios.get(
-          `http://183.82.109.39:5000/api/grazecattlecommunitydetails`,
+          `http://183.82.109.39:5000/api/householdassetdetails`,
           {
             params: { id: id },
           }
@@ -862,5 +877,8 @@ export default {
 .imgsize {
   height: 6vh;
   width: 15vh;
+}
+.recently-updated {
+  color: red;
 }
 </style>

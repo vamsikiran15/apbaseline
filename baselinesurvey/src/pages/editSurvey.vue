@@ -48,6 +48,7 @@
                       @update:modelValue="
                         getWcc();
                         getMandal();
+                        onDistrictSelected();
                       "
                     >
                       <ion-select-option
@@ -68,7 +69,10 @@
                       placeholder="Select WCC"
                       fill="outline"
                       v-model="selectedWccNo"
-                      @update:modelValue="getProject()"
+                      @update:modelValue="
+                        getProject();
+                        onWccSelected();
+                      "
                     >
                       <ion-select-option
                         v-for="items in wcc"
@@ -88,7 +92,10 @@
                       placeholder="Select Project"
                       fill="outline"
                       v-model="selectedProjectNo"
-                      @update:modelValue="getWaterShedVillage()"
+                      @update:modelValue="
+                        getWaterShedVillage();
+                        onProjectSelected();
+                      "
                     >
                       <ion-select-option
                         v-for="items in project"
@@ -111,6 +118,7 @@
                       @update:modelValue="
                         getHabitation();
                         getGramPanchayat();
+                        onMicroWatershed();
                       "
                     >
                       <ion-select-option
@@ -132,15 +140,29 @@
                       placeholder="Enter name of Habitation"
                       fill="outline"
                       v-model="selectedHabitationNo"
-                      @update:modelValue="getHabitation()"
+                      @ionChange="handleHabitationOthers"
                     >
                       <ion-select-option
                         v-for="names in habitation"
                         :key="names.id"
                         :value="names.id"
                         >{{ names.habitation_name }}</ion-select-option
-                      ></ion-select
-                    >
+                      >
+                      <ion-select-option value="others"
+                        >Others</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-row>
+                  <ion-row v-if="showInputField">
+                    <ion-input
+                      class="ion-margin-top"
+                      label="Enter Habitation"
+                      interface="popover"
+                      label-placement="floating"
+                      fill="outline"
+                      placeholder="Name of the Household"
+                      v-model="editedItem.habitation_name"
+                    ></ion-input>
                   </ion-row>
                   <ion-row class="ion-padding-top">
                     <ion-text>{{ editedItem.mandal_name }}</ion-text>
@@ -152,7 +174,7 @@
                       placeholder="Select Mandal"
                       fill="outline"
                       v-model="selectedMandalNo"
-                      @update:modelValue="getMandal()"
+                      @update:modelValue="onMandal()"
                     >
                       <ion-select-option
                         v-for="names in mandal"
@@ -171,8 +193,8 @@
                       label-placement="floating"
                       placeholder="Name of the Gram Panchayat"
                       fill="outline"
-                      v-model="grampanchayatNo"
-                      @update:modelValue="getGramPanchayat()"
+                      v-model="selectedGrampanchayatNo"
+                      @update:modelValue="onGramPanchayat()"
                     >
                       <ion-select-option
                         v-for="names in gramPanchayat"
@@ -908,7 +930,7 @@
                     >
                       {{ item.crop_grown }}
                       {{ item.rainfed_area }}
-                      {{ item.rainfed_yeild }}
+                      {{ item.rainfed_yield }}
                       {{ item.rainfed_cost_of_cultivation }}
                     </ion-item>
                   </ion-list>
@@ -970,7 +992,7 @@
                     label="Rainfed Yield(Qtls)"
                     fill="outline"
                     label-placement="floating"
-                    v-model="newRowIncomeKharif.rainfed_yeild"
+                    v-model="newRowIncomeKharif.rainfed_yield"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -1120,7 +1142,7 @@
                     >
                       {{ item.crop_grown }}
                       {{ item.rainfed_area }}
-                      {{ item.rainfed_yeild }}
+                      {{ item.rainfed_yield }}
                       {{ item.rainfed_cost_of_cultivation }}
                     </ion-item>
                   </ion-list>
@@ -1182,7 +1204,7 @@
                     label="Rainfed Yield(Qtls)"
                     fill="outline"
                     label-placement="floating"
-                    v-model="newRowIncomeRabhi.rainfed_yeild"
+                    v-model="newRowIncomeRabhi.rainfed_yield"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -1621,6 +1643,7 @@ import TwentythirdPage from "./editpages/twentythirdPage.vue";
 import TwentyfourthPage from "./editpages/twentyfourthPage.vue";
 import TwentyfifthPage from "./editpages/twentyfifthPage.vue";
 import axios from "axios";
+import { Geolocation } from "@capacitor/geolocation";
 export default {
   props: {
     item: Object,
@@ -1686,6 +1709,8 @@ export default {
         "24 Have been the beneficiary of any scheme of project previously",
         "25 Soil, Land & Water Conservation",
       ],
+      showInputField: false,
+      otherOption: "",
       district: [],
       wcc: [],
       project: [],
@@ -1700,6 +1725,7 @@ export default {
       selectedProjectNo: "",
       selectedHabitationNo: "",
       selectedMandalNo: "",
+      selectedGrampanchayatNo: "",
 
       selectedDistrictName: "",
       selectedWccName: "",
@@ -1737,7 +1763,7 @@ export default {
         headId: "",
         crop_grown: "",
         rainfed_area: "",
-        rainfed_yeild: "",
+        rainfed_yield: "",
         rainfed_cost_of_cultivation: "",
         rainfed_rate_per_qtls: "",
         rainfed_gross_income: "",
@@ -1754,7 +1780,7 @@ export default {
         headId: "",
         crop_grown: "",
         rainfed_area: "",
-        rainfed_yeild: "",
+        rainfed_yield: "",
         rainfed_cost_of_cultivation: "",
         rainfed_rate_per_qtls: "",
         rainfed_gross_income: "",
@@ -1823,6 +1849,8 @@ export default {
       liveStockRows: [],
       subType: "",
       type_of_house: "",
+      lat: null,
+      long: null,
     };
   },
   components: {
@@ -1911,6 +1939,9 @@ export default {
   },
   created() {
     this.getDistricts();
+  },
+  mounted() {
+    this.getCurrentPosition();
   },
   methods: {
     nextStep() {
@@ -2032,7 +2063,7 @@ export default {
       }
     },
     onMicroWatershed() {
-      const selectedMicroWatershedData = this.watershed.find(
+      const selectedMicroWatershedData = this.microwatershed.find(
         (name) => name.id === this.selectedMicroWatershedNo
       );
       if (selectedMicroWatershedData) {
@@ -2058,7 +2089,7 @@ export default {
     },
     onGramPanchayat() {
       const selectedGramPanchayatdata = this.gramPanchayat.find(
-        (name) => name.id === this.selectedGramPanchayat
+        (name) => name.id === this.selectedGrampanchayatNo
       );
       if (selectedGramPanchayatdata) {
         this.selectedGramPanchayatName =
@@ -2066,6 +2097,12 @@ export default {
         console.log("wcc name", selectedGramPanchayatdata.grampanchayat_name);
       }
     },
+
+    handleHabitationOthers(event) {
+      console.log("on change event", event);
+      this.showInputField = event.target.value === "others";
+    },
+
     // Method to reset sub-type when changing house type
     updateSubType() {
       this.editedItem.own_or_rented = "";
@@ -2190,7 +2227,7 @@ export default {
         headId: "",
         crop_grown: "",
         rainfed_area: "",
-        rainfed_yeild: "",
+        rainfed_yield: "",
         rainfed_cost_of_cultivation: "",
         rainfed_rate_per_qtls: "",
         rainfed_gross_income: "",
@@ -2209,7 +2246,7 @@ export default {
         headId: "",
         crop_grown: "",
         rainfed_area: "",
-        rainfed_yeild: "",
+        rainfed_yield: "",
         rainfed_cost_of_cultivation: "",
         rainfed_rate_per_qtls: "",
         rainfed_gross_income: "",
@@ -2281,7 +2318,7 @@ export default {
       this.newRowIncomeKharif.headId = item.headId;
       this.newRowIncomeKharif.crop_grown = item.crop_grown;
       this.newRowIncomeKharif.rainfed_area = item.rainfed_area;
-      this.newRowIncomeKharif.rainfed_yeild = item.rainfed_yeild;
+      this.newRowIncomeKharif.rainfed_yield = item.rainfed_yield;
       this.newRowIncomeKharif.rainfed_cost_of_cultivation =
         item.rainfed_cost_of_cultivation;
       this.newRowIncomeKharif.rainfed_rate_per_qtls =
@@ -2303,7 +2340,7 @@ export default {
       this.newRowIncomeRabhi.headId = item.headId;
       this.newRowIncomeRabhi.crop_grown = item.crop_grown;
       this.newRowIncomeRabhi.rainfed_area = item.rainfed_area;
-      this.newRowIncomeRabhi.rainfed_yeild = item.rainfed_yeild;
+      this.newRowIncomeRabhi.rainfed_yield = item.rainfed_yield;
       this.newRowIncomeRabhi.rainfed_cost_of_cultivation =
         item.rainfed_cost_of_cultivation;
       this.newRowIncomeRabhi.rainfed_rate_per_qtls = item.rainfed_rate_per_qtls;
@@ -2331,7 +2368,15 @@ export default {
       this.newRowlivestock.name_of_the_animal = item.name_of_the_animal;
       this.newRowlivestock.value_of_animals = item.value_of_animals;
     },
-
+    async getCurrentPosition() {
+      try {
+        const coordinates = await Geolocation.getCurrentPosition();
+        this.lat = coordinates.coords.latitude;
+        this.long = coordinates.coords.longitude;
+      } catch (e) {
+        console.error("Error getting location", e);
+      }
+    },
     async updateHouseIndividualInfo() {
       try {
         // const rowsWithCommaSeparatedOccupation = this.rows.map((row) => ({
@@ -2342,16 +2387,42 @@ export default {
         //   rows: rowsWithCommaSeparatedOccupation, // Assuming rows_land_less_labourers contains your table data
         // };
         const occupationString = this.editedItem.occupation.join(",");
+
+        const nameDist = this.selectedDistrictName
+          ? this.selectedDistrictName
+          : this.editedItem.dist_name;
+        const nameWcc = this.selectedWccName
+          ? this.selectedWccName
+          : this.editedItem.wcc_name;
+
+        const nameProject = this.selectedProjectName
+          ? this.selectedProjectName
+          : this.editedItem.project_name;
+
+        const nameWaterShed = this.selectedMicroWatershedName
+          ? this.selectedMicroWatershedName
+          : this.editedItem.micro_watershed_name;
+        const nameHabitation = this.selectedHabitationName
+          ? this.selectedHabitationName
+          : this.editedItem.habitation_name;
+
+        const nameMandal = this.selectedMandalName
+          ? this.selectedMandalName
+          : this.editedItem.mandal_name;
+        const nameGrampanchayat = this.selectedGramPanchayatName
+          ? this.selectedGramPanchayatName
+          : this.editedItem.grampanchayat_name;
+
         const response = await axios.put(
           `http://183.82.109.39:5000/api/updateIndividualInfo/${this.editedItem.id}`,
           {
-            dist_name: this.editedItem.dist_name,
-            wcc_name: this.editedItem.wcc_name,
-            project_name: this.editedItem.project_name,
-            micro_watershed_name: this.editedItem.micro_watershed_name,
-            habitation_name: this.editedItem.habitation_name,
-            mandal_name: this.editedItem.mandal_name,
-            grampanchayat_name: this.editedItem.grampanchayat_name,
+            district: nameDist,
+            wcc_name: nameWcc,
+            name_of_project: nameProject,
+            name_of_the_micro_watershed: nameWaterShed,
+            name_of_habitation: nameHabitation,
+            mandal: nameMandal,
+            name_of_the_grampanchayat: nameGrampanchayat,
             head_of_the_family: this.editedItem.head_of_the_family,
             household_door_no: this.editedItem.household_door_no,
             conatact_number: this.editedItem.contact_number,
@@ -2365,7 +2436,12 @@ export default {
             total_irrigated_area: this.editedItem.total_irrigated_area,
             type_of_house: this.editedItem.type_of_house,
             own_or_rented: this.editedItem.own_or_rented,
+            total_holding_area:
+              parseFloat(this.editedItem.total_rainfed_area) +
+              parseFloat(this.editedItem.total_irrigated_area),
             id: this.editedItem.id,
+            latitude: this.lat,
+            longitude: this.long,
           }
         );
         console.log("Item updated individual:", response.data);
@@ -2479,11 +2555,13 @@ export default {
           // Update existing row
           console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
           await this.updateLandParticular(row);
+          this.landParticularRows = [];
         } else {
           // Insert new row
           // this.landParticularRows.push(row);
           console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
           await this.insertLandParticular(row);
+          this.landParticularRows = [];
         }
       }
     },
@@ -2535,11 +2613,13 @@ export default {
           // Update existing row
           console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
           await this.updateIncomeKharif(row);
+          this.incomeKharifRows = [];
         } else {
           // Insert new row
           // this.landParticularRows.push(row);
           console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
           await this.insertIncomeKharif(row);
+          this.incomeKharifRows = [];
         }
       }
     },
@@ -2554,7 +2634,7 @@ export default {
             headId: row.headId,
             crop_grown: row.crop_grown,
             rainfed_area: row.rainfed_area,
-            rainfed_yeild: row.rainfed_yeild,
+            rainfed_yield: row.rainfed_yield,
             rainfed_cost_of_cultivation: row.rainfed_cost_of_cultivation,
             rainfed_rate_per_qtls: row.rainfed_rate_per_qtls,
             rainfed_gross_income: row.rainfed_gross_income,
@@ -2596,11 +2676,13 @@ export default {
           // Update existing row
           console.log("Rabhi ", row);
           await this.updateIncomeRabhi(row);
+          this.incomeRabhiRows = [];
         } else {
           // Insert new row
           // this.landParticularRows.push(row);
           console.log("Rabhi updated data", row);
           await this.insertIncomeRabhi(row);
+          this.incomeRabhiRows = [];
         }
       }
     },
@@ -2615,7 +2697,7 @@ export default {
             headId: row.headId,
             crop_grown: row.crop_grown,
             rainfed_area: row.rainfed_area,
-            rainfed_yeild: row.rainfed_yeild,
+            rainfed_yield: row.rainfed_yield,
             rainfed_cost_of_cultivation: row.rainfed_cost_of_cultivation,
             rainfed_rate_per_qtls: row.rainfed_rate_per_qtls,
             rainfed_gross_income: row.rainfed_gross_income,
@@ -2657,11 +2739,13 @@ export default {
           // Update existing row
           console.log("Live stock ", row);
           await this.updateLiveStock(row);
+          this.liveStockRows = [];
         } else {
           // Insert new row
           // this.landParticularRows.push(row);
           console.log("Live Stock updated data", row);
           await this.insertLiveStock(row);
+          this.liveStockRows = [];
         }
       }
     },
