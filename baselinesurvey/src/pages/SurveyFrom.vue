@@ -203,23 +203,39 @@
                   v-model="householdDoorNo"
                 ></ion-input>
                 <ion-input
-                  type="number"
+                  type="tel"
+                  maxlength="12"
                   class="ion-margin-top"
                   label="Contact No (Mobile)"
                   label-placement="floating"
                   fill="outline"
                   placeholder="Contact No (Mobile)"
                   v-model="ContactNumber"
+                  @input="ValidPhoneNumber"
+                  @touchstart="touched = true" 
+                  @mousedown="touched = true"
                 ></ion-input>
+                <ion-text v-if="(touched || dirty) && !isValidPhoneNumber"
+                color= "danger">
+                Please enter a valid Phone Number.
+              </ion-text>
                 <ion-input
-                  type="number"
+                  type="tel"
                   class="ion-margin-top"
                   label="Aadhaar Card No"
+                  maxlength="16"
                   label-placement="floating"
                   fill="outline"
                   placeholder="Enter Aadhaar Card No"
                   v-model="aadharNumber"
+                  @input="ValidAadharNumber"
+                  @touchstart="touched = true" 
+                  @mousedown="touched = true"
                 ></ion-input>
+                <ion-text v-if="(touched || dirty) && !isValidAadharNumber"
+                color= "danger">
+                Please enter valid Aadhar Number.
+              </ion-text>
                 <ion-input
                   type="number"
                   class="ion-margin-top"
@@ -775,6 +791,7 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
+                  readonly="readonly"
                   placeholder="Total"
                   label="Total"
                   fill="outline"
@@ -894,6 +911,7 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
+                  readonly="readonly"
                   placeholder="Total Rainfed Gross income"
                   fill="outline"
                   label="Rainfed(Acres) Gross Income"
@@ -903,6 +921,7 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
+                  readonly="readonly"
                   placeholder="Total Rainfed Net income"
                   fill="outline"
                   label="Rainfed(Acres) Net Income(7-5)"
@@ -957,6 +976,7 @@
                   class="ion-margin-top"
                   placeholder="Irrigated(Acres) Gross Income"
                   fill="outline"
+                  readonly="readonly"
                   label="Total Irrigated(Acres) Gross Income"
                   label-placement="floating"
                   type="number"
@@ -964,6 +984,7 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
+                  readonly="readonly"
                   placeholder="Total Irrigated Net Income(13-11)"
                   fill="outline"
                   label="Total Irrigated Net Income(13-11)"
@@ -973,6 +994,7 @@
                 <ion-input
                   class="ion-margin-top"
                   placeholder="Kharif Grand Total Income"
+                  readonly="readonly"
                   label="Kharif Grand Total Income"
                   fill="outline"
                   label-placement="floating"
@@ -1059,6 +1081,7 @@
                   class="ion-margin-top"
                   placeholder="Total Rainfed Gross income"
                   fill="outline"
+                  readonly="readonly"
                   type="number" 
                   label="Rainfed(Acres) Gross Income"
                   label-placement="floating"
@@ -1066,6 +1089,7 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
+                  readonly="readonly"
                   placeholder="Total Rainfed Net income"
                   fill="outline"
                   type="number" 
@@ -1120,6 +1144,7 @@
                   class="ion-margin-top"
                   placeholder="Irrigated(Acres) Gross Income"
                   fill="outline"
+                  readonly="readonly"
                   label="Total Irrigated(Acres) Gross Income"
                   label-placement="floating"
                   v-model="incomefromCropsRabiRows.irrigatedGrossIncomeRabi"
@@ -1128,6 +1153,7 @@
                   class="ion-margin-top"
                   placeholder="Total Irrigated Net Income(13-11)"
                   fill="outline"
+                  readonly="readonly"
                   label="Total Irrigated Net Income(13-11)"
                   label-placement="floating"
                   type="number" 
@@ -1135,6 +1161,7 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
+                  readonly="readonly"
                   placeholder="Rabi Grand Total Income"
                   label="Rabi Grand Total Income"
                   fill="outline"
@@ -3475,7 +3502,9 @@ export default {
       receivedawarenessprograms:"",
       surveyor:"",
       dateA:"",
-      subType:""
+      subType:"",
+      isValidPhoneNumber: true,
+      isValidAadharNumber:true
     };
   },
   components: {
@@ -3515,6 +3544,18 @@ export default {
   },
   created() {
     this.getDistricts();
+  },
+  computed:{
+    ValidPhoneNumber() {
+      // Regular expression for a basic phone number validation
+      const regex = /^\d{10,12}$/;
+      this.isValidPhoneNumber = regex.test(this.ContactNumber);
+    },
+    ValidAadharNumber() {
+      // Regular expression for aadhar number validation
+      const regex = /^\d{12,16}$/;
+      this.isValidAadharNumber = regex.test(this.aadharNumber);
+    }
   },
   methods: {
     // async callChildFromParent() {
@@ -3822,7 +3863,7 @@ export default {
     async triggerToast() {
       const toast = await toastController.create({
         message: "Insertion of Survey Form is Submitted Successfully",
-        duration: 10000,
+        duration: 5000,
         position: 'top'
       });
       toast.present();

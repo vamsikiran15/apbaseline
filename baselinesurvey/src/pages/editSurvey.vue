@@ -2,6 +2,7 @@
   <ion-page>
     <ion-content>
       <!-- Dropdown for step navigation -->
+       <ion-card>
       <ion-row class="ion-padding">
         <ion-col>
           <ion-select
@@ -24,6 +25,7 @@
           </ion-select>
         </ion-col>
       </ion-row>
+    </ion-card>
       <div v-for="step in totalSteps" :key="step">
         <!-- Intermediate steps -->
         <div v-if="currentStep === step">
@@ -34,6 +36,8 @@
                 <ion-card-header color="tertiary">
                   <strong>1 General Information</strong>
                 </ion-card-header>
+                </ion-card>
+                <ion-card>
                 <ion-card-content>
                   <ion-row class="ion-padding-top">
                     <ion-text>{{ editedItem.dist_name }}</ion-text>
@@ -210,8 +214,10 @@
             <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
-                  >1.1 Individual Information</ion-card-header
+                  ><strong>1.1 Individual Information</strong></ion-card-header
                 >
+              </ion-card>
+              <ion-card>
                 <ion-card-content>
                   <ion-input
                     class="ion-margin-top"
@@ -541,8 +547,12 @@
                       </ion-col>
                     </ion-radio-group>
                   </ion-row>
-                  <ion-button
-                    class="ion-margin-top"
+                </ion-card-content>
+              </ion-card>
+            
+            </ion-col>
+            <ion-button
+                    class="ion-margin"
                     expand="full"
                     color="primary"
                     @click="updateHouseIndividualInfo()"
@@ -553,9 +563,6 @@
                     ></ion-icon
                     >Update Individual Information</ion-button
                   >
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
           </div>
 
           <div v-if="step === 2">
@@ -564,6 +571,8 @@
                 <ion-card-header color="tertiary"
                   ><strong>2.Household Details</strong></ion-card-header
                 >
+              </ion-card>
+              <ion-card>
                 <ion-card-content>
                   <ion-list>
                     <ion-item
@@ -762,8 +771,11 @@
                     placeholder="Annual Gross Income"
                     v-model="newRow.annual_gross_income"
                   ></ion-input>
-                  <ion-button
-                    class="ion-margin-top"
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-button
+                    class="ion-margin"
                     expand="full"
                     color="primary"
                     @click="UpdateHouseHoldMemberData()"
@@ -774,9 +786,6 @@
                     ></ion-icon
                     >Update Family Member Details</ion-button
                   >
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
 
             <ul class="styled-list">
               <li v-for="(row, index) in rows" :key="index">
@@ -807,7 +816,8 @@
                 <ion-card-header color="tertiary"
                   ><strong>3.1 Land Particulars</strong></ion-card-header
                 >
-
+              </ion-card>
+              <ion-card>
                 <ion-card-content>
                   <ion-list>
                     <ion-item
@@ -883,18 +893,6 @@
                       >Possession Land</ion-select-option
                     >
                   </ion-select>
-                  <ion-button
-                    class="ion-margin-top"
-                    expand="full"
-                    color="primary"
-                    @click="UpdateLandParticularsData()"
-                    ><ion-icon
-                      class="ion-margin-end"
-                      name="add-circle"
-                      slot="icon-only"
-                    ></ion-icon
-                    >Update Land Particulars</ion-button
-                  >
                   <ul class="styled-list">
                     <li v-for="(row, index) in landParticularRows" :key="index">
                       <span class="row-details">
@@ -915,12 +913,26 @@
                   </ul>
                 </ion-card-content>
               </ion-card>
+              <ion-button
+                    class="ion-margin"
+                    expand="full"
+                    color="primary"
+                    @click="UpdateLandParticularsData()"
+                    ><ion-icon
+                      class="ion-margin-end"
+                      name="add-circle"
+                      slot="icon-only"
+                    ></ion-icon
+                    >Update Land Particulars</ion-button
+                  >
               <ion-card>
                 <ion-card-header color="tertiary"
                   ><strong
                     >3.2 Income from Crops(Rs)-Kharif</strong
                   ></ion-card-header
                 >
+              </ion-card>
+              <ion-card>
                 <ion-card-content>
                   <ion-list>
                     <ion-item
@@ -1568,6 +1580,7 @@
       <div>
         <ion-button
           class="ion-margin"
+          size="small"
           color="primary"
           v-if="currentStep !== 1"
           @click="prevStep()"
@@ -1575,6 +1588,7 @@
         >
         <ion-button
           color="primary"
+          size="small"
           class="nextButton ion-margin"
           v-if="currentStep !== totalSteps"
           @click="nextStep()"
@@ -1585,6 +1599,7 @@
           color="primary"
           v-else-if="currentStep === totalSteps"
           class="nextButton ion-margin"
+          size="small"
           @click="submitForm"
           ><ion-icon name="checkmark-outline"></ion-icon>Submit</ion-button
         >
@@ -2845,5 +2860,10 @@ ion-select {
 
 ion-select-option {
   padding-left: 16px;
+}
+
+ion-card {
+  border-radius: 8px;
+  box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 </style>

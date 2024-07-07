@@ -49,7 +49,8 @@
             ></ion-card-subtitle
           >
         </ion-card-header>
-
+        </ion-card>
+        <ion-card>
         <ion-card-content>
           <ion-button
             class="ion-margin-top"
