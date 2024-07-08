@@ -1658,7 +1658,7 @@ import TwentythirdPage from "./editpages/twentythirdPage.vue";
 import TwentyfourthPage from "./editpages/twentyfourthPage.vue";
 import TwentyfifthPage from "./editpages/twentyfifthPage.vue";
 import axios from "axios";
-import { Geolocation } from "@capacitor/geolocation";
+// import { Geolocation } from "@capacitor/geolocation";
 export default {
   props: {
     item: Object,

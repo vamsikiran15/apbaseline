@@ -226,3 +226,9 @@ export default {
   width: 2.5rem;
 }
 </style>
+<style>
+ion-card {
+  border-radius: 8px;
+  box-shadow: 1px 1px 6px rgb(96, 96, 161);
+}
+</style>

@@ -18,6 +18,30 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
+      <ion-card>
+      <ion-row class="ion-padding">
+        <ion-col>
+          <ion-select
+            aria-label="Select Step"
+            interface="popover"
+            :label="currentStepLabel"
+            label-placement="floating"
+            placeholder="Go to Step"
+            fill="outline"
+            v-model="selectedStep"
+            @ionChange="navigateToStep"
+          >
+            <ion-select-option
+              v-for="(stepName, index) in steps"
+              :key="index"
+              :value="index + 1"
+            >
+              {{ stepName }}
+            </ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-card>
       <div v-for="step in totalSteps" :key="step">
         <!-- Intermediate steps -->
         <div v-if="currentStep === step">
@@ -533,6 +557,7 @@
                   fill="outline"
                   placeholder="Name of Family Member"
                   v-model="newRow.name_of_the_family_member"
+                  @input="stringValidation"
                 ></ion-input>
                 <ion-select
                   class="ion-margin-top"
@@ -638,6 +663,9 @@
                   fill="outline"
                   v-model="newRow.level_of_education"
                 >
+                <ion-select-option value=""
+                    >Select Level of Education</ion-select-option
+                  >
                   <ion-select-option value="illiterate"
                     >Illiterate</ion-select-option
                   >
@@ -699,6 +727,9 @@
                   fill="outline"
                   v-model="newRow.membership"
                 >
+                <ion-select-option value=""
+                    >Select Membership</ion-select-option
+                  >
                   <ion-select-option value="shg">SHG</ion-select-option>
                   <ion-select-option value="ug">UG</ion-select-option>
                   <ion-select-option value="wc">WC</ion-select-option>
@@ -773,6 +804,9 @@
                   fill="outline"
                   v-model="cultivatedAreaRows.cultivatedArea"
                 >
+                <ion-select-option value=""
+                    >Select Cultivated Area</ion-select-option
+                  >
                   <ion-select-option value="Owned Land"
                     >Owned Land</ion-select-option
                   >
@@ -820,6 +854,7 @@
                   fill="outline"
                   v-model="cultivatedAreaRows.typeofOwnership"
                 >
+                <ion-select-option value="">Select Ownership</ion-select-option>
                   <ion-select-option value="Own">Own</ion-select-option>
                   <ion-select-option value="Rent">Rent</ion-select-option>
                 </ion-select>
@@ -856,6 +891,7 @@
                   class="ion-margin-top"
                   v-model="incomefromCropsKharifRows.cropGrownKharif"
                 >
+                  <ion-select-option value="">Select Crop</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="Meeze">Meeze</ion-select-option>
                   <ion-select-option value="Jower">Jower</ion-select-option>
@@ -1044,6 +1080,7 @@
                   class="ion-margin-top"
                   v-model="incomefromCropsRabiRows.cropGrownRabhi"
                 >
+                <ion-select-option value="">Select Crop</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="Meeze">Meeze</ion-select-option>
                   <ion-select-option value="Jower">Jower</ion-select-option>
@@ -1309,6 +1346,7 @@
                   label="Name of the Person Migrating "
                   label-placement="floating"
                   v-model="migrationStatusRows.nameOfThePerson"
+                  @input="stringValidation"
                 ></ion-input>
                 <ion-select
                   class="ion-margin-top"
@@ -1342,6 +1380,7 @@
                   fill="outline"
                   v-model="migrationStatusRows.reasonsForMigrating"
                 >
+                <ion-select-option value="">Select Reasons for Migrating</ion-select-option>
                   <ion-select-option value="distress"
                     >Distress</ion-select-option
                   >
@@ -1362,6 +1401,7 @@
                   fill="outline"
                   v-model="migrationStatusRows.placeOfMigration"
                 >
+                <ion-select-option value="">Select Place of Migration</ion-select-option>
                   <ion-select-option value="withindistrict"
                     >Within District</ion-select-option
                   >
@@ -1382,6 +1422,7 @@
                   fill="outline"
                   v-model="migrationStatusRows.occupationDuringMigration"
                 >
+                <ion-select-option value="">Select Occupation during Migrating</ion-select-option>
                   <ion-select-option value="agri">Agri</ion-select-option>
                   <ion-select-option value="industriallabour"
                     >Industrial Labour</ion-select-option
@@ -1434,6 +1475,7 @@
                   class="ion-margin-top"
                   v-model="landLessLabourers.nameOfTheProject"
                 >
+                <ion-select-option value="">Select Name of the Scheme</ion-select-option>
                   <ion-select-option value="watershed"
                     >Watershed</ion-select-option
                   >
@@ -1512,6 +1554,7 @@
                   label="Name of the Family Member"
                   label-placement="floating"
                   v-model="governmentSchemesRows.nameOfTheFamilyMember"
+                  @input="stringValidation"
                 ></ion-input>
                 <ion-select
                   class="ion-margin-top"
@@ -1523,6 +1566,7 @@
                   fill="outline"
                   v-model="governmentSchemesRows.schemeName"
                 >
+                <ion-select-option value="">Select Scheme Name</ion-select-option>
                   <ion-select-option value="Amma Vodi"
                     >Amma Vodi</ion-select-option
                   >
@@ -1625,6 +1669,7 @@
                   fill="outline"
                   v-model="useofChemicalManureRows.crops"
                 >
+                <ion-select-option value="">Select Crops</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -1768,6 +1813,7 @@
                   fill="outline"
                   v-model="pestandDiseaseRows.crops"
                 >
+                <ion-select-option value="">Select Crops</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -1917,6 +1963,7 @@
                   fill="outline"
                   v-model="loanParticularsRows.particulars"
                 >
+                <ion-select-option value="">Select Particulars</ion-select-option>
                   <ion-select-option value="Amount Borrowed"
                     >Amount Borrowed</ion-select-option
                   >
@@ -1999,6 +2046,7 @@
                   fill="outline"
                   v-model="loanParticularsRows.agriculture"
                 >
+                <ion-select-option value="">Select Agriculture</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -2037,6 +2085,7 @@
                   fill="outline"
                   v-model="loanParticularsRows.consumption"
                 >
+                <ion-select-option value="">Select Consumption</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -2076,6 +2125,7 @@
                   fill="outline"
                   v-model="loanParticularsRows.education"
                 >
+                <ion-select-option value="">Select Education</ion-select-option>
                   <ion-select-option value="illiterate"
                     >Illiterate</ion-select-option
                   >
@@ -2116,6 +2166,7 @@
                   fill="outline"
                   v-model="loanParticularsRows.others2"
                 >
+                <ion-select-option value="">Select Others</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -2194,6 +2245,7 @@
                   fill="outline"
                   v-model="familyExpenditureRows.items"
                 >
+                <ion-select-option value="">Select Items</ion-select-option>
                   <ion-select-option value="Food">Food</ion-select-option>
                   <ion-select-option value="Education"
                     >Education</ion-select-option
@@ -2268,6 +2320,7 @@
                   fill="outline"
                   v-model="sourceofIncomeRows.source"
                 >
+                <ion-select-option value="">Select Source</ion-select-option>
                   <ion-select-option value="HouseholdMemberIncome"
                     >Household Member's Income</ion-select-option
                   >
@@ -2404,6 +2457,7 @@
                   fill="outline"
                   v-model="drinkingWaterAvailabilityRows.sourceDrinkingWater"
                 >
+                <ion-select-option value="">Select Drinking Water</ion-select-option>
                   <ion-select-option value="borewell"
                     >Borewell</ion-select-option
                   >
@@ -2458,6 +2512,7 @@
                   fill="outline"
                   v-model="sourceandQualityofWaterRows.waterSource"
                 >
+                <ion-select-option value="">Select Water Source</ion-select-option>
                   <ion-select-option value="borewell">Open</ion-select-option>
                   <ion-select-option value="tank">Borewell</ion-select-option>
                   <ion-select-option value="publictank">Tank</ion-select-option>
@@ -2608,6 +2663,7 @@
                   fill="outline"
                   v-model="agriculturalImplementsRows.selectImplements"
                 >
+                <ion-select-option value="">Select Implements</ion-select-option>
                   <ion-select-option value="tractor">Tractor</ion-select-option>
                   <ion-select-option value="SprayerManualPower"
                     >Sprayer-Manual/Power</ion-select-option
@@ -2688,6 +2744,7 @@
                   fill="outline"
                   v-model="horticultureDetailsRows.details"
                 >
+                <ion-select-option value="">Select Details</ion-select-option>
                   <ion-select-option value="HorticulturePlantsTrees"
                     >Horticulture Plants/Trees</ion-select-option
                   >
@@ -2760,6 +2817,7 @@
                   fill="outline"
                   v-model="fodderandFeedAvailability.item"
                 >
+                <ion-select-option value="">Select Item</ion-select-option>
                   <ion-select-option value="ExistingAreaUnderFodder"
                     >Existing Area Under Fodder</ion-select-option
                   >
@@ -2782,6 +2840,7 @@
                   fill="outline"
                   v-model="fodderandFeedAvailability.unit"
                 >
+                <ion-select-option value="">Select Unit</ion-select-option>
                   <ion-select-option value="ha">Ha</ion-select-option>
                   <ion-select-option value="tons">Tons/Year</ion-select-option>
                   <ion-select-option value="kg">Kg/day</ion-select-option>
@@ -2839,6 +2898,7 @@
                   fill="outline"
                   v-model="fodderFuelRows.details"
                 >
+                <ion-select-option value="">Select Details</ion-select-option>
                   <ion-select-option value="ownland"
                     >Own Land</ion-select-option
                   >
@@ -2921,6 +2981,7 @@
                   fill="outline"
                   v-model="grazeCattleRows.grazingOfCattle"
                 >
+                <ion-select-option value="">Select Grazing of Cattle/Animals</ion-select-option>
                   <ion-select-option value="In Community Land"
                     >In Community Land</ion-select-option
                   >
@@ -2981,6 +3042,7 @@
                   fill="outline"
                   v-model="householdRows.assets"
                 >
+                <ion-select-option value="">Select Assets</ion-select-option>
                   <ion-select-option value="Motor Cycle"
                     >Motor Cycle</ion-select-option
                   >
@@ -3057,6 +3119,7 @@
                     participationinCommunityProgramsRows.nameofTheCommunityProgram
                   "
                 >
+                <ion-select-option value="">Select Community Program</ion-select-option>
                   <ion-select-option value="Awareness Programs"
                     >Awareness Programs</ion-select-option
                   >
@@ -3081,6 +3144,7 @@
                     participationinCommunityProgramsRows.markTheAppropriate
                   "
                 >
+                <ion-select-option value="">Select Appropriate</ion-select-option>
                   <ion-select-option value="Increase in Knowledge"
                     >Increase in Knowledge</ion-select-option
                   >
@@ -3146,6 +3210,7 @@
                   fill="outline"
                   v-model="awarenessTechnologyRows.technology"
                 >
+                <ion-select-option value="">Select Technology</ion-select-option>
                   <ion-select-option value="SoilManagement"
                     >Soil Management</ion-select-option
                   >
@@ -3175,6 +3240,7 @@
                   fill="outline"
                   v-model="awarenessTechnologyRows.sourceInformation"
                 >
+                <ion-select-option value="">Select Source of Information</ion-select-option>
                   <ion-select-option value="PrintMedia"
                     >Print Media</ion-select-option
                   >
@@ -3231,6 +3297,7 @@
                   fill="outline"
                   v-model="membershipDetailsRows.sgh"
                 >
+                <ion-select-option value="">Select Membership</ion-select-option>
                   <ion-select-option value="User Groups"
                     >User Groups</ion-select-option
                   >
@@ -3455,7 +3522,35 @@ export default {
   data() {
     return {
       currentStep: 1,
-      totalSteps: 25, // Update this to the total number of steps
+      totalSteps: 25,  // Update this to the total number of steps
+      selectedStep: null,
+      steps: [
+        "1 General Information",
+        "2 Household Details",
+        "3 Land Particulars",
+        "4 Livestock details",
+        "5 Migration status",
+        "6 If land less labourers, Given the details on the number of days employment availed",
+        "7 Benefits from Government Schemes",
+        "8 Use of manure and chemical fertilizers",
+        "9 Pest and Disease control measures",
+        "10 Details loan particulars",
+        "11 Family Expenditure",
+        "12 Different source of Income, Expenditure and Family Debt Details",
+        "13 Availability of Drinking water",
+        "14 Source and Quality of Water",
+        "15 Agriculture Implements",
+        "16 Horticulture details",
+        "17 Fodder and Feed Availability",
+        "18 Fodder/ Fuel use during previous year",
+        "19 Do you Graze your cattle in the Community",
+        "20 Household Assets",
+        "21 Participation of Community Programmes",
+        "22 Awareness on adoption of technology",
+        "23 Membership details",
+        "24 Have been the beneficiary of any scheme of project previously",
+        "25 Soil, Land & Water Conservation",
+      ],
       occupation: [],
       newRow: {
         name_of_the_family_member: "",
@@ -3894,6 +3989,11 @@ export default {
     this.getDistricts();
   },
   computed: {
+    currentStepLabel() {
+      return this.selectedStep
+        ? `${this.selectedStep}. ${this.steps[this.selectedStep - 1]}`
+        : "1. General Information";
+    },
     ValidPhoneNumberShowingMessage() {
       // Regular expression for a basic phone number validation
       // const regex = /^\d{10,12}$/;
@@ -3926,6 +4026,9 @@ export default {
     //   callFifthComp(id){
     //   this.$refs.fifthComp[0].migrationStatusData(id)
     // },
+    navigateToStep(event) {
+      this.currentStep = event.detail.value;
+    },
     ContactNumberValidation(event) {
       let value = event.target.value;
       // Remove non-digit characters
@@ -3951,6 +4054,9 @@ export default {
       // Remove non-alphabetic characters
       value = value.replace(/[^a-zA-Z\s]/g, "");
       this.nameofthehousehold = value;
+      this.newRow.name_of_the_family_member = value;
+      this.migrationStatusRows.nameOfThePerson = value;
+      this.governmentSchemesRows.nameOfTheFamilyMember = value;
     },
     nextStep() {
       if (this.currentStep < this.totalSteps) {
