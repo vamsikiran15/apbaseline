@@ -3,7 +3,9 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button class="backButton" defaultHref="/landingpage">Back</ion-back-button>
+          <ion-back-button class="backButton" defaultHref="/landingpage"
+            >Back</ion-back-button
+          >
           <div v-if="latitude && longitude">
             <p>Latitude: {{ latitude }} / Longitude: {{ longitude }}</p>
           </div>
@@ -41,11 +43,29 @@
                 {{ item.project_name }}
               </ion-item>
             </ion-list>
-
+            <!-- selecting for micro watershed -->
             <ion-searchbar
               v-if="selectedProject"
+              v-model="microquery"
+              @ionClear="clearSearchItem"
+              debounce="500"
+              placeholder="Enter Micro Watershed Name"
+            ></ion-searchbar>
+
+            <ion-list>
+              <ion-item
+                v-for="item in filteredMicroWatershed"
+                :key="item.id"
+                @click="selectMicrowatershed(item)"
+              >
+                {{ item.micro_watershed_name }}
+              </ion-item>
+            </ion-list>
+
+            <ion-searchbar
+              v-if="selectedMicro"
               v-model="query"
-              @ionClear="clearSearch"
+              @ionClear="clearSearchItems"
               debounce="500"
               placeholder="Enter Name"
             ></ion-searchbar>
@@ -158,8 +178,10 @@ export default {
     return {
       query: "",
       projectquery: "",
+      microquery: "",
       items: [],
       projects: [],
+      microwatershed: [],
       householdinfo: [],
       landparticulars: [],
       incomeKharif: [],
@@ -190,6 +212,7 @@ export default {
       dateserveyorname: [],
       selectedItem: null,
       selectedProject: null,
+      selectedMicro: null,
       RsiLogo: Logo,
     };
   },
@@ -200,6 +223,13 @@ export default {
         project.project_name
           .toLowerCase()
           .includes(this.projectquery.toLowerCase())
+      );
+    },
+    filteredMicroWatershed() {
+      return this.microwatershed.filter((micro) =>
+        micro.micro_watershed_name
+          .toLowerCase()
+          .includes(this.microquery.toLowerCase())
       );
     },
     filteredNames() {
@@ -238,7 +268,23 @@ export default {
           }
         );
         this.projects = response.data;
-        console.log("^^^^^^^^^^^^^^^^^^^^^", this.selectedProject);
+        console.log("^^^^^^^^^^^^^^^^^^^^^", this.projects);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    //  getting micro watershed
+    async fetchMicroForProject(id) {
+      console.log("filster name for micro", id);
+      try {
+        const response = await axios.get(
+          `http://183.82.109.39:5000/items/searchMicoByProject`,
+          {
+            params: { query: id },
+          }
+        );
+        this.microwatershed = response.data;
+        console.log("name watershed", this.microwatershed);
       } catch (error) {
         console.error(error);
       }
@@ -814,7 +860,22 @@ export default {
     },
     clearSearch() {
       this.query = ""; // Clear the search bar
+      this.microquery = "";
       this.items = []; // Clear the item list
+      this.microwatershed = [];
+      this.projects = [];
+      this.selectedProject = null;
+      this.selectedMicro = null;
+      this.selectedItem = null; // Clear the selected item
+    },
+    clearSearchItem() {
+      this.query = ""; // Clear the search bar
+      this.microquery = "";
+      this.items = []; // Clear the item list
+      this.selectedItem = null; // Clear the selected item
+      this.selectedMicro = null;
+    },
+    clearSearchItems() {
       this.selectedItem = null; // Clear the selected item
     },
 
@@ -825,10 +886,24 @@ export default {
 
       this.selectedProject = { ...item };
       console.log("asdfjlkasjdfkdsajklf", this.selectedProject.id);
-      this.fetchItemsForProject(this.selectedProject.id);
+      this.fetchMicroForProject(this.selectedProject.id);
+      // this.fetchItemsForProject(this.selectedProject.id);
       this.projectquery = this.selectedProject.project_name;
       this.projects = []; // Clear the item list
     },
+
+    selectMicrowatershed(item) {
+      // this.selectedProject = { ...item };
+      // console.log("selected project is ", this.selectedProject);
+      // this.projects = [];
+
+      this.selectedMicro = { ...item };
+      console.log("select micro", this.selectedMicro);
+      this.fetchItemsForProject(this.selectedMicro.id);
+      this.microquery = this.selectedMicro.micro_watershed_name;
+      // this.microwatershed = []; // Clear the item list
+    },
+
     selectItem(item) {
       this.selectedItem = { ...item }; // Copy the selected item
       console.log("printing the selected item", this.selectedItem);
