@@ -40,7 +40,7 @@
         </ion-row>
       </ion-grid>
 
-      <ion-card>
+      <ion-card class="ion-margin">
         <ion-card-header style="text-align: center">
           <ion-card-title> </ion-card-title>
           <ion-card-subtitle
@@ -50,7 +50,7 @@
           >
         </ion-card-header>
         </ion-card>
-        <ion-card>
+        <ion-card class="ion-margin">
         <ion-card-content>
           <ion-button
             class="ion-margin-top"

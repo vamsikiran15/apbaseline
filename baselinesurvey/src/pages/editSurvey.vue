@@ -1109,18 +1109,6 @@
                     ></ion-icon
                     >Add Data</ion-button
                   > -->
-                  <ion-button
-                    class="ion-margin-top"
-                    expand="full"
-                    color="primary"
-                    @click="UpdateKharifData()"
-                    ><ion-icon
-                      class="ion-margin-end"
-                      name="add-circle"
-                      slot="icon-only"
-                    ></ion-icon
-                    >Update Income From Kharif</ion-button
-                  >
                   <ul class="styled-list">
                     <li v-for="(row, index) in incomeKharifRows" :key="index">
                       <span class="row-details">
@@ -1139,12 +1127,26 @@
                   </ul>
                 </ion-card-content>
               </ion-card>
+              <ion-button
+                    class="ion-margin-top"
+                    expand="full"
+                    color="primary"
+                    @click="UpdateKharifData()"
+                    ><ion-icon
+                      class="ion-margin-end"
+                      name="add-circle"
+                      slot="icon-only"
+                    ></ion-icon
+                    >Update Income From Kharif</ion-button
+                  >
               <ion-card>
                 <ion-card-header color="tertiary"
                   ><strong
                     >3.3 Income from Crops(Rs)-Rabi</strong
                   ></ion-card-header
                 >
+                </ion-card>
+                <ion-card>
                 <ion-card-content>
                   <ion-list>
                     <ion-item
@@ -1310,18 +1312,6 @@
                     fill="outline"
                     label-placement="floating"
                   ></ion-input>
-                  <ion-button
-                    class="ion-margin-top"
-                    expand="full"
-                    color="primary"
-                    @click="UpdateRabhiData()"
-                    ><ion-icon
-                      class="ion-margin-end"
-                      name="add-circle"
-                      slot="icon-only"
-                    ></ion-icon
-                    >Update Income From Rabhi</ion-button
-                  >
                   <ul class="styled-list">
                     <li v-for="(row, index) in incomeRabhiRows" :key="index">
                       <span class="row-details">
@@ -1341,6 +1331,18 @@
                 </ion-card-content>
               </ion-card>
             </ion-col>
+            <ion-button
+                    class="ion-margin-top"
+                    expand="full"
+                    color="primary"
+                    @click="UpdateRabhiData()"
+                    ><ion-icon
+                      class="ion-margin-end"
+                      name="add-circle"
+                      slot="icon-only"
+                    ></ion-icon
+                    >Update Income From Rabhi</ion-button
+                  >
           </div>
           <div v-if="step === 4">
             <ion-card>
@@ -1658,7 +1660,7 @@ import TwentythirdPage from "./editpages/twentythirdPage.vue";
 import TwentyfourthPage from "./editpages/twentyfourthPage.vue";
 import TwentyfifthPage from "./editpages/twentyfifthPage.vue";
 import axios from "axios";
-import { Geolocation } from "@capacitor/geolocation";
+// import { Geolocation } from "@capacitor/geolocation";
 export default {
   props: {
     item: Object,
