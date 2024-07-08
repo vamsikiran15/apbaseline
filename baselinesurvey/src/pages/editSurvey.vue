@@ -2,30 +2,30 @@
   <ion-page>
     <ion-content>
       <!-- Dropdown for step navigation -->
-       <ion-card>
-      <ion-row class="ion-padding">
-        <ion-col>
-          <ion-select
-            aria-label="Select Step"
-            interface="popover"
-            :label="currentStepLabel"
-            label-placement="floating"
-            placeholder="Go to Step"
-            fill="outline"
-            v-model="selectedStep"
-            @ionChange="navigateToStep"
-          >
-            <ion-select-option
-              v-for="(stepName, index) in steps"
-              :key="index"
-              :value="index + 1"
+      <ion-card>
+        <ion-row class="ion-padding">
+          <ion-col>
+            <ion-select
+              aria-label="Select Step"
+              interface="popover"
+              :label="currentStepLabel"
+              label-placement="floating"
+              placeholder="Go to Step"
+              fill="outline"
+              v-model="selectedStep"
+              @ionChange="navigateToStep"
             >
-              {{ stepName }}
-            </ion-select-option>
-          </ion-select>
-        </ion-col>
-      </ion-row>
-    </ion-card>
+              <ion-select-option
+                v-for="(stepName, index) in steps"
+                :key="index"
+                :value="index + 1"
+              >
+                {{ stepName }}
+              </ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-card>
       <div v-for="step in totalSteps" :key="step">
         <!-- Intermediate steps -->
         <div v-if="currentStep === step">
@@ -36,8 +36,8 @@
                 <ion-card-header color="tertiary">
                   <strong>1 General Information</strong>
                 </ion-card-header>
-                </ion-card>
-                <ion-card>
+              </ion-card>
+              <ion-card>
                 <ion-card-content>
                   <ion-row class="ion-padding-top">
                     <ion-text>{{ editedItem.dist_name }}</ion-text>
@@ -211,113 +211,113 @@
                 </ion-card-content>
               </ion-card>
             </ion-col>
-              <ion-card>
-                <ion-card-header color="tertiary"
-                  ><strong>1.1 Individual Information</strong></ion-card-header
-                >
-              </ion-card>
-              <ion-card>
-                <ion-card-content>
-                  <ion-input
-                    class="ion-margin-top"
-                    label="Name of the Household"
-                    interface="popover"
-                    label-placement="floating"
-                    fill="outline"
-                    placeholder="Name of the Household"
-                    v-model="editedItem.head_of_the_family"
-                    @input="stringValidation"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    label="Household No./Door No"
-                    label-placement="floating"
-                    fill="outline"
-                    interface="popover"
-                    placeholder="Household No./Door No"
-                    v-model="editedItem.household_door_no"
-                  ></ion-input>
-                  <ion-input
-                    class="ion-margin-top"
-                    label="Contact No (Mobile)"
-                    label-placement="floating"
-                    fill="outline"
-                    placeholder="Contact No (Mobile)"
-                    v-model="editedItem.contact_number"
-                    @input="ContactNumberValidation"
-                    @touchstart="touched = true"
-                    @mousedown="touched = true"
-                  ></ion-input>
-                  <ion-text
+            <ion-card>
+              <ion-card-header color="tertiary"
+                ><strong>1.1 Individual Information</strong></ion-card-header
+              >
+            </ion-card>
+            <ion-card>
+              <ion-card-content>
+                <ion-input
+                  class="ion-margin-top"
+                  label="Name of the Household"
+                  interface="popover"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Name of the Household"
+                  v-model="editedItem.head_of_the_family"
+                  @input="stringValidation"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  label="Household No./Door No"
+                  label-placement="floating"
+                  fill="outline"
+                  interface="popover"
+                  placeholder="Household No./Door No"
+                  v-model="editedItem.household_door_no"
+                ></ion-input>
+                <ion-input
+                  class="ion-margin-top"
+                  label="Contact No (Mobile)"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Contact No (Mobile)"
+                  v-model="editedItem.contact_number"
+                  @input="ContactNumberValidation"
+                  @touchstart="touched = true"
+                  @mousedown="touched = true"
+                ></ion-input>
+                <ion-text
                   v-if="(touched || dirty) && ValidPhoneNumberShowingMessage"
                   color="danger"
                 >
                   Please enter a valid Phone Number.
                 </ion-text>
-                  <ion-input
-                    type="number"
-                    class="ion-margin-top"
-                    label="Aadhaar Card No"
-                    label-placement="floating"
-                    fill="outline"
-                    placeholder="Enter Aadhaar Card No"
-                    v-model="editedItem.aadhar_number"
-                    @input="aadharNumberValidation"
-                    @touchstart="touched = true"
-                    @mousedown="touched = true"
-                  ></ion-input>
-                  <ion-text
+                <ion-input
+                  type="number"
+                  class="ion-margin-top"
+                  label="Aadhaar Card No"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Enter Aadhaar Card No"
+                  v-model="editedItem.aadhar_number"
+                  @input="aadharNumberValidation"
+                  @touchstart="touched = true"
+                  @mousedown="touched = true"
+                ></ion-input>
+                <ion-text
                   v-if="(touched || dirty) && ValidAadharNumberShowingMessage"
                   color="danger"
                 >
                   Please enter valid Aadhar Number.
                 </ion-text>
-                  <ion-input
-                    type="number"
-                    class="ion-margin-top"
-                    label="Job Card No"
-                    label-placement="floating"
-                    fill="outline"
-                    placeholder="Job Card No"
-                    v-model="editedItem.job_card_no"
-                  ></ion-input>
+                <ion-input
+                  type="number"
+                  class="ion-margin-top"
+                  label="Job Card No"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Job Card No"
+                  v-model="editedItem.job_card_no"
+                ></ion-input>
 
-                  <ion-card-subtitle
-                    color="tertiary"
-                    class="ion-padding ion-text-center"
-                    >Economic Status</ion-card-subtitle
-                  >
-                  <ion-radio-group
+                <ion-card-subtitle
+                  color="tertiary"
+                  class="ion-padding ion-text-center"
+                  >Economic Status</ion-card-subtitle
+                >
+                <ion-radio-group
+                  value="PoP"
+                  v-model="editedItem.economic_status"
+                >
+                  <ion-radio
                     value="PoP"
-                    v-model="editedItem.economic_status"
+                    label-placement="fixed"
+                    class="ion-padding"
+                    >PoP</ion-radio
                   >
-                    <ion-radio
-                      value="PoP"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >PoP</ion-radio
-                    >
-                    <ion-radio
-                      value="Poor"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >Poor</ion-radio
-                    >
-                    <ion-radio
-                      value="Middle"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >Middle</ion-radio
-                    >
-                    <ion-radio
-                      value="Rich"
-                      label-placement="fixed"
-                      class="ion-padding"
-                      >Rich</ion-radio
-                    >
-                  </ion-radio-group>
+                  <ion-radio
+                    value="Poor"
+                    label-placement="fixed"
+                    class="ion-padding"
+                    >Poor</ion-radio
+                  >
+                  <ion-radio
+                    value="Middle"
+                    label-placement="fixed"
+                    class="ion-padding"
+                    >Middle</ion-radio
+                  >
+                  <ion-radio
+                    value="Rich"
+                    label-placement="fixed"
+                    class="ion-padding"
+                    >Rich</ion-radio
+                  >
+                </ion-radio-group>
 
-                  <!-- <label for="ds">Data Structures</label><br />
+                <!-- <label for="ds">Data Structures</label><br />
                   <input
                     v-model="editedItem.occupation"
                     type="checkbox"
@@ -332,197 +332,197 @@
                     name="ml"
                   />
                   <label for="ml">Machine Learning</label> -->
-                  <ion-card-subtitle
-                    color="tertiary"
-                    class="ion-padding ion-text-center"
-                    >Occupation</ion-card-subtitle
-                  >
-                  <ion-item>
-                    <ion-label>Agriculture</ion-label>
-                    <input
-                      v-model="editedItem.occupation"
-                      type="checkbox"
-                      :value="'Agricultur'"
-                    />
-                    <!-- <ion-label>Agriculture</ion-label>
+                <ion-card-subtitle
+                  color="tertiary"
+                  class="ion-padding ion-text-center"
+                  >Occupation</ion-card-subtitle
+                >
+                <ion-item>
+                  <ion-label>Agriculture</ion-label>
+                  <input
+                    v-model="editedItem.occupation"
+                    type="checkbox"
+                    :value="'Agricultur'"
+                  />
+                  <!-- <ion-label>Agriculture</ion-label>
                     <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
                       :true-value="'Ag Labour'"
                     ></ion-checkbox> -->
-                  </ion-item>
+                </ion-item>
 
-                  <ion-item>
-                    <ion-label>Ag Labour</ion-label>
-                    <input
-                      v-model="editedItem.occupation"
-                      type="checkbox"
-                      :value="'Ag Labour'"
-                    />
-                    <!-- <ion-checkbox
+                <ion-item>
+                  <ion-label>Ag Labour</ion-label>
+                  <input
+                    v-model="editedItem.occupation"
+                    type="checkbox"
+                    :value="'Ag Labour'"
+                  />
+                  <!-- <ion-checkbox
                       slot="end"
                       value="Ag Labour"
                       v-model="editedItem.occupation"
                     ></ion-checkbox> -->
-                  </ion-item>
+                </ion-item>
 
-                  <ion-item>
-                    <ion-label>Non –Ag labour</ion-label>
-                    <input
-                      v-model="editedItem.occupation"
-                      type="checkbox"
-                      :value="'Non–Ag labour'"
-                    />
-                    <!-- <ion-checkbox
+                <ion-item>
+                  <ion-label>Non –Ag labour</ion-label>
+                  <input
+                    v-model="editedItem.occupation"
+                    type="checkbox"
+                    :value="'Non–Ag labour'"
+                  />
+                  <!-- <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
                     ></ion-checkbox> -->
-                  </ion-item>
+                </ion-item>
 
-                  <ion-item>
-                    <ion-label>Employee</ion-label>
-                    <input
-                      v-model="editedItem.occupation"
-                      type="checkbox"
-                      :value="'Employee'"
-                    />
-                    <!-- <ion-checkbox
+                <ion-item>
+                  <ion-label>Employee</ion-label>
+                  <input
+                    v-model="editedItem.occupation"
+                    type="checkbox"
+                    :value="'Employee'"
+                  />
+                  <!-- <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
                     ></ion-checkbox> -->
-                  </ion-item>
+                </ion-item>
 
-                  <ion-item>
-                    <ion-label>Business</ion-label>
-                    <input
-                      v-model="editedItem.occupation"
-                      type="checkbox"
-                      :value="'Business'"
-                    />
-                    <!-- <ion-checkbox
+                <ion-item>
+                  <ion-label>Business</ion-label>
+                  <input
+                    v-model="editedItem.occupation"
+                    type="checkbox"
+                    :value="'Business'"
+                  />
+                  <!-- <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
                     ></ion-checkbox> -->
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Student</ion-label>
-                    <input
-                      v-model="editedItem.occupation"
-                      type="checkbox"
-                      :value="'Student'"
-                    />
-                    <!-- <ion-checkbox
+                </ion-item>
+                <ion-item>
+                  <ion-label>Student</ion-label>
+                  <input
+                    v-model="editedItem.occupation"
+                    type="checkbox"
+                    :value="'Student'"
+                  />
+                  <!-- <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
                     ></ion-checkbox> -->
-                  </ion-item>
+                </ion-item>
 
-                  <ion-item>
-                    <ion-label>Others</ion-label>
-                    <input
-                      v-model="editedItem.occupation"
-                      type="checkbox"
-                      :value="'Others'"
-                    />
-                    <!-- <ion-checkbox
+                <ion-item>
+                  <ion-label>Others</ion-label>
+                  <input
+                    v-model="editedItem.occupation"
+                    type="checkbox"
+                    :value="'Others'"
+                  />
+                  <!-- <ion-checkbox
                       slot="end"
                       v-model="editedItem.occupation"
                     ></ion-checkbox> -->
-                  </ion-item>
+                </ion-item>
 
-                  <ion-card-subtitle
-                    color="tertiary"
-                    class="ion-padding ion-text-center"
-                    >Location</ion-card-subtitle
+                <ion-card-subtitle
+                  color="tertiary"
+                  class="ion-padding ion-text-center"
+                  >Location</ion-card-subtitle
+                >
+                <ion-row>
+                  <ion-radio-group
+                    value="Ridge"
+                    class="ion-padding"
+                    v-model="editedItem.location"
                   >
-                  <ion-row>
-                    <ion-radio-group
-                      value="Ridge"
-                      class="ion-padding"
-                      v-model="editedItem.location"
-                    >
-                      <ion-col size="4">
-                        <ion-radio value="Ridge" label-placement="start"
-                          >Ridge</ion-radio
-                        >
-                      </ion-col>
-                      <ion-col size="4">
-                        <ion-radio value="Middle" label-placement="start"
-                          >Middle</ion-radio
-                        >
-                      </ion-col>
-                      <ion-col size="4">
-                        <ion-radio value="Valley" label-placement="start"
-                          >Valley</ion-radio
-                        >
-                      </ion-col>
-                    </ion-radio-group>
-                  </ion-row>
+                    <ion-col size="4">
+                      <ion-radio value="Ridge" label-placement="start"
+                        >Ridge</ion-radio
+                      >
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-radio value="Middle" label-placement="start"
+                        >Middle</ion-radio
+                      >
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-radio value="Valley" label-placement="start"
+                        >Valley</ion-radio
+                      >
+                    </ion-col>
+                  </ion-radio-group>
+                </ion-row>
 
-                  <ion-card-subtitle
-                    color="tertiary"
-                    class="ion-padding ion-text-center"
-                    >Social Status</ion-card-subtitle
+                <ion-card-subtitle
+                  color="tertiary"
+                  class="ion-padding ion-text-center"
+                  >Social Status</ion-card-subtitle
+                >
+                <ion-row>
+                  <ion-radio-group
+                    value="SC"
+                    class="ion-padding"
+                    v-model="editedItem.socialstatus"
                   >
-                  <ion-row>
-                    <ion-radio-group
-                      value="SC"
-                      class="ion-padding"
-                      v-model="editedItem.socialstatus"
-                    >
-                      <ion-col size="3">
-                        <ion-radio value="SC" label-placement="start"
-                          >SC</ion-radio
-                        >
-                      </ion-col>
-                      <ion-col size="3">
-                        <ion-radio value="ST" label-placement="start"
-                          >ST</ion-radio
-                        >
-                      </ion-col>
-                      <ion-col size="3">
-                        <ion-radio value="BC" label-placement="start"
-                          >BC</ion-radio
-                        >
-                      </ion-col>
-                      <ion-col size="3">
-                        <ion-radio value="Others" label-placement="start"
-                          >Others</ion-radio
-                        >
-                      </ion-col>
-                    </ion-radio-group>
-                    <ion-row class="ion-padding ion-text-center">
-                      <ion-card-subtitle color="tertiary"
-                        >Total Land Holding (Acres)
-                      </ion-card-subtitle>
-                    </ion-row>
-                    <ion-row style="display: flex">
-                      <ion-col class="ion-margin-start">
-                        <ion-input
-                          type="number"
-                          class="ion-margin-top"
-                          label="Rainfed"
-                          label-placement="floating"
-                          fill="outline"
-                          placeholder="Rainfed"
-                          v-model="editedItem.total_rainfed_area"
-                        ></ion-input>
-                      </ion-col>
-                      <ion-col class="ion-margin-end">
-                        <ion-input
-                          type="number"
-                          class="ion-margin-top"
-                          label="Irrigated"
-                          label-placement="floating"
-                          fill="outline"
-                          placeholder="Irrigated"
-                          v-model="editedItem.total_irrigated_area"
-                        ></ion-input>
-                      </ion-col>
-                    </ion-row>
+                    <ion-col size="3">
+                      <ion-radio value="SC" label-placement="start"
+                        >SC</ion-radio
+                      >
+                    </ion-col>
+                    <ion-col size="3">
+                      <ion-radio value="ST" label-placement="start"
+                        >ST</ion-radio
+                      >
+                    </ion-col>
+                    <ion-col size="3">
+                      <ion-radio value="BC" label-placement="start"
+                        >BC</ion-radio
+                      >
+                    </ion-col>
+                    <ion-col size="3">
+                      <ion-radio value="Others" label-placement="start"
+                        >Others</ion-radio
+                      >
+                    </ion-col>
+                  </ion-radio-group>
+                  <ion-row class="ion-padding ion-text-center">
+                    <ion-card-subtitle color="tertiary"
+                      >Total Land Holding (Acres)
+                    </ion-card-subtitle>
                   </ion-row>
-                  <ion-row>
-                    <ion-input
+                  <ion-row style="display: flex">
+                    <ion-col class="ion-margin-start">
+                      <ion-input
+                        type="number"
+                        class="ion-margin-top"
+                        label="Rainfed"
+                        label-placement="floating"
+                        fill="outline"
+                        placeholder="Rainfed"
+                        v-model="editedItem.total_rainfed_area"
+                      ></ion-input>
+                    </ion-col>
+                    <ion-col class="ion-margin-end">
+                      <ion-input
+                        type="number"
+                        class="ion-margin-top"
+                        label="Irrigated"
+                        label-placement="floating"
+                        fill="outline"
+                        placeholder="Irrigated"
+                        v-model="editedItem.total_irrigated_area"
+                      ></ion-input>
+                    </ion-col>
+                  </ion-row>
+                </ion-row>
+                <ion-row>
+                  <ion-input
                     class="ion-margin-top"
                     label="Total"
                     label-placement="floating"
@@ -531,65 +531,65 @@
                     v-model="editedItem.total"
                     readonly="readonly"
                   ></ion-input>
-                  </ion-row>
-                  <ion-card-subtitle
-                    color="tertiary"
-                    class="ion-padding ion-text-center"
-                    >Type of House</ion-card-subtitle
+                </ion-row>
+                <ion-card-subtitle
+                  color="tertiary"
+                  class="ion-padding ion-text-center"
+                  >Type of House</ion-card-subtitle
+                >
+                <ion-row>
+                  <ion-radio-group
+                    class="ion-padding"
+                    v-model="editedItem.type_of_house"
                   >
-                  <ion-row>
-                    <ion-radio-group
-                      class="ion-padding"
-                      v-model="editedItem.type_of_house"
-                    >
-                      <ion-col>
-                        <ion-radio
-                          value="PuccaHouse"
-                          label-placement="start"
-                          @change="updateSubType"
-                          >Pucca House</ion-radio
-                        >
-                      </ion-col>
-                      <ion-col>
-                        <ion-radio
-                          value="SemiPucca"
-                          label-placement="start"
-                          @change="updateSubType"
-                          >Semi Pucca</ion-radio
-                        >
-                      </ion-col>
-                    </ion-radio-group>
-                    <ion-radio-group
-                      v-if="editedItem.type_of_house"
-                      class="ion-padding"
-                      v-model="editedItem.own_or_rented"
-                    >
-                      <ion-col>
-                        <ion-radio value="Own" label-placement="start"
-                          >Own</ion-radio
-                        >
-                      </ion-col>
-                      <ion-col>
-                        <ion-radio value="Rented" label-placement="start"
-                          >Rented</ion-radio
-                        >
-                      </ion-col>
-                    </ion-radio-group>
-                  </ion-row>
-                </ion-card-content>
-                <ion-button
-                    class="ion-margin"
-                    expand="full"
-                    color="primary"
-                    @click="updateHouseIndividualInfo()"
-                    ><ion-icon
-                      class="ion-margin-end"
-                      name="add-circle"
-                      slot="icon-only"
-                    ></ion-icon
-                    >Update Individual Information</ion-button
+                    <ion-col>
+                      <ion-radio
+                        value="PuccaHouse"
+                        label-placement="start"
+                        @change="updateSubType"
+                        >Pucca House</ion-radio
+                      >
+                    </ion-col>
+                    <ion-col>
+                      <ion-radio
+                        value="SemiPucca"
+                        label-placement="start"
+                        @change="updateSubType"
+                        >Semi Pucca</ion-radio
+                      >
+                    </ion-col>
+                  </ion-radio-group>
+                  <ion-radio-group
+                    v-if="editedItem.type_of_house"
+                    class="ion-padding"
+                    v-model="editedItem.own_or_rented"
                   >
-              </ion-card>
+                    <ion-col>
+                      <ion-radio value="Own" label-placement="start"
+                        >Own</ion-radio
+                      >
+                    </ion-col>
+                    <ion-col>
+                      <ion-radio value="Rented" label-placement="start"
+                        >Rented</ion-radio
+                      >
+                    </ion-col>
+                  </ion-radio-group>
+                </ion-row>
+              </ion-card-content>
+              <ion-button
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="updateHouseIndividualInfo()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Update Individual Information</ion-button
+              >
+            </ion-card>
           </div>
 
           <div v-if="step === 2">
@@ -631,7 +631,9 @@
                     fill="outline"
                     v-model="newRow.relationship_with_head"
                   >
-                  <ion-select-option value="">Select Relationship</ion-select-option>
+                    <ion-select-option value=""
+                      >Select Relationship</ion-select-option
+                    >
                     <ion-select-option value="Father">Father</ion-select-option>
                     <ion-select-option value="Mother">Mother</ion-select-option>
                     <ion-select-option value="Husband"
@@ -722,7 +724,9 @@
                     fill="outline"
                     v-model="newRow.level_of_education"
                   >
-                  <ion-select-option value="">Select Education</ion-select-option>
+                    <ion-select-option value=""
+                      >Select Education</ion-select-option
+                    >
                     <ion-select-option value="Illiterate"
                       >Illiterate</ion-select-option
                     >
@@ -753,7 +757,9 @@
                     v-model="newRow.occupation"
                     :multiple="true"
                   >
-                  <ion-select-option value="">Select Occupation</ion-select-option>
+                    <ion-select-option value=""
+                      >Select Occupation</ion-select-option
+                    >
                     <ion-select-option value="Agriculture"
                       >Agriculture</ion-select-option
                     >
@@ -789,7 +795,10 @@
                     placeholder="Select Membership"
                     fill="outline"
                     v-model="newRow.membership"
-                  > <ion-select-option value="">Select Membership</ion-select-option>
+                  >
+                    <ion-select-option value=""
+                      >Select Membership</ion-select-option
+                    >
                     <ion-select-option value="SHG">SHG</ion-select-option>
                     <ion-select-option value="UG">UG</ion-select-option>
                     <ion-select-option value="WC">WC</ion-select-option>
@@ -806,17 +815,17 @@
                   ></ion-input>
                 </ion-card-content>
                 <ion-button
-                    class="ion-margin"
-                    expand="full"
-                    color="primary"
-                    @click="UpdateHouseHoldMemberData()"
-                    ><ion-icon
-                      class="ion-margin-end"
-                      name="add-circle"
-                      slot="icon-only"
-                    ></ion-icon
-                    >Update Family Member Details</ion-button
-                  >
+                  class="ion-margin"
+                  expand="full"
+                  color="primary"
+                  @click="UpdateHouseHoldMemberData()"
+                  ><ion-icon
+                    class="ion-margin-end"
+                    name="add-circle"
+                    slot="icon-only"
+                  ></ion-icon
+                  >Update Family Member Details</ion-button
+                >
               </ion-card>
             </ion-col>
             <ul class="styled-list">
@@ -946,17 +955,17 @@
                   </ul>
                 </ion-card-content>
                 <ion-button
-                    class="ion-margin"
-                    expand="full"
-                    color="primary"
-                    @click="UpdateLandParticularsData()"
-                    ><ion-icon
-                      class="ion-margin-end"
-                      name="add-circle"
-                      slot="icon-only"
-                    ></ion-icon
-                    >Update Land Particulars</ion-button
-                  >
+                  class="ion-margin"
+                  expand="full"
+                  color="primary"
+                  @click="UpdateLandParticularsData()"
+                  ><ion-icon
+                    class="ion-margin-end"
+                    name="add-circle"
+                    slot="icon-only"
+                  ></ion-icon
+                  >Update Land Particulars</ion-button
+                >
               </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
@@ -988,7 +997,8 @@
                     fill="outline"
                     class="ion-margin-top"
                     v-model="newRowIncomeKharif.crop_grown"
-                  > <ion-select-option value="">Select Crop</ion-select-option>
+                  >
+                    <ion-select-option value="">Select Crop</ion-select-option>
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="maize">maize</ion-select-option>
                     <ion-select-option value="jowar">jowar</ion-select-option>
@@ -1027,7 +1037,7 @@
                     class="ion-margin-top"
                     placeholder="Rainfed(Acres)"
                     fill="outline"
-                     type="number"
+                    type="number"
                     label="Rainfed(Acres)"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_area"
@@ -1036,7 +1046,7 @@
                     class="ion-margin-top"
                     placeholder="Rainfed Yield(Qtls)"
                     label="Rainfed Yield(Qtls)"
-                     type="number"
+                    type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_yield"
@@ -1045,7 +1055,7 @@
                     class="ion-margin-top"
                     placeholder="Enter Rainfed(Acres) Cost of Cultivation(Rs)"
                     fill="outline"
-                     type="number"
+                    type="number"
                     label="Rainfed(Acres) Cost of Cultivation(Rs)"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_cost_of_cultivation"
@@ -1054,7 +1064,7 @@
                     class="ion-margin-top"
                     placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
                     fill="outline"
-                      type="number"
+                    type="number"
                     label="Rainfed(Acres) Rate per Qtls(Rs)"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_rate_per_qtls"
@@ -1087,7 +1097,7 @@
                     placeholder="Irrigated Area(Acres)"
                     fill="outline"
                     label="Irrigated Area(Acres)"
-                      type="number"
+                    type="number"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_area"
                   ></ion-input>
@@ -1095,7 +1105,7 @@
                     class="ion-margin-top"
                     placeholder="Irigated Yield(Qtls)"
                     label="Irrigated Yield(Qtls)"
-                      type="number"
+                    type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_yield"
@@ -1105,7 +1115,7 @@
                     placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
                     label="Irrigated(Acres) Cost of Cultiation(Rs)"
                     fill="outline"
-                      type="number"
+                    type="number"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_cost_of_cultivation"
                   ></ion-input>
@@ -1113,7 +1123,7 @@
                     class="ion-margin-top"
                     placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
                     fill="outline"
-                      type="number"
+                    type="number"
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_rate_per_qtls"
@@ -1122,7 +1132,7 @@
                     class="ion-margin-top"
                     placeholder="Irrigated(Acres) Gross Income"
                     fill="outline"
-                      type="number"
+                    type="number"
                     label="Total Irrigated(Acres) Gross Income"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_gross_income"
@@ -1173,17 +1183,17 @@
                   </ul>
                 </ion-card-content>
                 <ion-button
-                    class="ion-margin"
-                    expand="full"
-                    color="primary"
-                    @click="UpdateKharifData()"
-                    ><ion-icon
-                      class="ion-margin-end"
-                      name="add-circle"
-                      slot="icon-only"
-                    ></ion-icon
-                    >Update Income From Kharif</ion-button
-                  >
+                  class="ion-margin"
+                  expand="full"
+                  color="primary"
+                  @click="UpdateKharifData()"
+                  ><ion-icon
+                    class="ion-margin-end"
+                    name="add-circle"
+                    slot="icon-only"
+                  ></ion-icon
+                  >Update Income From Kharif</ion-button
+                >
               </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
@@ -1191,8 +1201,8 @@
                     >3.3 Income from Crops(Rs)-Rabi</strong
                   ></ion-card-header
                 >
-                </ion-card>
-                <ion-card>
+              </ion-card>
+              <ion-card>
                 <ion-card-content>
                   <ion-list>
                     <ion-item
@@ -1216,7 +1226,7 @@
                     class="ion-margin-top"
                     v-model="newRowIncomeRabhi.crop_grown"
                   >
-                  <ion-select-option value="">Select Crop</ion-select-option>
+                    <ion-select-option value="">Select Crop</ion-select-option>
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="maize">maize</ion-select-option>
                     <ion-select-option value="jowar">jowar</ion-select-option>
@@ -1263,7 +1273,7 @@
                     class="ion-margin-top"
                     placeholder="Rainfed Yield(Qtls)"
                     label="Rainfed Yield(Qtls)"
-                      type="number"
+                    type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_yield"
@@ -1272,7 +1282,7 @@
                     class="ion-margin-top"
                     placeholder="Enter Rainfed(Acres) Cost of Cultivation(Rs)"
                     fill="outline"
-                      type="number"
+                    type="number"
                     label="Rainfed(Acres) Cost of Cultivation(Rs)"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_cost_of_cultivation"
@@ -1281,7 +1291,7 @@
                     class="ion-margin-top"
                     placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
                     fill="outline"
-                     type="number"
+                    type="number"
                     label="Rainfed(Acres) Rate per Qtls(Rs)"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_rate_per_qtls"
@@ -1314,7 +1324,7 @@
                     placeholder="Irrigated Area(Acres)"
                     fill="outline"
                     label="Irrigated Area(Acres)"
-                     type="number"
+                    type="number"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.irrigated_area"
                   ></ion-input>
@@ -1322,7 +1332,7 @@
                     class="ion-margin-top"
                     placeholder="Irigated Yield(Qtls)"
                     label="Irrigated Yield(Qtls)"
-                     type="number"
+                    type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.irrigated_yield"
@@ -1331,7 +1341,7 @@
                     class="ion-margin-top"
                     placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
                     label="Irrigated(Acres) Cost of Cultiation(Rs)"
-                     type="number"
+                    type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.irrigated_cost_of_cultivation"
@@ -1340,7 +1350,7 @@
                     class="ion-margin-top"
                     placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
                     fill="outline"
-                     type="number"
+                    type="number"
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.irrigated_rate_per_qtls"
@@ -1357,7 +1367,7 @@
                   <ion-input
                     class="ion-margin-top"
                     placeholder="Total Irrigated Net Income(13-11)"
-                     type="number"
+                    type="number"
                     fill="outline"
                     label="Total Irrigated Net Income(13-11)"
                     label-placement="floating"
@@ -1389,17 +1399,17 @@
                   </ul>
                 </ion-card-content>
                 <ion-button
-                    class="ion-margin"
-                    expand="full"
-                    color="primary"
-                    @click="UpdateRabhiData()"
-                    ><ion-icon
-                      class="ion-margin-end"
-                      name="add-circle"
-                      slot="icon-only"
-                    ></ion-icon
-                    >Update Income From Rabhi</ion-button
-                  >
+                  class="ion-margin"
+                  expand="full"
+                  color="primary"
+                  @click="UpdateRabhiData()"
+                  ><ion-icon
+                    class="ion-margin-end"
+                    name="add-circle"
+                    slot="icon-only"
+                  ></ion-icon
+                  >Update Income From Rabhi</ion-button
+                >
               </ion-card>
             </ion-col>
           </div>
@@ -1451,7 +1461,7 @@
                   placeholder="Enter existing No"
                   fill="outline"
                   label="Existing No"
-                   type="number"
+                  type="number"
                   label-placement="floating"
                   v-model="newRowlivestock.existing_no"
                 ></ion-input>
@@ -1459,7 +1469,7 @@
                   class="ion-margin-top"
                   placeholder="Enter litres/day"
                   fill="outline"
-                   type="number"
+                  type="number"
                   label="Milk Production(Ltrs/Day) if applicable"
                   label-placement="floating"
                   v-model="newRowlivestock.milk_production"
@@ -1468,7 +1478,7 @@
                   class="ion-margin-top"
                   placeholder="Enter litres/day"
                   fill="outline"
-                   type="number"
+                  type="number"
                   label="Milk Consumed(Ltrs/Day)"
                   label-placement="floating"
                   v-model="newRowlivestock.mill_consumed"
@@ -1477,7 +1487,7 @@
                   class="ion-margin-top"
                   placeholder="Enter quantity sold by year"
                   fill="outline"
-                   type="number"
+                  type="number"
                   label="Quantity Sold by Year"
                   label-placement="floating"
                   v-model="newRowlivestock.milk_quantity_sold"
@@ -1486,7 +1496,7 @@
                   class="ion-margin-top"
                   placeholder="Enter Unit Value"
                   fill="outline"
-                   type="number"
+                  type="number"
                   label="Unit Value(Rs)"
                   label-placement="floating"
                   v-model="newRowlivestock.value_of_animals"
@@ -1495,24 +1505,24 @@
                   class="ion-margin-top"
                   placeholder="Enter income generated during last year"
                   fill="outline"
-                   type="number"
+                  type="number"
                   label="Income Generated during Last Year"
                   label-placement="floating"
                   v-model="newRowlivestock.income_generated_during_last_year"
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="block"
-              @click="UpdateLiveStockData()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Update Livestock Data</ion-button
-            >
+                class="ion-margin"
+                color="primary"
+                expand="block"
+                @click="UpdateLiveStockData()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Update Livestock Data</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 5">
@@ -1725,7 +1735,7 @@ import TwentythirdPage from "./editpages/twentythirdPage.vue";
 import TwentyfourthPage from "./editpages/twentyfourthPage.vue";
 import TwentyfifthPage from "./editpages/twentyfifthPage.vue";
 import axios from "axios";
-// import { Geolocation } from "@capacitor/geolocation";
+import { Geolocation } from "@capacitor/geolocation";
 export default {
   props: {
     item: Object,
@@ -1816,7 +1826,7 @@ export default {
       selectedHabitationName: "",
       selectedMandalName: "",
       selectedGramPanchayatName: "",
-      total:"",
+      total: "",
 
       newRow: {
         id: "",
@@ -2038,7 +2048,8 @@ export default {
       // this.isValidPhoneNumber = regex.test(this.ContactNumber);
       return (
         this.editedItem.contact_number.length > 0 &&
-        (this.editedItem.contact_number.length < 10 || this.editedItem.contact_number.length > 12)
+        (this.editedItem.contact_number.length < 10 ||
+          this.editedItem.contact_number.length > 12)
       );
     },
     ValidAadharNumberShowingMessage() {
@@ -2047,12 +2058,12 @@ export default {
       // this.isValidAadharNumber = regex.test(this.aadharNumber);
       return (
         this.editedItem.aadhar_number.length > 0 &&
-        (this.editedItem.aadhar_number.length < 12 || this.editedItem.aadhar_number.length > 16)
+        (this.editedItem.aadhar_number.length < 12 ||
+          this.editedItem.aadhar_number.length > 16)
       );
     },
   },
-  methods: {  
-
+  methods: {
     ContactNumberValidation(event) {
       let value = event.target.value;
       // Remove non-digit characters
