@@ -3,7 +3,7 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button class="backButton"defaultHref="/landingpage">Back</ion-back-button>
+          <ion-back-button class="backButton" defaultHref="/landingpage">Back</ion-back-button>
           <div v-if="latitude && longitude">
             <p>Latitude: {{ latitude }} / Longitude: {{ longitude }}</p>
           </div>
