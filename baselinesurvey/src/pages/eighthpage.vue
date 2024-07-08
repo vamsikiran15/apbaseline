@@ -201,9 +201,10 @@ export default {
   methods: {
     async manureChemical(id) {
       try {
-        const data = {id:id,rows: this.chemicalManureRowsData}
+        const data = { id: id, rows: this.chemicalManureRowsData };
         await axios.post(
-          "http://localhost:5000/api/bulkinsertionmanurechemical",data
+          "http://183.82.109.39:5000/api/bulkinsertionmanurechemical",
+          data
         );
       } catch (error) {
         console.error("error in manureChemical function", error);

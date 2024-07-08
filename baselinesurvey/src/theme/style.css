@@ -22,4 +22,7 @@ ion-toolbar {
     --background : var(--ion-button-colors) !important;
   }
 
-  
+  .custom-toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }

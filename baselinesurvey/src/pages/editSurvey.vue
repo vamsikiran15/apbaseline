@@ -505,7 +505,7 @@
                         label-placement="floating"
                         fill="outline"
                         placeholder="Rainfed"
-                        v-model="editedItem.total_rainfed_area"
+                        v-model="total_rainfed_area"
                       ></ion-input>
                     </ion-col>
                     <ion-col class="ion-margin-end">
@@ -516,19 +516,19 @@
                         label-placement="floating"
                         fill="outline"
                         placeholder="Irrigated"
-                        v-model="editedItem.total_irrigated_area"
+                        v-model="total_irrigated_area"
                       ></ion-input>
                     </ion-col>
                   </ion-row>
                 </ion-row>
                 <ion-row>
                   <ion-input
-                    class="ion-margin-top"
+                    class="ion-margin"
                     label="Total"
                     label-placement="floating"
                     fill="outline"
                     placeholder="Total"
-                    v-model="editedItem.total"
+                    v-model="editedItem.total_holding_area"
                     readonly="readonly"
                   ></ion-input>
                 </ion-row>
@@ -559,22 +559,28 @@
                       >
                     </ion-col>
                   </ion-radio-group>
-                  <ion-radio-group
-                    v-if="editedItem.type_of_house"
-                    class="ion-padding"
-                    v-model="editedItem.own_or_rented"
-                  >
-                    <ion-col>
-                      <ion-radio value="Own" label-placement="start"
-                        >Own</ion-radio
-                      >
-                    </ion-col>
-                    <ion-col>
-                      <ion-radio value="Rented" label-placement="start"
-                        >Rented</ion-radio
-                      >
-                    </ion-col>
-                  </ion-radio-group>
+                  <div v-if="editedItem.type_of_house">
+                    <ion-card-subtitle
+                      color="tertiary"
+                      class="ion-padding ion-text-center"
+                      >Own/Rented</ion-card-subtitle
+                    >
+                    <ion-radio-group
+                      class="ion-padding"
+                      v-model="editedItem.own_or_rented"
+                    >
+                      <ion-col>
+                        <ion-radio value="Own" label-placement="start"
+                          >Own</ion-radio
+                        >
+                      </ion-col>
+                      <ion-col>
+                        <ion-radio value="Rented" label-placement="start"
+                          >Rented</ion-radio
+                        >
+                      </ion-col>
+                    </ion-radio-group>
+                  </div>
                 </ion-row>
               </ion-card-content>
               <ion-button
@@ -1712,6 +1718,8 @@ import {
   IonFooter,
   IonItem,
   IonCheckbox,
+  IonToast,
+  toastController,
 } from "@ionic/vue";
 import fifthPage from "./editpages/fifthPage.vue";
 import SixthPage from "./editpages/sixthPage.vue";
@@ -1944,6 +1952,8 @@ export default {
       type_of_house: "",
       lat: null,
       long: null,
+      total_rainfed_area: 0,
+      total_irrigated_area: 0,
     };
   },
   components: {
@@ -1991,6 +2001,8 @@ export default {
     TwentyfifthPage,
     IonFooter,
     IonItem,
+    IonToast,
+    toastController,
   },
   computed: {
     currentStepLabel() {
@@ -2000,6 +2012,12 @@ export default {
     },
   },
   watch: {
+    total_rainfed_area: function () {
+      this.calculateSum();
+    },
+    total_irrigated_area: function () {
+      this.calculateSum();
+    },
     item: {
       immediate: true,
       handler(newVal) {
@@ -2032,6 +2050,8 @@ export default {
   },
   created() {
     this.getDistricts();
+    this.total_rainfed_area = this.editedItem.total_rainfed_area;
+    this.total_irrigated_area = this.editedItem.total_irrigated_area;
   },
   mounted() {
     this.getCurrentPosition();
@@ -2090,6 +2110,11 @@ export default {
       value = value.replace(/[^a-zA-Z\s]/g, "");
       this.editedItem.head_of_the_family = value;
       this.newRow.name_of_the_family_member = value;
+    },
+    calculateSum() {
+      this.editedItem.total_holding_area =
+        parseFloat(this.total_rainfed_area) +
+        parseFloat(this.total_irrigated_area);
     },
     nextStep() {
       if (this.currentStep < this.steps.length) {
@@ -2579,21 +2604,28 @@ export default {
             occupation: occupationString,
             location: this.editedItem.location,
             social_status: this.editedItem.social_status,
-            total_rainfed_area: this.editedItem.total_rainfed_area,
-            total_irrigated_area: this.editedItem.total_irrigated_area,
+            total_rainfed_area: this.total_rainfed_area,
+            total_irrigated_area: this.total_irrigated_area,
             type_of_house: this.editedItem.type_of_house,
             own_or_rented: this.editedItem.own_or_rented,
-            total_holding_area:
-              parseFloat(this.editedItem.total_rainfed_area) +
-              parseFloat(this.editedItem.total_irrigated_area),
+            total_holding_area: this.editedItem.total_holding_area,
             id: this.editedItem.id,
             latitude: this.lat,
             longitude: this.long,
           }
         );
+        console.log("Item updated individual:", response.statusText);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToast(
+            "Updated of Survey Form is Submitted Successfully",
+            "success"
+          );
+        }
         console.log("Item updated individual:", response.data);
         // this.$emit("item-updated", response.data); // Emit event with updated item
       } catch (error) {
+        this.triggerToast("Failed to submit the survey form", "danger");
         console.error("Error individual updating item:", error);
       }
     },
@@ -2933,8 +2965,23 @@ export default {
     },
     submitForm() {
       this.$router.push({ path: "/search" }).then(() => {
+        this.triggerToast();
         this.$router.go(0);
       });
+    },
+    async triggerToast(message, color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+
+      // Delay the page reload until after the toast has been displayed
+      // setTimeout(() => {
+      //   this.$router.go(0);
+      // }, 3000); // duration of the toast
     },
   },
 };

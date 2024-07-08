@@ -214,10 +214,10 @@ export default {
   methods: {
     async controlMeasuresData(id) {
       try {
-        const data = {id:id,rows:this.pestandDiseaseRowsData}
+        const data = { id: id, rows: this.pestandDiseaseRowsData };
         await axios.post(
-          "http://localhost:5000/api/bulkinsertionpest",data
-     
+          "http://183.82.109.39:5000/api/bulkinsertionpest",
+          data
         );
       } catch (error) {
         console.error("error in controlMeasuresData function", error);
