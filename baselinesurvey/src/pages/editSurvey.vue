@@ -211,7 +211,6 @@
                 </ion-card-content>
               </ion-card>
             </ion-col>
-            <ion-col>
               <ion-card>
                 <ion-card-header color="tertiary"
                   ><strong>1.1 Individual Information</strong></ion-card-header
@@ -227,6 +226,7 @@
                     fill="outline"
                     placeholder="Name of the Household"
                     v-model="editedItem.head_of_the_family"
+                    @input="stringValidation"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
@@ -244,7 +244,16 @@
                     fill="outline"
                     placeholder="Contact No (Mobile)"
                     v-model="editedItem.contact_number"
+                    @input="ContactNumberValidation"
+                    @touchstart="touched = true"
+                    @mousedown="touched = true"
                   ></ion-input>
+                  <ion-text
+                  v-if="(touched || dirty) && ValidPhoneNumberShowingMessage"
+                  color="danger"
+                >
+                  Please enter a valid Phone Number.
+                </ion-text>
                   <ion-input
                     type="number"
                     class="ion-margin-top"
@@ -253,7 +262,16 @@
                     fill="outline"
                     placeholder="Enter Aadhaar Card No"
                     v-model="editedItem.aadhar_number"
+                    @input="aadharNumberValidation"
+                    @touchstart="touched = true"
+                    @mousedown="touched = true"
                   ></ion-input>
+                  <ion-text
+                  v-if="(touched || dirty) && ValidAadharNumberShowingMessage"
+                  color="danger"
+                >
+                  Please enter valid Aadhar Number.
+                </ion-text>
                   <ion-input
                     type="number"
                     class="ion-margin-top"
@@ -503,6 +521,17 @@
                       </ion-col>
                     </ion-row>
                   </ion-row>
+                  <ion-row>
+                    <ion-input
+                    class="ion-margin-top"
+                    label="Total"
+                    label-placement="floating"
+                    fill="outline"
+                    placeholder="Total"
+                    v-model="editedItem.total"
+                    readonly="readonly"
+                  ></ion-input>
+                  </ion-row>
                   <ion-card-subtitle
                     color="tertiary"
                     class="ion-padding ion-text-center"
@@ -548,10 +577,7 @@
                     </ion-radio-group>
                   </ion-row>
                 </ion-card-content>
-              </ion-card>
-            
-            </ion-col>
-            <ion-button
+                <ion-button
                     class="ion-margin"
                     expand="full"
                     color="primary"
@@ -563,6 +589,7 @@
                     ></ion-icon
                     >Update Individual Information</ion-button
                   >
+              </ion-card>
           </div>
 
           <div v-if="step === 2">
@@ -590,6 +617,7 @@
                     label="Name of Family Member"
                     label-placement="floating"
                     fill="outline"
+                    @input="stringValidation"
                     placeholder="Name of Family Member"
                     v-model="newRow.name_of_the_family_member"
                   ></ion-input>
@@ -603,6 +631,7 @@
                     fill="outline"
                     v-model="newRow.relationship_with_head"
                   >
+                  <ion-select-option value="">Select Relationship</ion-select-option>
                     <ion-select-option value="Father">Father</ion-select-option>
                     <ion-select-option value="Mother">Mother</ion-select-option>
                     <ion-select-option value="Husband"
@@ -677,6 +706,7 @@
                   <ion-input
                     class="ion-margin-top"
                     label="Age"
+                    type="number"
                     label-placement="floating"
                     fill="outline"
                     placeholder="Age"
@@ -692,6 +722,7 @@
                     fill="outline"
                     v-model="newRow.level_of_education"
                   >
+                  <ion-select-option value="">Select Education</ion-select-option>
                     <ion-select-option value="Illiterate"
                       >Illiterate</ion-select-option
                     >
@@ -722,6 +753,7 @@
                     v-model="newRow.occupation"
                     :multiple="true"
                   >
+                  <ion-select-option value="">Select Occupation</ion-select-option>
                     <ion-select-option value="Agriculture"
                       >Agriculture</ion-select-option
                     >
@@ -757,7 +789,7 @@
                     placeholder="Select Membership"
                     fill="outline"
                     v-model="newRow.membership"
-                  >
+                  > <ion-select-option value="">Select Membership</ion-select-option>
                     <ion-select-option value="SHG">SHG</ion-select-option>
                     <ion-select-option value="UG">UG</ion-select-option>
                     <ion-select-option value="WC">WC</ion-select-option>
@@ -767,14 +799,13 @@
                     class="ion-margin-top"
                     label="Annual Gross Income"
                     label-placement="floating"
+                    type="number"
                     fill="outline"
                     placeholder="Annual Gross Income"
                     v-model="newRow.annual_gross_income"
                   ></ion-input>
                 </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-button
+                <ion-button
                     class="ion-margin"
                     expand="full"
                     color="primary"
@@ -786,7 +817,8 @@
                     ></ion-icon
                     >Update Family Member Details</ion-button
                   >
-
+              </ion-card>
+            </ion-col>
             <ul class="styled-list">
               <li v-for="(row, index) in rows" :key="index">
                 <span class="row-details">
@@ -874,6 +906,7 @@
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowLandParticular.total"
+                    readonly="readonly"
                   ></ion-input>
                   <ion-select
                     class="ion-margin-top"
@@ -912,8 +945,7 @@
                     </li>
                   </ul>
                 </ion-card-content>
-              </ion-card>
-              <ion-button
+                <ion-button
                     class="ion-margin"
                     expand="full"
                     color="primary"
@@ -925,6 +957,7 @@
                     ></ion-icon
                     >Update Land Particulars</ion-button
                   >
+              </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
                   ><strong
@@ -955,7 +988,7 @@
                     fill="outline"
                     class="ion-margin-top"
                     v-model="newRowIncomeKharif.crop_grown"
-                  >
+                  > <ion-select-option value="">Select Crop</ion-select-option>
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="maize">maize</ion-select-option>
                     <ion-select-option value="jowar">jowar</ion-select-option>
@@ -994,6 +1027,7 @@
                     class="ion-margin-top"
                     placeholder="Rainfed(Acres)"
                     fill="outline"
+                     type="number"
                     label="Rainfed(Acres)"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_area"
@@ -1002,14 +1036,16 @@
                     class="ion-margin-top"
                     placeholder="Rainfed Yield(Qtls)"
                     label="Rainfed Yield(Qtls)"
+                     type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_yield"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Enter v"
+                    placeholder="Enter Rainfed(Acres) Cost of Cultivation(Rs)"
                     fill="outline"
+                     type="number"
                     label="Rainfed(Acres) Cost of Cultivation(Rs)"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_cost_of_cultivation"
@@ -1018,6 +1054,7 @@
                     class="ion-margin-top"
                     placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
                     fill="outline"
+                      type="number"
                     label="Rainfed(Acres) Rate per Qtls(Rs)"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_rate_per_qtls"
@@ -1028,6 +1065,7 @@
                     fill="outline"
                     label="Rainfed(Acres) Gross Income"
                     label-placement="floating"
+                    readonly="readonly"
                     v-model="newRowIncomeKharif.rainfed_gross_income"
                   ></ion-input>
                   <ion-input
@@ -1035,6 +1073,7 @@
                     placeholder="Total Rainfed Net income"
                     fill="outline"
                     label="Rainfed(Acres) Net Income(7-5)"
+                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_net_income"
                   ></ion-input>
@@ -1048,6 +1087,7 @@
                     placeholder="Irrigated Area(Acres)"
                     fill="outline"
                     label="Irrigated Area(Acres)"
+                      type="number"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_area"
                   ></ion-input>
@@ -1055,6 +1095,7 @@
                     class="ion-margin-top"
                     placeholder="Irigated Yield(Qtls)"
                     label="Irrigated Yield(Qtls)"
+                      type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_yield"
@@ -1064,6 +1105,7 @@
                     placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
                     label="Irrigated(Acres) Cost of Cultiation(Rs)"
                     fill="outline"
+                      type="number"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_cost_of_cultivation"
                   ></ion-input>
@@ -1071,6 +1113,7 @@
                     class="ion-margin-top"
                     placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
                     fill="outline"
+                      type="number"
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_rate_per_qtls"
@@ -1079,6 +1122,7 @@
                     class="ion-margin-top"
                     placeholder="Irrigated(Acres) Gross Income"
                     fill="outline"
+                      type="number"
                     label="Total Irrigated(Acres) Gross Income"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_gross_income"
@@ -1088,6 +1132,7 @@
                     placeholder="Total Irrigated Net Income(13-11)"
                     fill="outline"
                     label="Total Irrigated Net Income(13-11)"
+                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_net_income"
                   ></ion-input>
@@ -1095,6 +1140,7 @@
                     class="ion-margin-top"
                     placeholder="Kharif Grand Total Income"
                     label="Kharif Grand Total Income"
+                    readonly="readonly"
                     fill="outline"
                     label-placement="floating"
                   ></ion-input>
@@ -1126,9 +1172,8 @@
                     </li>
                   </ul>
                 </ion-card-content>
-              </ion-card>
-              <ion-button
-                    class="ion-margin-top"
+                <ion-button
+                    class="ion-margin"
                     expand="full"
                     color="primary"
                     @click="UpdateKharifData()"
@@ -1139,6 +1184,7 @@
                     ></ion-icon
                     >Update Income From Kharif</ion-button
                   >
+              </ion-card>
               <ion-card>
                 <ion-card-header color="tertiary"
                   ><strong
@@ -1170,6 +1216,7 @@
                     class="ion-margin-top"
                     v-model="newRowIncomeRabhi.crop_grown"
                   >
+                  <ion-select-option value="">Select Crop</ion-select-option>
                     <ion-select-option value="Paddy">Paddy</ion-select-option>
                     <ion-select-option value="maize">maize</ion-select-option>
                     <ion-select-option value="jowar">jowar</ion-select-option>
@@ -1216,14 +1263,16 @@
                     class="ion-margin-top"
                     placeholder="Rainfed Yield(Qtls)"
                     label="Rainfed Yield(Qtls)"
+                      type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_yield"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
-                    placeholder="Enter v"
+                    placeholder="Enter Rainfed(Acres) Cost of Cultivation(Rs)"
                     fill="outline"
+                      type="number"
                     label="Rainfed(Acres) Cost of Cultivation(Rs)"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_cost_of_cultivation"
@@ -1232,6 +1281,7 @@
                     class="ion-margin-top"
                     placeholder="Enter Rainfed(Acres) Rate per Qtls(Rs)"
                     fill="outline"
+                     type="number"
                     label="Rainfed(Acres) Rate per Qtls(Rs)"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_rate_per_qtls"
@@ -1241,6 +1291,7 @@
                     placeholder="Total Rainfed Gross income"
                     fill="outline"
                     label="Rainfed(Acres) Gross Income"
+                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_gross_income"
                   ></ion-input>
@@ -1249,6 +1300,7 @@
                     placeholder="Total Rainfed Net income"
                     fill="outline"
                     label="Rainfed(Acres) Net Income(7-5)"
+                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_net_income"
                   ></ion-input>
@@ -1262,6 +1314,7 @@
                     placeholder="Irrigated Area(Acres)"
                     fill="outline"
                     label="Irrigated Area(Acres)"
+                     type="number"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.irrigated_area"
                   ></ion-input>
@@ -1269,6 +1322,7 @@
                     class="ion-margin-top"
                     placeholder="Irigated Yield(Qtls)"
                     label="Irrigated Yield(Qtls)"
+                     type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.irrigated_yield"
@@ -1277,6 +1331,7 @@
                     class="ion-margin-top"
                     placeholder="Irrigated(Acres) Cost of Cultiation(Rs)"
                     label="Irrigated(Acres) Cost of Cultiation(Rs)"
+                     type="number"
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.irrigated_cost_of_cultivation"
@@ -1285,6 +1340,7 @@
                     class="ion-margin-top"
                     placeholder="Irrigated(Acres) Rate per Qtls(Rs)"
                     fill="outline"
+                     type="number"
                     label="Irrigated(Acres) Rate per Qtls(Rs) "
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.irrigated_rate_per_qtls"
@@ -1294,12 +1350,14 @@
                     placeholder="Irrigated(Acres) Gross Income"
                     fill="outline"
                     label="Total Irrigated(Acres) Gross Income"
+                    type="number"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.irrigated_gross_income"
                   ></ion-input>
                   <ion-input
                     class="ion-margin-top"
                     placeholder="Total Irrigated Net Income(13-11)"
+                     type="number"
                     fill="outline"
                     label="Total Irrigated Net Income(13-11)"
                     label-placement="floating"
@@ -1309,6 +1367,7 @@
                     class="ion-margin-top"
                     placeholder="Rabhi Grand Total Income"
                     label="Rabhi Grand Total Income"
+                    readonly="readonly"
                     fill="outline"
                     label-placement="floating"
                   ></ion-input>
@@ -1329,10 +1388,8 @@
                     </li>
                   </ul>
                 </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-button
-                    class="ion-margin-top"
+                <ion-button
+                    class="ion-margin"
                     expand="full"
                     color="primary"
                     @click="UpdateRabhiData()"
@@ -1343,6 +1400,8 @@
                     ></ion-icon
                     >Update Income From Rabhi</ion-button
                   >
+              </ion-card>
+            </ion-col>
           </div>
           <div v-if="step === 4">
             <ion-card>
@@ -1392,6 +1451,7 @@
                   placeholder="Enter existing No"
                   fill="outline"
                   label="Existing No"
+                   type="number"
                   label-placement="floating"
                   v-model="newRowlivestock.existing_no"
                 ></ion-input>
@@ -1399,6 +1459,7 @@
                   class="ion-margin-top"
                   placeholder="Enter litres/day"
                   fill="outline"
+                   type="number"
                   label="Milk Production(Ltrs/Day) if applicable"
                   label-placement="floating"
                   v-model="newRowlivestock.milk_production"
@@ -1407,6 +1468,7 @@
                   class="ion-margin-top"
                   placeholder="Enter litres/day"
                   fill="outline"
+                   type="number"
                   label="Milk Consumed(Ltrs/Day)"
                   label-placement="floating"
                   v-model="newRowlivestock.mill_consumed"
@@ -1415,6 +1477,7 @@
                   class="ion-margin-top"
                   placeholder="Enter quantity sold by year"
                   fill="outline"
+                   type="number"
                   label="Quantity Sold by Year"
                   label-placement="floating"
                   v-model="newRowlivestock.milk_quantity_sold"
@@ -1423,6 +1486,7 @@
                   class="ion-margin-top"
                   placeholder="Enter Unit Value"
                   fill="outline"
+                   type="number"
                   label="Unit Value(Rs)"
                   label-placement="floating"
                   v-model="newRowlivestock.value_of_animals"
@@ -1431,13 +1495,13 @@
                   class="ion-margin-top"
                   placeholder="Enter income generated during last year"
                   fill="outline"
+                   type="number"
                   label="Income Generated during Last Year"
                   label-placement="floating"
                   v-model="newRowlivestock.income_generated_during_last_year"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               color="primary"
               expand="block"
@@ -1449,6 +1513,7 @@
               ></ion-icon
               >Update Livestock Data</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 5">
             <fifthPage :migrations="migrations" :editedItem="editedItem" />
@@ -1751,6 +1816,7 @@ export default {
       selectedHabitationName: "",
       selectedMandalName: "",
       selectedGramPanchayatName: "",
+      total:"",
 
       newRow: {
         id: "",
@@ -1960,7 +2026,60 @@ export default {
   mounted() {
     this.getCurrentPosition();
   },
-  methods: {
+  computed: {
+    currentStepLabel() {
+      return this.selectedStep
+        ? `${this.selectedStep}. ${this.steps[this.selectedStep - 1]}`
+        : "1. General Information";
+    },
+    ValidPhoneNumberShowingMessage() {
+      // Regular expression for a basic phone number validation
+      // const regex = /^\d{10,12}$/;
+      // this.isValidPhoneNumber = regex.test(this.ContactNumber);
+      return (
+        this.editedItem.contact_number.length > 0 &&
+        (this.editedItem.contact_number.length < 10 || this.editedItem.contact_number.length > 12)
+      );
+    },
+    ValidAadharNumberShowingMessage() {
+      // Regular expression for aadhar number validation
+      // const regex = /^\d{12,16}$/;
+      // this.isValidAadharNumber = regex.test(this.aadharNumber);
+      return (
+        this.editedItem.aadhar_number.length > 0 &&
+        (this.editedItem.aadhar_number.length < 12 || this.editedItem.aadhar_number.length > 16)
+      );
+    },
+  },
+  methods: {  
+
+    ContactNumberValidation(event) {
+      let value = event.target.value;
+      // Remove non-digit characters
+      value = value.replace(/\D/g, "");
+      // Limit to 12 characters
+      if (value.length > 12) {
+        value = value.substring(0, 12);
+      }
+      this.editedItem.contact_number = value;
+    },
+    aadharNumberValidation(event) {
+      let value = event.target.value;
+      // Remove non-digit characters
+      value = value.replace(/\D/g, "");
+      // Limit to 12 characters
+      if (value.length > 16) {
+        value = value.substring(0, 16);
+      }
+      this.editedItem.aadhar_number = value;
+    },
+    stringValidation() {
+      let value = event.target.value;
+      // Remove non-alphabetic characters
+      value = value.replace(/[^a-zA-Z\s]/g, "");
+      this.editedItem.head_of_the_family = value;
+      this.newRow.name_of_the_family_member = value;
+    },
     nextStep() {
       if (this.currentStep < this.steps.length) {
         this.currentStep++;

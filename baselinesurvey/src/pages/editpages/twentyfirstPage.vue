@@ -30,6 +30,7 @@
             newParticipationCommunityProgram.name_of_the_community_program
           "
         >
+        <ion-select-option value="">Select Community Program</ion-select-option>
           <ion-select-option value="AwarenessProgram"
             >Awareness Programs</ion-select-option
           >
@@ -74,8 +75,9 @@
             >No</ion-radio
           >
         </ion-radio-group>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateParticipationCommunityProgramData"
@@ -86,7 +88,6 @@
           ></ion-icon
           >Update Participation Community Program</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

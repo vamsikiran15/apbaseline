@@ -27,6 +27,7 @@
           fill="outline"
           v-model="newMembership.membershp_details"
         >
+        <ion-select-option value="">Select Membership</ion-select-option>
           <ion-select-option value="Self Helf Groups (SHGs)"
             >Self Helf Groups (SHGs)
           </ion-select-option>
@@ -40,12 +41,14 @@
           class="ion-margin-top"
           placeholder="Enter number"
           fill="outline"
+           type="number"
           label="Number"
           label-placement="floating"
           v-model="newMembership.number"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateMembershipData"
@@ -56,7 +59,6 @@
           ></ion-icon
           >Update Membership</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

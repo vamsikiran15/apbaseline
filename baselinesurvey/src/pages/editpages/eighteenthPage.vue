@@ -29,6 +29,7 @@
           fill="outline"
           v-model="newFodderFuel.foldder_details"
         >
+        <ion-select-option value="">Select Details</ion-select-option>
           <ion-select-option value="Own land">Own Land</ion-select-option>
           <ion-select-option value="Community land"
             >Community</ion-select-option
@@ -42,6 +43,7 @@
           class="ion-margin-top"
           placeholder="Enter value in Tons"
           fill="outline"
+           type="number"
           label="Fodder Utilization(In Tons)"
           label-placement="floating"
           v-model="newFodderFuel.fodder_utilisation"
@@ -50,6 +52,7 @@
           class="ion-margin-top"
           placeholder="Enter value"
           fill="outline"
+           type="number"
           label="Fire/Fuel Cow Dung"
           label-placement="floating"
           v-model="newFodderFuel.cow_dung"
@@ -58,6 +61,7 @@
           class="ion-margin-top"
           placeholder="Enter values"
           fill="outline"
+           type="number"
           label="Firewood"
           label-placement="floating"
           v-model="newFodderFuel.fire_wood"
@@ -66,12 +70,14 @@
           class="ion-margin-top"
           placeholder="Enter values"
           fill="outline"
+           type="number"
           label="Agricultural Waste"
           label-placement="floating"
           v-model="newFodderFuel.agriculture_waste"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateFodderFuelData"
@@ -82,7 +88,6 @@
           ></ion-icon
           >Update Fodder Fuel</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

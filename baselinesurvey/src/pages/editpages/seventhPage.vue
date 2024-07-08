@@ -23,6 +23,7 @@
           fill="outline"
           label="Name of the Family Member"
           label-placement="floating"
+          @input="stringValidation"
           v-model="newRowGovtBenefit.name_of_familymember"
         ></ion-input>
         <ion-select
@@ -34,6 +35,7 @@
           fill="outline"
           v-model="newRowGovtBenefit.scheme_name"
         >
+        <ion-select-option value="">Select Scheme Name</ion-select-option>
           <ion-select-option value="Amma Vodi">Amma Vodi</ion-select-option>
           <ion-select-option value="YSR Asara">YSR Asara</ion-select-option>
           <ion-select-option value="Ban on alcohol"
@@ -73,8 +75,9 @@
           label-placement="floating"
           v-model="newRowGovtBenefit.amount"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateGovtBenefitData()"
@@ -85,7 +88,6 @@
           ></ion-icon
           >Update Government Scheme Details</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>
@@ -214,6 +216,12 @@ export default {
           this.GovtBenefitRows = [];
         }
       }
+    },
+    stringValidation() {
+      let value = event.target.value;
+      // Remove non-alphabetic characters
+      value = value.replace(/[^a-zA-Z\s]/g, "");
+      this.newRowGovtBenefit.name_of_familymember = value;
     },
     async insertGovtBenefit(row) {
       try {

@@ -26,6 +26,7 @@
           fill="outline"
           v-model="newRowFamilyExp.items"
         >
+        <ion-select-option value="">Select Items</ion-select-option>
           <ion-select-option value="Food">Food</ion-select-option>
           <ion-select-option value="Education">Education</ion-select-option>
           <ion-select-option value="Medical/Health"
@@ -54,12 +55,14 @@
           class="ion-margin-top"
           placeholder="Expenditure Per Last Year"
           fill="outline"
+           type="number"
           label="Expenditure Per Last Year"
           label-placement="floating"
           v-model="newRowFamilyExp.expenditure_per_last_year"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateFamilyExpData()"
@@ -70,7 +73,6 @@
           ></ion-icon
           >Update Family Expenditure Details</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

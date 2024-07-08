@@ -28,6 +28,7 @@
           fill="outline"
           v-model="newGrazeCattle.grazing_of_cattle_or_animal"
         >
+        <ion-select-option value="">Select Grazing of Animals</ion-select-option>
           <ion-select-option value="In Community Land"
             >In Community Land</ion-select-option
           >
@@ -50,12 +51,14 @@
           class="ion-margin-top"
           placeholder="Enter days"
           fill="outline"
+           type="number"
           label="How many days in a Year"
           label-placement="floating"
           v-model="newGrazeCattle.how_many_days_in_the_year"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateGrazeCattleData"
@@ -66,7 +69,6 @@
           ></ion-icon
           >Update Graze</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

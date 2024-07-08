@@ -496,6 +496,17 @@
                     ></ion-input>
                   </ion-col>
                 </ion-row>
+                <ion-row>
+                    <ion-input
+                    class="ion-margin-top"
+                    label="Total"
+                    label-placement="floating"
+                    fill="outline"
+                    placeholder="Total"
+                    v-model="total"
+                    readonly="readonly"
+                  ></ion-input>
+                  </ion-row>
                 <ion-card-subtitle
                   color="tertiary"
                   class="ion-padding ion-text-center"
@@ -745,9 +756,7 @@
                   v-model="newRow.annual_gross_income"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-
-            <ion-button
+              <ion-button
               class="ion-margin"
               color="primary"
               expand="full"
@@ -759,6 +768,7 @@
               ></ion-icon
               >Add Household Details</ion-button
             >
+            </ion-card>
             <ul class="styled-list">
               <li v-for="(row, index) in rows" :key="index">
                 <span class="row-details">
@@ -859,8 +869,7 @@
                   <ion-select-option value="Rent">Rent</ion-select-option>
                 </ion-select>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -872,6 +881,7 @@
               ></ion-icon
               >Add Land Particulars Details</ion-button
             >
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -1048,8 +1058,7 @@
                   label-placement="floating"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -1061,6 +1070,7 @@
               ></ion-icon
               >Add Income from Crops(Rs)-Kharif</ion-button
             >
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -1217,8 +1227,7 @@
                   label-placement="floating"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -1230,6 +1239,7 @@
               ></ion-icon
               >Add Income from Crops(Rs)-Rabi</ion-button
             >
+            </ion-card>      
           </div>
           <div v-if="step === 4">
             <ion-card>
@@ -1317,8 +1327,7 @@
                   v-model="addLivestockDetails.incomeGeneratedDuringLastYear"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               color="primary"
               expand="full"
@@ -1330,6 +1339,7 @@
               ></ion-icon
               >Add Livestock Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 5">
             <ion-card>
@@ -1440,8 +1450,7 @@
                   v-model="migrationStatusRows.incomeFromOccupation"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -1453,6 +1462,7 @@
               ></ion-icon
               >Add Migration Status</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 6">
             <ion-card>
@@ -1523,8 +1533,7 @@
                   v-model="landLessLabourers.total"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -1536,6 +1545,7 @@
               ></ion-icon
               >Add Government Scheme Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 7">
             <ion-card>
@@ -1627,8 +1637,7 @@
                   v-model="governmentSchemesRows.amount"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -1640,6 +1649,7 @@
               ></ion-icon
               >Add Government Scheme Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 8">
             <ion-card>
@@ -1774,8 +1784,7 @@
                   label-placement="floating"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -1787,6 +1796,7 @@
               ></ion-icon
               >Add Manure and Chemical Fertilizers Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 9">
             <ion-card>
@@ -1930,8 +1940,7 @@
                   label-placement="floating"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               @click="addPestDiseaseRows()"
@@ -1943,6 +1952,7 @@
               ></ion-icon
               >Add Pest and Disease Control Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 10">
             <ion-card>
@@ -2209,8 +2219,7 @@
                   v-model="loanParticularsRows.outstandingAmount"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               @click="addLoanParticularsRows()"
@@ -2222,6 +2231,7 @@
               ></ion-icon
               >Add Loan Particulars Details</ion-button
             >
+            </ion-card> 
           </div>
           <div v-if="step === 11">
             <ion-card>
@@ -2281,8 +2291,7 @@
                   v-model="familyExpenditureRows.total"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -2294,6 +2303,7 @@
               ></ion-icon
               >Add Family Expenditure Details</ion-button
             >
+            </ion-card> 
           </div>
           <div v-if="step === 12">
             <ion-card>
@@ -2375,8 +2385,7 @@
                   v-model="sourceofIncomeRows.income"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               color="primary"
               expand="full"
@@ -2388,6 +2397,7 @@
               ></ion-icon
               >Add Source of Income and Family Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 13">
             <ion-card>
@@ -2473,8 +2483,7 @@
                   >
                 </ion-select>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -2486,6 +2495,7 @@
               ></ion-icon
               >Add Availability of Drinking Water Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 14">
             <ion-card class="ion-margin-top">
@@ -2632,8 +2642,7 @@
                   >
                 </ion-select>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -2645,6 +2654,7 @@
               ></ion-icon
               >Add Source and Quality of Water Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 15">
             <ion-card>
@@ -2713,8 +2723,7 @@
                   <ion-select-option value="Hired">Hired</ion-select-option>
                 </ion-select>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -2726,6 +2735,7 @@
               ></ion-icon
               >Add Agriculture Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 16">
             <ion-card>
@@ -2784,8 +2794,7 @@
                   v-model="horticultureDetailsRows.numberofDetails"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               color="primary"
               expand="full"
@@ -2797,6 +2806,7 @@
               ></ion-icon
               >Add Horticulture Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 17">
             <ion-card>
@@ -2864,8 +2874,7 @@
                   v-model="fodderandFeedAvailability.production"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -2877,6 +2886,7 @@
               ></ion-icon
               >Add Government Scheme Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 18">
             <ion-card>
@@ -2947,8 +2957,7 @@
                   v-model="fodderFuelRows.agriculturalWaste"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               color="primary"
               expand="full"
@@ -2960,6 +2969,7 @@
               ></ion-icon
               >Add Government Scheme Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 19">
             <ion-card>
@@ -3011,8 +3021,7 @@
                   v-model="grazeCattleRows.daysInAYear"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               color="primary"
               expand="full"
@@ -3024,6 +3033,7 @@
               ></ion-icon
               >Add Government Scheme Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 20">
             <ion-card>
@@ -3084,8 +3094,7 @@
                   v-model="householdRows.presentValue"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -3097,6 +3106,7 @@
               ></ion-icon
               >Add Household Assets Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 21">
             <ion-card>
@@ -3177,8 +3187,7 @@
                   >
                 </ion-radio-group>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               @click="addParticipationRows()"
@@ -3190,6 +3199,7 @@
               ></ion-icon
               >Add Community Programs</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 22">
             <ion-card>
@@ -3261,8 +3271,7 @@
                   >
                 </ion-select>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               @click="addAwarenessTechnologyRows()"
@@ -3274,6 +3283,7 @@
               ></ion-icon
               >Add Awareness on Technology Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 23">
             <ion-card>
@@ -3315,8 +3325,7 @@
                   v-model="membershipDetailsRows.number"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               expand="full"
               color="primary"
@@ -3328,6 +3337,7 @@
               ></ion-icon
               >Add Membership Details</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 24">
             <ion-card>
@@ -3366,8 +3376,7 @@
                   v-model="beneficiarySchemeRows.valueoftheBenfits"
                 ></ion-input>
               </ion-card-content>
-            </ion-card>
-            <ion-button
+              <ion-button
               class="ion-margin"
               color="primary"
               expand="full"
@@ -3379,6 +3388,7 @@
               ></ion-icon
               >Add Beneficiary Scheme Data</ion-button
             >
+            </ion-card>
           </div>
           <div v-if="step === 25">
             <ion-card>
@@ -3947,7 +3957,7 @@ export default {
       surveyor: "",
       dateA: "",
       subType: "",
-      isValidAadharNumber: true,
+      total:""
     };
   },
   components: {

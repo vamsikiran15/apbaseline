@@ -26,6 +26,7 @@
           fill="outline"
           v-model="newAgriImplements.implements"
         >
+        <ion-select-option value="">Select Implement</ion-select-option>
           <ion-select-option value="tractor">Tractor</ion-select-option>
           <ion-select-option value="SprayerManualPower"
             >Sprayer-Manual/Power</ion-select-option
@@ -68,8 +69,9 @@
           <ion-select-option value="Owned">Owned</ion-select-option>
           <ion-select-option value="Hired">Hired</ion-select-option>
         </ion-select>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateAgriImplementsData()"
@@ -80,7 +82,6 @@
           ></ion-icon
           >Update Agriculture Implements</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

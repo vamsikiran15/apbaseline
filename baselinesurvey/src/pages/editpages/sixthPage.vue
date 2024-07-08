@@ -30,6 +30,7 @@
           class="ion-margin-top"
           v-model="newRowLandLess.name_of_the_scheme_or_project"
         >
+        <ion-select-option value="">Select Name of the Scheme</ion-select-option>
           <ion-select-option value="Watershed">Watershed</ion-select-option>
           <ion-select-option value="MGNREGS">MGNREGS</ion-select-option>
           <ion-select-option value="Others">Others</ion-select-option>
@@ -38,6 +39,7 @@
           class="ion-margin-top"
           placeholder="Enter days"
           fill="outline"
+           type="number"
           label="Man-Days"
           label-placement="floating"
           v-model="newRowLandLess.mandays"
@@ -46,6 +48,7 @@
           class="ion-margin-top"
           placeholder="Enter days"
           fill="outline"
+           type="number"
           label="Wage/Days"
           label-placement="floating"
           v-model="newRowLandLess.wage_per_day"
@@ -53,13 +56,15 @@
         <ion-input
           class="ion-margin-top"
           placeholder="Enter days"
+           type="number"
           fill="outline"
           label="Income(Rs)"
           label-placement="floating"
           v-model="newRowLandLess.income"
-        ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+        ></ion-input> 
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateLandLessData()"
@@ -70,7 +75,6 @@
           ></ion-icon
           >Update Land Less Details</ion-button
         >
-      </ion-card-content>
     </ion-card>
     <!-- <ion-card>
       <ion-card-content>

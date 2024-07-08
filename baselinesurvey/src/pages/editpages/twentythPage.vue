@@ -26,6 +26,7 @@
           fill="outline"
           v-model="newHouseholdAssets.assets"
         >
+        <ion-select-option value="">Select Assets</ion-select-option>
           <ion-select-option value="MotorCycle">Motor Cycle</ion-select-option>
           <ion-select-option value="Cycle">Cycle</ion-select-option>
           <ion-select-option value="FourWheeler"
@@ -49,6 +50,7 @@
           placeholder="Enter units"
           fill="outline"
           label="Number"
+           type="number"
           label-placement="floating"
           v-model="newHouseholdAssets.number"
         ></ion-input>
@@ -56,12 +58,14 @@
           class="ion-margin-top"
           placeholder="Enter value in Rs"
           fill="outline"
+           type="number"
           label="Present Value(Rs)"
           label-placement="floating"
           v-model="newHouseholdAssets.present_value"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateHouseholdAssetsData"
@@ -72,7 +76,6 @@
           ></ion-icon
           >Update Household Assets</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

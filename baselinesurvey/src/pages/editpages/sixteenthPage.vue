@@ -26,6 +26,7 @@
           fill="outline"
           v-model="newHorticulture.horticulture_details"
         >
+        <ion-select-option value="">Select Details</ion-select-option>
           <ion-select-option value="HorticulturePlantsTrees"
             >Horticulture Plants/Trees</ion-select-option
           >
@@ -53,12 +54,14 @@
           class="ion-margin-top"
           placeholder="Enter number of details"
           fill="outline"
+           type="number"
           label="Number of Details"
           label-placement="floating"
           v-model="newHorticulture.horticulture_number"
-        ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+        ></ion-input> 
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateHorticultureData"
@@ -69,7 +72,6 @@
           ></ion-icon
           >Update Horticulture</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>
