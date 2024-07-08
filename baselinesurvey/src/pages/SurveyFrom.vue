@@ -560,6 +560,20 @@
               >
             </ion-card>
             <ion-card>
+          <ion-item-sliding v-for="(item,index) in householdDetailsRowsData" :key="item.id">
+           <ion-item @click="selectHouseholdMember(item,index)">
+            {{item.name_of_the_family_member}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeRow(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+            <ion-card>
               <ion-card-content>
                 <ion-input
                   class="ion-margin-top"
@@ -769,7 +783,7 @@
                 >Add Household Details</ion-button
               >
             </ion-card>
-            <ul class="styled-list">
+            <!-- <ul class="styled-list">
               <li v-for="(row, index) in rows" :key="index">
                 <span class="row-details">
                   {{ row.name_of_the_family_member }},
@@ -788,7 +802,7 @@
                   <ion-icon name="close-circle-outline"></ion-icon>
                 </ion-button>
               </li>
-            </ul>
+            </ul> -->
             <!-- completed second section. -->
           </div>
 
@@ -798,6 +812,20 @@
                 ><strong>3.Land Particulars</strong></ion-card-header
               >
             </ion-card>
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in cultivatedAreaRowsData" :key="item.id">
+           <ion-item @click="selectCultivatedAreaItem(item,index)">
+            {{item.cultivatedArea}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeRowLandParticulars(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-subtitle
                 class="ion-padding ion-text-center"
@@ -884,6 +912,20 @@
                 >Add Land Particulars Details</ion-button
               >
             </ion-card>
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in incomefromCropsKharifRowsData" :key="item.id">
+           <ion-item @click="selectIncomeKharifItem(item,index)">
+            {{item.cropGrownKharif}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeRowIncomeKharif(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -1073,6 +1115,20 @@
                 >Add Income from Crops(Rs)-Kharif</ion-button
               >
             </ion-card>
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in incomefromCropsRabiRowsData" :key="item.id">
+           <ion-item @click="selectIncomeRabiItem(item,index)">
+            {{item.cropGrownRabhi}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeRowIncomeRabi(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -3564,6 +3620,9 @@ import {
   IonFooter,
   IonToast,
   toastController,
+  IonItemSliding,
+  IonItemOptions,
+  IonItemOption,
 } from "@ionic/vue";
 import axios from "axios";
 import { Geolocation } from "@capacitor/geolocation";
@@ -4045,6 +4104,9 @@ export default {
     IonFooter,
     IonToast,
     toastController,
+    IonItemSliding,
+    IonItemOptions,
+    IonItemOption,
   },
   created() {
     this.getDistricts();
@@ -4075,6 +4137,20 @@ export default {
     },
   },
   methods: {
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+
+      // Delay the page reload until after the toast has been displayed
+      // setTimeout(() => {
+      //   this.$router.go(0);
+      // }, 3000); // duration of the toast
+    },
     async getCurrentPosition() {
       try {
         const coordinates = await Geolocation.getCurrentPosition();
@@ -4145,8 +4221,17 @@ export default {
       }
     },
     async livestockData() {
+      try{
       this.livestockRows.push({ ...this.addLivestockDetails });
+      this.triggerToastMessage(
+            "Insertion of Livestock Details is Submitted Successfully","custom_toast"
+          );
       this.clearLiveStockFields();
+      }  
+      catch(error){
+        this.triggerToastMessage("Failed to Insert Livestock Details Kharif","danger");
+        console.error("error in livestockData function",error)
+      }
     },
 
     clearLiveStockFields() {
@@ -4322,7 +4407,8 @@ export default {
       }
     },
     async addHouseholdDetailsRows() {
-      // Check if any field is not empty
+      try {
+          // Check if any field is not empty
       if (
         Object.values(this.newRow).some((field) => {
           if (typeof field === "string") {
@@ -4339,8 +4425,17 @@ export default {
           "this household members rows",
           this.householdDetailsRowsData
         );
-        this.clearFields(); // Clear the input fields
+        this.triggerToastMessage(
+            "Household Member is Added Successfully","custom_toast"
+          );
+
+      this.clearFields(); // Clear the input fields
       }
+      } catch (error) {
+        console.log("error in addHouseholdDetailsRows function",error)
+        this.triggerToastMessage("Failed to Insert the Household Member","danger");
+      }
+    
     },
     clearFields() {
       this.newRow = {
@@ -4356,7 +4451,87 @@ export default {
       };
     },
     removeRow(index) {
-      this.rows.splice(index, 1);
+      this.householdDetailsRowsData.splice(index, 1);
+    },
+    selectHouseholdMember(item,index){
+      try {
+        this.newRow.name_of_the_family_member = item.name_of_the_family_member;
+        this.newRow.relationship_with_head= item.relationship_with_head;
+        this.newRow.disability= item.disability;
+        this.newRow.gender= item.gender;
+        this.newRow.age= item.age;
+        this.newRow.level_of_education= item.level_of_education;
+        // newRow.occupation= item.occupation;
+        this.newRow.annual_gross_income= item.annual_gross_income;
+        this.newRow.membership= item.membership;
+        this.householdDetailsRowsData.splice(index, 1);
+        console.log("select member info",item)
+      } catch (error) {
+        console.error("error in selectHouseholdMember function",error)
+      }
+    },
+    selectCultivatedAreaItem(item,index){
+      try { 
+        this.cultivatedAreaRows.cultivatedArea= item.cultivatedArea
+        this.cultivatedAreaRows.rainfedArea= item.rainfedArea
+        this.cultivatedAreaRows.irrigatedArea= item.irrigatedArea
+        this.cultivatedAreaRows.total= item.total
+        this.cultivatedAreaRows.typeofOwnership= item.typeofOwnership
+        this.cultivatedAreaRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectCultivatedAreaItem function",error)
+      }
+    },
+    removeRowLandParticulars(index) {
+      this.cultivatedAreaRowsData.splice(index, 1);
+    },
+    selectIncomeKharifItem(item,index){
+      try {
+        incomefromCropsKharifRows.cropGrownKharif= item.cropGrownKharif
+        incomefromCropsKharifRows.rainfedKharif= item.rainfedKharif
+        incomefromCropsKharifRows.rainfedYieldKharif= item.rainfedYieldKharif
+        incomefromCropsKharifRows.rainfedCostKharif= item.rainfedCostKharif
+        incomefromCropsKharifRows.rainfedPerQtlsKharif= item.rainfedPerQtlsKharif
+        incomefromCropsKharifRows.rainfedGrossIncomeKharif= item.rainfedGrossIncomeKharif
+        incomefromCropsKharifRows.rainfedNetIncomeKharif= item.rainfedNetIncomeKharif
+        incomefromCropsKharifRows.irrigatedaAreaKharif= item.irrigatedaAreaKharif
+        incomefromCropsKharifRows.irrigatedYieldKharif= item.irrigatedYieldKharif
+        incomefromCropsKharifRows.irrigatedCoostofCultivationKharif= item.irrigatedCoostofCultivationKharif
+        incomefromCropsKharifRows.irrigatedRatePerQtlsKharif= item.irrigatedRatePerQtlsKharif
+        incomefromCropsKharifRows.irrigatedGrossIncomeKharif= item.irrigatedGrossIncomeKharif
+        incomefromCropsKharifRows.irrigatedNetIncomeKharif= item.irrigatedNetIncomeKharif
+        this.incomefromCropsKharifRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("Error in selectIncomeKharifItem function",error)
+      }
+    },
+    removeRowIncomeKharif(index) {
+      this.incomefromCropsKharifRowsData.splice(index, 1);
+    },
+    selectIncomeRabiItem(item,index){
+      try {
+        incomefromCropsRabiRows: {
+        incomefromCropsRabiRows.cropGrownRabhi= item.cropGrownRabhi
+        incomefromCropsRabiRows.rainfedRabi= item.rainfedRabi
+        incomefromCropsRabiRows.rainfedYieldRabi= item.rainfedYieldRabi
+        incomefromCropsRabiRows.rainfedCostRabi= item.rainfedCostRabi
+        incomefromCropsRabiRows.rainfedPerQtlsRabi= item.rainfedPerQtlsRabi
+        incomefromCropsRabiRows.rainfedGrossIncomeRabi= item.rainfedGrossIncomeRabi
+        incomefromCropsRabiRows.rainfedNetIncomeRabi= item.rainfedNetIncomeRabi
+        incomefromCropsRabiRows.irrigatedaAreaRabi= item.irrigatedaAreaRabi
+        incomefromCropsRabiRows.irrigatedYieldRabi= item.irrigatedYieldRabi
+        incomefromCropsRabiRows.irrigatedCoostofCultivationRabi= item.irrigatedCoostofCultivationRabi
+        incomefromCropsRabiRows.irrigatedRatePerQtlsRabi= item.irrigatedRatePerQtlsRabi
+        incomefromCropsRabiRows.irrigatedGrossIncomeRabi= item.irrigatedGrossIncomeRabi
+        incomefromCropsRabiRows.irrigatedNetIncomeRabi= item.irrigatedNetIncomeRabi
+        this.incomefromCropsRabiRowsData.splice(index, 1);
+      }
+      } catch (error) {
+        console.error("error in selectIncomeRabiItem function",error)
+      }
+    },
+    removeRowIncomeRabi(index) {
+      this.incomefromCropsRabiRowsData.splice(index, 1);
     },
     async submitData() {
       try {
@@ -4478,10 +4653,9 @@ export default {
       try {
         const data = { id: id, rows: this.cultivatedAreaRowsData };
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/bulkinsertionlandparticulars",
-          data
-        );
+          "http://183.82.109.39:5000/api/bulkinsertionlandparticulars",data);
         console.log("Land Particulars", response);
+       
       } catch (error) {
         console.error("error in addLandParticularsRows function", error);
       }
@@ -4513,9 +4687,13 @@ export default {
     async addLandParticularsRows() {
       try {
         this.cultivatedAreaRowsData.push({ ...this.cultivatedAreaRows });
+          this.triggerToastMessage(
+            "Insertion of Land Particulars is Submitted Successfully","custom_toast"
+          );
         console.log("LAND PARTICULARS DATA", this.cultivatedAreaRowsData);
         this.clearCultivatedRows();
       } catch (error) {
+        this.triggerToastMessage("Failed to Insert the Land Particulars","danger");
         console.error("error in addLandParticularsRows function", error);
       }
     },
@@ -4534,8 +4712,12 @@ export default {
           ...this.incomefromCropsKharifRows,
         });
         console.log("income crops kharif", this.incomefromCropsKharifRowsData);
+        this.triggerToastMessage(
+            "Insertion of Income from Crops Kharif is Submitted Successfully","custom_toast"
+          );
         this.clearIncomeKharifRows();
       } catch (error) {
+        this.triggerToastMessage("Failed to Insert Income from Crops Kharif","danger");
         console.error("error in incomeKharif function", error);
       }
     },
@@ -4562,8 +4744,12 @@ export default {
           ...this.incomefromCropsRabiRows,
         });
         console.log("Income rabi rows", this.incomefromCropsRabiRowsData);
+        this.triggerToastMessage(
+            "Insertion of Income from Crops Rabi is Submitted Successfully","custom_toast"
+          );
         this.clearIncomeRabiRows();
       } catch (error) {
+        this.triggerToastMessage("Failed to Insert Income from Crops Rabi","danger");
         console.log("error in incomerabi function", error);
       }
     },
@@ -4643,9 +4829,18 @@ export default {
       }
     },
     async migrationStatusAddRows() {
-      this.migrationStatusRowsData.push({ ...this.migrationStatusRows });
+      try {
+        this.migrationStatusRowsData.push({ ...this.migrationStatusRows });
       console.log("migration status", this.migrationStatusRowsData);
+      this.triggerToastMessage(
+            "Insertion of Migration Status Details is Submitted Successfully","custom_toast"
+          );
       this.clearMigrationDataRows();
+      } catch (error) {
+        this.triggerToastMessage("Failed to Insert Migration Status Details","danger");
+        console.log("error in migrationStatusAddRows fucntion",error)
+      }
+      
     },
 
     async clearMigrationDataRows() {
@@ -4671,9 +4866,18 @@ export default {
       }
     },
     async landLessLabourData() {
+      try{
       this.landLessData.push({ ...this.landLessLabourers });
+      this.triggerToastMessage(
+            "Insertion of Landless Labour Details is Submitted Successfully","custom_toast"
+          );
       console.log("land less labours", this.landLessData);
       this.clearLandLessRows();
+      }
+      catch(error){
+        this.triggerToastMessage("Failed to Insert Migration Status Details","danger");
+        console.log("error in landLessLabourData function",error)
+      }
     },
     clearLandLessRows() {
       this.landLessLabourers = {
@@ -4697,11 +4901,21 @@ export default {
       }
     },
     addGovernmentSchemesDataRows() {
+      try{
       this.governmentSchemesRowsData.push({ ...this.governmentSchemesRows });
       console.log(
         "%%%%%%%%%%%%%%%DATA%%%%%%%%%%%%%%%%%%",
         this.governmentSchemesRowsData
       );
+      this.triggerToastMessage(
+            "Insertion of Government Scheme Details is Submitted Successfully","custom_toast"
+          );
+      }
+      catch(error){
+        this.triggerToastMessage("Failed to Insert Government Scheme Details","danger");
+        console.log("error in triggerToastMessage functionm")
+      }
+
     },
     clearGovernmentSchemesRows() {
       this.governmentSchemesRows = {
@@ -4723,9 +4937,18 @@ export default {
       }
     },
     addChemicalManureRows() {
-      this.chemicalManureRowsData.push({ ...this.useofChemicalManureRows });
+      try {
+        this.chemicalManureRowsData.push({ ...this.useofChemicalManureRows });
       console.log("chemical manure data", this.chemicalManureRowsData);
-      this.clearChemicalManureRows();
+        this.triggerToastMessage(
+            "Insertion of Manure and Chemical Details is Submitted Successfully","custom_toast"
+          );
+          this.clearChemicalManureRows();
+      } catch (error) {
+        this.triggerToastMessage("Failed to Insert Manure and Chemical Details","danger");
+        console.log("error in addChemicalManureRows function",error)
+      }
+      
     },
     clearChemicalManureRows() {
       this.useofChemicalManureRows = {
@@ -4751,9 +4974,20 @@ export default {
       }
     },
     addLoanParticularsRows() {
-      this.loanParticularsRowsData.push({ ...this.loanParticularsRows });
+      try {
+        this.loanParticularsRowsData.push({ ...this.loanParticularsRows });
       console.log("&&&&&&&&&&&DATA&&&&&&&&&&", this.loanParticularsRowsData);
-      this.clearLoanParticularsRows();
+        this.triggerToastMessage(
+            "Insertion of Loan Particulars Details is Submitted Successfully","custom_toast"
+          );
+          this.clearLoanParticularsRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Insert Loan Particulars Details","danger"
+          );
+        console.log("error in addloanparticularsrows function",error)
+      }
+      
     },
     clearLoanParticularsRows() {
       this.loanParticularsRows = {
@@ -4785,9 +5019,21 @@ export default {
       }
     },
     addPestDiseaseRows() {
-      this.pestandDiseaseRowsData.push({ ...this.pestandDiseaseRows });
+      try {
+        this.pestandDiseaseRowsData.push({ ...this.pestandDiseaseRows });
       console.log("%%%%DATA%%%%%%%%%", this.pestandDiseaseRowsData);
+      this.triggerToastMessage(
+            "Insertion of Pest Disease Details is Submitted Successfully","custom_toast"
+          );
       this.clearPestDisease();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Insert Pest Disease Details","danger"
+          );
+        console.error("error in addPestDiseaseRows function",error)
+      }
+     
+     
     },
     clearPestDisease() {
       this.pestandDiseaseRows = {
@@ -4815,12 +5061,23 @@ export default {
       }
     },
     addFamilyExpenditureRows() {
-      this.familyExpenditureRowsData.push({ ...this.familyExpenditureRows });
+      try {
+        this.familyExpenditureRowsData.push({ ...this.familyExpenditureRows });
       console.log(
         "%%%%%%%%%%%DATA%%%%%%%%%%%%%%",
         this.familyExpenditureRowsData
       );
+      this.triggerToastMessage(
+            "Insertion of Family Expenditure Details is Submitted Successfully","custom_toast"
+          );
+
       this.clearFamilyExpenditureRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Insert Family Expenditure Details","danger"
+          );
+        console.error("error in addFamilyExpenditureRows function",error)
+      }
     },
     clearFamilyExpenditureRows() {
       this.familyExpenditureRows = {
@@ -4846,12 +5103,23 @@ export default {
       }
     },
     addSourceofIncomeRows() {
-      this.sourceofIncomeRowsData.push({ ...this.sourceofIncomeRows });
+      try {
+        this.sourceofIncomeRowsData.push({ ...this.sourceofIncomeRows });
       console.log(
         "^^^^^^^^^^^^^DATA^^^^^^^^^^^^^^^",
         this.sourceofIncomeRowsData
       );
-      this.clearSourceofIncomeRows();
+      this.triggerToastMessage(
+            "Insertion of Source of Income Details is Submitted Successfully","custom_toast"
+          );
+          this.clearSourceofIncomeRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Insert Source of Income Details","danger"
+          );
+        console.error("error in addSourceofIncomeRows function",error)
+      }
+     
     },
     clearSourceofIncomeRows() {
       this.sourceofIncomeRows = {
@@ -4875,14 +5143,26 @@ export default {
       }
     },
     addDrinkingWaterAvailabilityRows() {
-      this.drinkingWaterAvailabilityRowsData.push({
+      try {
+        this.drinkingWaterAvailabilityRowsData.push({
         ...this.drinkingWaterAvailabilityRows,
       });
       console.log(
         "^^^^^^^^^^^^^DATA&&&&&&&&&&&&&&&",
         this.drinkingWaterAvailabilityRowsData
       );
+      this.triggerToastMessage(
+            "Insertion of Drinking Water Availability Details is Submitted Successfully","custom_toast"
+          );
+
       this.clearDrinkingWaterRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Insert Drinking Water Availability Details","danger"
+          );
+        console.error("error in addDrinkingWaterAvailabilityRows function",error)
+      }
+     
     },
     clearDrinkingWaterRows() {
       this.drinkingWaterAvailabilityRows = {
@@ -4904,14 +5184,24 @@ export default {
       }
     },
     addSourceandQualityWaterRows() {
-      this.sourceandQualityofWaterRowsData.push({
+      try {
+        this.sourceandQualityofWaterRowsData.push({
         ...this.sourceandQualityofWaterRows,
       });
       console.log(
         "^^^^^^^DATA^^^^^^^^^^",
         this.sourceandQualityofWaterRowsData
       );
-      this.clearSourceandQualityofWaterRows();
+      this.triggerToastMessage(
+            "Insertion of Source and Quality Water Details is Submitted Successfully","custom_toast"
+          );
+          this.clearSourceandQualityofWaterRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Source and Quality Water Availability Details","danger"
+          );
+        console.error("Error in addSourceandQualityWaterRows function",error)
+      }
     },
     clearSourceandQualityofWaterRows() {
       this.sourceandQualityofWaterRows = {
@@ -4941,11 +5231,22 @@ export default {
       }
     },
     addAgriculturalImplementsRows() {
-      this.agriculturalImplementsRowsData.push({
+      try {
+        this.agriculturalImplementsRowsData.push({
         ...this.agriculturalImplementsRows,
       });
       console.log("%%%%%%%%%DATA%%%%%%%", this.agriculturalImplementsRowsData);
+      this.triggerToastMessage(
+            "Insertion of Agricultural Implements Details is Submitted Successfully","custom_toast"
+          );
       this.clearAgriculturalImplementsRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Agricultural Implements Details","danger"
+          );
+        console.log("error in addAgriculturalImplementsRows function",error)
+      }
+     
     },
     clearAgriculturalImplementsRows() {
       this.agriculturalImplementsRows = {
@@ -4967,14 +5268,24 @@ export default {
       }
     },
     addHorticultureRows() {
-      this.horticultureDetailsRowsData.push({
+      try {
+        this.horticultureDetailsRowsData.push({
         ...this.horticultureDetailsRows,
       });
       console.log(
         "%%%%%%%%%%%DATA%%%%%%%%%%",
         this.horticultureDetailsRowsData
       );
-      this.clearHorticultureDetailsRowsData();
+      this.triggerToastMessage(
+            "Insertion of Horticulture Details is Submitted Successfully","custom_toast"
+          );
+          this.clearHorticultureDetailsRowsData();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Horticulture Details","danger"
+          );
+        console.error("Error in addHorticultureRows function",error)
+      }
     },
     clearHorticultureDetailsRowsData() {
       this.horticultureDetailsRows = {
@@ -4995,14 +5306,24 @@ export default {
       }
     },
     addFodderandFeedAvailabilityRows() {
-      this.fodderandFeedAvailabilityRowsData.push({
+      try {
+        this.fodderandFeedAvailabilityRowsData.push({
         ...this.fodderandFeedAvailability,
       });
       console.log(
         "%%%%%%%%%%%%%DATA%%%%%%%%%%%%%",
         this.fodderandFeedAvailabilityRowsData
       );
-      this.clearFodderFeedRows();
+      this.triggerToastMessage(
+            "Insertion of Fodder and Feed Availability Details is Submitted Successfully","custom_toast"
+          );
+          this.clearFodderFeedRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Fodder and Feed Availability Details","danger"
+          );
+        console.error("error in addFodderandFeedAvailabilityRows fucntion",error)
+      }
     },
     clearFodderFeedRows() {
       this.fodderandFeedAvailability = {
@@ -5025,12 +5346,22 @@ export default {
       }
     },
     addFodderFuelRows() {
-      this.fodderFuelRowsData.push({ ...this.fodderFuelRows });
+      try {
+        this.fodderFuelRowsData.push({ ...this.fodderFuelRows });
       console.log(
         "################DATA##############",
         this.fodderFuelRowsData
       );
-      this.clearFodderFullRows();
+      this.triggerToastMessage(
+            "Insertion of Fodder Fuel Details is Submitted Successfully","custom_toast"
+          );
+          this.clearFodderFullRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Fodder Fuel Availability Details","danger"
+          );
+        console.error("error in addFodderFuelRows function",error)
+      }
     },
     clearFodderFullRows() {
       this.fodderFuelRows = {
@@ -5054,9 +5385,20 @@ export default {
       }
     },
     addGrazeCattleRows() {
-      this.grazeCattleRowsData.push({ ...this.grazeCattleRows });
+      try {
+        this.grazeCattleRowsData.push({ ...this.grazeCattleRows });
       console.log("%%%%%%%%%DATA%%%%%%%%%%%%%%", this.grazeCattleRowsData);
+      this.triggerToastMessage(
+            "Insertion of Graze Cattle Details is Submitted Successfully","custom_toast"
+          );
+ 
       this.clearGrazeCattleRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Graze Cattle Details","danger"
+          );
+        console.error("error in addGrazeCattleRows function",error)
+      }
     },
     clearGrazeCattleRows() {
       this.grazeCattleRows = {
@@ -5078,9 +5420,21 @@ export default {
       }
     },
     addHouseholdRows() {
-      this.householdRowsData.push({ ...this.householdRows });
+      try {
+        this.householdRowsData.push({ ...this.householdRows });
       console.log("^^^^^^^^DATA^^^^^^^^^^^^^^", this.householdRowsData);
+      this.triggerToastMessage(
+            "Insertion of Household Details is Submitted Successfully","custom_toast"
+          );
+ 
       this.clearHouseholdRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Household Details","danger"
+          );
+        console.error("error in addHouseholdRows function",error)
+      }
+     
     },
     clearHouseholdRows() {
       this.householdRows = {
@@ -5105,14 +5459,25 @@ export default {
       }
     },
     addParticipationRows() {
-      this.participationinCommunityProgramsRowsData.push({
+      try {
+        this.participationinCommunityProgramsRowsData.push({
         ...this.participationinCommunityProgramsRows,
       });
       console.log(
         "%%%%%%%%%%%%%%%%DATA%%%%%%%%%%%%%",
         this.participationinCommunityProgramsRowsData
       );
+      this.triggerToastMessage(
+            "Insertion of Participation Details is Submitted Successfully","custom_toast"
+          );
+
       this.clearParticipationRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Participation Details","danger"
+          );
+        console.error("error in addParticipationRows function",error)
+      }
     },
     clearParticipationRows() {
       this.participationinCommunityProgramsRows = {
@@ -5134,14 +5499,25 @@ export default {
       }
     },
     addAwarenessTechnologyRows() {
-      this.awarenessTechnologyRowsData.push({
+      try {
+        this.awarenessTechnologyRowsData.push({
         ...this.awarenessTechnologyRows,
       });
       console.log(
         "%%%%%%%%%%%DATA%%%%%%%%%%%%%",
         this.awarenessTechnologyRowsData
       );
+      this.triggerToastMessage(
+            "Insertion of Awareness Technology Details is Submitted Successfully","custom_toast"
+          );
+ 
       this.clearAwarenessTechnologyRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Awareness Technology Details","danger"
+          );
+        console.error("error in addAwarenessTechnologyRows fucntion",error)
+      }
     },
     clearAwarenessTechnologyRows() {
       this.awarenessTechnologyRows = {
@@ -5162,12 +5538,24 @@ export default {
       }
     },
     addMembershipDetailsRows() {
-      this.membershipDetailsRowsData.push({ ...this.membershipDetailsRows });
+      try {
+        this.membershipDetailsRowsData.push({ ...this.membershipDetailsRows });
       console.log(
         "&&&&&&&&&&&&&DATA&&&&&&&&&&&&&&",
         this.membershipDetailsRowsData
       );
+      this.triggerToastMessage(
+            "Insertion of Membership Details is Submitted Successfully","custom_toast"
+          );
+ 
       this.clearMembershipDetailsRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to membership Details","danger"
+          );
+        console.error("Error in addMembershipDetailsRows fucntion",error)
+      }
+      
     },
     clearMembershipDetailsRows() {
       this.membershipDetailsRows = {
@@ -5189,12 +5577,23 @@ export default {
       }
     },
     addBeneficiarySchemeRows() {
-      this.beneficiarySchemeRowsData.push({ ...this.beneficiarySchemeRows });
+      try {
+        this.beneficiarySchemeRowsData.push({ ...this.beneficiarySchemeRows });
       console.log(
         "$$$$$$$$$$$$$$$$$DATA$$$$$$$$$$$$$$$$",
         this.beneficiarySchemeRowsData
       );
+      this.triggerToastMessage(
+            "Insertion of Beneficiary Scheme Details is Submitted Successfully","custom_toast"
+          );
+
       this.clearBeneficiarySchemeRows();
+      } catch (error) {
+        this.triggerToastMessage(
+            "Failed to Beneficiary Scheme Details","danger"
+          );
+        console.error("Error in addBeneficiarySchemeRows function",error)
+      } 
     },
     clearBeneficiarySchemeRows() {
       this.beneficiarySchemeRows = {
@@ -5316,4 +5715,8 @@ ion-card {
 ion-button {
   border-radius: 16px;
 }
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
 </style>

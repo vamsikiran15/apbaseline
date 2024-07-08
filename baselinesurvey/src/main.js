@@ -35,8 +35,8 @@ import '@ionic/vue/css/palettes/dark.system.css';
 
 // Import Ionicons library
 import { addIcons } from 'ionicons';
-import { closeCircleOutline,call,addCircleOutline,addCircle,caretBackOutline,addOutline,caretForwardOutline,checkmarkOutline,
-  createOutline} from 'ionicons/icons';
+import { closeCircleOutline,call,addCircleOutline,addCircle,caretBackOutline,addOutline,
+  caretForwardOutline,checkmarkOutline,createOutline,trash,trashBinOutline} from 'ionicons/icons';
 
 addIcons({
   'close-circle-outline': closeCircleOutline,
@@ -47,7 +47,9 @@ addIcons({
   'add-outline':addOutline,
   'caret-forward-outline':caretForwardOutline,
   'checkmark-outline':checkmarkOutline,
-  'create-outline' : createOutline
+  'create-outline' : createOutline,
+  'trash':trash,
+  'trash-bin-outline':trashBinOutline
 });
 
 /* Theme variables */
