@@ -26,6 +26,7 @@
           fill="outline"
           v-model="newFodderFeed.fodderfeed_item"
         >
+        <ion-select-option value="">Select Item</ion-select-option>
           <ion-select-option value="ExistingAreaUnderFodder"
             >Existing Area Under Fodder</ion-select-option
           >
@@ -64,12 +65,14 @@
           class="ion-margin-top"
           placeholder="Enter value of Production Tons/year"
           fill="outline"
+           type="number"
           label="Production(Tonnes/Year)"
           label-placement="floating"
           v-model="newFodderFeed.fodderfeed_production"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateFodderFeedData"
@@ -80,7 +83,6 @@
           ></ion-icon
           >Update Fodder Feed</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

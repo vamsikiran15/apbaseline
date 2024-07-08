@@ -56,6 +56,7 @@
           fill="outline"
           v-model="newRowMigrate.reasons_for_migrating"
         >
+        <ion-select-option value="">Select Reasons for Migrating</ion-select-option>
           <ion-select-option value="distress">Distress</ion-select-option>
           <ion-select-option value="Better Livelihood options"
             >Better Livelihood options</ion-select-option
@@ -72,6 +73,7 @@
           fill="outline"
           v-model="newRowMigrate.place_of_migrating"
         >
+        <ion-select-option value="">Select Place of Migration</ion-select-option>
           <ion-select-option value="Within District"
             >Within District</ion-select-option
           >
@@ -92,6 +94,7 @@
           fill="outline"
           v-model="newRowMigrate.occupation_during_migration"
         >
+        <ion-select-option value="">Select Occupation during Migration</ion-select-option>
           <ion-select-option value="agri">Agri</ion-select-option>
           <ion-select-option value="industriallabour"
             >Industrial Labour</ion-select-option
@@ -102,14 +105,15 @@
         </ion-select>
         <ion-input
           class="ion-margin-top"
-          type="read-only"
+           type="number"
           fill="outline"
           label="Income from Such Occupation "
           label-placement="floating"
           v-model="newRowMigrate.income_for_such_occupation"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateMigrateData()"
@@ -120,7 +124,6 @@
           ></ion-icon
           >Update Migration Details</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

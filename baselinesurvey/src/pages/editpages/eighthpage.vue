@@ -36,6 +36,7 @@
           fill="outline"
           v-model="newRowManureChemical.crops"
         >
+        <ion-select-option value="">Select Crop</ion-select-option>
           <ion-select-option value="Paddy">Paddy</ion-select-option>
           <ion-select-option value="maize">maize</ion-select-option>
           <ion-select-option value="jowar">jowar</ion-select-option>
@@ -57,6 +58,7 @@
         <ion-input
           class="ion-margin-top"
           placeholder="Enter value in tons"
+           type="number"
           fill="outline"
           label="Organic(Tons)"
           label-placement="floating"
@@ -65,6 +67,7 @@
         <ion-input
           class="ion-margin-top"
           placeholder="Enter value in grams"
+           type="number"
           fill="outline"
           label="Micro Nutrients(In Gms)"
           label-placement="floating"
@@ -107,12 +110,14 @@
           class="ion-margin-top"
           placeholder="Enter cost in rupees"
           fill="outline"
+           type="number"
           label="Cost in Rupees"
           label-placement="floating"
           v-model="newRowManureChemical.cost"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateManureChemicalData()"
@@ -123,7 +128,6 @@
           ></ion-icon
           >Add Manure Chemical Details</ion-button
         >
-      </ion-card-content>
     </ion-card>
 
     <!-- <ion-card>

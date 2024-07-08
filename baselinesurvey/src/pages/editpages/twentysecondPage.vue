@@ -28,6 +28,7 @@
           fill="outline"
           v-model="newAwarenessAdoption.technology"
         >
+        <ion-select-option value="">Select Technology</ion-select-option>
           <ion-select-option value="Soil Management"
             >Soil Management
           </ion-select-option>
@@ -58,6 +59,7 @@
           fill="outline"
           v-model="newAwarenessAdoption.source_of_information"
         >
+        <ion-select-option value="">Select Source of Income</ion-select-option>
           <ion-select-option value="Print Media"
             >Print Media
           </ion-select-option>
@@ -79,8 +81,9 @@
           >
           <ion-select-option value="NGOs">NGOs</ion-select-option>
         </ion-select>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateAwarenessAdoptionData"
@@ -91,7 +94,6 @@
           ></ion-icon
           >Update Awareness Adoption</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

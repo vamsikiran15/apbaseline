@@ -51,9 +51,10 @@
           label-placement="floating"
           v-model="selectedDateServeyorName.serveyor_name"
         ></ion-input>
-        <ion-button
+      </ion-card-content>
+      <ion-button
           color="primary"
-          class="ion-margin-top"
+          class="ion-margin"
           expand="block"
           @click="
             saveData(), saveHaveReceivedData(), saveUpdateDateServeyouName()
@@ -65,7 +66,6 @@
           ></ion-icon
           >Update Conclusion</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

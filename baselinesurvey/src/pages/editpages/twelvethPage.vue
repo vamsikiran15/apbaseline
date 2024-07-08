@@ -30,6 +30,7 @@
           fill="outline"
           v-model="newRowDifferentSource.source"
         >
+        <ion-select-option value="">Select Items</ion-select-option>
           <ion-select-option value="Household Member's Income"
             >Household Member's Income</ion-select-option
           >
@@ -80,8 +81,9 @@
           label-placement="floating"
           v-model="newRowDifferentSource.income_during_the_year"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateDifferentSourceData()"
@@ -92,7 +94,6 @@
           ></ion-icon
           >Update Different Source Income</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

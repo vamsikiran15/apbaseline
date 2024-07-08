@@ -32,6 +32,7 @@
           fill="outline"
           v-model="newRowPestDisease.crops"
         >
+        <ion-select-option value="">Select Crop</ion-select-option>
           <ion-select-option value="Paddy">Paddy</ion-select-option>
           <ion-select-option value="maize">maize</ion-select-option>
           <ion-select-option value="jowar">jowar</ion-select-option>
@@ -107,18 +108,6 @@
           label-placement="floating"
           v-model="newRowPestDisease.amount_spent_wages"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
-          expand="block"
-          color="primary"
-          @click="UpdatePestDiseaseData()"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Pest/Disease Details</ion-button
-        >
         <!-- <ion-input
           class="ion-margin-top"
           placeholder="Total material"
@@ -134,6 +123,18 @@
           label-placement="floating"
         ></ion-input> -->
       </ion-card-content>
+      <ion-button
+          class="ion-margin"
+          expand="block"
+          color="primary"
+          @click="UpdatePestDiseaseData()"
+          ><ion-icon
+            class="ion-margin-end"
+            name="add-circle"
+            slot="icon-only"
+          ></ion-icon
+          >Update Pest/Disease Details</ion-button
+        >
     </ion-card>
     <!-- <ion-card>
       <ion-card-content>

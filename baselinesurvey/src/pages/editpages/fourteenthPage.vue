@@ -93,6 +93,7 @@
         <ion-input
           class="ion-margin-top"
           placeholder="Enter units in Ha"
+           type="number"
           fill="outline"
           label="Rabi"
           label-placement="floating"
@@ -101,6 +102,7 @@
         <ion-input
           class="ion-margin-top"
           placeholder="Enter units in Ha"
+           type="number"
           fill="outline"
           label="Summer"
           label-placement="floating"
@@ -137,8 +139,9 @@
             >Non-Polluted</ion-select-option
           >
         </ion-select>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateSourceQualityWaterData()"
@@ -149,7 +152,6 @@
           ></ion-icon
           >Update Source and Quality Water</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

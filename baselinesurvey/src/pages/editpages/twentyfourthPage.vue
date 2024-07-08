@@ -44,8 +44,9 @@
           label-placement="floating"
           v-model="newAnyScheme.value_of_the_benefit"
         ></ion-input>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateAnySchemeData"
@@ -56,7 +57,6 @@
           ></ion-icon
           >Update AnyScheme</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>

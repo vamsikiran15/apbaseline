@@ -53,6 +53,7 @@
           class="ion-margin-top"
           placeholder="Quantity"
           fill="outline"
+           type="number"
           label="Quantity"
           label-placement="floating"
           v-model="newRowAvailableDrinkingWater.drinking_quantity"
@@ -67,14 +68,16 @@
           fill="outline"
           v-model="newRowAvailableDrinkingWater.source_of_drinking_water"
         >
+        <ion-select-option value="">Select Source of Drinking Water</ion-select-option>
           <ion-select-option value="borewell">Borewell</ion-select-option>
           <ion-select-option value="tank">Tank</ion-select-option>
           <ion-select-option value="publictank">Public Tap</ion-select-option>
           <ion-select-option value="openwell">Open Well</ion-select-option>
           <ion-select-option value="canalwater">Canal Water</ion-select-option>
         </ion-select>
-        <ion-button
-          class="ion-margin-top"
+      </ion-card-content>
+      <ion-button
+          class="ion-margin"
           expand="block"
           color="primary"
           @click="UpdateAvailableDrinkingWaterData()"
@@ -85,7 +88,6 @@
           ></ion-icon
           >Update Available Drinking Water</ion-button
         >
-      </ion-card-content>
     </ion-card>
   </div>
 </template>
