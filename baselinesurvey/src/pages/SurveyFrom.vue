@@ -3528,7 +3528,22 @@ import {
   toastController,
 } from "@ionic/vue";
 import axios from "axios";
+import { Geolocation } from "@capacitor/geolocation";
 export default {
+  mounted() {
+    this.getCurrentPosition();
+  },
+ watch:{
+  totalRainfedArea: function() {
+      this.calculateSum();
+    },
+    totalIrrigatedArea: function() {
+      this.calculateSum();
+    },
+    selectedStep(value) {
+      this.step = value;
+    },
+ },
   data() {
     return {
       currentStep: 1,
@@ -3691,16 +3706,15 @@ export default {
       jobCardNo: "",
       SocialStatus: "",
       ContactNumber: "",
-      totalRainfedArea: "",
-      totalIrrigatedArea: "",
+      totalRainfedArea: 0,
+      totalIrrigatedArea: 0,
       totalHoldingArea: "",
       houseType: "",
       cultivatedArea: "",
       rainfedArea: "",
       irrigatedArea: "",
-      total: "",
+      total: 0,
       typeofOwnership: "",
-
       nameOfTheAnimal: "",
       existingNo: "",
       milkProductionLitresPerDay: "",
@@ -3730,7 +3744,6 @@ export default {
       manDays: "",
       wageDays: "",
       income: "",
-      total: "",
       landLessLabourers: {
         nameOfTheProject: "",
         manDays: "",
@@ -3816,7 +3829,6 @@ export default {
       },
       pestandDiseaseRowsData: [],
       items: "",
-      total: "",
       familyExpenditureRows: {
         items: "",
         total: "",
@@ -3957,7 +3969,8 @@ export default {
       surveyor: "",
       dateA: "",
       subType: "",
-      total:""
+      lat:null ,
+      long:null
     };
   },
   components: {
@@ -4024,6 +4037,18 @@ export default {
     },
   },
   methods: {
+    async getCurrentPosition() {
+      try {
+        const coordinates = await Geolocation.getCurrentPosition();
+        this.lat = coordinates.coords.latitude;
+        this.long = coordinates.coords.longitude;
+      } catch (e) {
+        console.error("Error getting location", e);
+      }
+    },
+    calculateSum() {
+      this.total = parseInt(this.totalRainfedArea) + parseInt(this.totalIrrigatedArea);
+    },
     // async callChildFromParent() {
     //   this.submitData()
     //   console.log("fifth component called",this.$refs.fifthComp)
@@ -4320,6 +4345,8 @@ export default {
             type_of_house: this.houseType,
             own_or_rented: this.subType,
             habitationId: this.selectedHabitation,
+            latitude:this.lat,
+            longitude:this.long
           }
         );
         console.log("Response", response);
