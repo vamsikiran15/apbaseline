@@ -559,22 +559,28 @@
                       >
                     </ion-col>
                   </ion-radio-group>
-                  <ion-radio-group
-                    v-if="editedItem.type_of_house"
-                    class="ion-padding"
-                    v-model="editedItem.own_or_rented"
-                  >
-                    <ion-col>
-                      <ion-radio value="Own" label-placement="start"
-                        >Own</ion-radio
-                      >
-                    </ion-col>
-                    <ion-col>
-                      <ion-radio value="Rented" label-placement="start"
-                        >Rented</ion-radio
-                      >
-                    </ion-col>
-                  </ion-radio-group>
+                  <div v-if="editedItem.type_of_house">
+                    <ion-card-subtitle
+                      color="tertiary"
+                      class="ion-padding ion-text-center"
+                      >Own/Rented</ion-card-subtitle
+                    >
+                    <ion-radio-group
+                      class="ion-padding"
+                      v-model="editedItem.own_or_rented"
+                    >
+                      <ion-col>
+                        <ion-radio value="Own" label-placement="start"
+                          >Own</ion-radio
+                        >
+                      </ion-col>
+                      <ion-col>
+                        <ion-radio value="Rented" label-placement="start"
+                          >Rented</ion-radio
+                        >
+                      </ion-col>
+                    </ion-radio-group>
+                  </div>
                 </ion-row>
               </ion-card-content>
               <ion-button
@@ -1712,6 +1718,8 @@ import {
   IonFooter,
   IonItem,
   IonCheckbox,
+  IonToast,
+  toastController,
 } from "@ionic/vue";
 import fifthPage from "./editpages/fifthPage.vue";
 import SixthPage from "./editpages/sixthPage.vue";
@@ -1993,6 +2001,8 @@ export default {
     TwentyfifthPage,
     IonFooter,
     IonItem,
+    IonToast,
+    toastController,
   },
   computed: {
     currentStepLabel() {
@@ -2604,9 +2614,18 @@ export default {
             longitude: this.long,
           }
         );
+        console.log("Item updated individual:", response.statusText);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToast(
+            "Updated of Survey Form is Submitted Successfully",
+            "success"
+          );
+        }
         console.log("Item updated individual:", response.data);
         // this.$emit("item-updated", response.data); // Emit event with updated item
       } catch (error) {
+        this.triggerToast("Failed to submit the survey form", "danger");
         console.error("Error individual updating item:", error);
       }
     },
@@ -2946,8 +2965,23 @@ export default {
     },
     submitForm() {
       this.$router.push({ path: "/search" }).then(() => {
+        this.triggerToast();
         this.$router.go(0);
       });
+    },
+    async triggerToast(message, color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+
+      // Delay the page reload until after the toast has been displayed
+      // setTimeout(() => {
+      //   this.$router.go(0);
+      // }, 3000); // duration of the toast
     },
   },
 };

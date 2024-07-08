@@ -19,29 +19,29 @@
     </ion-header>
     <ion-content>
       <ion-card>
-      <ion-row class="ion-padding">
-        <ion-col>
-          <ion-select
-            aria-label="Select Step"
-            interface="popover"
-            :label="currentStepLabel"
-            label-placement="floating"
-            placeholder="Go to Step"
-            fill="outline"
-            v-model="selectedStep"
-            @ionChange="navigateToStep"
-          >
-            <ion-select-option
-              v-for="(stepName, index) in steps"
-              :key="index"
-              :value="index + 1"
+        <ion-row class="ion-padding">
+          <ion-col>
+            <ion-select
+              aria-label="Select Step"
+              interface="popover"
+              :label="currentStepLabel"
+              label-placement="floating"
+              placeholder="Go to Step"
+              fill="outline"
+              v-model="selectedStep"
+              @ionChange="navigateToStep"
             >
-              {{ stepName }}
-            </ion-select-option>
-          </ion-select>
-        </ion-col>
-      </ion-row>
-    </ion-card>
+              <ion-select-option
+                v-for="(stepName, index) in steps"
+                :key="index"
+                :value="index + 1"
+              >
+                {{ stepName }}
+              </ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-card>
       <div v-for="step in totalSteps" :key="step">
         <!-- Intermediate steps -->
         <div v-if="currentStep === step">
@@ -497,16 +497,16 @@
                   </ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-input
+                  <ion-input
                     class="ion-margin-top"
                     label="Total"
                     label-placement="floating"
                     fill="outline"
                     placeholder="Total"
-                    v-model="total"
+                    v-model="totalHoldingArea"
                     readonly="readonly"
                   ></ion-input>
-                  </ion-row>
+                </ion-row>
                 <ion-card-subtitle
                   color="tertiary"
                   class="ion-padding ion-text-center"
@@ -674,7 +674,7 @@
                   fill="outline"
                   v-model="newRow.level_of_education"
                 >
-                <ion-select-option value=""
+                  <ion-select-option value=""
                     >Select Level of Education</ion-select-option
                   >
                   <ion-select-option value="illiterate"
@@ -738,7 +738,7 @@
                   fill="outline"
                   v-model="newRow.membership"
                 >
-                <ion-select-option value=""
+                  <ion-select-option value=""
                     >Select Membership</ion-select-option
                   >
                   <ion-select-option value="shg">SHG</ion-select-option>
@@ -757,17 +757,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="full"
-              @click="addHouseholdDetailsRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Household Details</ion-button
-            >
+                class="ion-margin"
+                color="primary"
+                expand="full"
+                @click="addHouseholdDetailsRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Household Details</ion-button
+              >
             </ion-card>
             <ul class="styled-list">
               <li v-for="(row, index) in rows" :key="index">
@@ -814,7 +814,7 @@
                   fill="outline"
                   v-model="cultivatedAreaRows.cultivatedArea"
                 >
-                <ion-select-option value=""
+                  <ion-select-option value=""
                     >Select Cultivated Area</ion-select-option
                   >
                   <ion-select-option value="Owned Land"
@@ -864,23 +864,25 @@
                   fill="outline"
                   v-model="cultivatedAreaRows.typeofOwnership"
                 >
-                <ion-select-option value="">Select Ownership</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Ownership</ion-select-option
+                  >
                   <ion-select-option value="Own">Own</ion-select-option>
                   <ion-select-option value="Rent">Rent</ion-select-option>
                 </ion-select>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addLandParticularsRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Land Particulars Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addLandParticularsRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Land Particulars Details</ion-button
+              >
             </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
@@ -1059,17 +1061,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="incomeKharifRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Income from Crops(Rs)-Kharif</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="incomeKharifRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Income from Crops(Rs)-Kharif</ion-button
+              >
             </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
@@ -1090,7 +1092,7 @@
                   class="ion-margin-top"
                   v-model="incomefromCropsRabiRows.cropGrownRabhi"
                 >
-                <ion-select-option value="">Select Crop</ion-select-option>
+                  <ion-select-option value="">Select Crop</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="Meeze">Meeze</ion-select-option>
                   <ion-select-option value="Jower">Jower</ion-select-option>
@@ -1228,18 +1230,18 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="incomeRabiRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Income from Crops(Rs)-Rabi</ion-button
-            >
-            </ion-card>      
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="incomeRabiRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Income from Crops(Rs)-Rabi</ion-button
+              >
+            </ion-card>
           </div>
           <div v-if="step === 4">
             <ion-card>
@@ -1328,17 +1330,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="full"
-              @click="livestockData()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Livestock Details</ion-button
-            >
+                class="ion-margin"
+                color="primary"
+                expand="full"
+                @click="livestockData()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Livestock Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 5">
@@ -1390,7 +1392,9 @@
                   fill="outline"
                   v-model="migrationStatusRows.reasonsForMigrating"
                 >
-                <ion-select-option value="">Select Reasons for Migrating</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Reasons for Migrating</ion-select-option
+                  >
                   <ion-select-option value="distress"
                     >Distress</ion-select-option
                   >
@@ -1411,7 +1415,9 @@
                   fill="outline"
                   v-model="migrationStatusRows.placeOfMigration"
                 >
-                <ion-select-option value="">Select Place of Migration</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Place of Migration</ion-select-option
+                  >
                   <ion-select-option value="withindistrict"
                     >Within District</ion-select-option
                   >
@@ -1432,7 +1438,9 @@
                   fill="outline"
                   v-model="migrationStatusRows.occupationDuringMigration"
                 >
-                <ion-select-option value="">Select Occupation during Migrating</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Occupation during Migrating</ion-select-option
+                  >
                   <ion-select-option value="agri">Agri</ion-select-option>
                   <ion-select-option value="industriallabour"
                     >Industrial Labour</ion-select-option
@@ -1451,17 +1459,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="migrationStatusAddRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Migration Status</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="migrationStatusAddRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Migration Status</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 6">
@@ -1485,7 +1493,9 @@
                   class="ion-margin-top"
                   v-model="landLessLabourers.nameOfTheProject"
                 >
-                <ion-select-option value="">Select Name of the Scheme</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Name of the Scheme</ion-select-option
+                  >
                   <ion-select-option value="watershed"
                     >Watershed</ion-select-option
                   >
@@ -1534,17 +1544,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="landLessLabourData()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="landLessLabourData()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Government Scheme Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 7">
@@ -1576,7 +1586,9 @@
                   fill="outline"
                   v-model="governmentSchemesRows.schemeName"
                 >
-                <ion-select-option value="">Select Scheme Name</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Scheme Name</ion-select-option
+                  >
                   <ion-select-option value="Amma Vodi"
                     >Amma Vodi</ion-select-option
                   >
@@ -1638,17 +1650,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addGovernmentSchemesDataRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addGovernmentSchemesDataRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Government Scheme Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 8">
@@ -1679,7 +1691,7 @@
                   fill="outline"
                   v-model="useofChemicalManureRows.crops"
                 >
-                <ion-select-option value="">Select Crops</ion-select-option>
+                  <ion-select-option value="">Select Crops</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -1785,17 +1797,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addChemicalManureRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Manure and Chemical Fertilizers Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addChemicalManureRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Manure and Chemical Fertilizers Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 9">
@@ -1823,7 +1835,7 @@
                   fill="outline"
                   v-model="pestandDiseaseRows.crops"
                 >
-                <ion-select-option value="">Select Crops</ion-select-option>
+                  <ion-select-option value="">Select Crops</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -1941,17 +1953,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              @click="addPestDiseaseRows()"
-              color="primary"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Pest and Disease Control Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                @click="addPestDiseaseRows()"
+                color="primary"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Pest and Disease Control Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 10">
@@ -1973,7 +1985,9 @@
                   fill="outline"
                   v-model="loanParticularsRows.particulars"
                 >
-                <ion-select-option value="">Select Particulars</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Particulars</ion-select-option
+                  >
                   <ion-select-option value="Amount Borrowed"
                     >Amount Borrowed</ion-select-option
                   >
@@ -2056,7 +2070,9 @@
                   fill="outline"
                   v-model="loanParticularsRows.agriculture"
                 >
-                <ion-select-option value="">Select Agriculture</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Agriculture</ion-select-option
+                  >
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -2095,7 +2111,9 @@
                   fill="outline"
                   v-model="loanParticularsRows.consumption"
                 >
-                <ion-select-option value="">Select Consumption</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Consumption</ion-select-option
+                  >
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -2135,7 +2153,9 @@
                   fill="outline"
                   v-model="loanParticularsRows.education"
                 >
-                <ion-select-option value="">Select Education</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Education</ion-select-option
+                  >
                   <ion-select-option value="illiterate"
                     >Illiterate</ion-select-option
                   >
@@ -2176,7 +2196,7 @@
                   fill="outline"
                   v-model="loanParticularsRows.others2"
                 >
-                <ion-select-option value="">Select Others</ion-select-option>
+                  <ion-select-option value="">Select Others</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
                   <ion-select-option value="maize">maize</ion-select-option>
                   <ion-select-option value="jowar">jowar</ion-select-option>
@@ -2220,18 +2240,18 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              @click="addLoanParticularsRows()"
-              color="primary"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Loan Particulars Details</ion-button
-            >
-            </ion-card> 
+                class="ion-margin"
+                expand="full"
+                @click="addLoanParticularsRows()"
+                color="primary"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Loan Particulars Details</ion-button
+              >
+            </ion-card>
           </div>
           <div v-if="step === 11">
             <ion-card>
@@ -2255,7 +2275,7 @@
                   fill="outline"
                   v-model="familyExpenditureRows.items"
                 >
-                <ion-select-option value="">Select Items</ion-select-option>
+                  <ion-select-option value="">Select Items</ion-select-option>
                   <ion-select-option value="Food">Food</ion-select-option>
                   <ion-select-option value="Education"
                     >Education</ion-select-option
@@ -2292,18 +2312,18 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addFamilyExpenditureRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Family Expenditure Details</ion-button
-            >
-            </ion-card> 
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addFamilyExpenditureRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Family Expenditure Details</ion-button
+              >
+            </ion-card>
           </div>
           <div v-if="step === 12">
             <ion-card>
@@ -2330,7 +2350,7 @@
                   fill="outline"
                   v-model="sourceofIncomeRows.source"
                 >
-                <ion-select-option value="">Select Source</ion-select-option>
+                  <ion-select-option value="">Select Source</ion-select-option>
                   <ion-select-option value="HouseholdMemberIncome"
                     >Household Member's Income</ion-select-option
                   >
@@ -2386,17 +2406,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="full"
-              @click="addSourceofIncomeRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Source of Income and Family Details</ion-button
-            >
+                class="ion-margin"
+                color="primary"
+                expand="full"
+                @click="addSourceofIncomeRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Source of Income and Family Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 13">
@@ -2467,7 +2487,9 @@
                   fill="outline"
                   v-model="drinkingWaterAvailabilityRows.sourceDrinkingWater"
                 >
-                <ion-select-option value="">Select Drinking Water</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Drinking Water</ion-select-option
+                  >
                   <ion-select-option value="borewell"
                     >Borewell</ion-select-option
                   >
@@ -2484,17 +2506,17 @@
                 </ion-select>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addDrinkingWaterAvailabilityRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Availability of Drinking Water Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addDrinkingWaterAvailabilityRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Availability of Drinking Water Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 14">
@@ -2522,7 +2544,9 @@
                   fill="outline"
                   v-model="sourceandQualityofWaterRows.waterSource"
                 >
-                <ion-select-option value="">Select Water Source</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Water Source</ion-select-option
+                  >
                   <ion-select-option value="borewell">Open</ion-select-option>
                   <ion-select-option value="tank">Borewell</ion-select-option>
                   <ion-select-option value="publictank">Tank</ion-select-option>
@@ -2643,17 +2667,17 @@
                 </ion-select>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addSourceandQualityWaterRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Source and Quality of Water Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addSourceandQualityWaterRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Source and Quality of Water Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 15">
@@ -2673,7 +2697,9 @@
                   fill="outline"
                   v-model="agriculturalImplementsRows.selectImplements"
                 >
-                <ion-select-option value="">Select Implements</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Implements</ion-select-option
+                  >
                   <ion-select-option value="tractor">Tractor</ion-select-option>
                   <ion-select-option value="SprayerManualPower"
                     >Sprayer-Manual/Power</ion-select-option
@@ -2724,17 +2750,17 @@
                 </ion-select>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addAgriculturalImplementsRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Agriculture Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addAgriculturalImplementsRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Agriculture Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 16">
@@ -2754,7 +2780,7 @@
                   fill="outline"
                   v-model="horticultureDetailsRows.details"
                 >
-                <ion-select-option value="">Select Details</ion-select-option>
+                  <ion-select-option value="">Select Details</ion-select-option>
                   <ion-select-option value="HorticulturePlantsTrees"
                     >Horticulture Plants/Trees</ion-select-option
                   >
@@ -2795,17 +2821,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="full"
-              @click="addHorticultureRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Horticulture Details</ion-button
-            >
+                class="ion-margin"
+                color="primary"
+                expand="full"
+                @click="addHorticultureRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Horticulture Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 17">
@@ -2827,7 +2853,7 @@
                   fill="outline"
                   v-model="fodderandFeedAvailability.item"
                 >
-                <ion-select-option value="">Select Item</ion-select-option>
+                  <ion-select-option value="">Select Item</ion-select-option>
                   <ion-select-option value="ExistingAreaUnderFodder"
                     >Existing Area Under Fodder</ion-select-option
                   >
@@ -2850,7 +2876,7 @@
                   fill="outline"
                   v-model="fodderandFeedAvailability.unit"
                 >
-                <ion-select-option value="">Select Unit</ion-select-option>
+                  <ion-select-option value="">Select Unit</ion-select-option>
                   <ion-select-option value="ha">Ha</ion-select-option>
                   <ion-select-option value="tons">Tons/Year</ion-select-option>
                   <ion-select-option value="kg">Kg/day</ion-select-option>
@@ -2875,17 +2901,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addFodderandFeedAvailabilityRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addFodderandFeedAvailabilityRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Government Scheme Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 18">
@@ -2908,7 +2934,7 @@
                   fill="outline"
                   v-model="fodderFuelRows.details"
                 >
-                <ion-select-option value="">Select Details</ion-select-option>
+                  <ion-select-option value="">Select Details</ion-select-option>
                   <ion-select-option value="ownland"
                     >Own Land</ion-select-option
                   >
@@ -2958,17 +2984,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="full"
-              @click="addFodderFuelRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
+                class="ion-margin"
+                color="primary"
+                expand="full"
+                @click="addFodderFuelRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Government Scheme Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 19">
@@ -2991,7 +3017,9 @@
                   fill="outline"
                   v-model="grazeCattleRows.grazingOfCattle"
                 >
-                <ion-select-option value="">Select Grazing of Cattle/Animals</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Grazing of Cattle/Animals</ion-select-option
+                  >
                   <ion-select-option value="In Community Land"
                     >In Community Land</ion-select-option
                   >
@@ -3022,17 +3050,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="full"
-              @click="addGrazeCattleRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Government Scheme Details</ion-button
-            >
+                class="ion-margin"
+                color="primary"
+                expand="full"
+                @click="addGrazeCattleRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Government Scheme Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 20">
@@ -3052,7 +3080,7 @@
                   fill="outline"
                   v-model="householdRows.assets"
                 >
-                <ion-select-option value="">Select Assets</ion-select-option>
+                  <ion-select-option value="">Select Assets</ion-select-option>
                   <ion-select-option value="Motor Cycle"
                     >Motor Cycle</ion-select-option
                   >
@@ -3095,17 +3123,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addHouseholdRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Household Assets Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addHouseholdRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Household Assets Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 21">
@@ -3129,7 +3157,9 @@
                     participationinCommunityProgramsRows.nameofTheCommunityProgram
                   "
                 >
-                <ion-select-option value="">Select Community Program</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Community Program</ion-select-option
+                  >
                   <ion-select-option value="Awareness Programs"
                     >Awareness Programs</ion-select-option
                   >
@@ -3154,7 +3184,9 @@
                     participationinCommunityProgramsRows.markTheAppropriate
                   "
                 >
-                <ion-select-option value="">Select Appropriate</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Appropriate</ion-select-option
+                  >
                   <ion-select-option value="Increase in Knowledge"
                     >Increase in Knowledge</ion-select-option
                   >
@@ -3188,17 +3220,17 @@
                 </ion-radio-group>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              @click="addParticipationRows()"
-              color="primary"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Community Programs</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                @click="addParticipationRows()"
+                color="primary"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Community Programs</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 22">
@@ -3220,7 +3252,9 @@
                   fill="outline"
                   v-model="awarenessTechnologyRows.technology"
                 >
-                <ion-select-option value="">Select Technology</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Technology</ion-select-option
+                  >
                   <ion-select-option value="SoilManagement"
                     >Soil Management</ion-select-option
                   >
@@ -3250,7 +3284,9 @@
                   fill="outline"
                   v-model="awarenessTechnologyRows.sourceInformation"
                 >
-                <ion-select-option value="">Select Source of Information</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Source of Information</ion-select-option
+                  >
                   <ion-select-option value="PrintMedia"
                     >Print Media</ion-select-option
                   >
@@ -3272,17 +3308,17 @@
                 </ion-select>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              @click="addAwarenessTechnologyRows()"
-              color="primary"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Awareness on Technology Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                @click="addAwarenessTechnologyRows()"
+                color="primary"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Awareness on Technology Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 23">
@@ -3307,7 +3343,9 @@
                   fill="outline"
                   v-model="membershipDetailsRows.sgh"
                 >
-                <ion-select-option value="">Select Membership</ion-select-option>
+                  <ion-select-option value=""
+                    >Select Membership</ion-select-option
+                  >
                   <ion-select-option value="User Groups"
                     >User Groups</ion-select-option
                   >
@@ -3326,17 +3364,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              expand="full"
-              color="primary"
-              @click="addMembershipDetailsRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Membership Details</ion-button
-            >
+                class="ion-margin"
+                expand="full"
+                color="primary"
+                @click="addMembershipDetailsRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Membership Details</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 24">
@@ -3377,17 +3415,17 @@
                 ></ion-input>
               </ion-card-content>
               <ion-button
-              class="ion-margin"
-              color="primary"
-              expand="full"
-              @click="addBeneficiarySchemeRows()"
-              ><ion-icon
-                class="ion-margin-end"
-                name="add-circle"
-                slot="icon-only"
-              ></ion-icon
-              >Add Beneficiary Scheme Data</ion-button
-            >
+                class="ion-margin"
+                color="primary"
+                expand="full"
+                @click="addBeneficiarySchemeRows()"
+                ><ion-icon
+                  class="ion-margin-end"
+                  name="add-circle"
+                  slot="icon-only"
+                ></ion-icon
+                >Add Beneficiary Scheme Data</ion-button
+              >
             </ion-card>
           </div>
           <div v-if="step === 25">
@@ -3533,21 +3571,21 @@ export default {
   mounted() {
     this.getCurrentPosition();
   },
- watch:{
-  totalRainfedArea: function() {
+  watch: {
+    totalRainfedArea: function () {
       this.calculateSum();
     },
-    totalIrrigatedArea: function() {
+    totalIrrigatedArea: function () {
       this.calculateSum();
     },
     selectedStep(value) {
       this.step = value;
     },
- },
+  },
   data() {
     return {
       currentStep: 1,
-      totalSteps: 25,  // Update this to the total number of steps
+      totalSteps: 25, // Update this to the total number of steps
       selectedStep: null,
       steps: [
         "1 General Information",
@@ -3708,7 +3746,7 @@ export default {
       ContactNumber: "",
       totalRainfedArea: 0,
       totalIrrigatedArea: 0,
-      totalHoldingArea: "",
+      totalHoldingArea: 0,
       houseType: "",
       cultivatedArea: "",
       rainfedArea: "",
@@ -3969,8 +4007,8 @@ export default {
       surveyor: "",
       dateA: "",
       subType: "",
-      lat:null ,
-      long:null
+      lat: null,
+      long: null,
     };
   },
   components: {
@@ -4047,7 +4085,10 @@ export default {
       }
     },
     calculateSum() {
-      this.total = parseInt(this.totalRainfedArea) + parseInt(this.totalIrrigatedArea);
+      const totalrainfed = parseFloat(this.totalRainfedArea || 0);
+      const totalirrigated = parseFloat(this.totalIrrigatedArea || 0);
+      const total = totalrainfed + totalirrigated;
+      this.totalHoldingArea = isNaN(total) ? "" : total.toString();
     },
     // async callChildFromParent() {
     //   this.submitData()
@@ -4089,9 +4130,9 @@ export default {
       // Remove non-alphabetic characters
       value = value.replace(/[^a-zA-Z\s]/g, "");
       this.nameofthehousehold = value;
-      this.newRow.name_of_the_family_member = value;
-      this.migrationStatusRows.nameOfThePerson = value;
-      this.governmentSchemesRows.nameOfTheFamilyMember = value;
+      // this.newRow.name_of_the_family_member = value;
+      // this.migrationStatusRows.nameOfThePerson = value;
+      // this.governmentSchemesRows.nameOfTheFamilyMember = value;
     },
     nextStep() {
       if (this.currentStep < this.totalSteps) {
@@ -4321,7 +4362,7 @@ export default {
       try {
         const occupationString = this.occupation.join(",");
         const response = await axios.post(
-          `http://localhost:5000/api/individualinformation`,
+          `http://183.82.109.39:5000/api/individualinformation`,
           {
             district: this.selectedDistrictName,
             wcc_name: this.wccName,
@@ -4345,8 +4386,8 @@ export default {
             type_of_house: this.houseType,
             own_or_rented: this.subType,
             habitationId: this.selectedHabitation,
-            latitude:this.lat,
-            longitude:this.long
+            latitude: this.lat,
+            longitude: this.long,
           }
         );
         console.log("Response", response);
@@ -4408,7 +4449,7 @@ export default {
           }));
         const data = { id: id, rows: rowsWithCommaSeparatedOccupation };
         const response = await axios.post(
-          `http://localhost:5000/api/bulkinsertionhouseholddetails`,
+          `http://183.82.109.39:5000/api/bulkinsertionhouseholddetails`,
           data
         );
         console.log("householdDetailsSubmitData", response);
@@ -4437,7 +4478,7 @@ export default {
       try {
         const data = { id: id, rows: this.cultivatedAreaRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionlandparticulars",
+          "http://183.82.109.39:5000/api/bulkinsertionlandparticulars",
           data
         );
         console.log("Land Particulars", response);
@@ -4449,7 +4490,7 @@ export default {
       try {
         const data = { id: id, rows: this.incomefromCropsKharifRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionkharif",
+          "http://183.82.109.39:5000/api/bulkinsertionkharif",
           data
         );
         console.log("income kharif data", response);
@@ -4461,7 +4502,7 @@ export default {
       try {
         const data = { id: id, rows: this.incomefromCropsRabiRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionrabi",
+          "http://183.82.109.39:5000/api/bulkinsertionrabi",
           data
         );
         console.log("income rabi", response);
@@ -4572,7 +4613,7 @@ export default {
       try {
         const data = { id: id, rows: this.livestockRows };
         const response = await axios.post(
-          "http://localhost:5000/api/insertBulkLiveStock",
+          "http://183.82.109.39:5000/api/insertBulkLiveStock",
           data
         );
         console.log("livestock details", response);
@@ -4593,7 +4634,7 @@ export default {
       try {
         const data = { id: id, rows: this.migrationStatusRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionmigrate",
+          "http://183.82.109.39:5000/api/bulkinsertionmigrate",
           data
         );
         console.log("FIFTH PAGE CALLED", response);
@@ -4622,7 +4663,7 @@ export default {
       try {
         const data = { id: id, rows: this.landLessData };
         await axios.post(
-          "http://localhost:5000/api/bulkinsertionlandless",
+          "http://183.82.109.39:5000/api/bulkinsertionlandless",
           data
         );
       } catch (error) {
@@ -4647,7 +4688,7 @@ export default {
       try {
         const data = { id: id, rows: this.governmentSchemesRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertiongovt",
+          "http://183.82.109.39:5000/api/bulkinsertiongovt",
           data
         );
         console.log("government schemes data", response);
@@ -4673,7 +4714,7 @@ export default {
       try {
         const data = { id: id, rows: this.chemicalManureRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionmanurechemical",
+          "http://183.82.109.39:5000/api/bulkinsertionmanurechemical",
           data
         );
         console.log("manure chemical", response);
@@ -4701,7 +4742,7 @@ export default {
       try {
         const data = { id: id, rows: this.loanParticularsRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionloanparticulars",
+          "http://183.82.109.39:5000/api/bulkinsertionloanparticulars",
           data
         );
         console.log("loan particulars data", response);
@@ -4735,7 +4776,7 @@ export default {
       try {
         const data = { id: id, rows: this.pestandDiseaseRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionpest",
+          "http://183.82.109.39:5000/api/bulkinsertionpest",
           data
         );
         console.log("control measures data", response);
@@ -4765,7 +4806,7 @@ export default {
       try {
         const data = { id: id, rows: this.familyExpenditureRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionfamily",
+          "http://183.82.109.39:5000/api/bulkinsertionfamily",
           data
         );
         console.log("family expenditure", response);
@@ -4791,7 +4832,7 @@ export default {
       try {
         const data = { id: id, rows: this.sourceofIncomeRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/sourceofincome",
+          "http://183.82.109.39:5000/api/sourceofincome",
           data
           // {
           //   headId: req.body.headId,
@@ -4822,7 +4863,7 @@ export default {
       try {
         const data = { id: id, rows: this.drinkingWaterAvailabilityRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertiondrinkingwater",
+          "http://183.82.109.39:5000/api/bulkinsertiondrinkingwater",
           data
         );
         console.log("availability of drinking water", response);
@@ -4854,7 +4895,10 @@ export default {
     async quantityofWaterData(id) {
       try {
         const data = { id: id, rows: this.sourceandQualityofWaterRowsData };
-        await axios.post("http://localhost:5000/api/bulkinsertionwater", data);
+        await axios.post(
+          "http://183.82.109.39:5000/api/bulkinsertionwater",
+          data
+        );
       } catch (error) {
         console.error("error in quantityofWaterData function", error);
       }
@@ -4888,7 +4932,7 @@ export default {
       try {
         const data = { id: id, rows: this.agriculturalImplementsRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionagriimplements",
+          "http://183.82.109.39:5000/api/bulkinsertionagriimplements",
           data
         );
         console.log("agriculture implements", response);
@@ -4914,7 +4958,7 @@ export default {
       try {
         const data = { id: id, rows: this.horticultureDetailsRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionhorticulture",
+          "http://183.82.109.39:5000/api/bulkinsertionhorticulture",
           data
         );
         console.log("horticulture details data", response);
@@ -4942,7 +4986,7 @@ export default {
       try {
         const data = { id: id, rows: this.fodderandFeedAvailabilityRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionfodder",
+          "http://183.82.109.39:5000/api/bulkinsertionfodder",
           data
         );
         console.log("fodder feed availability", response);
@@ -4972,7 +5016,7 @@ export default {
       try {
         const data = { id: id, rows: this.fodderFuelRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionfuel",
+          "http://183.82.109.39:5000/api/bulkinsertionfuel",
           data
         );
         console.log("fodder fuel usage data", response);
@@ -5001,7 +5045,7 @@ export default {
       try {
         const data = { id: id, rows: this.grazeCattleRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertiongrazecattle",
+          "http://183.82.109.39:5000/api/bulkinsertiongrazecattle",
           data
         );
         console.log("graze cattle data", response);
@@ -5025,7 +5069,7 @@ export default {
       try {
         const data = { id: id, rows: this.householdRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionhouseholdassets",
+          "http://183.82.109.39:5000/api/bulkinsertionhouseholdassets",
           data
         );
         console.log("household asset", response);
@@ -5052,7 +5096,7 @@ export default {
           rows: this.participationinCommunityProgramsRowsData,
         };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionprogram",
+          "http://183.82.109.39:5000/api/bulkinsertionprogram",
           data
         );
         console.log("community programs data", response);
@@ -5081,7 +5125,7 @@ export default {
       try {
         const data = { id: id, rows: this.awarenessTechnologyRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionadoptiontechnology",
+          "http://183.82.109.39:5000/api/bulkinsertionadoptiontechnology",
           data
         );
         console.log("awareness technology data", response);
@@ -5109,7 +5153,7 @@ export default {
       try {
         const data = { id: id, rows: this.membershipDetailsRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionmembership",
+          "http://183.82.109.39:5000/api/bulkinsertionmembership",
           data
         );
         console.log("membership details data", response);
@@ -5136,7 +5180,7 @@ export default {
       try {
         const data = { id: id, rows: this.beneficiarySchemeRowsData };
         const response = await axios.post(
-          "http://localhost:5000/api/bulkinsertionpreviousproject",
+          "http://183.82.109.39:5000/api/bulkinsertionpreviousproject",
           data
         );
         console.log("beneficiary scheme data", response);
@@ -5162,21 +5206,21 @@ export default {
     async soilWaterLandConservationData(id) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/awarewatershed",
+          "http://183.82.109.39:5000/api/awarewatershed",
           {
             headId: id,
             status: this.awarenessprograms,
           }
         );
         const response1 = await axios.post(
-          "http://localhost:5000/api/bulkinsertiontrainingwatershed",
+          "http://183.82.109.39:5000/api/bulkinsertiontrainingwatershed",
           {
             headId: id,
             status: this.receivedawarenessprograms,
           }
         );
         const response2 = await axios.post(
-          "http://localhost:5000/api/concludedate",
+          "http://183.82.109.39:5000/api/concludedate",
           {
             headId: id,
             date: this.dateA,
