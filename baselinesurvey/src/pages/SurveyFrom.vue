@@ -1301,6 +1301,20 @@
           </div>
           <div v-if="step === 4">
             <ion-card>
+          <ion-item-sliding v-for="(item,index) in livestockRows" :key="item.id">
+           <ion-item @click="selectLivestockDetailsItem(item,index)">
+            {{item.nameOfTheAnimal}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeLivestockRows(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+            <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>4.Livestock Details</strong></ion-card-header
               >
@@ -1400,6 +1414,20 @@
             </ion-card>
           </div>
           <div v-if="step === 5">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in migrationStatusRowsData" :key="item.id">
+           <ion-item @click="selectMigrationstatus(item,index)">
+            {{item.nameOfThePerson}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeMigrationStatusRows(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>5.Migration Status</strong></ion-card-header
@@ -1530,6 +1558,20 @@
           </div>
           <div v-if="step === 6">
             <ion-card>
+          <ion-item-sliding v-for="(item,index) in landLessData" :key="item.id">
+           <ion-item @click="selectLandLessLabourers(item,index)">
+            {{item.nameOfTheProject}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeLandlessLabourers(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+            <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
                   >6.If Land Less Labourers , given the details of the Number of
@@ -1614,6 +1656,20 @@
             </ion-card>
           </div>
           <div v-if="step === 7">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in governmentSchemesRowsData" :key="item.id">
+           <ion-item @click="selectGovernmentSchemesItem(item,index)">
+            {{item.nameOfTheFamilyMember}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeGovernmentSchemesRows(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -1720,6 +1776,20 @@
             </ion-card>
           </div>
           <div v-if="step === 8">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in chemicalManureRowsData" :key="item.id">
+           <ion-item @click="selectManureandChemicalItem(item,index)">
+            {{item.crops}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeManureandChemicalRows(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
@@ -1867,6 +1937,20 @@
             </ion-card>
           </div>
           <div v-if="step === 9">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in pestandDiseaseRowsData" :key="item.id">
+           <ion-item @click="selectPestDiseaseItem(item,index)">
+            {{item.crops}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removePestDiseaseRows(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
@@ -2023,6 +2107,20 @@
             </ion-card>
           </div>
           <div v-if="step === 10">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in loanParticularsRowsData" :key="item.id">
+           <ion-item @click="selectLoanParticularsItem(item,index)">
+            {{item.particulars}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" @click="removeLoanParticularsRows(index)" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
@@ -4487,19 +4585,19 @@ export default {
     },
     selectIncomeKharifItem(item,index){
       try {
-        incomefromCropsKharifRows.cropGrownKharif= item.cropGrownKharif
-        incomefromCropsKharifRows.rainfedKharif= item.rainfedKharif
-        incomefromCropsKharifRows.rainfedYieldKharif= item.rainfedYieldKharif
-        incomefromCropsKharifRows.rainfedCostKharif= item.rainfedCostKharif
-        incomefromCropsKharifRows.rainfedPerQtlsKharif= item.rainfedPerQtlsKharif
-        incomefromCropsKharifRows.rainfedGrossIncomeKharif= item.rainfedGrossIncomeKharif
-        incomefromCropsKharifRows.rainfedNetIncomeKharif= item.rainfedNetIncomeKharif
-        incomefromCropsKharifRows.irrigatedaAreaKharif= item.irrigatedaAreaKharif
-        incomefromCropsKharifRows.irrigatedYieldKharif= item.irrigatedYieldKharif
-        incomefromCropsKharifRows.irrigatedCoostofCultivationKharif= item.irrigatedCoostofCultivationKharif
-        incomefromCropsKharifRows.irrigatedRatePerQtlsKharif= item.irrigatedRatePerQtlsKharif
-        incomefromCropsKharifRows.irrigatedGrossIncomeKharif= item.irrigatedGrossIncomeKharif
-        incomefromCropsKharifRows.irrigatedNetIncomeKharif= item.irrigatedNetIncomeKharif
+        this.incomefromCropsKharifRows.cropGrownKharif= item.cropGrownKharif
+        this.incomefromCropsKharifRows.rainfedKharif= item.rainfedKharif
+        this.incomefromCropsKharifRows.rainfedYieldKharif= item.rainfedYieldKharif
+        this.incomefromCropsKharifRows.rainfedCostKharif= item.rainfedCostKharif
+        this.incomefromCropsKharifRows.rainfedPerQtlsKharif= item.rainfedPerQtlsKharif
+        this.incomefromCropsKharifRows.rainfedGrossIncomeKharif= item.rainfedGrossIncomeKharif
+        this.incomefromCropsKharifRows.rainfedNetIncomeKharif= item.rainfedNetIncomeKharif
+        this.incomefromCropsKharifRows.irrigatedaAreaKharif= item.irrigatedaAreaKharif
+        this.incomefromCropsKharifRows.irrigatedYieldKharif= item.irrigatedYieldKharif
+        this.incomefromCropsKharifRows.irrigatedCoostofCultivationKharif= item.irrigatedCoostofCultivationKharif
+        this.incomefromCropsKharifRows.irrigatedRatePerQtlsKharif= item.irrigatedRatePerQtlsKharif
+        this.incomefromCropsKharifRows.irrigatedGrossIncomeKharif= item.irrigatedGrossIncomeKharif
+        this.incomefromCropsKharifRows.irrigatedNetIncomeKharif= item.irrigatedNetIncomeKharif
         this.incomefromCropsKharifRowsData.splice(index, 1);
       } catch (error) {
         console.error("Error in selectIncomeKharifItem function",error)
@@ -4510,28 +4608,148 @@ export default {
     },
     selectIncomeRabiItem(item,index){
       try {
-        incomefromCropsRabiRows: {
-        incomefromCropsRabiRows.cropGrownRabhi= item.cropGrownRabhi
-        incomefromCropsRabiRows.rainfedRabi= item.rainfedRabi
-        incomefromCropsRabiRows.rainfedYieldRabi= item.rainfedYieldRabi
-        incomefromCropsRabiRows.rainfedCostRabi= item.rainfedCostRabi
-        incomefromCropsRabiRows.rainfedPerQtlsRabi= item.rainfedPerQtlsRabi
-        incomefromCropsRabiRows.rainfedGrossIncomeRabi= item.rainfedGrossIncomeRabi
-        incomefromCropsRabiRows.rainfedNetIncomeRabi= item.rainfedNetIncomeRabi
-        incomefromCropsRabiRows.irrigatedaAreaRabi= item.irrigatedaAreaRabi
-        incomefromCropsRabiRows.irrigatedYieldRabi= item.irrigatedYieldRabi
-        incomefromCropsRabiRows.irrigatedCoostofCultivationRabi= item.irrigatedCoostofCultivationRabi
-        incomefromCropsRabiRows.irrigatedRatePerQtlsRabi= item.irrigatedRatePerQtlsRabi
-        incomefromCropsRabiRows.irrigatedGrossIncomeRabi= item.irrigatedGrossIncomeRabi
-        incomefromCropsRabiRows.irrigatedNetIncomeRabi= item.irrigatedNetIncomeRabi
+        this.incomefromCropsRabiRows.cropGrownRabhi= item.cropGrownRabhi
+        this.incomefromCropsRabiRows.rainfedRabi= item.rainfedRabi
+        this.incomefromCropsRabiRows.rainfedYieldRabi= item.rainfedYieldRabi
+        this.incomefromCropsRabiRows.rainfedCostRabi= item.rainfedCostRabi
+        this.incomefromCropsRabiRows.rainfedPerQtlsRabi= item.rainfedPerQtlsRabi
+        this.incomefromCropsRabiRows.rainfedGrossIncomeRabi= item.rainfedGrossIncomeRabi
+        this.incomefromCropsRabiRows.rainfedNetIncomeRabi= item.rainfedNetIncomeRabi
+        this.incomefromCropsRabiRows.irrigatedaAreaRabi= item.irrigatedaAreaRabi
+        this.incomefromCropsRabiRows.irrigatedYieldRabi= item.irrigatedYieldRabi
+        this.incomefromCropsRabiRows.irrigatedCoostofCultivationRabi= item.irrigatedCoostofCultivationRabi
+        this.incomefromCropsRabiRows.irrigatedRatePerQtlsRabi= item.irrigatedRatePerQtlsRabi
+        this.incomefromCropsRabiRows.irrigatedGrossIncomeRabi= item.irrigatedGrossIncomeRabi
+        this.incomefromCropsRabiRows.irrigatedNetIncomeRabi= item.irrigatedNetIncomeRabi
         this.incomefromCropsRabiRowsData.splice(index, 1);
-      }
       } catch (error) {
         console.error("error in selectIncomeRabiItem function",error)
       }
     },
     removeRowIncomeRabi(index) {
       this.incomefromCropsRabiRowsData.splice(index, 1);
+    },
+    selectLivestockDetailsItem(item,index){
+      try {
+        this.addLivestockDetails.addLivestockDetails=item.addLivestockDetails
+        this.addLivestockDetails.nameOfTheAnimal=item.nameOfTheAnimal
+        this.addLivestockDetails.existingNo=item.existingNo  
+        this.addLivestockDetails.milkProductionLitresPerDay=item.milkProductionLitresPerDay  
+        this.addLivestockDetails.milkConsumedLitresPerday=item.milkConsumedLitresPerday  
+        this.addLivestockDetails.quantitySoldByYear=item.quantitySoldByYear
+        this.addLivestockDetails.unitValue=item.unitValue
+        this.addLivestockDetails.incomeGeneratedDuringLastYear=item.incomeGeneratedDuringLastYear
+        this.livestockRows.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectLivestockDetailsItem fucntion",error)
+      }
+    },
+    removeLivestockRows(index) {
+      this.livestockRows.splice(index, 1);
+    },
+    selectMigrationstatus(item,index){
+      try {
+        this.migrationStatusRows.nameOfThePerson=item.nameOfThePerson
+        this.migrationStatusRows.gender=item.gender
+        this.migrationStatusRows.noOfDaysMigratingPerYear=item.noOfDaysMigratingPerYear
+        this.migrationStatusRows.reasonsForMigrating=item.reasonsForMigrating
+        this.migrationStatusRows.placeOfMigration=item.placeOfMigration
+        this.migrationStatusRows.occupationDuringMigration=item.occupationDuringMigration
+        this.migrationStatusRows.incomeFromOccupation=item.incomeFromOccupation
+        this.migrationStatusRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in removeLivestockRows function",error)
+      }
+    },
+    removeMigrationStatusRows(index) {
+      this.migrationStatusRowsData.splice(index, 1);
+    },
+    selectLandLessLabourers(item,index){
+      try {
+        this.landLessLabourers.nameOfTheProject=item.nameOfTheProject
+        this.landLessLabourers.manDays=item.manDays
+        this.landLessLabourers.wageDays=item.wageDays
+        this.landLessLabourers.income=item.income
+        this.landLessLabourers.total=item.total
+        this.landLessData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectLandLessLabourers fucntion",error)
+      }
+    },
+    removeLandlessLabourers(index){
+      this.landLessData.splice(index, 1);
+    },
+    selectGovernmentSchemesItem(item,index){
+      try {
+        this.governmentSchemesRows.nameOfTheFamilyMember=item.nameOfTheFamilyMember
+        this.governmentSchemesRows.schemeName=item.schemeName
+        this.governmentSchemesRows.amount=item.amount
+        this.governmentSchemesRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectGovernmentSchemesItem function",error)
+      }
+    },
+    removeGovernmentSchemesRows(index){
+      this.governmentSchemesRowsData.splice(index, 1);
+    },
+    selectManureandChemicalItem(item,index){
+      try { 
+        this.useofChemicalManureRows.crops=item.crops
+        this.useofChemicalManureRows.organic=item.organic
+        this.useofChemicalManureRows.microNutrients=item.microNutrients
+        this.useofChemicalManureRows.N=item.N
+        this.useofChemicalManureRows.P=item.P
+        this.useofChemicalManureRows.K=item.K
+        this.useofChemicalManureRows.cost=item.cost
+        this.chemicalManureRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectManureandChemicalItem fucntion",error)
+      }
+    },
+    removeManureandChemicalRows(index){
+      this.chemicalManureRowsData.splice(index, 1);
+    },
+    selectPestDiseaseItem(item,index){
+      try {
+        this.pestandDiseaseRows.crops=item.crops
+        this.pestandDiseaseRows.nameOfThePest=item.nameOfThePest
+        this.pestandDiseaseRows.biological=item.biological
+        this.pestandDiseaseRows.chemical=item.chemical
+        this.pestandDiseaseRows.others=item.others
+        this.pestandDiseaseRows.material=item.material
+        this.pestandDiseaseRows.wages=item.wages
+        this.pestandDiseaseRows.totalMaterial=item.totalMaterial
+        this.pestandDiseaseRows.totalWages=item.totalWages
+        this.pestandDiseaseRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectPestDiseaseItem function",error)
+      }
+    },
+    removePestDiseaseRows(index){
+      this.pestandDiseaseRowsData.splice(index, 1);
+    },
+    selectLoanParticularsItem(item,index){
+      try {
+        this.loanParticularsRows.particulars=item.particulars
+        this.loanParticularsRows.bank=item.bank
+        this.loanParticularsRows.moneyLender=item.moneyLender
+        this.loanParticularsRows.dealer=item.dealer
+        this.loanParticularsRows.fellowfarmer=item.fellowfarmer
+        this.loanParticularsRows.shg=item.shg
+        this.loanParticularsRows.others=item.others
+        this.loanParticularsRows.total=item.total
+        this.loanParticularsRows.agriculture=item.agriculture
+        this.loanParticularsRows.consumption=item.consumption
+        this.loanParticularsRows.education=item.education
+        this.loanParticularsRows.marriage=item.marriage
+        this.loanParticularsRows.others2=item.others2
+        this.loanParticularsRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectLoanParticularsItem function",error)
+      }
+    },
+    removeLoanParticularsRows(index){
+      this.loanParticularsRowsData.splice(index, 1);
     },
     async submitData() {
       try {
