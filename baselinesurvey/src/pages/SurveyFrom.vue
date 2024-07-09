@@ -566,8 +566,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeRow(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeRow(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -819,8 +819,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeRowLandParticulars(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeRowLandParticulars(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -919,8 +919,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeRowIncomeKharif(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeRowIncomeKharif(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -1122,8 +1122,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeRowIncomeRabi(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeRowIncomeRabi(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -1307,8 +1307,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeLivestockRows(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeLivestockRows(index)">
+          <ion-icon slot="icon-only"  icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -1421,8 +1421,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeMigrationStatusRows(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeMigrationStatusRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -1564,8 +1564,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeLandlessLabourers(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeLandlessLabourers(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -1663,8 +1663,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeGovernmentSchemesRows(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeGovernmentSchemesRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -1783,8 +1783,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeManureandChemicalRows(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeManureandChemicalRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -1944,8 +1944,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removePestDiseaseRows(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removePestDiseaseRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -2114,8 +2114,8 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" @click="removeLoanParticularsRows(index)" icon="trash"></ion-icon>
+        <ion-item-option color="danger" @click="removeLoanParticularsRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
           <strong>Delete</strong>
         </ion-item-option>
       </ion-item-options>
@@ -2409,6 +2409,20 @@
           </div>
           <div v-if="step === 11">
             <ion-card>
+          <ion-item-sliding v-for="(item,index) in familyExpenditureRowsData" :key="item.id">
+           <ion-item @click="selectFamilyExpenditureItem(item,index)">
+            {{item.items}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeFamilyExpenditureRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+            <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>11.Family Expenditure</strong></ion-card-header
               >
@@ -2480,6 +2494,20 @@
             </ion-card>
           </div>
           <div v-if="step === 12">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in sourceofIncomeRowsData" :key="item.id">
+           <ion-item @click="selectSourceofIncomeItem(item,index)">
+            {{item.source}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeSourceofIncomeRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
@@ -2574,6 +2602,20 @@
             </ion-card>
           </div>
           <div v-if="step === 13">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in drinkingWaterAvailabilityRowsData" :key="item.id">
+           <ion-item @click="selectAvailabilityofDrinkingWaterItem(item,index)">
+            {{item.drinkingwateritem}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeAvailabilityofDrinkingWaterRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
@@ -2674,6 +2716,20 @@
             </ion-card>
           </div>
           <div v-if="step === 14">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in sourceandQualityofWaterRowsData" :key="item.id">
+           <ion-item @click="selectSourceQualityofWaterItem(item,index)">
+            {{item.waterSource}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeSourceQualityofWaterRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card class="ion-margin-top">
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
@@ -2836,6 +2892,20 @@
           </div>
           <div v-if="step === 15">
             <ion-card>
+          <ion-item-sliding v-for="(item,index) in agriculturalImplementsRowsData" :key="item.id">
+           <ion-item @click="selectAgricultureImplementsItem(item,index)">
+            {{item.selectImplements}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeAgricultureImplementsRows(index)">
+          <ion-icon slot="icon-only"  icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+            <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>15.Agriculture Implements</strong></ion-card-header
               >
@@ -2919,6 +2989,20 @@
           </div>
           <div v-if="step === 16">
             <ion-card>
+          <ion-item-sliding v-for="(item,index) in horticultureDetailsRowsData" :key="item.id">
+           <ion-item @click="selectHorticultureDetailsItem(item,index)">
+            {{item.details}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeHorticultureDetailsRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+            <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>16.Horticulture Details</strong></ion-card-header
               >
@@ -2989,6 +3073,20 @@
             </ion-card>
           </div>
           <div v-if="step === 17">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in fodderandFeedAvailabilityRowsData" :key="item.id">
+           <ion-item @click="selectFodderandFeedAvailabilityItem(item,index)">
+            {{item.item}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeFodderandFeedAvailabilityRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -3069,6 +3167,20 @@
             </ion-card>
           </div>
           <div v-if="step === 18">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in fodderFuelRowsData" :key="item.id">
+           <ion-item @click="selectFodderFuelUseItem(item,index)">
+            {{item.details}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeFodderFuelUseRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
@@ -3153,6 +3265,20 @@
           </div>
           <div v-if="step === 19">
             <ion-card>
+          <ion-item-sliding v-for="(item,index) in grazeCattleRowsData" :key="item.id">
+           <ion-item @click="selectGrazeofCattleItem(item,index)">
+            {{item.grazingOfCattle}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeGrazeofCattleRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+            <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
                   >19.Do you Graze your Cattle in the Community Land?
@@ -3218,6 +3344,20 @@
             </ion-card>
           </div>
           <div v-if="step === 20">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in householdRowsData" :key="item.id">
+           <ion-item @click="selectHouseholdAssetsItem(item,index)">
+            {{item.assets}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeHouseholdAssetsRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>20.Household Assets</strong></ion-card-header
@@ -3291,6 +3431,20 @@
             </ion-card>
           </div>
           <div v-if="step === 21">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in participationinCommunityProgramsRowsData" :key="item.id">
+           <ion-item @click="selectParticipationCommunityProgramItem(item,index)">
+            {{item.nameofTheCommunityProgram}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeParticipationCommunityProgramRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -3389,6 +3543,20 @@
           </div>
           <div v-if="step === 22">
             <ion-card>
+          <ion-item-sliding v-for="(item,index) in awarenessTechnologyRowsData" :key="item.id">
+           <ion-item @click="selectAwarenessAdoptionTechnologyItem(item,index)">
+            {{item.technology}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeAwarenessAdoptionTechnologyRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+            <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
                   >22.Awareness on Adaption of Technology</strong
@@ -3477,6 +3645,20 @@
           </div>
           <div v-if="step === 23">
             <ion-card>
+          <ion-item-sliding v-for="(item,index) in membershipDetailsRowsData" :key="item.id">
+           <ion-item @click="selectMembershipDetailsItem(item,index)">
+            {{item.sgh}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeMembershipDetailsRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+            <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>23.Membership Details</strong></ion-card-header
               >
@@ -3532,6 +3714,20 @@
             </ion-card>
           </div>
           <div v-if="step === 24">
+            <ion-card>
+          <ion-item-sliding v-for="(item,index) in beneficiarySchemeRowsData" :key="item.id">
+           <ion-item @click="selectBeneficiaryofSchemeItem(item,index)">
+            {{item.nameofTheScheme}}
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" @click="removeBeneficiaryofSchemeRows(index)">
+          <ion-icon slot="icon-only" icon="trash"></ion-icon>
+          <strong>Delete</strong>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
             <ion-card>
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
@@ -4750,6 +4946,196 @@ export default {
     },
     removeLoanParticularsRows(index){
       this.loanParticularsRowsData.splice(index, 1);
+    },
+    selectFamilyExpenditureItem(item,index){
+      try {
+        this.familyExpenditureRows.items=item.items
+        this.familyExpenditureRows.total=item.total
+        this.familyExpenditureRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectFamilyExpenditureItem function",error)
+      }
+    },
+    removeFamilyExpenditureRows(index){
+      this.familyExpenditureRowsData.splice(index, 1);
+    },
+    selectSourceofIncomeItem(index,item){
+      try {
+        this.sourceofIncomeRows.source=item.source
+        this.sourceofIncomeRows.income=item.income
+        this.sourceofIncomeRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectSourceofIncomeItem function",error)
+      }
+    },
+    removeSourceofIncomeRows(index){
+      this.sourceofIncomeRowsData.splice(index, 1);
+    },
+    selectAvailabilityofDrinkingWaterItem(item,index){
+      try {
+        this.drinkingWaterAvailabilityRows.drinkingwateritem=item.drinkingwateritem
+        this.drinkingWaterAvailabilityRows.drinkingwaterunits=item.drinkingwaterunits
+        this.drinkingWaterAvailabilityRows.litresPerDay=item.litresPerDay
+        this.drinkingWaterAvailabilityRows.sourceDrinkingWater=item.sourceDrinkingWater
+        this.drinkingWaterAvailabilityRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectAvailabilityofDrinkingWaterItem function",error)
+      }
+    },
+    removeAvailabilityofDrinkingWaterRows(index){
+      this.drinkingWaterAvailabilityRowsData.splice(index, 1);
+    },
+    selectSourceQualityofWaterItem(){
+      try {
+        
+        this.sourceandQualityofWaterRows.waterSource=item.waterSource
+        this.sourceandQualityofWaterRows.driedupWell=item.driedupWell
+        this.sourceandQualityofWaterRows.functioningWell=item.functioningWell
+        this.sourceandQualityofWaterRows.presentApproximateWaterLevel=item.presentApproximateWaterLevel
+        this.sourceandQualityofWaterRows.yieldfromtheBorewell=item.yieldfromtheBorewell
+        this.sourceandQualityofWaterRows.kharif=item.kharif
+        this.sourceandQualityofWaterRows.rabi=item.rabi
+        this.sourceandQualityofWaterRows.summer=item.summer
+        this.sourceandQualityofWaterRows.otherCrops=item.otherCrops
+        this.sourceandQualityofWaterRows.horticulture=item.horticulture
+        this.sourceandQualityofWaterRows.waterquality=item.waterquality
+        this.sourceandQualityofWaterRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectSourceQualityofWaterItem function",error)
+      }
+    },
+    removeSourceQualityofWaterRows(index){
+      this.sourceandQualityofWaterRowsData.splice(index, 1);
+    },
+    selectAgricultureImplementsItem(item,index){
+      try {
+        this.agriculturalImplementsRows.selectImplements=item.selectImplements
+        this.agriculturalImplementsRows.numberofImplement=item.numberofImplement
+        this.agriculturalImplementsRows.ownedHired=item.ownedHired
+        this.agriculturalImplementsRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectAgricultureImplementsItem function",error)
+      }
+    },
+    removeAgricultureImplementsRows(index){
+      this.agriculturalImplementsRowsData.splice(index, 1);
+    },
+    selectHorticultureDetailsItem(item,index){
+      try {
+        this.horticultureDetailsRows.details = item.details
+        this.horticultureDetailsRows.numberofDetails = item.numberofDetails
+        this.horticultureDetailsRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectHorticultureDetailsItem function",error)
+      }
+    },
+    removeHorticultureDetailsRows(index){
+      this.horticultureDetailsRowsData.splice(index, 1);
+    },
+    selectFodderandFeedAvailabilityItem(item,index){
+      try {
+        this.fodderandFeedAvailability.item=item.item
+        this.fodderandFeedAvailability.unit=item.unit
+        this.fodderandFeedAvailability.area=item.area
+        this.fodderandFeedAvailability.production=item.production
+        this.fodderandFeedAvailabilityRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectHorticultureDetailsItem function",error)
+      }
+    },
+    removeFodderandFeedAvailabilityRows(index){
+      this.fodderandFeedAvailabilityRowsData.splice(index, 1);
+    },
+    selectFodderFuelUseItem(item,index){
+      try {
+        this.fodderFuelRows.details=item.details
+        this.fodderFuelRows.fodderUtilization=item.fodderUtilization
+        this.fodderFuelRows.fireFuelCowDung=item.fireFuelCowDung
+        this.fodderFuelRows.firewood=item.firewood
+        this.fodderFuelRows.agriculturalWaste=item.agriculturalWaste
+        this.fodderFuelRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectFodderFuelUseItem function",error)
+      }
+    },
+    removeFodderFuelUseRows(index){
+      this.fodderFuelRowsData.splice(index, 1);
+    },
+    selectGrazeofCattleItem(item,index){
+      try {
+        this.grazeCattleRows.grazingOfCattle=item.grazingOfCattle
+        this.grazeCattleRows.numberOfCattle=item.numberOfCattle
+        this.grazeCattleRows.daysInAYear=item.daysInAYear
+        this.grazeCattleRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectGrazeofCattleItem function",error)
+      }
+    },
+    removeGrazeofCattleRows(index){
+      this.grazeCattleRowsData.splice(index, 1);
+    },
+    selectHouseholdAssetsItem(item,index){
+      try {
+        this.householdRows.assets=item.assets
+        this.householdRows.number=item.number
+        this.householdRows.presentValue=item.presentValue
+        this.householdRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectHouseholdAssetsItem function",error)
+      }
+    },
+    removeHouseholdAssetsRows(index){
+      this.householdRowsData.splice(index, 1);
+    },
+    selectParticipationCommunityProgramItem(item,index){
+      try {
+        this.participationinCommunityProgramsRows.nameofTheCommunityProgram=item.nameofTheCommunityProgram
+        this.participationinCommunityProgramsRows.markTheAppropriate=item.markTheAppropriate
+        this.participationinCommunityProgramsRows.awarenessprograms=item.awarenessprograms
+        this.participationinCommunityProgramsRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectParticipationCommunityProgramItem function",error)
+      }
+    },
+    removeParticipationCommunityProgramRows(index){
+      this.participationinCommunityProgramsRowsData.splice(index, 1);
+    },
+    selectAwarenessAdoptionTechnologyItem(item,index){
+      try {
+        this.awarenessTechnologyRows.technology=item.technology
+        this.awarenessTechnologyRows.sourceInformation=item.sourceInformation
+        this.awarenessTechnologyRowsData.splice(index, 1);
+      } catch (error) {
+        console.error("error in selectAwarenessAdoptionTechnologyItem function",error)
+      }
+    },
+    removeAwarenessAdoptionTechnologyRows(index){
+      this.awarenessTechnologyRowsData.splice(index, 1);
+    },
+    selectMembershipDetailsItem(item,index){
+      try {
+        this.membershipDetailsRows.sgh=item.sgh
+        this.membershipDetailsRows.number=item.number
+        this.membershipDetailsRowsData.splice(index, 1);      
+      } catch (error) {
+        console.error("error in selectMembershipDetailsItem function",error)
+      }
+    },
+    removeMembershipDetailsRows(index){
+      this.membershipDetailsRowsData.splice(index, 1);
+    },
+    selectBeneficiaryofSchemeItem(item,index){
+      try {
+        this.beneficiarySchemeRows.nameofTheScheme=item.nameofTheScheme
+        this.beneficiarySchemeRows.detailsoftheBenfits=item.detailsoftheBenfits
+        this.beneficiarySchemeRows.valueoftheBenfits=item.valueoftheBenfits
+        this.beneficiarySchemeRowsData.splice(index, 1); 
+      } catch (error) {
+        console.error("error in selectMembershipDetailsItem function",error)
+      }
+    },
+    removeBeneficiaryofSchemeRows(index){
+      this.beneficiarySchemeRowsData.splice(index, 1);
     },
     async submitData() {
       try {
