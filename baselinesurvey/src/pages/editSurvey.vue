@@ -921,7 +921,6 @@
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowLandParticular.total"
-                    readonly="readonly"
                   ></ion-input>
                   <ion-select
                     class="ion-margin-top"
@@ -1081,7 +1080,6 @@
                     fill="outline"
                     label="Rainfed(Acres) Gross Income"
                     label-placement="floating"
-                    readonly="readonly"
                     v-model="newRowIncomeKharif.rainfed_gross_income"
                   ></ion-input>
                   <ion-input
@@ -1089,7 +1087,6 @@
                     placeholder="Total Rainfed Net income"
                     fill="outline"
                     label="Rainfed(Acres) Net Income(7-5)"
-                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_net_income"
                   ></ion-input>
@@ -1148,7 +1145,6 @@
                     placeholder="Total Irrigated Net Income(13-11)"
                     fill="outline"
                     label="Total Irrigated Net Income(13-11)"
-                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_net_income"
                   ></ion-input>
@@ -1156,7 +1152,6 @@
                     class="ion-margin-top"
                     placeholder="Kharif Grand Total Income"
                     label="Kharif Grand Total Income"
-                    readonly="readonly"
                     fill="outline"
                     label-placement="floating"
                   ></ion-input>
@@ -1307,7 +1302,6 @@
                     placeholder="Total Rainfed Gross income"
                     fill="outline"
                     label="Rainfed(Acres) Gross Income"
-                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_gross_income"
                   ></ion-input>
@@ -1316,7 +1310,6 @@
                     placeholder="Total Rainfed Net income"
                     fill="outline"
                     label="Rainfed(Acres) Net Income(7-5)"
-                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_net_income"
                   ></ion-input>
@@ -1383,7 +1376,6 @@
                     class="ion-margin-top"
                     placeholder="Rabhi Grand Total Income"
                     label="Rabhi Grand Total Income"
-                    readonly="readonly"
                     fill="outline"
                     label-placement="floating"
                   ></ion-input>

@@ -875,7 +875,6 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
-                  readonly="readonly"
                   placeholder="Total"
                   label="Total"
                   fill="outline"
@@ -895,8 +894,11 @@
                   <ion-select-option value=""
                     >Select Ownership</ion-select-option
                   >
-                  <ion-select-option value="Own">Own</ion-select-option>
-                  <ion-select-option value="Rent">Rent</ion-select-option>
+                  <ion-select-option value="Patta">Patta</ion-select-option>
+                    <ion-select-option value="Assigned">Assigned</ion-select-option
+                    >
+                    <ion-select-option value="Possession Land">Possession Land</ion-select-option
+                    >
                 </ion-select>
               </ion-card-content>
               <ion-button
@@ -947,7 +949,7 @@
                 >
                   <ion-select-option value="">Select Crop</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="Meeze">Meeze</ion-select-option>
+                  <ion-select-option value="Maize">Maize</ion-select-option>
                   <ion-select-option value="Jower">Jower</ion-select-option>
                   <ion-select-option value="Cotton">Cotton</ion-select-option>
                   <ion-select-option value="Mirchi">Mirchi</ion-select-option>
@@ -1013,7 +1015,6 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
-                  readonly="readonly"
                   placeholder="Total Rainfed Gross income"
                   fill="outline"
                   label="Rainfed(Acres) Gross Income"
@@ -1023,7 +1024,6 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
-                  readonly="readonly"
                   placeholder="Total Rainfed Net income"
                   fill="outline"
                   label="Rainfed(Acres) Net Income(7-5)"
@@ -1078,7 +1078,6 @@
                   class="ion-margin-top"
                   placeholder="Irrigated(Acres) Gross Income"
                   fill="outline"
-                  readonly="readonly"
                   label="Total Irrigated(Acres) Gross Income"
                   label-placement="floating"
                   type="number"
@@ -1086,7 +1085,6 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
-                  readonly="readonly"
                   placeholder="Total Irrigated Net Income(13-11)"
                   fill="outline"
                   label="Total Irrigated Net Income(13-11)"
@@ -1096,7 +1094,6 @@
                 <ion-input
                   class="ion-margin-top"
                   placeholder="Kharif Grand Total Income"
-                  readonly="readonly"
                   label="Kharif Grand Total Income"
                   fill="outline"
                   label-placement="floating"
@@ -1150,7 +1147,7 @@
                 >
                   <ion-select-option value="">Select Crop</ion-select-option>
                   <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="Meeze">Meeze</ion-select-option>
+                  <ion-select-option value="Maize">Maize</ion-select-option>
                   <ion-select-option value="Jower">Jower</ion-select-option>
                   <ion-select-option value="Cotton">Cotton</ion-select-option>
                   <ion-select-option value="Mirchi">Mirchi</ion-select-option>
@@ -1198,7 +1195,6 @@
                   class="ion-margin-top"
                   placeholder="Total Rainfed Gross income"
                   fill="outline"
-                  readonly="readonly"
                   type="number"
                   label="Rainfed(Acres) Gross Income"
                   label-placement="floating"
@@ -1206,7 +1202,6 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
-                  readonly="readonly"
                   placeholder="Total Rainfed Net income"
                   fill="outline"
                   type="number"
@@ -1261,7 +1256,6 @@
                   class="ion-margin-top"
                   placeholder="Irrigated(Acres) Gross Income"
                   fill="outline"
-                  readonly="readonly"
                   label="Total Irrigated(Acres) Gross Income"
                   label-placement="floating"
                   v-model="incomefromCropsRabiRows.irrigatedGrossIncomeRabi"
@@ -1270,7 +1264,6 @@
                   class="ion-margin-top"
                   placeholder="Total Irrigated Net Income(13-11)"
                   fill="outline"
-                  readonly="readonly"
                   label="Total Irrigated Net Income(13-11)"
                   label-placement="floating"
                   type="number"
@@ -1278,7 +1271,6 @@
                 ></ion-input>
                 <ion-input
                   class="ion-margin-top"
-                  readonly="readonly"
                   placeholder="Rabi Grand Total Income"
                   label="Rabi Grand Total Income"
                   fill="outline"
@@ -2227,34 +2219,8 @@
                   <ion-select-option value=""
                     >Select Agriculture</ion-select-option
                   >
-                  <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="maize">maize</ion-select-option>
-                  <ion-select-option value="jowar">jowar</ion-select-option>
-                  <ion-select-option value="Cotton">Cotton</ion-select-option>
-                  <ion-select-option value="Mirchi">Mirchi</ion-select-option>
-                  <ion-select-option value="Groundnut"
-                    >Groundnut</ion-select-option
-                  >
-                  <ion-select-option value="Red Gram"
-                    >Red Gram</ion-select-option
-                  >
-                  <ion-select-option value="Black Gram"
-                    >Black Gram</ion-select-option
-                  >
-                  <ion-select-option value="Green Gram"
-                    >Green Gram</ion-select-option
-                  >
-                  <ion-select-option value="Mango">Mango</ion-select-option>
-                  <ion-select-option value="Sapota">Sapota</ion-select-option>
-                  <ion-select-option value="Chinny">Chinny</ion-select-option>
-                  <ion-select-option value="Neem">Neem</ion-select-option>
-                  <ion-select-option value="Cashew">Cashew</ion-select-option>
-                  <ion-select-option value="Vegetables"
-                    >Vegetables</ion-select-option
-                  >
-                  <ion-select-option value="Sunflower"
-                    >Sunflower</ion-select-option
-                  >
+                  <ion-select-option value="Yes">Yes</ion-select-option>
+                  <ion-select-option value="No">No</ion-select-option>
                 </ion-select>
                 <ion-select
                   class="ion-margin-top"
@@ -2268,34 +2234,8 @@
                   <ion-select-option value=""
                     >Select Consumption</ion-select-option
                   >
-                  <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="maize">maize</ion-select-option>
-                  <ion-select-option value="jowar">jowar</ion-select-option>
-                  <ion-select-option value="Cotton">Cotton</ion-select-option>
-                  <ion-select-option value="Mirchi">Mirchi</ion-select-option>
-                  <ion-select-option value="Groundnut"
-                    >Groundnut</ion-select-option
-                  >
-                  <ion-select-option value="Red Gram"
-                    >Red Gram</ion-select-option
-                  >
-                  <ion-select-option value="Black Gram"
-                    >Black Gram</ion-select-option
-                  >
-                  <ion-select-option value="Green Gram"
-                    >Green Gram</ion-select-option
-                  >
-                  <ion-select-option value="Mango">Mango</ion-select-option>
-                  <ion-select-option value="Sapota">Sapota</ion-select-option>
-                  <ion-select-option value="Chinny">Chinny</ion-select-option>
-                  <ion-select-option value="Neem">Neem</ion-select-option>
-                  <ion-select-option value="Cashew">Cashew</ion-select-option>
-                  <ion-select-option value="Vegetables"
-                    >Vegetables</ion-select-option
-                  >
-                  <ion-select-option value="Sunflower"
-                    >Sunflower</ion-select-option
-                  >
+                  <ion-select-option value="Yes">Yes</ion-select-option>
+                  <ion-select-option value="No">No</ion-select-option>
                 </ion-select>
                 <ion-select
                   class="ion-margin-top"
@@ -2310,22 +2250,8 @@
                   <ion-select-option value=""
                     >Select Education</ion-select-option
                   >
-                  <ion-select-option value="illiterate"
-                    >Illiterate</ion-select-option
-                  >
-                  <ion-select-option value="primary">Primary</ion-select-option>
-                  <ion-select-option value="upperprimary"
-                    >Upper Primary</ion-select-option
-                  >
-                  <ion-select-option value="highschool"
-                    >High School</ion-select-option
-                  >
-                  <ion-select-option value="interdiploma"
-                    >Inter/Diploma</ion-select-option
-                  >
-                  <ion-select-option value="degree">Degree</ion-select-option>
-                  <ion-select-option value="pg">PG</ion-select-option>
-                  <ion-select-option value="others">Others</ion-select-option>
+                  <ion-select-option value="Yes">Yes</ion-select-option>
+                  <ion-select-option value="No">No</ion-select-option>
                 </ion-select>
                 <ion-select
                   class="ion-margin-top"
@@ -2336,10 +2262,8 @@
                   fill="outline"
                   v-model="loanParticularsRows.marriage"
                 >
-                  <ion-select-option value="married">Married</ion-select-option>
-                  <ion-select-option value="unmarried"
-                    >Unmarried</ion-select-option
-                  >
+                <ion-select-option value="Yes">Yes</ion-select-option>
+                <ion-select-option value="No">No</ion-select-option>
                 </ion-select>
                 <ion-select
                   class="ion-margin-top"
@@ -2351,34 +2275,9 @@
                   v-model="loanParticularsRows.others2"
                 >
                   <ion-select-option value="">Select Others</ion-select-option>
-                  <ion-select-option value="Paddy">Paddy</ion-select-option>
-                  <ion-select-option value="maize">maize</ion-select-option>
-                  <ion-select-option value="jowar">jowar</ion-select-option>
-                  <ion-select-option value="Cotton">Cotton</ion-select-option>
-                  <ion-select-option value="Mirchi">Mirchi</ion-select-option>
-                  <ion-select-option value="Groundnut"
-                    >Groundnut</ion-select-option
-                  >
-                  <ion-select-option value="Red Gram"
-                    >Red Gram</ion-select-option
-                  >
-                  <ion-select-option value="Black Gram"
-                    >Black Gram</ion-select-option
-                  >
-                  <ion-select-option value="Green Gram"
-                    >Green Gram</ion-select-option
-                  >
-                  <ion-select-option value="Mango">Mango</ion-select-option>
-                  <ion-select-option value="Sapota">Sapota</ion-select-option>
-                  <ion-select-option value="Chinny">Chinny</ion-select-option>
-                  <ion-select-option value="Neem">Neem</ion-select-option>
-                  <ion-select-option value="Cashew">Cashew</ion-select-option>
-                  <ion-select-option value="Vegetables"
-                    >Vegetables</ion-select-option
-                  >
-                  <ion-select-option value="Sunflower"
-                    >Sunflower</ion-select-option
-                  >
+                  <ion-select-option value="Yes">Yes</ion-select-option>
+                  <ion-select-option value="No">No</ion-select-option>
+                 
                 </ion-select>
               </ion-card-content>
             </ion-card>
@@ -4507,23 +4406,40 @@ export default {
     nextStep() {
       if (this.currentStep < this.totalSteps) {
         this.currentStep++;
+        this.selectedStep = this.currentStep;
       }
     },
     prevStep() {
       if (this.currentStep > 1) {
         this.currentStep--;
+        this.selectedStep = this.currentStep;
       }
     },
     async livestockData() {
       try{
+        if (
+        Object.values(this.incomefromCropsKharifRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
       this.livestockRows.push({ ...this.addLivestockDetails });
       this.triggerToastMessage(
             "Insertion of Livestock Details is Submitted Successfully","custom_toast"
           );
       this.clearLiveStockFields();
+      }
+      else{
+        this.triggerToastMessage("Please Insert Livestock Details Fields","danger");
+      }
       }  
       catch(error){
-        this.triggerToastMessage("Failed to Insert Livestock Details Kharif","danger");
+        this.triggerToastMessage("Failed to Insert Livestock Details","danger");
         console.error("error in livestockData function",error)
       }
     },
@@ -5290,15 +5206,30 @@ export default {
     },
     async addLandParticularsRows() {
       try {
-        this.cultivatedAreaRowsData.push({ ...this.cultivatedAreaRows });
+        if (
+        Object.values(this.cultivatedAreaRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
+      this.cultivatedAreaRowsData.push({ ...this.cultivatedAreaRows });
           this.triggerToastMessage(
             "Insertion of Land Particulars is Submitted Successfully","custom_toast"
           );
         console.log("LAND PARTICULARS DATA", this.cultivatedAreaRowsData);
         this.clearCultivatedRows();
+      }
+      else{
+        this.triggerToastMessage("Please Insert the Land Particulars Fields","danger");
+      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Insert the Land Particulars","danger");
-        console.error("error in addLandParticularsRows function", error);
+        this.triggerToastMessage("Failed to Insert the Land Particulars Details","danger");
+        console.error("error in addLandParticularsRows function",error)
       }
     },
     clearCultivatedRows() {
@@ -5312,6 +5243,17 @@ export default {
     },
     async incomeKharifRows() {
       try {
+        if (
+        Object.values(this.incomefromCropsKharifRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.incomefromCropsKharifRowsData.push({
           ...this.incomefromCropsKharifRows,
         });
@@ -5320,6 +5262,10 @@ export default {
             "Insertion of Income from Crops Kharif is Submitted Successfully","custom_toast"
           );
         this.clearIncomeKharifRows();
+      }
+      else{
+        this.triggerToastMessage("Please Insert the Income Kharif Particulars Fields","danger");
+      }
       } catch (error) {
         this.triggerToastMessage("Failed to Insert Income from Crops Kharif","danger");
         console.error("error in incomeKharif function", error);
@@ -5344,6 +5290,17 @@ export default {
     },
     async incomeRabiRows() {
       try {
+        if (
+        Object.values(this.incomefromCropsRabiRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.incomefromCropsRabiRowsData.push({
           ...this.incomefromCropsRabiRows,
         });
@@ -5352,6 +5309,10 @@ export default {
             "Insertion of Income from Crops Rabi is Submitted Successfully","custom_toast"
           );
         this.clearIncomeRabiRows();
+      }
+      else{
+        this.triggerToastMessage("Please Insert Income from Crops Rabi Fields","danger");
+      }
       } catch (error) {
         this.triggerToastMessage("Failed to Insert Income from Crops Rabi","danger");
         console.log("error in incomerabi function", error);
@@ -5434,12 +5395,27 @@ export default {
     },
     async migrationStatusAddRows() {
       try {
+        if (
+        Object.values(this.migrationStatusRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.migrationStatusRowsData.push({ ...this.migrationStatusRows });
       console.log("migration status", this.migrationStatusRowsData);
       this.triggerToastMessage(
             "Insertion of Migration Status Details is Submitted Successfully","custom_toast"
           );
       this.clearMigrationDataRows();
+      }
+      else{
+        this.triggerToastMessage("Please Insert Migration Status Fields","danger");
+      }
       } catch (error) {
         this.triggerToastMessage("Failed to Insert Migration Status Details","danger");
         console.log("error in migrationStatusAddRows fucntion",error)
@@ -5471,6 +5447,17 @@ export default {
     },
     async landLessLabourData() {
       try{
+        if (
+        Object.values(this.landLessLabourers).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
       this.landLessData.push({ ...this.landLessLabourers });
       this.triggerToastMessage(
             "Insertion of Landless Labour Details is Submitted Successfully","custom_toast"
@@ -5478,8 +5465,12 @@ export default {
       console.log("land less labours", this.landLessData);
       this.clearLandLessRows();
       }
+      else{
+        this.triggerToastMessage("Please Insert Migration Status Details","danger");
+      }
+      }
       catch(error){
-        this.triggerToastMessage("Failed to Insert Migration Status Details","danger");
+        this.triggerToastMessage("Failed to Insert Landless Labour Data Details","danger");
         console.log("error in landLessLabourData function",error)
       }
     },
@@ -5506,6 +5497,17 @@ export default {
     },
     addGovernmentSchemesDataRows() {
       try{
+        if (
+        Object.values(this.governmentSchemesRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
       this.governmentSchemesRowsData.push({ ...this.governmentSchemesRows });
       console.log(
         "%%%%%%%%%%%%%%%DATA%%%%%%%%%%%%%%%%%%",
@@ -5515,6 +5517,10 @@ export default {
             "Insertion of Government Scheme Details is Submitted Successfully","custom_toast"
           );
       }
+      else{
+        this.triggerToastMessage("Please Insert Government Scheme Details","danger");
+      }
+    }
       catch(error){
         this.triggerToastMessage("Failed to Insert Government Scheme Details","danger");
         console.log("error in triggerToastMessage functionm")
@@ -5542,13 +5548,28 @@ export default {
     },
     addChemicalManureRows() {
       try {
+        if (
+        Object.values(this.useofChemicalManureRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.chemicalManureRowsData.push({ ...this.useofChemicalManureRows });
       console.log("chemical manure data", this.chemicalManureRowsData);
         this.triggerToastMessage(
             "Insertion of Manure and Chemical Details is Submitted Successfully","custom_toast"
           );
           this.clearChemicalManureRows();
-      } catch (error) {
+      } 
+      else{
+        this.triggerToastMessage("Please Insert Manure and Chemical Details","danger");
+      }
+      }catch (error) {
         this.triggerToastMessage("Failed to Insert Manure and Chemical Details","danger");
         console.log("error in addChemicalManureRows function",error)
       }
@@ -5579,12 +5600,29 @@ export default {
     },
     addLoanParticularsRows() {
       try {
+        if (
+        Object.values(this.loanParticularsRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.loanParticularsRowsData.push({ ...this.loanParticularsRows });
       console.log("&&&&&&&&&&&DATA&&&&&&&&&&", this.loanParticularsRowsData);
         this.triggerToastMessage(
             "Insertion of Loan Particulars Details is Submitted Successfully","custom_toast"
           );
           this.clearLoanParticularsRows();
+      }
+      else{
+        this.triggerToastMessage(
+            "Please Insert Loan Particulars Details","danger"
+          );
+      }
       } catch (error) {
         this.triggerToastMessage(
             "Failed to Insert Loan Particulars Details","danger"
@@ -5624,12 +5662,29 @@ export default {
     },
     addPestDiseaseRows() {
       try {
+        if (
+        Object.values(this.pestandDiseaseRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.pestandDiseaseRowsData.push({ ...this.pestandDiseaseRows });
       console.log("%%%%DATA%%%%%%%%%", this.pestandDiseaseRowsData);
       this.triggerToastMessage(
             "Insertion of Pest Disease Details is Submitted Successfully","custom_toast"
           );
       this.clearPestDisease();
+      }
+      else{
+        this.triggerToastMessage(
+            "Please Insert Pest Disease Details","danger"
+          );
+      }
       } catch (error) {
         this.triggerToastMessage(
             "Failed to Insert Pest Disease Details","danger"
@@ -5666,6 +5721,17 @@ export default {
     },
     addFamilyExpenditureRows() {
       try {
+        if (
+        Object.values(this.familyExpenditureRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.familyExpenditureRowsData.push({ ...this.familyExpenditureRows });
       console.log(
         "%%%%%%%%%%%DATA%%%%%%%%%%%%%%",
@@ -5676,6 +5742,12 @@ export default {
           );
 
       this.clearFamilyExpenditureRows();
+      }
+      else{
+        this.triggerToastMessage(
+            "Please Insert Family Expenditure Details","danger"
+          );
+      }
       } catch (error) {
         this.triggerToastMessage(
             "Failed to Insert Family Expenditure Details","danger"
@@ -5708,6 +5780,17 @@ export default {
     },
     addSourceofIncomeRows() {
       try {
+        if (
+        Object.values(this.sourceofIncomeRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.sourceofIncomeRowsData.push({ ...this.sourceofIncomeRows });
       console.log(
         "^^^^^^^^^^^^^DATA^^^^^^^^^^^^^^^",
@@ -5717,6 +5800,12 @@ export default {
             "Insertion of Source of Income Details is Submitted Successfully","custom_toast"
           );
           this.clearSourceofIncomeRows();
+      }
+      else{
+        this.triggerToastMessage(
+            "Please Insert Source of Income Details","danger"
+          );
+      }
       } catch (error) {
         this.triggerToastMessage(
             "Failed to Insert Source of Income Details","danger"
@@ -5748,6 +5837,17 @@ export default {
     },
     addDrinkingWaterAvailabilityRows() {
       try {
+        if (
+        Object.values(this.sourceofIncomeRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.drinkingWaterAvailabilityRowsData.push({
         ...this.drinkingWaterAvailabilityRows,
       });
@@ -5760,6 +5860,12 @@ export default {
           );
 
       this.clearDrinkingWaterRows();
+    }
+    else{
+      this.triggerToastMessage(
+            "Please Insert Drinking Water Availability Details","danger"
+          );
+    }
       } catch (error) {
         this.triggerToastMessage(
             "Failed to Insert Drinking Water Availability Details","danger"
@@ -5789,6 +5895,17 @@ export default {
     },
     addSourceandQualityWaterRows() {
       try {
+        if (
+        Object.values(this.sourceandQualityofWaterRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.sourceandQualityofWaterRowsData.push({
         ...this.sourceandQualityofWaterRows,
       });
@@ -5800,9 +5917,15 @@ export default {
             "Insertion of Source and Quality Water Details is Submitted Successfully","custom_toast"
           );
           this.clearSourceandQualityofWaterRows();
+    }
+    else{
+      this.triggerToastMessage(
+            "Please Insert Source and Quality Water Availability Details","danger"
+          );
+    }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Source and Quality Water Availability Details","danger"
+            "Failed Insertion of Source and Quality Water Availability Details","danger"
           );
         console.error("Error in addSourceandQualityWaterRows function",error)
       }
@@ -5836,6 +5959,17 @@ export default {
     },
     addAgriculturalImplementsRows() {
       try {
+        if (
+        Object.values(this.agriculturalImplementsRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.agriculturalImplementsRowsData.push({
         ...this.agriculturalImplementsRows,
       });
@@ -5844,6 +5978,12 @@ export default {
             "Insertion of Agricultural Implements Details is Submitted Successfully","custom_toast"
           );
       this.clearAgriculturalImplementsRows();
+    }
+    else{
+      this.triggerToastMessage(
+            "Please Insert Agricultural Implements Details","danger"
+          );
+    }
       } catch (error) {
         this.triggerToastMessage(
             "Failed to Agricultural Implements Details","danger"
@@ -5873,6 +6013,17 @@ export default {
     },
     addHorticultureRows() {
       try {
+        if (
+        Object.values(this.horticultureDetailsRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.horticultureDetailsRowsData.push({
         ...this.horticultureDetailsRows,
       });
@@ -5884,6 +6035,12 @@ export default {
             "Insertion of Horticulture Details is Submitted Successfully","custom_toast"
           );
           this.clearHorticultureDetailsRowsData();
+    }
+    else{
+      this.triggerToastMessage(
+            "Please Insert Horticulture Details","danger"
+          );
+    }
       } catch (error) {
         this.triggerToastMessage(
             "Failed to Horticulture Details","danger"
@@ -5911,6 +6068,17 @@ export default {
     },
     addFodderandFeedAvailabilityRows() {
       try {
+        if (
+        Object.values(this.fodderandFeedAvailability).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.fodderandFeedAvailabilityRowsData.push({
         ...this.fodderandFeedAvailability,
       });
@@ -5922,9 +6090,15 @@ export default {
             "Insertion of Fodder and Feed Availability Details is Submitted Successfully","custom_toast"
           );
           this.clearFodderFeedRows();
+    }
+    else{
+      this.triggerToastMessage(
+            "Please Insert Fodder and Feed Availability Details","danger"
+          );
+    }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Fodder and Feed Availability Details","danger"
+            "Failed to Insert Fodder and Feed Availability Details","danger"
           );
         console.error("error in addFodderandFeedAvailabilityRows fucntion",error)
       }
@@ -5951,6 +6125,17 @@ export default {
     },
     addFodderFuelRows() {
       try {
+        if (
+        Object.values(this.fodderFuelRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.fodderFuelRowsData.push({ ...this.fodderFuelRows });
       console.log(
         "################DATA##############",
@@ -5960,9 +6145,15 @@ export default {
             "Insertion of Fodder Fuel Details is Submitted Successfully","custom_toast"
           );
           this.clearFodderFullRows();
+      }
+      else{
+        this.triggerToastMessage(
+            "Please Insert Fodder Fuel Availability Details","danger"
+          );
+      }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Fodder Fuel Availability Details","danger"
+            "Failed to Insert Fodder Fuel Availability Details","danger"
           );
         console.error("error in addFodderFuelRows function",error)
       }
@@ -5990,6 +6181,17 @@ export default {
     },
     addGrazeCattleRows() {
       try {
+        if (
+        Object.values(this.grazeCattleRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.grazeCattleRowsData.push({ ...this.grazeCattleRows });
       console.log("%%%%%%%%%DATA%%%%%%%%%%%%%%", this.grazeCattleRowsData);
       this.triggerToastMessage(
@@ -5997,9 +6199,15 @@ export default {
           );
  
       this.clearGrazeCattleRows();
+      }
+      else{
+        this.triggerToastMessage(
+            "Please Insert Graze Cattle Details","danger"
+          );
+      }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Graze Cattle Details","danger"
+            "Failed to Insert Graze Cattle Details","danger"
           );
         console.error("error in addGrazeCattleRows function",error)
       }
@@ -6025,6 +6233,17 @@ export default {
     },
     addHouseholdRows() {
       try {
+        if (
+        Object.values(this.householdRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.householdRowsData.push({ ...this.householdRows });
       console.log("^^^^^^^^DATA^^^^^^^^^^^^^^", this.householdRowsData);
       this.triggerToastMessage(
@@ -6032,9 +6251,15 @@ export default {
           );
  
       this.clearHouseholdRows();
+      }
+      else{
+        this.triggerToastMessage(
+            "Please Insert Household Details","danger"
+          );
+      }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Household Details","danger"
+            "Failed to Insert Household Details","danger"
           );
         console.error("error in addHouseholdRows function",error)
       }
@@ -6064,6 +6289,17 @@ export default {
     },
     addParticipationRows() {
       try {
+        if (
+        Object.values(this.participationinCommunityProgramsRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.participationinCommunityProgramsRowsData.push({
         ...this.participationinCommunityProgramsRows,
       });
@@ -6076,9 +6312,15 @@ export default {
           );
 
       this.clearParticipationRows();
+    }
+    else{
+      this.triggerToastMessage(
+            "Please Insert Participation Details","danger"
+          );
+    }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Participation Details","danger"
+            "Failed to Insert Participation Details","danger"
           );
         console.error("error in addParticipationRows function",error)
       }
@@ -6104,6 +6346,17 @@ export default {
     },
     addAwarenessTechnologyRows() {
       try {
+        if (
+        Object.values(this.awarenessTechnologyRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.awarenessTechnologyRowsData.push({
         ...this.awarenessTechnologyRows,
       });
@@ -6116,9 +6369,15 @@ export default {
           );
  
       this.clearAwarenessTechnologyRows();
+    }
+    else{
+      this.triggerToastMessage(
+            "Please Insert Awareness Technology Details","danger"
+          );
+    }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Awareness Technology Details","danger"
+            "Failed to Insert Awareness Technology Details","danger"
           );
         console.error("error in addAwarenessTechnologyRows fucntion",error)
       }
@@ -6143,6 +6402,17 @@ export default {
     },
     addMembershipDetailsRows() {
       try {
+        if (
+        Object.values(this.membershipDetailsRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.membershipDetailsRowsData.push({ ...this.membershipDetailsRows });
       console.log(
         "&&&&&&&&&&&&&DATA&&&&&&&&&&&&&&",
@@ -6153,9 +6423,15 @@ export default {
           );
  
       this.clearMembershipDetailsRows();
+      }
+      else{
+        this.triggerToastMessage(
+            "Please Insert Membership Details","danger"
+          );
+      }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to membership Details","danger"
+            "Failed to Insert Membership Details","danger"
           );
         console.error("Error in addMembershipDetailsRows fucntion",error)
       }
@@ -6182,6 +6458,17 @@ export default {
     },
     addBeneficiarySchemeRows() {
       try {
+        if (
+        Object.values(this.beneficiarySchemeRows).some((field) => {
+          if (typeof field === "string") {
+            return field.trim() !== "";
+          } else if (Array.isArray(field)) {
+            return field.length > 0;
+          } else {
+            return field !== null && field !== undefined;
+          }
+        })
+      ){
         this.beneficiarySchemeRowsData.push({ ...this.beneficiarySchemeRows });
       console.log(
         "$$$$$$$$$$$$$$$$$DATA$$$$$$$$$$$$$$$$",
@@ -6192,9 +6479,15 @@ export default {
           );
 
       this.clearBeneficiarySchemeRows();
+      }
+      else{
+        this.triggerToastMessage(
+            "Please Insert Beneficiary Scheme Details","danger"
+          );
+      }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Beneficiary Scheme Details","danger"
+            "Failed to Insert Beneficiary Scheme Details","danger"
           );
         console.error("Error in addBeneficiarySchemeRows function",error)
       } 
