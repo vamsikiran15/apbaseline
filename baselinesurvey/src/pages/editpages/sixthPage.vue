@@ -111,6 +111,7 @@ import {
   IonRadioGroup,
   IonRadio,
   IonList,
+  toastController,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -151,6 +152,7 @@ export default {
     IonRadioGroup,
     IonRadio,
     IonList,
+    toastController
   },
   methods: {
     selectMigrate(item) {
@@ -194,7 +196,9 @@ export default {
     },
     // migrate data updation
     async UpdateLandLessData() {
-      this.updateLandLessrows();
+      try {
+        this.triggerToastMessage("Updated Landless Details Successfully","custom_toast")
+        this.updateLandLessrows();
       const newData = this.landLessRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -214,6 +218,11 @@ export default {
           this.landLessRows = [];
         }
       }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Landless Details","danger")
+        console.error("error in UpdateLandLessData function",error)
+      }
+     
     },
     async insertLandLess(row) {
       try {
@@ -246,18 +255,25 @@ export default {
         console.error("Error updating Land Less row:", error);
       }
     },
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+    },
   },
 };
 </script>
 <style>
 ion-card {
-  border-radius: 1.2rem;
-  box-shadow: 0.1rem 0.1rem 0.7rem rgb(96, 96, 161);
-}
-</style>
-<style>
-ion-card {
   border-radius: 8px;
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
 </style>

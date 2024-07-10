@@ -119,6 +119,7 @@ import {
   IonRadio,
   IonList,
   IonButton,
+  toastController,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -158,6 +159,7 @@ export default {
     IonRadio,
     IonList,
     IonButton,
+    toastController
   },
   methods: {
     selectAwarenessAdoption(item) {
@@ -200,7 +202,9 @@ export default {
     },
     // migrate data updation
     async UpdateAwarenessAdoptionData() {
-      this.updateAwarenessAdoptionrows();
+      try {
+        this.triggerToastMessage("Updated Awareness Adoption Technology Details Successfully","custom_toast")
+        this.updateAwarenessAdoptionrows();
       const newData = this.AwarenessAdoptionRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -220,6 +224,11 @@ export default {
           this.AwarenessAdoptionRows = [];
         }
       }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Awareness Adoption Technology Details","danger")
+        console.error("error in UpdateAwarenessAdoptionData function",error)
+      }
+    
     },
     async insertAwarenessAdoption(row) {
       try {
@@ -249,6 +258,15 @@ export default {
         console.error("Error updating AwarenessAdoption row:", error);
       }
     },
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+    },
   },
 };
 </script>
@@ -257,4 +275,8 @@ ion-card {
   border-radius: 8px;
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
 </style>
