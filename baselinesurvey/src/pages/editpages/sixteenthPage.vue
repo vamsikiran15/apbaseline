@@ -97,6 +97,7 @@ import {
   IonRadio,
   IonList,
   IonButton,
+  toastController,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -136,6 +137,7 @@ export default {
     IonRadio,
     IonList,
     IonButton,
+    toastController
   },
   methods: {
     selectHorticulture(item) {
@@ -177,7 +179,9 @@ export default {
     },
     // migrate data updation
     async UpdateHorticultureData() {
-      this.updateHorticulturerows();
+      try {
+        this.triggerToastMessage("Updated Horticulture Details Successfully","custom_toast")
+        this.updateHorticulturerows();
       const newData = this.HorticultureRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -197,6 +201,11 @@ export default {
           this.HorticultureRows = [];
         }
       }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Horticulture Details","danger")
+        console.error("error in UpdateHorticultureData function",error)
+      }
+   
     },
     async insertHorticulture(row) {
       try {
@@ -226,6 +235,15 @@ export default {
         console.error("Error updating Horticulture row:", error);
       }
     },
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+    },
   },
 };
 </script>
@@ -234,4 +252,8 @@ ion-card {
   border-radius: 8px;
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
 </style>

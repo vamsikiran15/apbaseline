@@ -113,6 +113,7 @@ import {
   IonRadio,
   IonList,
   IonButton,
+  toastController,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -153,6 +154,7 @@ export default {
     IonRadio,
     IonList,
     IonButton,
+    toastController
   },
   methods: {
     selectParticipationCommunityProgram(item) {
@@ -198,7 +200,9 @@ export default {
     },
     // migrate data updation
     async UpdateParticipationCommunityProgramData() {
-      this.updateParticipationCommunityProgramrows();
+      try {
+        this.triggerToastMessage("Updated Participation in Community Programs Details Successfully","custom_toast")
+        this.updateParticipationCommunityProgramrows();
       const newData = this.ParticipationCommunityProgramRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -218,6 +222,11 @@ export default {
           this.ParticipationCommunityProgramRows = [];
         }
       }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Participation in Community Programs Details","danger")
+        console.error("error in UpdateParticipationCommunityProgramData function",error)
+      }
+     
     },
     async insertParticipationCommunityProgram(row) {
       try {
@@ -254,6 +263,15 @@ export default {
         );
       }
     },
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+    },
   },
 };
 </script>
@@ -262,4 +280,8 @@ ion-card {
   border-radius: 8px;
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
 </style>

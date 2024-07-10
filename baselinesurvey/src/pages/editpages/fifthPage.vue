@@ -148,6 +148,7 @@ import {
   IonRadioGroup,
   IonRadio,
   IonList,
+  toastController,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -191,6 +192,7 @@ export default {
     IonRadioGroup,
     IonRadio,
     IonList,
+    toastController
   },
   methods: {
     selectMigrate(item) {
@@ -243,7 +245,9 @@ export default {
     },
     // migrate data updation
     async UpdateMigrateData() {
-      this.updateMigraterows();
+      try {
+        this.triggerToastMessage("Updated Migration Details Successfully","custom_toast")
+        this.updateMigraterows();
       const newData = this.migrateRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -263,6 +267,19 @@ export default {
           this.migrateRows = [];
         }
       }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Migration Details","custom_toast")
+        console.error("error in UpdateMigrateData function",error)
+      }
+    },
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
     },
     async insertMigrate(row) {
       try {
@@ -307,4 +324,8 @@ ion-card {
   border-radius: 8px;
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
 </style>

@@ -82,6 +82,7 @@ import {
   IonRadio,
   IonList,
   IonButton,
+  toastController,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -122,6 +123,7 @@ export default {
     IonRadio,
     IonList,
     IonButton,
+    toastController
   },
   methods: {
     selectAnyScheme(item) {
@@ -167,7 +169,9 @@ export default {
     },
     // migrate data updation
     async UpdateAnySchemeData() {
-      this.updateAnySchemerows();
+      try {
+        this.triggerToastMessage("Updated Beneficiary of any Scheme Details Successfully","custom_toast")
+        this.updateAnySchemerows();
       const newData = this.AnySchemeRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -186,6 +190,10 @@ export default {
           await this.insertAnyScheme(row);
           this.AnySchemeRows = [];
         }
+      }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Beneficiary of any Scheme Details","danger")
+        console.error("error in UpdateAnySchemeData function",error)
       }
     },
     async insertAnyScheme(row) {
@@ -217,18 +225,29 @@ export default {
         console.error("Error updating AnyScheme row:", error);
       }
     },
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+    },
   },
 };
 </script>
 <style>
-.iconSize {
-  height: 2.5rem;
-  width: 2.5rem;
-}
-</style>
-<style>
 ion-card {
   border-radius: 8px;
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
+}
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
+  .iconSize {
+  height: 2.5rem;
+  width: 2.5rem;
 }
 </style>

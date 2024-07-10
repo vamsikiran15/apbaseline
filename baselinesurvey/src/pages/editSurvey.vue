@@ -921,7 +921,6 @@
                     fill="outline"
                     label-placement="floating"
                     v-model="newRowLandParticular.total"
-                    readonly="readonly"
                   ></ion-input>
                   <ion-select
                     class="ion-margin-top"
@@ -1081,7 +1080,6 @@
                     fill="outline"
                     label="Rainfed(Acres) Gross Income"
                     label-placement="floating"
-                    readonly="readonly"
                     v-model="newRowIncomeKharif.rainfed_gross_income"
                   ></ion-input>
                   <ion-input
@@ -1089,7 +1087,6 @@
                     placeholder="Total Rainfed Net income"
                     fill="outline"
                     label="Rainfed(Acres) Net Income(7-5)"
-                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.rainfed_net_income"
                   ></ion-input>
@@ -1148,7 +1145,6 @@
                     placeholder="Total Irrigated Net Income(13-11)"
                     fill="outline"
                     label="Total Irrigated Net Income(13-11)"
-                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeKharif.irrigated_net_income"
                   ></ion-input>
@@ -1156,7 +1152,6 @@
                     class="ion-margin-top"
                     placeholder="Kharif Grand Total Income"
                     label="Kharif Grand Total Income"
-                    readonly="readonly"
                     fill="outline"
                     label-placement="floating"
                   ></ion-input>
@@ -1307,7 +1302,6 @@
                     placeholder="Total Rainfed Gross income"
                     fill="outline"
                     label="Rainfed(Acres) Gross Income"
-                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_gross_income"
                   ></ion-input>
@@ -1316,7 +1310,6 @@
                     placeholder="Total Rainfed Net income"
                     fill="outline"
                     label="Rainfed(Acres) Net Income(7-5)"
-                    readonly="readonly"
                     label-placement="floating"
                     v-model="newRowIncomeRabhi.rainfed_net_income"
                   ></ion-input>
@@ -1383,7 +1376,6 @@
                     class="ion-margin-top"
                     placeholder="Rabhi Grand Total Income"
                     label="Rabhi Grand Total Income"
-                    readonly="readonly"
                     fill="outline"
                     label-placement="floating"
                   ></ion-input>
@@ -2084,6 +2076,15 @@ export default {
     },
   },
   methods: {
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+    },
     ContactNumberValidation(event) {
       let value = event.target.value;
       // Remove non-digit characters
@@ -2617,15 +2618,15 @@ export default {
         console.log("Item updated individual:", response.statusText);
         if (response.statusText === "OK") {
           // If response status is 200 (OK), trigger success toast
-          this.triggerToast(
+          this.triggerToastMessage(
             "Updated of Survey Form is Submitted Successfully",
-            "success"
+            "custom_toast"
           );
         }
         console.log("Item updated individual:", response.data);
         // this.$emit("item-updated", response.data); // Emit event with updated item
       } catch (error) {
-        this.triggerToast("Failed to submit the survey form", "danger");
+        this.triggerToastMessage("Failed to submit the survey form", "danger");
         console.error("Error individual updating item:", error);
       }
     },
@@ -2658,6 +2659,8 @@ export default {
     // update and insert the household members
 
     async UpdateHouseHoldMemberData() {
+      try {
+      this.triggerToastMessage("Updated Household Details Successfully","custom_toast")
       this.addRows();
       const newData = this.rows.map((row) => ({
         ...row,
@@ -2678,6 +2681,9 @@ export default {
           await this.insertHouseholdMembers(row);
           this.rows = [];
         }
+      }
+    } catch (error) {
+        console.error("error in UpdateHouseHoldMemberData function",error)
       }
     },
     async insertHouseholdMembers(row) {
@@ -2723,7 +2729,9 @@ export default {
     // update and insert the landparticulars
 
     async UpdateLandParticularsData() {
-      this.updateLandrows();
+      try {
+        this.triggerToastMessage("Updated Land Particulars Details Succesfully","custom_toast")
+        this.updateLandrows();
       const newData = this.landParticularRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -2742,6 +2750,10 @@ export default {
           await this.insertLandParticular(row);
           this.landParticularRows = [];
         }
+      }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update LandParticulars Details","danger")
+        console.error("error in UpdateLandParticularsData function",error)
       }
     },
     async insertLandParticular(row) {
@@ -2781,7 +2793,9 @@ export default {
     // end update and insert the landParticulars
 
     async UpdateKharifData() {
-      this.updateIncomeKharifrows();
+      try {
+        this.triggerToastMessage("Updated Income Kharif Data Details Successfully","custom_toast")
+        this.updateIncomeKharifrows();
       const newData = this.incomeKharifRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -2801,6 +2815,11 @@ export default {
           this.incomeKharifRows = [];
         }
       }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Income Kharif Data Details","danger")
+        console.error("error in UpdateKharifData function",error)
+      }
+     
     },
     async insertIncomeKharif(row) {
       try {
@@ -2844,7 +2863,9 @@ export default {
       }
     },
     async UpdateRabhiData() {
-      this.updateIncomeRabhirows();
+      try {
+        this.triggerToastMessage("Updated Income Rabi Data Details Successfully","custom_toast")
+        this.updateIncomeRabhirows();
       const newData = this.incomeRabhiRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -2864,6 +2885,10 @@ export default {
           this.incomeRabhiRows = [];
         }
       }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Income Rabi Data Details","danger")
+        console.error("error in UpdateRabhiData function",error)
+      } 
     },
     async insertIncomeRabhi(row) {
       try {
@@ -2907,7 +2932,9 @@ export default {
     },
     // live stock data updation
     async UpdateLiveStockData() {
-      this.updateLiveStockrows();
+      try {
+        this.triggerToastMessage("Updated Livestock Details Successfully","custom_toast")
+        this.updateLiveStockrows();
       const newData = this.liveStockRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -2927,6 +2954,11 @@ export default {
           this.liveStockRows = [];
         }
       }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Livestock Details","danger")
+        console.error("error in UpdateLiveStockData function",error)
+      }
+     
     },
     async insertLiveStock(row) {
       try {
@@ -3045,4 +3077,9 @@ ion-card {
   border-radius: 8px;
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
+
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
 </style>

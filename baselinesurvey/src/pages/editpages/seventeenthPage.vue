@@ -108,6 +108,7 @@ import {
   IonRadio,
   IonList,
   IonButton,
+  toastController,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -149,6 +150,7 @@ export default {
     IonRadio,
     IonList,
     IonButton,
+    toastController
   },
   methods: {
     selectFodderFeed(item) {
@@ -195,7 +197,9 @@ export default {
     },
     // migrate data updation
     async UpdateFodderFeedData() {
-      this.updateFodderFeedrows();
+      try {
+        this.triggerToastMessage("Updated Fodder Feed Availability Details Successfully","custom_toast")
+        this.updateFodderFeedrows();
       const newData = this.FodderFeedRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -214,6 +218,10 @@ export default {
           await this.insertFodderFeed(row);
           this.FodderFeedRows = [];
         }
+      }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Fodder Feed Availability Details","danger")
+        console.error("error in UpdateFodderFeedData function",error)
       }
     },
     async insertFodderFeed(row) {
@@ -246,6 +254,15 @@ export default {
         console.error("Error updating FodderFeed row:", error);
       }
     },
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+    },
   },
 };
 </script>
@@ -254,4 +271,8 @@ ion-card {
   border-radius: 8px;
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
 </style>

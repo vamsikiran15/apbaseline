@@ -114,6 +114,7 @@ import {
   IonList,
   IonButton,
   IonItem,
+  toastController,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -155,6 +156,7 @@ export default {
     IonList,
     IonButton,
     IonItem,
+    toastController
   },
   methods: {
     selectGovtBenefit(item) {
@@ -196,7 +198,9 @@ export default {
     },
     // migrate data updation
     async UpdateGovtBenefitData() {
-      this.updateGovtBenenfitrows();
+      try {
+        this.triggerToastMessage("Updated Government Benefits Details Successfully","custom_toast")
+        this.updateGovtBenenfitrows();
       const newData = this.GovtBenefitRows.map((row) => ({
         ...row,
         headId: this.editedItem.id,
@@ -216,6 +220,11 @@ export default {
           this.GovtBenefitRows = [];
         }
       }
+      } catch (error) {
+        this.triggerToastMessage("Failed to Update Government Benefits Details","danger")
+        console.error("error in UpdateGovtBenefitData function",error)
+      }
+     
     },
     stringValidation() {
       let value = event.target.value;
@@ -253,6 +262,15 @@ export default {
         console.error("Error updating govt banefit row:", error);
       }
     },
+    async triggerToastMessage(message,color) {
+      const toast = await toastController.create({
+        message: message,
+        duration: 3000,
+        position: "top",
+        cssClass: color, // Add your custom CSS class here
+      });
+      toast.present();
+    },
   },
 };
 </script>
@@ -261,4 +279,8 @@ ion-card {
   border-radius: 8px;
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
+.custom_toast {
+    --background: #df3389; /* Set your desired background color */
+    --color: white; /* Set your desired text color */
+  }
 </style>
