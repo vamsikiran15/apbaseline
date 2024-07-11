@@ -606,8 +606,7 @@
                 >
               </ion-card>
               <ion-card>
-                <ion-card-content>
-                  <ion-list>
+                <ion-list>
                     <ion-item
                       v-for="item in houseHoldEditItem"
                       :key="item.id"
@@ -618,6 +617,9 @@
                       {{ item.gender }}
                     </ion-item>
                   </ion-list>
+              </ion-card>
+              <ion-card>
+                <ion-card-content>
                   <ion-input
                     class="ion-margin-top"
                     label="Name of Family Member"
