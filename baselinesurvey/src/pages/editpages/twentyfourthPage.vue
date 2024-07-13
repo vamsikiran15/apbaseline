@@ -46,17 +46,17 @@
         ></ion-input>
       </ion-card-content>
       <ion-button
-          class="ion-margin"
-          expand="block"
-          color="primary"
-          @click="UpdateAnySchemeData"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update AnyScheme</ion-button
-        >
+        class="ion-margin"
+        expand="block"
+        color="primary"
+        @click="UpdateAnySchemeData"
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update AnyScheme</ion-button
+      >
     </ion-card>
   </div>
 </template>
@@ -83,6 +83,8 @@ import {
   IonList,
   IonButton,
   toastController,
+  IonItem,
+  IonIcon,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -123,7 +125,9 @@ export default {
     IonRadio,
     IonList,
     IonButton,
-    toastController
+    toastController,
+    IonItem,
+    IonIcon,
   },
   methods: {
     selectAnyScheme(item) {
@@ -170,30 +174,28 @@ export default {
     // migrate data updation
     async UpdateAnySchemeData() {
       try {
-        this.triggerToastMessage("Updated Beneficiary of any Scheme Details Successfully","custom_toast")
         this.updateAnySchemerows();
-      const newData = this.AnySchemeRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.AnySchemeRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("AnyScheme ", row);
-          await this.updateAnyScheme(row);
-          this.AnySchemeRows = [];
-        } else {
-          // Insert new row
-          // this.GovtBenefitRows.push(row);
-          console.log("AnyScheme  data", row);
-          await this.insertAnyScheme(row);
-          this.AnySchemeRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("AnyScheme ", row);
+            await this.updateAnyScheme(row);
+            this.AnySchemeRows = [];
+          } else {
+            // Insert new row
+            // this.GovtBenefitRows.push(row);
+            console.log("AnyScheme  data", row);
+            await this.insertAnyScheme(row);
+            this.AnySchemeRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Beneficiary of any Scheme Details","danger")
-        console.error("error in UpdateAnySchemeData function",error)
+        console.error("error in UpdateAnySchemeData function", error);
       }
     },
     async insertAnyScheme(row) {
@@ -209,8 +211,20 @@ export default {
             value_of_the_benefit: row.value_of_the_benefit,
           }
         );
+        this.anyschemepreviousprojectdetails.push(response.data.data);
+        if (response.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted AnyScheme Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("AnyScheme inserted:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Beneficiary of any Scheme Details",
+          "danger"
+        );
         console.error("Error inserting AnyScheme row:", error);
       }
     },
@@ -220,12 +234,23 @@ export default {
           `http://183.82.109.39:5000/api/updateanyschemepreviousproject/${row.id}`,
           row
         );
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated AnyScheme Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("AnyScheme Row updated:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Beneficiary of any Scheme Details",
+          "danger"
+        );
         console.error("Error updating AnyScheme row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -243,10 +268,10 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
-  .iconSize {
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
+.iconSize {
   height: 2.5rem;
   width: 2.5rem;
 }

@@ -49,8 +49,8 @@
             ></ion-card-subtitle
           >
         </ion-card-header>
-        </ion-card>
-        <ion-card class="ion-margin">
+      </ion-card>
+      <ion-card class="ion-margin">
         <ion-card-content>
           <ion-button
             class="ion-margin-top"
@@ -75,6 +75,18 @@
               slot="icon-only"
             ></ion-icon
             >UPDATE EXISTING SURVEY</ion-button
+          >
+          <ion-button
+            class="ion-margin-top"
+            expand="full"
+            router-link="/getdata"
+            color="primary"
+            ><ion-icon
+              class="ion-margin-end"
+              name="create-outline"
+              slot="icon-only"
+            ></ion-icon
+            >Get Data</ion-button
           >
         </ion-card-content>
       </ion-card>

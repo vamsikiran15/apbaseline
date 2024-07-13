@@ -93,7 +93,7 @@
         <ion-input
           class="ion-margin-top"
           placeholder="Enter units in Ha"
-           type="number"
+          type="number"
           fill="outline"
           label="Rabi"
           label-placement="floating"
@@ -102,7 +102,7 @@
         <ion-input
           class="ion-margin-top"
           placeholder="Enter units in Ha"
-           type="number"
+          type="number"
           fill="outline"
           label="Summer"
           label-placement="floating"
@@ -141,17 +141,17 @@
         </ion-select>
       </ion-card-content>
       <ion-button
-          class="ion-margin"
-          expand="block"
-          color="primary"
-          @click="UpdateSourceQualityWaterData()"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Source and Quality Water</ion-button
-        >
+        class="ion-margin"
+        expand="block"
+        color="primary"
+        @click="UpdateSourceQualityWaterData()"
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update Source and Quality Water</ion-button
+      >
     </ion-card>
   </div>
 </template>
@@ -178,6 +178,8 @@ import {
   IonList,
   IonButton,
   toastController,
+  IonItem,
+  IonIcon,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -226,7 +228,9 @@ export default {
     IonRadio,
     IonList,
     IonButton,
-    toastController
+    toastController,
+    IonItem,
+    IonIcon,
   },
   methods: {
     selectSourceQualityWater(item) {
@@ -294,32 +298,29 @@ export default {
     // migrate data updation
     async UpdateSourceQualityWaterData() {
       try {
-        this.triggerToastMessage("Updated Source and Quality of Water Details Successfully","custom_toast")
         this.updateSourceQualityWaterrows();
-      const newData = this.SourceQualityWaterRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.SourceQualityWaterRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("SourceQualityWater ", row);
-          await this.updateSourceQualityWater(row);
-          this.SourceQualityWaterRows = [];
-        } else {
-          // Insert new row
-          // this.GovtBenefitRows.push(row);
-          console.log("AvaiSourceQualityWaterlableDrinkingWater  data", row);
-          await this.insertSourceQualityWater(row);
-          this.SourceQualityWaterRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("SourceQualityWater ", row);
+            await this.updateSourceQualityWater(row);
+            this.SourceQualityWaterRows = [];
+          } else {
+            // Insert new row
+            // this.GovtBenefitRows.push(row);
+            console.log("AvaiSourceQualityWaterlableDrinkingWater  data", row);
+            await this.insertSourceQualityWater(row);
+            this.SourceQualityWaterRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Source and Quality of Water Details","danger")
-        console.error("error in UpdateSourceQualityWaterData function",error)
+        console.error("error in UpdateSourceQualityWaterData function", error);
       }
-     
     },
     async insertSourceQualityWater(row) {
       try {
@@ -343,8 +344,20 @@ export default {
             water_quality: row.water_quality,
           }
         );
+        this.sourcequalitywaterdetails.push(response.data.data);
+        if (response.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Source and Quality of Water Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("SourceQualityWater inserted:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Source and Quality of Water Details",
+          "danger"
+        );
         console.error("Error inserting SourceQualityWater row:", error);
       }
     },
@@ -354,12 +367,23 @@ export default {
           `http://183.82.109.39:5000/api/updatesourcequalitywater/${row.id}`,
           row
         );
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated Source and Quality of Water Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("SourceQualityWater Row updated:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Source and Quality of Water Details",
+          "danger"
+        );
         console.error("Error updating SourceQualityWater row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -377,7 +401,7 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

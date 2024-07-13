@@ -28,7 +28,7 @@
           fill="outline"
           v-model="newRowLoanParticulars.loan_particular"
         >
-        <ion-select-option value="">Select Agriculture</ion-select-option>
+          <ion-select-option value="">Select Agriculture</ion-select-option>
           <ion-select-option value="Amount Barrowed"
             >Amount Borrowed</ion-select-option
           >
@@ -170,23 +170,23 @@
         <ion-input
           placeholder="Outstanding Amount"
           fill="outline"
-           type="number"
+          type="number"
           label="Outstanding Amount"
           label-placement="floating"
         ></ion-input>
       </ion-card-content>
       <ion-button
-          class="ion-margin"
-          expand="block"
-          color="primary"
-          @click="UpdateLoanParticularData()"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Loan Particular Details</ion-button
-        >
+        class="ion-margin"
+        expand="block"
+        color="primary"
+        @click="UpdateLoanParticularData()"
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update Loan Particular Details</ion-button
+      >
     </ion-card>
   </div>
 </template>
@@ -213,6 +213,8 @@ import {
   IonList,
   IonButton,
   toastController,
+  IonItem,
+  IonIcon,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -263,7 +265,9 @@ export default {
     IonRadio,
     IonList,
     IonButton,
-    toastController
+    toastController,
+    IonItem,
+    IonIcon,
   },
   methods: {
     selectLoanParticulars(item) {
@@ -326,32 +330,29 @@ export default {
     // migrate data updation
     async UpdateLoanParticularData() {
       try {
-        this.triggerToastMessage("Updated LoanParticulars Details Successfully","custom_toast")
         this.updateLoanParticularrows();
-      const newData = this.loanparticularRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.loanparticularRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("LoanParticular ", row);
-          await this.updateLoanParticular(row);
-          this.loanparticularRows = [];
-        } else {
-          // Insert new row
-          // this.GovtBenefitRows.push(row);
-          console.log("LoanParticular updated data", row);
-          await this.insertLoanParticular(row);
-          this.loanparticularRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("LoanParticular ", row);
+            await this.updateLoanParticular(row);
+            this.loanparticularRows = [];
+          } else {
+            // Insert new row
+            // this.GovtBenefitRows.push(row);
+            console.log("LoanParticular updated data", row);
+            await this.insertLoanParticular(row);
+            this.loanparticularRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update LoanParticulars Details","danger")
-        console.error("error in UpdateLoanParticularData function",error)
+        console.error("error in UpdateLoanParticularData function", error);
       }
-     
     },
     async insertLoanParticular(row) {
       try {
@@ -376,8 +377,20 @@ export default {
             others: row.others,
           }
         );
+        this.loanparticulardetails.push(response.data.data);
+        if (response.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted LoanParticulars Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("LoanParticular inserted:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert LoanParticulars Details",
+          "danger"
+        );
         console.error("Error inserting LoanParticular row:", error);
       }
     },
@@ -387,12 +400,23 @@ export default {
           `http://183.82.109.39:5000/api/updateloanparticular/${row.id}`,
           row
         );
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated LoanParticulars Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("LoanParticular Row updated:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update LoanParticulars Details",
+          "danger"
+        );
         console.error("Error updating LoanParticular row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -410,7 +434,7 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

@@ -4,6 +4,7 @@ import SurveyFrom from '../pages/SurveyFrom.vue';
 import SearchView from '../views/SearchView.vue';
 import LandingPage from '../pages/LandingPage.vue';
 import ParentPage from '../pages/parent.vue';
+import ExportDataExcel from '../pages/editpages/exportDataExcel.vue';
 
 const routes = [
   {
@@ -34,6 +35,11 @@ const routes = [
     path: '/parentpage',
     name: 'parentpage',
     component : ParentPage
+  },
+  {
+    path: '/getdata',
+    name: 'ExportToExcelPage',
+    component : ExportDataExcel
   }
 ]
 

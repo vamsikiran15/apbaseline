@@ -27,7 +27,7 @@
           fill="outline"
           v-model="newMembership.membershp_details"
         >
-        <ion-select-option value="">Select Membership</ion-select-option>
+          <ion-select-option value="">Select Membership</ion-select-option>
           <ion-select-option value="Self Helf Groups (SHGs)"
             >Self Helf Groups (SHGs)
           </ion-select-option>
@@ -41,24 +41,24 @@
           class="ion-margin-top"
           placeholder="Enter number"
           fill="outline"
-           type="number"
+          type="number"
           label="Number"
           label-placement="floating"
           v-model="newMembership.number"
         ></ion-input>
       </ion-card-content>
       <ion-button
-          class="ion-margin"
-          expand="block"
-          color="primary"
-          @click="UpdateMembershipData"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Membership</ion-button
-        >
+        class="ion-margin"
+        expand="block"
+        color="primary"
+        @click="UpdateMembershipData"
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update Membership</ion-button
+      >
     </ion-card>
   </div>
 </template>
@@ -85,6 +85,8 @@ import {
   IonList,
   IonButton,
   toastController,
+  IonItem,
+  IonIcon,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -124,7 +126,9 @@ export default {
     IonRadio,
     IonList,
     IonButton,
-    toastController
+    toastController,
+    IonItem,
+    IonIcon,
   },
   methods: {
     selectMembership(item) {
@@ -167,32 +171,37 @@ export default {
     // migrate data updation
     async UpdateMembershipData() {
       try {
-        this.triggerToastMessage("Updated Membership Details Successfully","custom_toast")
+        this.triggerToastMessage(
+          "Updated Membership Details Successfully",
+          "custom_toast"
+        );
         this.updateMembershiprows();
-      const newData = this.MembershipRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.MembershipRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("Membership ", row);
-          await this.updateMembership(row);
-          this.MembershipRows = [];
-        } else {
-          // Insert new row
-          // this.GovtBenefitRows.push(row);
-          console.log("Membership  data", row);
-          await this.insertMembership(row);
-          this.MembershipRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("Membership ", row);
+            await this.updateMembership(row);
+            this.MembershipRows = [];
+          } else {
+            // Insert new row
+            // this.GovtBenefitRows.push(row);
+            console.log("Membership  data", row);
+            await this.insertMembership(row);
+            this.MembershipRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Membership Details","danger")
-        console.error("error in UpdateMembershipData function",error)
+        this.triggerToastMessage(
+          "Failed to Update Membership Details",
+          "danger"
+        );
+        console.error("error in UpdateMembershipData function", error);
       }
-     
     },
     async insertMembership(row) {
       try {
@@ -206,6 +215,14 @@ export default {
             number: row.number,
           }
         );
+        this.membershipdetails.push(response.data.data);
+        if (response.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Membership Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("Membership inserted:", response);
       } catch (error) {
         console.error("Error inserting Membership row:", error);
@@ -217,12 +234,19 @@ export default {
           `http://183.82.109.39:5000/api/updatemembership/${row.id}`,
           row
         );
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Membership Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("Membership Row updated:", response);
       } catch (error) {
         console.error("Error updating Membership row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -240,7 +264,7 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

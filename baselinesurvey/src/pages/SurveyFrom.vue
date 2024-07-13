@@ -560,19 +560,22 @@
               >
             </ion-card>
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in householdDetailsRowsData" :key="item.id">
-           <ion-item @click="selectHouseholdMember(item,index)">
-            {{item.name_of_the_family_member}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in householdDetailsRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectHouseholdMember(item, index)">
+                  {{ item.name_of_the_family_member }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeRow(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option color="danger" @click="removeRow(index)">
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-content>
                 <ion-input
@@ -813,19 +816,25 @@
               >
             </ion-card>
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in cultivatedAreaRowsData" :key="item.id">
-           <ion-item @click="selectCultivatedAreaItem(item,index)">
-            {{item.cultivatedArea}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in cultivatedAreaRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectCultivatedAreaItem(item, index)">
+                  {{ item.cultivatedArea }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeRowLandParticulars(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeRowLandParticulars(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-subtitle
                 class="ion-padding ion-text-center"
@@ -895,10 +904,12 @@
                     >Select Ownership</ion-select-option
                   >
                   <ion-select-option value="Patta">Patta</ion-select-option>
-                    <ion-select-option value="Assigned">Assigned</ion-select-option
-                    >
-                    <ion-select-option value="Possession Land">Possession Land</ion-select-option
-                    >
+                  <ion-select-option value="Assigned"
+                    >Assigned</ion-select-option
+                  >
+                  <ion-select-option value="Possession Land"
+                    >Possession Land</ion-select-option
+                  >
                 </ion-select>
               </ion-card-content>
               <ion-button
@@ -915,19 +926,25 @@
               >
             </ion-card>
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in incomefromCropsKharifRowsData" :key="item.id">
-           <ion-item @click="selectIncomeKharifItem(item,index)">
-            {{item.cropGrownKharif}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in incomefromCropsKharifRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectIncomeKharifItem(item, index)">
+                  {{ item.cropGrownKharif }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeRowIncomeKharif(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeRowIncomeKharif(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -1113,19 +1130,25 @@
               >
             </ion-card>
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in incomefromCropsRabiRowsData" :key="item.id">
-           <ion-item @click="selectIncomeRabiItem(item,index)">
-            {{item.cropGrownRabhi}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in incomefromCropsRabiRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectIncomeRabiItem(item, index)">
+                  {{ item.cropGrownRabhi }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeRowIncomeRabi(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeRowIncomeRabi(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -1293,19 +1316,25 @@
           </div>
           <div v-if="step === 4">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in livestockRows" :key="item.id">
-           <ion-item @click="selectLivestockDetailsItem(item,index)">
-            {{item.nameOfTheAnimal}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in livestockRows"
+                :key="item.id"
+              >
+                <ion-item @click="selectLivestockDetailsItem(item, index)">
+                  {{ item.nameOfTheAnimal }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeLivestockRows(index)">
-          <ion-icon slot="icon-only"  icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeLivestockRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>4.Livestock Details</strong></ion-card-header
@@ -1407,19 +1436,25 @@
           </div>
           <div v-if="step === 5">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in migrationStatusRowsData" :key="item.id">
-           <ion-item @click="selectMigrationstatus(item,index)">
-            {{item.nameOfThePerson}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in migrationStatusRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectMigrationstatus(item, index)">
+                  {{ item.nameOfThePerson }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeMigrationStatusRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeMigrationStatusRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>5.Migration Status</strong></ion-card-header
@@ -1550,19 +1585,25 @@
           </div>
           <div v-if="step === 6">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in landLessData" :key="item.id">
-           <ion-item @click="selectLandLessLabourers(item,index)">
-            {{item.nameOfTheProject}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in landLessData"
+                :key="item.id"
+              >
+                <ion-item @click="selectLandLessLabourers(item, index)">
+                  {{ item.nameOfTheProject }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeLandlessLabourers(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeLandlessLabourers(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
@@ -1649,19 +1690,25 @@
           </div>
           <div v-if="step === 7">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in governmentSchemesRowsData" :key="item.id">
-           <ion-item @click="selectGovernmentSchemesItem(item,index)">
-            {{item.nameOfTheFamilyMember}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in governmentSchemesRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectGovernmentSchemesItem(item, index)">
+                  {{ item.nameOfTheFamilyMember }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeGovernmentSchemesRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeGovernmentSchemesRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -1769,19 +1816,25 @@
           </div>
           <div v-if="step === 8">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in chemicalManureRowsData" :key="item.id">
-           <ion-item @click="selectManureandChemicalItem(item,index)">
-            {{item.crops}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in chemicalManureRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectManureandChemicalItem(item, index)">
+                  {{ item.crops }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeManureandChemicalRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeManureandChemicalRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
@@ -1930,19 +1983,25 @@
           </div>
           <div v-if="step === 9">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in pestandDiseaseRowsData" :key="item.id">
-           <ion-item @click="selectPestDiseaseItem(item,index)">
-            {{item.crops}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in pestandDiseaseRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectPestDiseaseItem(item, index)">
+                  {{ item.crops }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removePestDiseaseRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removePestDiseaseRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
@@ -2100,19 +2159,25 @@
           </div>
           <div v-if="step === 10">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in loanParticularsRowsData" :key="item.id">
-           <ion-item @click="selectLoanParticularsItem(item,index)">
-            {{item.particulars}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in loanParticularsRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectLoanParticularsItem(item, index)">
+                  {{ item.particulars }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeLoanParticularsRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeLoanParticularsRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
@@ -2262,8 +2327,8 @@
                   fill="outline"
                   v-model="loanParticularsRows.marriage"
                 >
-                <ion-select-option value="Yes">Yes</ion-select-option>
-                <ion-select-option value="No">No</ion-select-option>
+                  <ion-select-option value="Yes">Yes</ion-select-option>
+                  <ion-select-option value="No">No</ion-select-option>
                 </ion-select>
                 <ion-select
                   class="ion-margin-top"
@@ -2277,7 +2342,6 @@
                   <ion-select-option value="">Select Others</ion-select-option>
                   <ion-select-option value="Yes">Yes</ion-select-option>
                   <ion-select-option value="No">No</ion-select-option>
-                 
                 </ion-select>
               </ion-card-content>
             </ion-card>
@@ -2308,19 +2372,25 @@
           </div>
           <div v-if="step === 11">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in familyExpenditureRowsData" :key="item.id">
-           <ion-item @click="selectFamilyExpenditureItem(item,index)">
-            {{item.items}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in familyExpenditureRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectFamilyExpenditureItem(item, index)">
+                  {{ item.items }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeFamilyExpenditureRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeFamilyExpenditureRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>11.Family Expenditure</strong></ion-card-header
@@ -2394,24 +2464,29 @@
           </div>
           <div v-if="step === 12">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in sourceofIncomeRowsData" :key="item.id">
-           <ion-item @click="selectSourceofIncomeItem(item,index)">
-            {{item.source}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in sourceofIncomeRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectSourceofIncomeItem(item, index)">
+                  {{ item.source }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeSourceofIncomeRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeSourceofIncomeRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
-                  >12.Difference Source of Income,Expenditure and Family Debt
-                  Details</strong
+                  >12.Difference Source of Income Details</strong
                 ></ion-card-header
               >
             </ion-card>
@@ -2502,19 +2577,27 @@
           </div>
           <div v-if="step === 13">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in drinkingWaterAvailabilityRowsData" :key="item.id">
-           <ion-item @click="selectAvailabilityofDrinkingWaterItem(item,index)">
-            {{item.drinkingwateritem}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in drinkingWaterAvailabilityRowsData"
+                :key="item.id"
+              >
+                <ion-item
+                  @click="selectAvailabilityofDrinkingWaterItem(item, index)"
+                >
+                  {{ item.drinkingwateritem }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeAvailabilityofDrinkingWaterRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeAvailabilityofDrinkingWaterRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
@@ -2616,19 +2699,25 @@
           </div>
           <div v-if="step === 14">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in sourceandQualityofWaterRowsData" :key="item.id">
-           <ion-item @click="selectSourceQualityofWaterItem(item,index)">
-            {{item.waterSource}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in sourceandQualityofWaterRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectSourceQualityofWaterItem(item, index)">
+                  {{ item.waterSource }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeSourceQualityofWaterRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeSourceQualityofWaterRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card class="ion-margin-top">
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
@@ -2791,19 +2880,25 @@
           </div>
           <div v-if="step === 15">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in agriculturalImplementsRowsData" :key="item.id">
-           <ion-item @click="selectAgricultureImplementsItem(item,index)">
-            {{item.selectImplements}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in agriculturalImplementsRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectAgricultureImplementsItem(item, index)">
+                  {{ item.selectImplements }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeAgricultureImplementsRows(index)">
-          <ion-icon slot="icon-only"  icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeAgricultureImplementsRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>15.Agriculture Implements</strong></ion-card-header
@@ -2888,19 +2983,25 @@
           </div>
           <div v-if="step === 16">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in horticultureDetailsRowsData" :key="item.id">
-           <ion-item @click="selectHorticultureDetailsItem(item,index)">
-            {{item.details}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in horticultureDetailsRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectHorticultureDetailsItem(item, index)">
+                  {{ item.details }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeHorticultureDetailsRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeHorticultureDetailsRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>16.Horticulture Details</strong></ion-card-header
@@ -2973,19 +3074,27 @@
           </div>
           <div v-if="step === 17">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in fodderandFeedAvailabilityRowsData" :key="item.id">
-           <ion-item @click="selectFodderandFeedAvailabilityItem(item,index)">
-            {{item.item}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in fodderandFeedAvailabilityRowsData"
+                :key="item.id"
+              >
+                <ion-item
+                  @click="selectFodderandFeedAvailabilityItem(item, index)"
+                >
+                  {{ item.item }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeFodderandFeedAvailabilityRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeFodderandFeedAvailabilityRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -3061,25 +3170,31 @@
                   name="add-circle"
                   slot="icon-only"
                 ></ion-icon
-                >Add Government Scheme Details</ion-button
+                >Add Fodder And Feed</ion-button
               >
             </ion-card>
           </div>
           <div v-if="step === 18">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in fodderFuelRowsData" :key="item.id">
-           <ion-item @click="selectFodderFuelUseItem(item,index)">
-            {{item.details}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in fodderFuelRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectFodderFuelUseItem(item, index)">
+                  {{ item.details }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeFodderFuelUseRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeFodderFuelUseRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
@@ -3158,25 +3273,31 @@
                   name="add-circle"
                   slot="icon-only"
                 ></ion-icon
-                >Add Government Scheme Details</ion-button
+                >Add Fodder And Fuel</ion-button
               >
             </ion-card>
           </div>
           <div v-if="step === 19">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in grazeCattleRowsData" :key="item.id">
-           <ion-item @click="selectGrazeofCattleItem(item,index)">
-            {{item.grazingOfCattle}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in grazeCattleRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectGrazeofCattleItem(item, index)">
+                  {{ item.grazingOfCattle }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeGrazeofCattleRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeGrazeofCattleRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary" class="ion-text-center"
                 ><strong
@@ -3238,25 +3359,31 @@
                   name="add-circle"
                   slot="icon-only"
                 ></ion-icon
-                >Add Government Scheme Details</ion-button
+                >Add Graze Cattle Details</ion-button
               >
             </ion-card>
           </div>
           <div v-if="step === 20">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in householdRowsData" :key="item.id">
-           <ion-item @click="selectHouseholdAssetsItem(item,index)">
-            {{item.assets}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in householdRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectHouseholdAssetsItem(item, index)">
+                  {{ item.assets }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeHouseholdAssetsRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeHouseholdAssetsRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>20.Household Assets</strong></ion-card-header
@@ -3331,19 +3458,29 @@
           </div>
           <div v-if="step === 21">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in participationinCommunityProgramsRowsData" :key="item.id">
-           <ion-item @click="selectParticipationCommunityProgramItem(item,index)">
-            {{item.nameofTheCommunityProgram}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(
+                  item, index
+                ) in participationinCommunityProgramsRowsData"
+                :key="item.id"
+              >
+                <ion-item
+                  @click="selectParticipationCommunityProgramItem(item, index)"
+                >
+                  {{ item.nameofTheCommunityProgram }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeParticipationCommunityProgramRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeParticipationCommunityProgramRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -3442,19 +3579,27 @@
           </div>
           <div v-if="step === 22">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in awarenessTechnologyRowsData" :key="item.id">
-           <ion-item @click="selectAwarenessAdoptionTechnologyItem(item,index)">
-            {{item.technology}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in awarenessTechnologyRowsData"
+                :key="item.id"
+              >
+                <ion-item
+                  @click="selectAwarenessAdoptionTechnologyItem(item, index)"
+                >
+                  {{ item.technology }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeAwarenessAdoptionTechnologyRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeAwarenessAdoptionTechnologyRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong
@@ -3544,19 +3689,25 @@
           </div>
           <div v-if="step === 23">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in membershipDetailsRowsData" :key="item.id">
-           <ion-item @click="selectMembershipDetailsItem(item,index)">
-            {{item.sgh}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in membershipDetailsRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectMembershipDetailsItem(item, index)">
+                  {{ item.sgh }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeMembershipDetailsRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeMembershipDetailsRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header color="tertiary"
                 ><strong>23.Membership Details</strong></ion-card-header
@@ -3614,19 +3765,25 @@
           </div>
           <div v-if="step === 24">
             <ion-card>
-          <ion-item-sliding v-for="(item,index) in beneficiarySchemeRowsData" :key="item.id">
-           <ion-item @click="selectBeneficiaryofSchemeItem(item,index)">
-            {{item.nameofTheScheme}}
-      </ion-item>
+              <ion-item-sliding
+                v-for="(item, index) in beneficiarySchemeRowsData"
+                :key="item.id"
+              >
+                <ion-item @click="selectBeneficiaryofSchemeItem(item, index)">
+                  {{ item.nameofTheScheme }}
+                </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" @click="removeBeneficiaryofSchemeRows(index)">
-          <ion-icon slot="icon-only" icon="trash"></ion-icon>
-          <strong>Delete</strong>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-card>
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="removeBeneficiaryofSchemeRows(index)"
+                  >
+                    <ion-icon slot="icon-only" icon="trash"></ion-icon>
+                    <strong>Delete</strong>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-card>
             <ion-card>
               <ion-card-header class="ion-text-center" color="tertiary"
                 ><strong
@@ -4257,7 +4414,7 @@ export default {
       beneficiarySchemeRowsData: [],
       receivedawarenessprograms: "",
       surveyor: "",
-      dateA: "",
+      dateA: new Date().toISOString(),
       subType: "",
       lat: null,
       long: null,
@@ -4330,7 +4487,7 @@ export default {
     },
   },
   methods: {
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -4416,31 +4573,36 @@ export default {
       }
     },
     async livestockData() {
-      try{
+      try {
         if (
-        Object.values(this.incomefromCropsKharifRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-      this.livestockRows.push({ ...this.addLivestockDetails });
-      this.triggerToastMessage(
-            "Insertion of Livestock Details is Submitted Successfully","custom_toast"
+          Object.values(this.addLivestockDetails).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.livestockRows.push({ ...this.addLivestockDetails });
+          this.triggerToastMessage(
+            "Insertion of Livestock Details is Submitted Successfully",
+            "custom_toast"
           );
-      this.clearLiveStockFields();
-      }
-      else{
-        this.triggerToastMessage("Please Insert Livestock Details Fields","danger");
-      }
-      }  
-      catch(error){
-        this.triggerToastMessage("Failed to Insert Livestock Details","danger");
-        console.error("error in livestockData function",error)
+          this.clearLiveStockFields();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Livestock Details Fields",
+            "danger"
+          );
+        }
+      } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Livestock Details",
+          "danger"
+        );
+        console.error("error in livestockData function", error);
       }
     },
 
@@ -4488,7 +4650,9 @@ export default {
       try {
         const response = await axios.get(
           "http://183.82.109.39:5000/api/projects",
-          { params: { id: this.selectedWccNo } }
+          {
+            params: { id: this.selectedWccNo },
+          }
         );
         this.project = response.data;
       } catch (error) {
@@ -4521,7 +4685,9 @@ export default {
       try {
         const response = await axios.get(
           "http://183.82.109.39:5000/api/mandal",
-          { params: { id: this.selectedDistrict } }
+          {
+            params: { id: this.selectedDistrict },
+          }
         );
         this.mandal = response.data;
       } catch (error) {
@@ -4618,34 +4784,37 @@ export default {
     },
     async addHouseholdDetailsRows() {
       try {
-          // Check if any field is not empty
-      if (
-        Object.values(this.newRow).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ) {
-        this.householdDetailsRowsData.push({ ...this.newRow }); // Add a copy of newRow to rows
-        console.log(
-          "this household members rows",
-          this.householdDetailsRowsData
-        );
-        this.triggerToastMessage(
-            "Household Member is Added Successfully","custom_toast"
+        // Check if any field is not empty
+        if (
+          Object.values(this.newRow).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.householdDetailsRowsData.push({ ...this.newRow }); // Add a copy of newRow to rows
+          console.log(
+            "this household members rows",
+            this.householdDetailsRowsData
+          );
+          this.triggerToastMessage(
+            "Household Member is Added Successfully",
+            "custom_toast"
           );
 
-      this.clearFields(); // Clear the input fields
-      }
+          this.clearFields(); // Clear the input fields
+        }
       } catch (error) {
-        console.log("error in addHouseholdDetailsRows function",error)
-        this.triggerToastMessage("Failed to Insert the Household Member","danger");
+        console.log("error in addHouseholdDetailsRows function", error);
+        this.triggerToastMessage(
+          "Failed to Insert the Household Member",
+          "danger"
+        );
       }
-    
     },
     clearFields() {
       this.newRow = {
@@ -4663,394 +4832,446 @@ export default {
     removeRow(index) {
       this.householdDetailsRowsData.splice(index, 1);
     },
-    selectHouseholdMember(item,index){
+    selectHouseholdMember(item, index) {
       try {
         this.newRow.name_of_the_family_member = item.name_of_the_family_member;
-        this.newRow.relationship_with_head= item.relationship_with_head;
-        this.newRow.disability= item.disability;
-        this.newRow.gender= item.gender;
-        this.newRow.age= item.age;
-        this.newRow.level_of_education= item.level_of_education;
+        this.newRow.relationship_with_head = item.relationship_with_head;
+        this.newRow.disability = item.disability;
+        this.newRow.gender = item.gender;
+        this.newRow.age = item.age;
+        this.newRow.level_of_education = item.level_of_education;
         // newRow.occupation= item.occupation;
-        this.newRow.annual_gross_income= item.annual_gross_income;
-        this.newRow.membership= item.membership;
+        this.newRow.annual_gross_income = item.annual_gross_income;
+        this.newRow.membership = item.membership;
         this.householdDetailsRowsData.splice(index, 1);
-        console.log("select member info",item)
+        console.log("select member info", item);
       } catch (error) {
-        console.error("error in selectHouseholdMember function",error)
+        console.error("error in selectHouseholdMember function", error);
       }
     },
-    selectCultivatedAreaItem(item,index){
-      try { 
-        this.cultivatedAreaRows.cultivatedArea= item.cultivatedArea
-        this.cultivatedAreaRows.rainfedArea= item.rainfedArea
-        this.cultivatedAreaRows.irrigatedArea= item.irrigatedArea
-        this.cultivatedAreaRows.total= item.total
-        this.cultivatedAreaRows.typeofOwnership= item.typeofOwnership
+    selectCultivatedAreaItem(item, index) {
+      try {
+        this.cultivatedAreaRows.cultivatedArea = item.cultivatedArea;
+        this.cultivatedAreaRows.rainfedArea = item.rainfedArea;
+        this.cultivatedAreaRows.irrigatedArea = item.irrigatedArea;
+        this.cultivatedAreaRows.total = item.total;
+        this.cultivatedAreaRows.typeofOwnership = item.typeofOwnership;
         this.cultivatedAreaRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectCultivatedAreaItem function",error)
+        console.error("error in selectCultivatedAreaItem function", error);
       }
     },
     removeRowLandParticulars(index) {
       this.cultivatedAreaRowsData.splice(index, 1);
     },
-    selectIncomeKharifItem(item,index){
+    selectIncomeKharifItem(item, index) {
       try {
-        this.incomefromCropsKharifRows.cropGrownKharif= item.cropGrownKharif
-        this.incomefromCropsKharifRows.rainfedKharif= item.rainfedKharif
-        this.incomefromCropsKharifRows.rainfedYieldKharif= item.rainfedYieldKharif
-        this.incomefromCropsKharifRows.rainfedCostKharif= item.rainfedCostKharif
-        this.incomefromCropsKharifRows.rainfedPerQtlsKharif= item.rainfedPerQtlsKharif
-        this.incomefromCropsKharifRows.rainfedGrossIncomeKharif= item.rainfedGrossIncomeKharif
-        this.incomefromCropsKharifRows.rainfedNetIncomeKharif= item.rainfedNetIncomeKharif
-        this.incomefromCropsKharifRows.irrigatedaAreaKharif= item.irrigatedaAreaKharif
-        this.incomefromCropsKharifRows.irrigatedYieldKharif= item.irrigatedYieldKharif
-        this.incomefromCropsKharifRows.irrigatedCoostofCultivationKharif= item.irrigatedCoostofCultivationKharif
-        this.incomefromCropsKharifRows.irrigatedRatePerQtlsKharif= item.irrigatedRatePerQtlsKharif
-        this.incomefromCropsKharifRows.irrigatedGrossIncomeKharif= item.irrigatedGrossIncomeKharif
-        this.incomefromCropsKharifRows.irrigatedNetIncomeKharif= item.irrigatedNetIncomeKharif
+        this.incomefromCropsKharifRows.cropGrownKharif = item.cropGrownKharif;
+        this.incomefromCropsKharifRows.rainfedKharif = item.rainfedKharif;
+        this.incomefromCropsKharifRows.rainfedYieldKharif =
+          item.rainfedYieldKharif;
+        this.incomefromCropsKharifRows.rainfedCostKharif =
+          item.rainfedCostKharif;
+        this.incomefromCropsKharifRows.rainfedPerQtlsKharif =
+          item.rainfedPerQtlsKharif;
+        this.incomefromCropsKharifRows.rainfedGrossIncomeKharif =
+          item.rainfedGrossIncomeKharif;
+        this.incomefromCropsKharifRows.rainfedNetIncomeKharif =
+          item.rainfedNetIncomeKharif;
+        this.incomefromCropsKharifRows.irrigatedaAreaKharif =
+          item.irrigatedaAreaKharif;
+        this.incomefromCropsKharifRows.irrigatedYieldKharif =
+          item.irrigatedYieldKharif;
+        this.incomefromCropsKharifRows.irrigatedCoostofCultivationKharif =
+          item.irrigatedCoostofCultivationKharif;
+        this.incomefromCropsKharifRows.irrigatedRatePerQtlsKharif =
+          item.irrigatedRatePerQtlsKharif;
+        this.incomefromCropsKharifRows.irrigatedGrossIncomeKharif =
+          item.irrigatedGrossIncomeKharif;
+        this.incomefromCropsKharifRows.irrigatedNetIncomeKharif =
+          item.irrigatedNetIncomeKharif;
         this.incomefromCropsKharifRowsData.splice(index, 1);
       } catch (error) {
-        console.error("Error in selectIncomeKharifItem function",error)
+        console.error("Error in selectIncomeKharifItem function", error);
       }
     },
     removeRowIncomeKharif(index) {
       this.incomefromCropsKharifRowsData.splice(index, 1);
     },
-    selectIncomeRabiItem(item,index){
+    selectIncomeRabiItem(item, index) {
       try {
-        this.incomefromCropsRabiRows.cropGrownRabhi= item.cropGrownRabhi
-        this.incomefromCropsRabiRows.rainfedRabi= item.rainfedRabi
-        this.incomefromCropsRabiRows.rainfedYieldRabi= item.rainfedYieldRabi
-        this.incomefromCropsRabiRows.rainfedCostRabi= item.rainfedCostRabi
-        this.incomefromCropsRabiRows.rainfedPerQtlsRabi= item.rainfedPerQtlsRabi
-        this.incomefromCropsRabiRows.rainfedGrossIncomeRabi= item.rainfedGrossIncomeRabi
-        this.incomefromCropsRabiRows.rainfedNetIncomeRabi= item.rainfedNetIncomeRabi
-        this.incomefromCropsRabiRows.irrigatedaAreaRabi= item.irrigatedaAreaRabi
-        this.incomefromCropsRabiRows.irrigatedYieldRabi= item.irrigatedYieldRabi
-        this.incomefromCropsRabiRows.irrigatedCoostofCultivationRabi= item.irrigatedCoostofCultivationRabi
-        this.incomefromCropsRabiRows.irrigatedRatePerQtlsRabi= item.irrigatedRatePerQtlsRabi
-        this.incomefromCropsRabiRows.irrigatedGrossIncomeRabi= item.irrigatedGrossIncomeRabi
-        this.incomefromCropsRabiRows.irrigatedNetIncomeRabi= item.irrigatedNetIncomeRabi
+        this.incomefromCropsRabiRows.cropGrownRabhi = item.cropGrownRabhi;
+        this.incomefromCropsRabiRows.rainfedRabi = item.rainfedRabi;
+        this.incomefromCropsRabiRows.rainfedYieldRabi = item.rainfedYieldRabi;
+        this.incomefromCropsRabiRows.rainfedCostRabi = item.rainfedCostRabi;
+        this.incomefromCropsRabiRows.rainfedPerQtlsRabi =
+          item.rainfedPerQtlsRabi;
+        this.incomefromCropsRabiRows.rainfedGrossIncomeRabi =
+          item.rainfedGrossIncomeRabi;
+        this.incomefromCropsRabiRows.rainfedNetIncomeRabi =
+          item.rainfedNetIncomeRabi;
+        this.incomefromCropsRabiRows.irrigatedaAreaRabi =
+          item.irrigatedaAreaRabi;
+        this.incomefromCropsRabiRows.irrigatedYieldRabi =
+          item.irrigatedYieldRabi;
+        this.incomefromCropsRabiRows.irrigatedCoostofCultivationRabi =
+          item.irrigatedCoostofCultivationRabi;
+        this.incomefromCropsRabiRows.irrigatedRatePerQtlsRabi =
+          item.irrigatedRatePerQtlsRabi;
+        this.incomefromCropsRabiRows.irrigatedGrossIncomeRabi =
+          item.irrigatedGrossIncomeRabi;
+        this.incomefromCropsRabiRows.irrigatedNetIncomeRabi =
+          item.irrigatedNetIncomeRabi;
         this.incomefromCropsRabiRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectIncomeRabiItem function",error)
+        console.error("error in selectIncomeRabiItem function", error);
       }
     },
     removeRowIncomeRabi(index) {
       this.incomefromCropsRabiRowsData.splice(index, 1);
     },
-    selectLivestockDetailsItem(item,index){
+    selectLivestockDetailsItem(item, index) {
       try {
-        this.addLivestockDetails.addLivestockDetails=item.addLivestockDetails
-        this.addLivestockDetails.nameOfTheAnimal=item.nameOfTheAnimal
-        this.addLivestockDetails.existingNo=item.existingNo  
-        this.addLivestockDetails.milkProductionLitresPerDay=item.milkProductionLitresPerDay  
-        this.addLivestockDetails.milkConsumedLitresPerday=item.milkConsumedLitresPerday  
-        this.addLivestockDetails.quantitySoldByYear=item.quantitySoldByYear
-        this.addLivestockDetails.unitValue=item.unitValue
-        this.addLivestockDetails.incomeGeneratedDuringLastYear=item.incomeGeneratedDuringLastYear
+        this.addLivestockDetails.addLivestockDetails = item.addLivestockDetails;
+        this.addLivestockDetails.nameOfTheAnimal = item.nameOfTheAnimal;
+        this.addLivestockDetails.existingNo = item.existingNo;
+        this.addLivestockDetails.milkProductionLitresPerDay =
+          item.milkProductionLitresPerDay;
+        this.addLivestockDetails.milkConsumedLitresPerday =
+          item.milkConsumedLitresPerday;
+        this.addLivestockDetails.quantitySoldByYear = item.quantitySoldByYear;
+        this.addLivestockDetails.unitValue = item.unitValue;
+        this.addLivestockDetails.incomeGeneratedDuringLastYear =
+          item.incomeGeneratedDuringLastYear;
         this.livestockRows.splice(index, 1);
       } catch (error) {
-        console.error("error in selectLivestockDetailsItem fucntion",error)
+        console.error("error in selectLivestockDetailsItem fucntion", error);
       }
     },
     removeLivestockRows(index) {
       this.livestockRows.splice(index, 1);
     },
-    selectMigrationstatus(item,index){
+    selectMigrationstatus(item, index) {
       try {
-        this.migrationStatusRows.nameOfThePerson=item.nameOfThePerson
-        this.migrationStatusRows.gender=item.gender
-        this.migrationStatusRows.noOfDaysMigratingPerYear=item.noOfDaysMigratingPerYear
-        this.migrationStatusRows.reasonsForMigrating=item.reasonsForMigrating
-        this.migrationStatusRows.placeOfMigration=item.placeOfMigration
-        this.migrationStatusRows.occupationDuringMigration=item.occupationDuringMigration
-        this.migrationStatusRows.incomeFromOccupation=item.incomeFromOccupation
+        this.migrationStatusRows.nameOfThePerson = item.nameOfThePerson;
+        this.migrationStatusRows.gender = item.gender;
+        this.migrationStatusRows.noOfDaysMigratingPerYear =
+          item.noOfDaysMigratingPerYear;
+        this.migrationStatusRows.reasonsForMigrating = item.reasonsForMigrating;
+        this.migrationStatusRows.placeOfMigration = item.placeOfMigration;
+        this.migrationStatusRows.occupationDuringMigration =
+          item.occupationDuringMigration;
+        this.migrationStatusRows.incomeFromOccupation =
+          item.incomeFromOccupation;
         this.migrationStatusRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in removeLivestockRows function",error)
+        console.error("error in removeLivestockRows function", error);
       }
     },
     removeMigrationStatusRows(index) {
       this.migrationStatusRowsData.splice(index, 1);
     },
-    selectLandLessLabourers(item,index){
+    selectLandLessLabourers(item, index) {
       try {
-        this.landLessLabourers.nameOfTheProject=item.nameOfTheProject
-        this.landLessLabourers.manDays=item.manDays
-        this.landLessLabourers.wageDays=item.wageDays
-        this.landLessLabourers.income=item.income
-        this.landLessLabourers.total=item.total
+        this.landLessLabourers.nameOfTheProject = item.nameOfTheProject;
+        this.landLessLabourers.manDays = item.manDays;
+        this.landLessLabourers.wageDays = item.wageDays;
+        this.landLessLabourers.income = item.income;
+        this.landLessLabourers.total = item.total;
         this.landLessData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectLandLessLabourers fucntion",error)
+        console.error("error in selectLandLessLabourers fucntion", error);
       }
     },
-    removeLandlessLabourers(index){
+    removeLandlessLabourers(index) {
       this.landLessData.splice(index, 1);
     },
-    selectGovernmentSchemesItem(item,index){
+    selectGovernmentSchemesItem(item, index) {
       try {
-        this.governmentSchemesRows.nameOfTheFamilyMember=item.nameOfTheFamilyMember
-        this.governmentSchemesRows.schemeName=item.schemeName
-        this.governmentSchemesRows.amount=item.amount
+        this.governmentSchemesRows.nameOfTheFamilyMember =
+          item.nameOfTheFamilyMember;
+        this.governmentSchemesRows.schemeName = item.schemeName;
+        this.governmentSchemesRows.amount = item.amount;
         this.governmentSchemesRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectGovernmentSchemesItem function",error)
+        console.error("error in selectGovernmentSchemesItem function", error);
       }
     },
-    removeGovernmentSchemesRows(index){
+    removeGovernmentSchemesRows(index) {
       this.governmentSchemesRowsData.splice(index, 1);
     },
-    selectManureandChemicalItem(item,index){
-      try { 
-        this.useofChemicalManureRows.crops=item.crops
-        this.useofChemicalManureRows.organic=item.organic
-        this.useofChemicalManureRows.microNutrients=item.microNutrients
-        this.useofChemicalManureRows.N=item.N
-        this.useofChemicalManureRows.P=item.P
-        this.useofChemicalManureRows.K=item.K
-        this.useofChemicalManureRows.cost=item.cost
+    selectManureandChemicalItem(item, index) {
+      try {
+        this.useofChemicalManureRows.crops = item.crops;
+        this.useofChemicalManureRows.organic = item.organic;
+        this.useofChemicalManureRows.microNutrients = item.microNutrients;
+        this.useofChemicalManureRows.N = item.N;
+        this.useofChemicalManureRows.P = item.P;
+        this.useofChemicalManureRows.K = item.K;
+        this.useofChemicalManureRows.cost = item.cost;
         this.chemicalManureRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectManureandChemicalItem fucntion",error)
+        console.error("error in selectManureandChemicalItem fucntion", error);
       }
     },
-    removeManureandChemicalRows(index){
+    removeManureandChemicalRows(index) {
       this.chemicalManureRowsData.splice(index, 1);
     },
-    selectPestDiseaseItem(item,index){
+    selectPestDiseaseItem(item, index) {
       try {
-        this.pestandDiseaseRows.crops=item.crops
-        this.pestandDiseaseRows.nameOfThePest=item.nameOfThePest
-        this.pestandDiseaseRows.biological=item.biological
-        this.pestandDiseaseRows.chemical=item.chemical
-        this.pestandDiseaseRows.others=item.others
-        this.pestandDiseaseRows.material=item.material
-        this.pestandDiseaseRows.wages=item.wages
-        this.pestandDiseaseRows.totalMaterial=item.totalMaterial
-        this.pestandDiseaseRows.totalWages=item.totalWages
+        this.pestandDiseaseRows.crops = item.crops;
+        this.pestandDiseaseRows.nameOfThePest = item.nameOfThePest;
+        this.pestandDiseaseRows.biological = item.biological;
+        this.pestandDiseaseRows.chemical = item.chemical;
+        this.pestandDiseaseRows.others = item.others;
+        this.pestandDiseaseRows.material = item.material;
+        this.pestandDiseaseRows.wages = item.wages;
+        this.pestandDiseaseRows.totalMaterial = item.totalMaterial;
+        this.pestandDiseaseRows.totalWages = item.totalWages;
         this.pestandDiseaseRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectPestDiseaseItem function",error)
+        console.error("error in selectPestDiseaseItem function", error);
       }
     },
-    removePestDiseaseRows(index){
+    removePestDiseaseRows(index) {
       this.pestandDiseaseRowsData.splice(index, 1);
     },
-    selectLoanParticularsItem(item,index){
+    selectLoanParticularsItem(item, index) {
       try {
-        this.loanParticularsRows.particulars=item.particulars
-        this.loanParticularsRows.bank=item.bank
-        this.loanParticularsRows.moneyLender=item.moneyLender
-        this.loanParticularsRows.dealer=item.dealer
-        this.loanParticularsRows.fellowfarmer=item.fellowfarmer
-        this.loanParticularsRows.shg=item.shg
-        this.loanParticularsRows.others=item.others
-        this.loanParticularsRows.total=item.total
-        this.loanParticularsRows.agriculture=item.agriculture
-        this.loanParticularsRows.consumption=item.consumption
-        this.loanParticularsRows.education=item.education
-        this.loanParticularsRows.marriage=item.marriage
-        this.loanParticularsRows.others2=item.others2
+        this.loanParticularsRows.particulars = item.particulars;
+        this.loanParticularsRows.bank = item.bank;
+        this.loanParticularsRows.moneyLender = item.moneyLender;
+        this.loanParticularsRows.dealer = item.dealer;
+        this.loanParticularsRows.fellowfarmer = item.fellowfarmer;
+        this.loanParticularsRows.shg = item.shg;
+        this.loanParticularsRows.others = item.others;
+        this.loanParticularsRows.total = item.total;
+        this.loanParticularsRows.agriculture = item.agriculture;
+        this.loanParticularsRows.consumption = item.consumption;
+        this.loanParticularsRows.education = item.education;
+        this.loanParticularsRows.marriage = item.marriage;
+        this.loanParticularsRows.others2 = item.others2;
         this.loanParticularsRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectLoanParticularsItem function",error)
+        console.error("error in selectLoanParticularsItem function", error);
       }
     },
-    removeLoanParticularsRows(index){
+    removeLoanParticularsRows(index) {
       this.loanParticularsRowsData.splice(index, 1);
     },
-    selectFamilyExpenditureItem(item,index){
+    selectFamilyExpenditureItem(item, index) {
       try {
-        this.familyExpenditureRows.items=item.items
-        this.familyExpenditureRows.total=item.total
+        this.familyExpenditureRows.items = item.items;
+        this.familyExpenditureRows.total = item.total;
         this.familyExpenditureRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectFamilyExpenditureItem function",error)
+        console.error("error in selectFamilyExpenditureItem function", error);
       }
     },
-    removeFamilyExpenditureRows(index){
+    removeFamilyExpenditureRows(index) {
       this.familyExpenditureRowsData.splice(index, 1);
     },
-    selectSourceofIncomeItem(index,item){
+    selectSourceofIncomeItem(index, item) {
       try {
-        this.sourceofIncomeRows.source=item.source
-        this.sourceofIncomeRows.income=item.income
+        this.sourceofIncomeRows.source = item.source;
+        this.sourceofIncomeRows.income = item.income;
         this.sourceofIncomeRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectSourceofIncomeItem function",error)
+        console.error("error in selectSourceofIncomeItem function", error);
       }
     },
-    removeSourceofIncomeRows(index){
+    removeSourceofIncomeRows(index) {
       this.sourceofIncomeRowsData.splice(index, 1);
     },
-    selectAvailabilityofDrinkingWaterItem(item,index){
+    selectAvailabilityofDrinkingWaterItem(item, index) {
       try {
-        this.drinkingWaterAvailabilityRows.drinkingwateritem=item.drinkingwateritem
-        this.drinkingWaterAvailabilityRows.drinkingwaterunits=item.drinkingwaterunits
-        this.drinkingWaterAvailabilityRows.litresPerDay=item.litresPerDay
-        this.drinkingWaterAvailabilityRows.sourceDrinkingWater=item.sourceDrinkingWater
+        this.drinkingWaterAvailabilityRows.drinkingwateritem =
+          item.drinkingwateritem;
+        this.drinkingWaterAvailabilityRows.drinkingwaterunits =
+          item.drinkingwaterunits;
+        this.drinkingWaterAvailabilityRows.litresPerDay = item.litresPerDay;
+        this.drinkingWaterAvailabilityRows.sourceDrinkingWater =
+          item.sourceDrinkingWater;
         this.drinkingWaterAvailabilityRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectAvailabilityofDrinkingWaterItem function",error)
+        console.error(
+          "error in selectAvailabilityofDrinkingWaterItem function",
+          error
+        );
       }
     },
-    removeAvailabilityofDrinkingWaterRows(index){
+    removeAvailabilityofDrinkingWaterRows(index) {
       this.drinkingWaterAvailabilityRowsData.splice(index, 1);
     },
-    selectSourceQualityofWaterItem(){
+    selectSourceQualityofWaterItem() {
       try {
-        
-        this.sourceandQualityofWaterRows.waterSource=item.waterSource
-        this.sourceandQualityofWaterRows.driedupWell=item.driedupWell
-        this.sourceandQualityofWaterRows.functioningWell=item.functioningWell
-        this.sourceandQualityofWaterRows.presentApproximateWaterLevel=item.presentApproximateWaterLevel
-        this.sourceandQualityofWaterRows.yieldfromtheBorewell=item.yieldfromtheBorewell
-        this.sourceandQualityofWaterRows.kharif=item.kharif
-        this.sourceandQualityofWaterRows.rabi=item.rabi
-        this.sourceandQualityofWaterRows.summer=item.summer
-        this.sourceandQualityofWaterRows.otherCrops=item.otherCrops
-        this.sourceandQualityofWaterRows.horticulture=item.horticulture
-        this.sourceandQualityofWaterRows.waterquality=item.waterquality
+        this.sourceandQualityofWaterRows.waterSource = item.waterSource;
+        this.sourceandQualityofWaterRows.driedupWell = item.driedupWell;
+        this.sourceandQualityofWaterRows.functioningWell = item.functioningWell;
+        this.sourceandQualityofWaterRows.presentApproximateWaterLevel =
+          item.presentApproximateWaterLevel;
+        this.sourceandQualityofWaterRows.yieldfromtheBorewell =
+          item.yieldfromtheBorewell;
+        this.sourceandQualityofWaterRows.kharif = item.kharif;
+        this.sourceandQualityofWaterRows.rabi = item.rabi;
+        this.sourceandQualityofWaterRows.summer = item.summer;
+        this.sourceandQualityofWaterRows.otherCrops = item.otherCrops;
+        this.sourceandQualityofWaterRows.horticulture = item.horticulture;
+        this.sourceandQualityofWaterRows.waterquality = item.waterquality;
         this.sourceandQualityofWaterRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectSourceQualityofWaterItem function",error)
+        console.error(
+          "error in selectSourceQualityofWaterItem function",
+          error
+        );
       }
     },
-    removeSourceQualityofWaterRows(index){
+    removeSourceQualityofWaterRows(index) {
       this.sourceandQualityofWaterRowsData.splice(index, 1);
     },
-    selectAgricultureImplementsItem(item,index){
+    selectAgricultureImplementsItem(item, index) {
       try {
-        this.agriculturalImplementsRows.selectImplements=item.selectImplements
-        this.agriculturalImplementsRows.numberofImplement=item.numberofImplement
-        this.agriculturalImplementsRows.ownedHired=item.ownedHired
+        this.agriculturalImplementsRows.selectImplements =
+          item.selectImplements;
+        this.agriculturalImplementsRows.numberofImplement =
+          item.numberofImplement;
+        this.agriculturalImplementsRows.ownedHired = item.ownedHired;
         this.agriculturalImplementsRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectAgricultureImplementsItem function",error)
+        console.error(
+          "error in selectAgricultureImplementsItem function",
+          error
+        );
       }
     },
-    removeAgricultureImplementsRows(index){
+    removeAgricultureImplementsRows(index) {
       this.agriculturalImplementsRowsData.splice(index, 1);
     },
-    selectHorticultureDetailsItem(item,index){
+    selectHorticultureDetailsItem(item, index) {
       try {
-        this.horticultureDetailsRows.details = item.details
-        this.horticultureDetailsRows.numberofDetails = item.numberofDetails
+        this.horticultureDetailsRows.details = item.details;
+        this.horticultureDetailsRows.numberofDetails = item.numberofDetails;
         this.horticultureDetailsRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectHorticultureDetailsItem function",error)
+        console.error("error in selectHorticultureDetailsItem function", error);
       }
     },
-    removeHorticultureDetailsRows(index){
+    removeHorticultureDetailsRows(index) {
       this.horticultureDetailsRowsData.splice(index, 1);
     },
-    selectFodderandFeedAvailabilityItem(item,index){
+    selectFodderandFeedAvailabilityItem(item, index) {
       try {
-        this.fodderandFeedAvailability.item=item.item
-        this.fodderandFeedAvailability.unit=item.unit
-        this.fodderandFeedAvailability.area=item.area
-        this.fodderandFeedAvailability.production=item.production
+        this.fodderandFeedAvailability.item = item.item;
+        this.fodderandFeedAvailability.unit = item.unit;
+        this.fodderandFeedAvailability.area = item.area;
+        this.fodderandFeedAvailability.production = item.production;
         this.fodderandFeedAvailabilityRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectHorticultureDetailsItem function",error)
+        console.error("error in selectHorticultureDetailsItem function", error);
       }
     },
-    removeFodderandFeedAvailabilityRows(index){
+    removeFodderandFeedAvailabilityRows(index) {
       this.fodderandFeedAvailabilityRowsData.splice(index, 1);
     },
-    selectFodderFuelUseItem(item,index){
+    selectFodderFuelUseItem(item, index) {
       try {
-        this.fodderFuelRows.details=item.details
-        this.fodderFuelRows.fodderUtilization=item.fodderUtilization
-        this.fodderFuelRows.fireFuelCowDung=item.fireFuelCowDung
-        this.fodderFuelRows.firewood=item.firewood
-        this.fodderFuelRows.agriculturalWaste=item.agriculturalWaste
+        this.fodderFuelRows.details = item.details;
+        this.fodderFuelRows.fodderUtilization = item.fodderUtilization;
+        this.fodderFuelRows.fireFuelCowDung = item.fireFuelCowDung;
+        this.fodderFuelRows.firewood = item.firewood;
+        this.fodderFuelRows.agriculturalWaste = item.agriculturalWaste;
         this.fodderFuelRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectFodderFuelUseItem function",error)
+        console.error("error in selectFodderFuelUseItem function", error);
       }
     },
-    removeFodderFuelUseRows(index){
+    removeFodderFuelUseRows(index) {
       this.fodderFuelRowsData.splice(index, 1);
     },
-    selectGrazeofCattleItem(item,index){
+    selectGrazeofCattleItem(item, index) {
       try {
-        this.grazeCattleRows.grazingOfCattle=item.grazingOfCattle
-        this.grazeCattleRows.numberOfCattle=item.numberOfCattle
-        this.grazeCattleRows.daysInAYear=item.daysInAYear
+        this.grazeCattleRows.grazingOfCattle = item.grazingOfCattle;
+        this.grazeCattleRows.numberOfCattle = item.numberOfCattle;
+        this.grazeCattleRows.daysInAYear = item.daysInAYear;
         this.grazeCattleRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectGrazeofCattleItem function",error)
+        console.error("error in selectGrazeofCattleItem function", error);
       }
     },
-    removeGrazeofCattleRows(index){
+    removeGrazeofCattleRows(index) {
       this.grazeCattleRowsData.splice(index, 1);
     },
-    selectHouseholdAssetsItem(item,index){
+    selectHouseholdAssetsItem(item, index) {
       try {
-        this.householdRows.assets=item.assets
-        this.householdRows.number=item.number
-        this.householdRows.presentValue=item.presentValue
+        this.householdRows.assets = item.assets;
+        this.householdRows.number = item.number;
+        this.householdRows.presentValue = item.presentValue;
         this.householdRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectHouseholdAssetsItem function",error)
+        console.error("error in selectHouseholdAssetsItem function", error);
       }
     },
-    removeHouseholdAssetsRows(index){
+    removeHouseholdAssetsRows(index) {
       this.householdRowsData.splice(index, 1);
     },
-    selectParticipationCommunityProgramItem(item,index){
+    selectParticipationCommunityProgramItem(item, index) {
       try {
-        this.participationinCommunityProgramsRows.nameofTheCommunityProgram=item.nameofTheCommunityProgram
-        this.participationinCommunityProgramsRows.markTheAppropriate=item.markTheAppropriate
-        this.participationinCommunityProgramsRows.awarenessprograms=item.awarenessprograms
+        this.participationinCommunityProgramsRows.nameofTheCommunityProgram =
+          item.nameofTheCommunityProgram;
+        this.participationinCommunityProgramsRows.markTheAppropriate =
+          item.markTheAppropriate;
+        this.participationinCommunityProgramsRows.awarenessprograms =
+          item.awarenessprograms;
         this.participationinCommunityProgramsRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectParticipationCommunityProgramItem function",error)
+        console.error(
+          "error in selectParticipationCommunityProgramItem function",
+          error
+        );
       }
     },
-    removeParticipationCommunityProgramRows(index){
+    removeParticipationCommunityProgramRows(index) {
       this.participationinCommunityProgramsRowsData.splice(index, 1);
     },
-    selectAwarenessAdoptionTechnologyItem(item,index){
+    selectAwarenessAdoptionTechnologyItem(item, index) {
       try {
-        this.awarenessTechnologyRows.technology=item.technology
-        this.awarenessTechnologyRows.sourceInformation=item.sourceInformation
+        this.awarenessTechnologyRows.technology = item.technology;
+        this.awarenessTechnologyRows.sourceInformation = item.sourceInformation;
         this.awarenessTechnologyRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectAwarenessAdoptionTechnologyItem function",error)
+        console.error(
+          "error in selectAwarenessAdoptionTechnologyItem function",
+          error
+        );
       }
     },
-    removeAwarenessAdoptionTechnologyRows(index){
+    removeAwarenessAdoptionTechnologyRows(index) {
       this.awarenessTechnologyRowsData.splice(index, 1);
     },
-    selectMembershipDetailsItem(item,index){
+    selectMembershipDetailsItem(item, index) {
       try {
-        this.membershipDetailsRows.sgh=item.sgh
-        this.membershipDetailsRows.number=item.number
-        this.membershipDetailsRowsData.splice(index, 1);      
+        this.membershipDetailsRows.sgh = item.sgh;
+        this.membershipDetailsRows.number = item.number;
+        this.membershipDetailsRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectMembershipDetailsItem function",error)
+        console.error("error in selectMembershipDetailsItem function", error);
       }
     },
-    removeMembershipDetailsRows(index){
+    removeMembershipDetailsRows(index) {
       this.membershipDetailsRowsData.splice(index, 1);
     },
-    selectBeneficiaryofSchemeItem(item,index){
+    selectBeneficiaryofSchemeItem(item, index) {
       try {
-        this.beneficiarySchemeRows.nameofTheScheme=item.nameofTheScheme
-        this.beneficiarySchemeRows.detailsoftheBenfits=item.detailsoftheBenfits
-        this.beneficiarySchemeRows.valueoftheBenfits=item.valueoftheBenfits
-        this.beneficiarySchemeRowsData.splice(index, 1); 
+        this.beneficiarySchemeRows.nameofTheScheme = item.nameofTheScheme;
+        this.beneficiarySchemeRows.detailsoftheBenfits =
+          item.detailsoftheBenfits;
+        this.beneficiarySchemeRows.valueoftheBenfits = item.valueoftheBenfits;
+        this.beneficiarySchemeRowsData.splice(index, 1);
       } catch (error) {
-        console.error("error in selectMembershipDetailsItem function",error)
+        console.error("error in selectMembershipDetailsItem function", error);
       }
     },
-    removeBeneficiaryofSchemeRows(index){
+    removeBeneficiaryofSchemeRows(index) {
       this.beneficiarySchemeRowsData.splice(index, 1);
     },
     async submitData() {
@@ -5173,9 +5394,10 @@ export default {
       try {
         const data = { id: id, rows: this.cultivatedAreaRowsData };
         const response = await axios.post(
-          "http://183.82.109.39:5000/api/bulkinsertionlandparticulars",data);
+          "http://183.82.109.39:5000/api/bulkinsertionlandparticulars",
+          data
+        );
         console.log("Land Particulars", response);
-       
       } catch (error) {
         console.error("error in addLandParticularsRows function", error);
       }
@@ -5207,29 +5429,35 @@ export default {
     async addLandParticularsRows() {
       try {
         if (
-        Object.values(this.cultivatedAreaRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-      this.cultivatedAreaRowsData.push({ ...this.cultivatedAreaRows });
+          Object.values(this.cultivatedAreaRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.cultivatedAreaRowsData.push({ ...this.cultivatedAreaRows });
           this.triggerToastMessage(
-            "Insertion of Land Particulars is Submitted Successfully","custom_toast"
+            "Insertion of Land Particulars is Submitted Successfully",
+            "custom_toast"
           );
-        console.log("LAND PARTICULARS DATA", this.cultivatedAreaRowsData);
-        this.clearCultivatedRows();
-      }
-      else{
-        this.triggerToastMessage("Please Insert the Land Particulars Fields","danger");
-      }
+          console.log("LAND PARTICULARS DATA", this.cultivatedAreaRowsData);
+          this.clearCultivatedRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert the Land Particulars Fields",
+            "danger"
+          );
+        }
       } catch (error) {
-        this.triggerToastMessage("Failed to Insert the Land Particulars Details","danger");
-        console.error("error in addLandParticularsRows function",error)
+        this.triggerToastMessage(
+          "Failed to Insert the Land Particulars Details",
+          "danger"
+        );
+        console.error("error in addLandParticularsRows function", error);
       }
     },
     clearCultivatedRows() {
@@ -5244,30 +5472,39 @@ export default {
     async incomeKharifRows() {
       try {
         if (
-        Object.values(this.incomefromCropsKharifRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.incomefromCropsKharifRowsData.push({
-          ...this.incomefromCropsKharifRows,
-        });
-        console.log("income crops kharif", this.incomefromCropsKharifRowsData);
-        this.triggerToastMessage(
-            "Insertion of Income from Crops Kharif is Submitted Successfully","custom_toast"
+          Object.values(this.incomefromCropsKharifRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.incomefromCropsKharifRowsData.push({
+            ...this.incomefromCropsKharifRows,
+          });
+          console.log(
+            "income crops kharif",
+            this.incomefromCropsKharifRowsData
           );
-        this.clearIncomeKharifRows();
-      }
-      else{
-        this.triggerToastMessage("Please Insert the Income Kharif Particulars Fields","danger");
-      }
+          this.triggerToastMessage(
+            "Insertion of Income from Crops Kharif is Submitted Successfully",
+            "custom_toast"
+          );
+          this.clearIncomeKharifRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert the Income Kharif Particulars Fields",
+            "danger"
+          );
+        }
       } catch (error) {
-        this.triggerToastMessage("Failed to Insert Income from Crops Kharif","danger");
+        this.triggerToastMessage(
+          "Failed to Insert Income from Crops Kharif",
+          "danger"
+        );
         console.error("error in incomeKharif function", error);
       }
     },
@@ -5291,30 +5528,36 @@ export default {
     async incomeRabiRows() {
       try {
         if (
-        Object.values(this.incomefromCropsRabiRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.incomefromCropsRabiRowsData.push({
-          ...this.incomefromCropsRabiRows,
-        });
-        console.log("Income rabi rows", this.incomefromCropsRabiRowsData);
-        this.triggerToastMessage(
-            "Insertion of Income from Crops Rabi is Submitted Successfully","custom_toast"
+          Object.values(this.incomefromCropsRabiRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.incomefromCropsRabiRowsData.push({
+            ...this.incomefromCropsRabiRows,
+          });
+          console.log("Income rabi rows", this.incomefromCropsRabiRowsData);
+          this.triggerToastMessage(
+            "Insertion of Income from Crops Rabi is Submitted Successfully",
+            "custom_toast"
           );
-        this.clearIncomeRabiRows();
-      }
-      else{
-        this.triggerToastMessage("Please Insert Income from Crops Rabi Fields","danger");
-      }
+          this.clearIncomeRabiRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Income from Crops Rabi Fields",
+            "danger"
+          );
+        }
       } catch (error) {
-        this.triggerToastMessage("Failed to Insert Income from Crops Rabi","danger");
+        this.triggerToastMessage(
+          "Failed to Insert Income from Crops Rabi",
+          "danger"
+        );
         console.log("error in incomerabi function", error);
       }
     },
@@ -5396,31 +5639,36 @@ export default {
     async migrationStatusAddRows() {
       try {
         if (
-        Object.values(this.migrationStatusRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.migrationStatusRowsData.push({ ...this.migrationStatusRows });
-      console.log("migration status", this.migrationStatusRowsData);
-      this.triggerToastMessage(
-            "Insertion of Migration Status Details is Submitted Successfully","custom_toast"
+          Object.values(this.migrationStatusRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.migrationStatusRowsData.push({ ...this.migrationStatusRows });
+          console.log("migration status", this.migrationStatusRowsData);
+          this.triggerToastMessage(
+            "Insertion of Migration Status Details is Submitted Successfully",
+            "custom_toast"
           );
-      this.clearMigrationDataRows();
-      }
-      else{
-        this.triggerToastMessage("Please Insert Migration Status Fields","danger");
-      }
+          this.clearMigrationDataRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Migration Status Fields",
+            "danger"
+          );
+        }
       } catch (error) {
-        this.triggerToastMessage("Failed to Insert Migration Status Details","danger");
-        console.log("error in migrationStatusAddRows fucntion",error)
+        this.triggerToastMessage(
+          "Failed to Insert Migration Status Details",
+          "danger"
+        );
+        console.log("error in migrationStatusAddRows fucntion", error);
       }
-      
     },
 
     async clearMigrationDataRows() {
@@ -5446,32 +5694,37 @@ export default {
       }
     },
     async landLessLabourData() {
-      try{
+      try {
         if (
-        Object.values(this.landLessLabourers).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-      this.landLessData.push({ ...this.landLessLabourers });
-      this.triggerToastMessage(
-            "Insertion of Landless Labour Details is Submitted Successfully","custom_toast"
+          Object.values(this.landLessLabourers).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.landLessData.push({ ...this.landLessLabourers });
+          this.triggerToastMessage(
+            "Insertion of Landless Labour Details is Submitted Successfully",
+            "custom_toast"
           );
-      console.log("land less labours", this.landLessData);
-      this.clearLandLessRows();
-      }
-      else{
-        this.triggerToastMessage("Please Insert Migration Status Details","danger");
-      }
-      }
-      catch(error){
-        this.triggerToastMessage("Failed to Insert Landless Labour Data Details","danger");
-        console.log("error in landLessLabourData function",error)
+          console.log("land less labours", this.landLessData);
+          this.clearLandLessRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Migration Status Details",
+            "danger"
+          );
+        }
+      } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Landless Labour Data Details",
+          "danger"
+        );
+        console.log("error in landLessLabourData function", error);
       }
     },
     clearLandLessRows() {
@@ -5496,36 +5749,42 @@ export default {
       }
     },
     addGovernmentSchemesDataRows() {
-      try{
+      try {
         if (
-        Object.values(this.governmentSchemesRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-      this.governmentSchemesRowsData.push({ ...this.governmentSchemesRows });
-      console.log(
-        "%%%%%%%%%%%%%%%DATA%%%%%%%%%%%%%%%%%%",
-        this.governmentSchemesRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Government Scheme Details is Submitted Successfully","custom_toast"
+          Object.values(this.governmentSchemesRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.governmentSchemesRowsData.push({
+            ...this.governmentSchemesRows,
+          });
+          console.log(
+            "%%%%%%%%%%%%%%%DATA%%%%%%%%%%%%%%%%%%",
+            this.governmentSchemesRowsData
           );
+          this.triggerToastMessage(
+            "Insertion of Government Scheme Details is Submitted Successfully",
+            "custom_toast"
+          );
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Government Scheme Details",
+            "danger"
+          );
+        }
+      } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Government Scheme Details",
+          "danger"
+        );
+        console.log("error in triggerToastMessage functionm");
       }
-      else{
-        this.triggerToastMessage("Please Insert Government Scheme Details","danger");
-      }
-    }
-      catch(error){
-        this.triggerToastMessage("Failed to Insert Government Scheme Details","danger");
-        console.log("error in triggerToastMessage functionm")
-      }
-
     },
     clearGovernmentSchemesRows() {
       this.governmentSchemesRows = {
@@ -5549,31 +5808,36 @@ export default {
     addChemicalManureRows() {
       try {
         if (
-        Object.values(this.useofChemicalManureRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.chemicalManureRowsData.push({ ...this.useofChemicalManureRows });
-      console.log("chemical manure data", this.chemicalManureRowsData);
-        this.triggerToastMessage(
-            "Insertion of Manure and Chemical Details is Submitted Successfully","custom_toast"
+          Object.values(this.useofChemicalManureRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.chemicalManureRowsData.push({ ...this.useofChemicalManureRows });
+          console.log("chemical manure data", this.chemicalManureRowsData);
+          this.triggerToastMessage(
+            "Insertion of Manure and Chemical Details is Submitted Successfully",
+            "custom_toast"
           );
           this.clearChemicalManureRows();
-      } 
-      else{
-        this.triggerToastMessage("Please Insert Manure and Chemical Details","danger");
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Manure and Chemical Details",
+            "danger"
+          );
+        }
+      } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Manure and Chemical Details",
+          "danger"
+        );
+        console.log("error in addChemicalManureRows function", error);
       }
-      }catch (error) {
-        this.triggerToastMessage("Failed to Insert Manure and Chemical Details","danger");
-        console.log("error in addChemicalManureRows function",error)
-      }
-      
     },
     clearChemicalManureRows() {
       this.useofChemicalManureRows = {
@@ -5601,35 +5865,39 @@ export default {
     addLoanParticularsRows() {
       try {
         if (
-        Object.values(this.loanParticularsRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.loanParticularsRowsData.push({ ...this.loanParticularsRows });
-      console.log("&&&&&&&&&&&DATA&&&&&&&&&&", this.loanParticularsRowsData);
-        this.triggerToastMessage(
-            "Insertion of Loan Particulars Details is Submitted Successfully","custom_toast"
+          Object.values(this.loanParticularsRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.loanParticularsRowsData.push({ ...this.loanParticularsRows });
+          console.log(
+            "&&&&&&&&&&&DATA&&&&&&&&&&",
+            this.loanParticularsRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Loan Particulars Details is Submitted Successfully",
+            "custom_toast"
           );
           this.clearLoanParticularsRows();
-      }
-      else{
-        this.triggerToastMessage(
-            "Please Insert Loan Particulars Details","danger"
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Loan Particulars Details",
+            "danger"
           );
-      }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Loan Particulars Details","danger"
-          );
-        console.log("error in addloanparticularsrows function",error)
+          "Failed to Insert Loan Particulars Details",
+          "danger"
+        );
+        console.log("error in addloanparticularsrows function", error);
       }
-      
     },
     clearLoanParticularsRows() {
       this.loanParticularsRows = {
@@ -5663,36 +5931,36 @@ export default {
     addPestDiseaseRows() {
       try {
         if (
-        Object.values(this.pestandDiseaseRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.pestandDiseaseRowsData.push({ ...this.pestandDiseaseRows });
-      console.log("%%%%DATA%%%%%%%%%", this.pestandDiseaseRowsData);
-      this.triggerToastMessage(
-            "Insertion of Pest Disease Details is Submitted Successfully","custom_toast"
+          Object.values(this.pestandDiseaseRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.pestandDiseaseRowsData.push({ ...this.pestandDiseaseRows });
+          console.log("%%%%DATA%%%%%%%%%", this.pestandDiseaseRowsData);
+          this.triggerToastMessage(
+            "Insertion of Pest Disease Details is Submitted Successfully",
+            "custom_toast"
           );
-      this.clearPestDisease();
-      }
-      else{
-        this.triggerToastMessage(
-            "Please Insert Pest Disease Details","danger"
+          this.clearPestDisease();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Pest Disease Details",
+            "danger"
           );
-      }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Pest Disease Details","danger"
-          );
-        console.error("error in addPestDiseaseRows function",error)
+          "Failed to Insert Pest Disease Details",
+          "danger"
+        );
+        console.error("error in addPestDiseaseRows function", error);
       }
-     
-     
     },
     clearPestDisease() {
       this.pestandDiseaseRows = {
@@ -5722,37 +5990,41 @@ export default {
     addFamilyExpenditureRows() {
       try {
         if (
-        Object.values(this.familyExpenditureRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.familyExpenditureRowsData.push({ ...this.familyExpenditureRows });
-      console.log(
-        "%%%%%%%%%%%DATA%%%%%%%%%%%%%%",
-        this.familyExpenditureRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Family Expenditure Details is Submitted Successfully","custom_toast"
+          Object.values(this.familyExpenditureRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.familyExpenditureRowsData.push({
+            ...this.familyExpenditureRows,
+          });
+          console.log(
+            "%%%%%%%%%%%DATA%%%%%%%%%%%%%%",
+            this.familyExpenditureRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Family Expenditure Details is Submitted Successfully",
+            "custom_toast"
           );
 
-      this.clearFamilyExpenditureRows();
-      }
-      else{
-        this.triggerToastMessage(
-            "Please Insert Family Expenditure Details","danger"
+          this.clearFamilyExpenditureRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Family Expenditure Details",
+            "danger"
           );
-      }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Family Expenditure Details","danger"
-          );
-        console.error("error in addFamilyExpenditureRows function",error)
+          "Failed to Insert Family Expenditure Details",
+          "danger"
+        );
+        console.error("error in addFamilyExpenditureRows function", error);
       }
     },
     clearFamilyExpenditureRows() {
@@ -5781,38 +6053,39 @@ export default {
     addSourceofIncomeRows() {
       try {
         if (
-        Object.values(this.sourceofIncomeRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.sourceofIncomeRowsData.push({ ...this.sourceofIncomeRows });
-      console.log(
-        "^^^^^^^^^^^^^DATA^^^^^^^^^^^^^^^",
-        this.sourceofIncomeRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Source of Income Details is Submitted Successfully","custom_toast"
+          Object.values(this.sourceofIncomeRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.sourceofIncomeRowsData.push({ ...this.sourceofIncomeRows });
+          console.log(
+            "^^^^^^^^^^^^^DATA^^^^^^^^^^^^^^^",
+            this.sourceofIncomeRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Source of Income Details is Submitted Successfully",
+            "custom_toast"
           );
           this.clearSourceofIncomeRows();
-      }
-      else{
-        this.triggerToastMessage(
-            "Please Insert Source of Income Details","danger"
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Source of Income Details",
+            "danger"
           );
-      }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Source of Income Details","danger"
-          );
-        console.error("error in addSourceofIncomeRows function",error)
+          "Failed to Insert Source of Income Details",
+          "danger"
+        );
+        console.error("error in addSourceofIncomeRows function", error);
       }
-     
     },
     clearSourceofIncomeRows() {
       this.sourceofIncomeRows = {
@@ -5838,41 +6111,45 @@ export default {
     addDrinkingWaterAvailabilityRows() {
       try {
         if (
-        Object.values(this.sourceofIncomeRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.drinkingWaterAvailabilityRowsData.push({
-        ...this.drinkingWaterAvailabilityRows,
-      });
-      console.log(
-        "^^^^^^^^^^^^^DATA&&&&&&&&&&&&&&&",
-        this.drinkingWaterAvailabilityRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Drinking Water Availability Details is Submitted Successfully","custom_toast"
+          Object.values(this.drinkingWaterAvailabilityRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.drinkingWaterAvailabilityRowsData.push({
+            ...this.drinkingWaterAvailabilityRows,
+          });
+          console.log(
+            "^^^^^^^^^^^^^DATA&&&&&&&&&&&&&&&",
+            this.drinkingWaterAvailabilityRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Drinking Water Availability Details is Submitted Successfully",
+            "custom_toast"
           );
 
-      this.clearDrinkingWaterRows();
-    }
-    else{
-      this.triggerToastMessage(
-            "Please Insert Drinking Water Availability Details","danger"
+          this.clearDrinkingWaterRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Drinking Water Availability Details",
+            "danger"
           );
-    }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Drinking Water Availability Details","danger"
-          );
-        console.error("error in addDrinkingWaterAvailabilityRows function",error)
+          "Failed to Insert Drinking Water Availability Details",
+          "danger"
+        );
+        console.error(
+          "error in addDrinkingWaterAvailabilityRows function",
+          error
+        );
       }
-     
     },
     clearDrinkingWaterRows() {
       this.drinkingWaterAvailabilityRows = {
@@ -5896,38 +6173,40 @@ export default {
     addSourceandQualityWaterRows() {
       try {
         if (
-        Object.values(this.sourceandQualityofWaterRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.sourceandQualityofWaterRowsData.push({
-        ...this.sourceandQualityofWaterRows,
-      });
-      console.log(
-        "^^^^^^^DATA^^^^^^^^^^",
-        this.sourceandQualityofWaterRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Source and Quality Water Details is Submitted Successfully","custom_toast"
+          Object.values(this.sourceandQualityofWaterRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.sourceandQualityofWaterRowsData.push({
+            ...this.sourceandQualityofWaterRows,
+          });
+          console.log(
+            "^^^^^^^DATA^^^^^^^^^^",
+            this.sourceandQualityofWaterRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Source and Quality Water Details is Submitted Successfully",
+            "custom_toast"
           );
           this.clearSourceandQualityofWaterRows();
-    }
-    else{
-      this.triggerToastMessage(
-            "Please Insert Source and Quality Water Availability Details","danger"
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Source and Quality Water Availability Details",
+            "danger"
           );
-    }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed Insertion of Source and Quality Water Availability Details","danger"
-          );
-        console.error("Error in addSourceandQualityWaterRows function",error)
+          "Failed Insertion of Source and Quality Water Availability Details",
+          "danger"
+        );
+        console.error("Error in addSourceandQualityWaterRows function", error);
       }
     },
     clearSourceandQualityofWaterRows() {
@@ -5960,37 +6239,41 @@ export default {
     addAgriculturalImplementsRows() {
       try {
         if (
-        Object.values(this.agriculturalImplementsRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.agriculturalImplementsRowsData.push({
-        ...this.agriculturalImplementsRows,
-      });
-      console.log("%%%%%%%%%DATA%%%%%%%", this.agriculturalImplementsRowsData);
-      this.triggerToastMessage(
-            "Insertion of Agricultural Implements Details is Submitted Successfully","custom_toast"
+          Object.values(this.agriculturalImplementsRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.agriculturalImplementsRowsData.push({
+            ...this.agriculturalImplementsRows,
+          });
+          console.log(
+            "%%%%%%%%%DATA%%%%%%%",
+            this.agriculturalImplementsRowsData
           );
-      this.clearAgriculturalImplementsRows();
-    }
-    else{
-      this.triggerToastMessage(
-            "Please Insert Agricultural Implements Details","danger"
+          this.triggerToastMessage(
+            "Insertion of Agricultural Implements Details is Submitted Successfully",
+            "custom_toast"
           );
-    }
+          this.clearAgriculturalImplementsRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Agricultural Implements Details",
+            "danger"
+          );
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Agricultural Implements Details","danger"
-          );
-        console.log("error in addAgriculturalImplementsRows function",error)
+          "Failed to Agricultural Implements Details",
+          "danger"
+        );
+        console.log("error in addAgriculturalImplementsRows function", error);
       }
-     
     },
     clearAgriculturalImplementsRows() {
       this.agriculturalImplementsRows = {
@@ -6014,38 +6297,37 @@ export default {
     addHorticultureRows() {
       try {
         if (
-        Object.values(this.horticultureDetailsRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.horticultureDetailsRowsData.push({
-        ...this.horticultureDetailsRows,
-      });
-      console.log(
-        "%%%%%%%%%%%DATA%%%%%%%%%%",
-        this.horticultureDetailsRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Horticulture Details is Submitted Successfully","custom_toast"
+          Object.values(this.horticultureDetailsRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.horticultureDetailsRowsData.push({
+            ...this.horticultureDetailsRows,
+          });
+          console.log(
+            "%%%%%%%%%%%DATA%%%%%%%%%%",
+            this.horticultureDetailsRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Horticulture Details is Submitted Successfully",
+            "custom_toast"
           );
           this.clearHorticultureDetailsRowsData();
-    }
-    else{
-      this.triggerToastMessage(
-            "Please Insert Horticulture Details","danger"
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Horticulture Details",
+            "danger"
           );
-    }
+        }
       } catch (error) {
-        this.triggerToastMessage(
-            "Failed to Horticulture Details","danger"
-          );
-        console.error("Error in addHorticultureRows function",error)
+        this.triggerToastMessage("Failed to Horticulture Details", "danger");
+        console.error("Error in addHorticultureRows function", error);
       }
     },
     clearHorticultureDetailsRowsData() {
@@ -6069,38 +6351,43 @@ export default {
     addFodderandFeedAvailabilityRows() {
       try {
         if (
-        Object.values(this.fodderandFeedAvailability).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.fodderandFeedAvailabilityRowsData.push({
-        ...this.fodderandFeedAvailability,
-      });
-      console.log(
-        "%%%%%%%%%%%%%DATA%%%%%%%%%%%%%",
-        this.fodderandFeedAvailabilityRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Fodder and Feed Availability Details is Submitted Successfully","custom_toast"
+          Object.values(this.fodderandFeedAvailability).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.fodderandFeedAvailabilityRowsData.push({
+            ...this.fodderandFeedAvailability,
+          });
+          console.log(
+            "%%%%%%%%%%%%%DATA%%%%%%%%%%%%%",
+            this.fodderandFeedAvailabilityRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Fodder and Feed Availability Details is Submitted Successfully",
+            "custom_toast"
           );
           this.clearFodderFeedRows();
-    }
-    else{
-      this.triggerToastMessage(
-            "Please Insert Fodder and Feed Availability Details","danger"
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Fodder and Feed Availability Details",
+            "danger"
           );
-    }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Fodder and Feed Availability Details","danger"
-          );
-        console.error("error in addFodderandFeedAvailabilityRows fucntion",error)
+          "Failed to Insert Fodder and Feed Availability Details",
+          "danger"
+        );
+        console.error(
+          "error in addFodderandFeedAvailabilityRows fucntion",
+          error
+        );
       }
     },
     clearFodderFeedRows() {
@@ -6126,36 +6413,38 @@ export default {
     addFodderFuelRows() {
       try {
         if (
-        Object.values(this.fodderFuelRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.fodderFuelRowsData.push({ ...this.fodderFuelRows });
-      console.log(
-        "################DATA##############",
-        this.fodderFuelRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Fodder Fuel Details is Submitted Successfully","custom_toast"
+          Object.values(this.fodderFuelRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.fodderFuelRowsData.push({ ...this.fodderFuelRows });
+          console.log(
+            "################DATA##############",
+            this.fodderFuelRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Fodder Fuel Details is Submitted Successfully",
+            "custom_toast"
           );
           this.clearFodderFullRows();
-      }
-      else{
-        this.triggerToastMessage(
-            "Please Insert Fodder Fuel Availability Details","danger"
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Fodder Fuel Availability Details",
+            "danger"
           );
-      }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Fodder Fuel Availability Details","danger"
-          );
-        console.error("error in addFodderFuelRows function",error)
+          "Failed to Insert Fodder Fuel Availability Details",
+          "danger"
+        );
+        console.error("error in addFodderFuelRows function", error);
       }
     },
     clearFodderFullRows() {
@@ -6182,34 +6471,36 @@ export default {
     addGrazeCattleRows() {
       try {
         if (
-        Object.values(this.grazeCattleRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.grazeCattleRowsData.push({ ...this.grazeCattleRows });
-      console.log("%%%%%%%%%DATA%%%%%%%%%%%%%%", this.grazeCattleRowsData);
-      this.triggerToastMessage(
-            "Insertion of Graze Cattle Details is Submitted Successfully","custom_toast"
+          Object.values(this.grazeCattleRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.grazeCattleRowsData.push({ ...this.grazeCattleRows });
+          console.log("%%%%%%%%%DATA%%%%%%%%%%%%%%", this.grazeCattleRowsData);
+          this.triggerToastMessage(
+            "Insertion of Graze Cattle Details is Submitted Successfully",
+            "custom_toast"
           );
- 
-      this.clearGrazeCattleRows();
-      }
-      else{
-        this.triggerToastMessage(
-            "Please Insert Graze Cattle Details","danger"
+
+          this.clearGrazeCattleRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Graze Cattle Details",
+            "danger"
           );
-      }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Graze Cattle Details","danger"
-          );
-        console.error("error in addGrazeCattleRows function",error)
+          "Failed to Insert Graze Cattle Details",
+          "danger"
+        );
+        console.error("error in addGrazeCattleRows function", error);
       }
     },
     clearGrazeCattleRows() {
@@ -6234,36 +6525,34 @@ export default {
     addHouseholdRows() {
       try {
         if (
-        Object.values(this.householdRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.householdRowsData.push({ ...this.householdRows });
-      console.log("^^^^^^^^DATA^^^^^^^^^^^^^^", this.householdRowsData);
-      this.triggerToastMessage(
-            "Insertion of Household Details is Submitted Successfully","custom_toast"
+          Object.values(this.householdRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.householdRowsData.push({ ...this.householdRows });
+          console.log("^^^^^^^^DATA^^^^^^^^^^^^^^", this.householdRowsData);
+          this.triggerToastMessage(
+            "Insertion of Household Details is Submitted Successfully",
+            "custom_toast"
           );
- 
-      this.clearHouseholdRows();
-      }
-      else{
-        this.triggerToastMessage(
-            "Please Insert Household Details","danger"
-          );
-      }
+
+          this.clearHouseholdRows();
+        } else {
+          this.triggerToastMessage("Please Insert Household Details", "danger");
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Household Details","danger"
-          );
-        console.error("error in addHouseholdRows function",error)
+          "Failed to Insert Household Details",
+          "danger"
+        );
+        console.error("error in addHouseholdRows function", error);
       }
-     
     },
     clearHouseholdRows() {
       this.householdRows = {
@@ -6290,39 +6579,43 @@ export default {
     addParticipationRows() {
       try {
         if (
-        Object.values(this.participationinCommunityProgramsRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.participationinCommunityProgramsRowsData.push({
-        ...this.participationinCommunityProgramsRows,
-      });
-      console.log(
-        "%%%%%%%%%%%%%%%%DATA%%%%%%%%%%%%%",
-        this.participationinCommunityProgramsRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Participation Details is Submitted Successfully","custom_toast"
+          Object.values(this.participationinCommunityProgramsRows).some(
+            (field) => {
+              if (typeof field === "string") {
+                return field.trim() !== "";
+              } else if (Array.isArray(field)) {
+                return field.length > 0;
+              } else {
+                return field !== null && field !== undefined;
+              }
+            }
+          )
+        ) {
+          this.participationinCommunityProgramsRowsData.push({
+            ...this.participationinCommunityProgramsRows,
+          });
+          console.log(
+            "%%%%%%%%%%%%%%%%DATA%%%%%%%%%%%%%",
+            this.participationinCommunityProgramsRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Participation Details is Submitted Successfully",
+            "custom_toast"
           );
 
-      this.clearParticipationRows();
-    }
-    else{
-      this.triggerToastMessage(
-            "Please Insert Participation Details","danger"
+          this.clearParticipationRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Participation Details",
+            "danger"
           );
-    }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Participation Details","danger"
-          );
-        console.error("error in addParticipationRows function",error)
+          "Failed to Insert Participation Details",
+          "danger"
+        );
+        console.error("error in addParticipationRows function", error);
       }
     },
     clearParticipationRows() {
@@ -6347,39 +6640,41 @@ export default {
     addAwarenessTechnologyRows() {
       try {
         if (
-        Object.values(this.awarenessTechnologyRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.awarenessTechnologyRowsData.push({
-        ...this.awarenessTechnologyRows,
-      });
-      console.log(
-        "%%%%%%%%%%%DATA%%%%%%%%%%%%%",
-        this.awarenessTechnologyRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Awareness Technology Details is Submitted Successfully","custom_toast"
+          Object.values(this.awarenessTechnologyRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.awarenessTechnologyRowsData.push({
+            ...this.awarenessTechnologyRows,
+          });
+          console.log(
+            "%%%%%%%%%%%DATA%%%%%%%%%%%%%",
+            this.awarenessTechnologyRowsData
           );
- 
-      this.clearAwarenessTechnologyRows();
-    }
-    else{
-      this.triggerToastMessage(
-            "Please Insert Awareness Technology Details","danger"
+          this.triggerToastMessage(
+            "Insertion of Awareness Technology Details is Submitted Successfully",
+            "custom_toast"
           );
-    }
+
+          this.clearAwarenessTechnologyRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Awareness Technology Details",
+            "danger"
+          );
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Awareness Technology Details","danger"
-          );
-        console.error("error in addAwarenessTechnologyRows fucntion",error)
+          "Failed to Insert Awareness Technology Details",
+          "danger"
+        );
+        console.error("error in addAwarenessTechnologyRows fucntion", error);
       }
     },
     clearAwarenessTechnologyRows() {
@@ -6403,39 +6698,42 @@ export default {
     addMembershipDetailsRows() {
       try {
         if (
-        Object.values(this.membershipDetailsRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.membershipDetailsRowsData.push({ ...this.membershipDetailsRows });
-      console.log(
-        "&&&&&&&&&&&&&DATA&&&&&&&&&&&&&&",
-        this.membershipDetailsRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Membership Details is Submitted Successfully","custom_toast"
+          Object.values(this.membershipDetailsRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.membershipDetailsRowsData.push({
+            ...this.membershipDetailsRows,
+          });
+          console.log(
+            "&&&&&&&&&&&&&DATA&&&&&&&&&&&&&&",
+            this.membershipDetailsRowsData
           );
- 
-      this.clearMembershipDetailsRows();
-      }
-      else{
-        this.triggerToastMessage(
-            "Please Insert Membership Details","danger"
+          this.triggerToastMessage(
+            "Insertion of Membership Details is Submitted Successfully",
+            "custom_toast"
           );
-      }
+
+          this.clearMembershipDetailsRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Membership Details",
+            "danger"
+          );
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Membership Details","danger"
-          );
-        console.error("Error in addMembershipDetailsRows fucntion",error)
+          "Failed to Insert Membership Details",
+          "danger"
+        );
+        console.error("Error in addMembershipDetailsRows fucntion", error);
       }
-      
     },
     clearMembershipDetailsRows() {
       this.membershipDetailsRows = {
@@ -6459,38 +6757,42 @@ export default {
     addBeneficiarySchemeRows() {
       try {
         if (
-        Object.values(this.beneficiarySchemeRows).some((field) => {
-          if (typeof field === "string") {
-            return field.trim() !== "";
-          } else if (Array.isArray(field)) {
-            return field.length > 0;
-          } else {
-            return field !== null && field !== undefined;
-          }
-        })
-      ){
-        this.beneficiarySchemeRowsData.push({ ...this.beneficiarySchemeRows });
-      console.log(
-        "$$$$$$$$$$$$$$$$$DATA$$$$$$$$$$$$$$$$",
-        this.beneficiarySchemeRowsData
-      );
-      this.triggerToastMessage(
-            "Insertion of Beneficiary Scheme Details is Submitted Successfully","custom_toast"
+          Object.values(this.beneficiarySchemeRows).some((field) => {
+            if (typeof field === "string") {
+              return field.trim() !== "";
+            } else if (Array.isArray(field)) {
+              return field.length > 0;
+            } else {
+              return field !== null && field !== undefined;
+            }
+          })
+        ) {
+          this.beneficiarySchemeRowsData.push({
+            ...this.beneficiarySchemeRows,
+          });
+          console.log(
+            "$$$$$$$$$$$$$$$$$DATA$$$$$$$$$$$$$$$$",
+            this.beneficiarySchemeRowsData
+          );
+          this.triggerToastMessage(
+            "Insertion of Beneficiary Scheme Details is Submitted Successfully",
+            "custom_toast"
           );
 
-      this.clearBeneficiarySchemeRows();
-      }
-      else{
-        this.triggerToastMessage(
-            "Please Insert Beneficiary Scheme Details","danger"
+          this.clearBeneficiarySchemeRows();
+        } else {
+          this.triggerToastMessage(
+            "Please Insert Beneficiary Scheme Details",
+            "danger"
           );
-      }
+        }
       } catch (error) {
         this.triggerToastMessage(
-            "Failed to Insert Beneficiary Scheme Details","danger"
-          );
-        console.error("Error in addBeneficiarySchemeRows function",error)
-      } 
+          "Failed to Insert Beneficiary Scheme Details",
+          "danger"
+        );
+        console.error("Error in addBeneficiarySchemeRows function", error);
+      }
     },
     clearBeneficiarySchemeRows() {
       this.beneficiarySchemeRows = {
@@ -6613,7 +6915,7 @@ ion-button {
   border-radius: 16px;
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

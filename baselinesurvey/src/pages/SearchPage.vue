@@ -6,9 +6,6 @@
           <ion-back-button class="backButton" defaultHref="/landingpage"
             >Back</ion-back-button
           >
-          <div v-if="latitude && longitude">
-            <p>Latitude: {{ latitude }} / Longitude: {{ longitude }}</p>
-          </div>
         </ion-buttons>
         <!-- <ion-img :src="RsiLogo" class="imgsize"></ion-img> -->
         <!-- <ion-title style="font-size: 1.5vh"> </ion-title> -->
