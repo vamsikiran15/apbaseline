@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.example.baselinesurvey',
-  appName: 'baselinesurvey',
+  appName: 'BaseLineSurvey',
   webDir: 'dist',
   bundledWebRuntime: false,
   server: {

@@ -26,7 +26,7 @@
           fill="outline"
           v-model="newAgriImplements.implements"
         >
-        <ion-select-option value="">Select Implement</ion-select-option>
+          <ion-select-option value="">Select Implement</ion-select-option>
           <ion-select-option value="tractor">Tractor</ion-select-option>
           <ion-select-option value="SprayerManualPower"
             >Sprayer-Manual/Power</ion-select-option
@@ -71,17 +71,17 @@
         </ion-select>
       </ion-card-content>
       <ion-button
-          class="ion-margin"
-          expand="block"
-          color="primary"
-          @click="UpdateAgriImplementsData()"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Agriculture Implements</ion-button
-        >
+        class="ion-margin"
+        expand="block"
+        color="primary"
+        @click="UpdateAgriImplementsData()"
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update Agriculture Implements</ion-button
+      >
     </ion-card>
   </div>
 </template>
@@ -108,6 +108,8 @@ import {
   IonList,
   IonButton,
   toastController,
+  IonItem,
+  IonIcon,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -148,7 +150,9 @@ export default {
     IonRadio,
     IonList,
     IonButton,
-    toastController
+    toastController,
+    IonItem,
+    IonIcon,
   },
   methods: {
     selectAgriImplements(item) {
@@ -194,32 +198,29 @@ export default {
     // migrate data updation
     async UpdateAgriImplementsData() {
       try {
-        this.triggerToastMessage("Updated Agriculture Implements Details Successfully","custom_toast")
         this.updateAgriImplementsrows();
-      const newData = this.AgriImplementsRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.AgriImplementsRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("AgriImplements ", row);
-          await this.updateAgriImplements(row);
-          this.AgriImplementsRows = [];
-        } else {
-          // Insert new row
-          // this.GovtBenefitRows.push(row);
-          console.log("AgriImplements  data", row);
-          await this.insertAgriImplements(row);
-          this.AgriImplementsRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("AgriImplements ", row);
+            await this.updateAgriImplements(row);
+            this.AgriImplementsRows = [];
+          } else {
+            // Insert new row
+            // this.GovtBenefitRows.push(row);
+            console.log("AgriImplements  data", row);
+            await this.insertAgriImplements(row);
+            this.AgriImplementsRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Agriculture Implements Details.","danger")
-        console.error("error in UpdateAgriImplementsData function",error)
+        console.error("error in UpdateAgriImplementsData function", error);
       }
-    
     },
     async insertAgriImplements(row) {
       try {
@@ -234,8 +235,20 @@ export default {
             implements_ownerd_hired: row.implements_ownerd_hired,
           }
         );
+        this.agricultureimplementsdetails.push(response.data.data);
+        if (response.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted AgriImplements Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("AgriImplements inserted:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Agriculture Implements Details.",
+          "danger"
+        );
         console.error("Error inserting AgriImplements row:", error);
       }
     },
@@ -245,12 +258,23 @@ export default {
           `http://183.82.109.39:5000/api/updateagricultureimplements/${row.id}`,
           row
         );
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated AgriImplements Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("AgriImplements Row updated:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Agriculture Implements Details.",
+          "danger"
+        );
         console.error("Error updating AgriImplements row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -268,7 +292,7 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

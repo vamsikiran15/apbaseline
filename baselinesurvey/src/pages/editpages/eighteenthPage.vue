@@ -29,7 +29,7 @@
           fill="outline"
           v-model="newFodderFuel.foldder_details"
         >
-        <ion-select-option value="">Select Details</ion-select-option>
+          <ion-select-option value="">Select Details</ion-select-option>
           <ion-select-option value="Own land">Own Land</ion-select-option>
           <ion-select-option value="Community land"
             >Community</ion-select-option
@@ -43,7 +43,7 @@
           class="ion-margin-top"
           placeholder="Enter value in Tons"
           fill="outline"
-           type="number"
+          type="number"
           label="Fodder Utilization(In Tons)"
           label-placement="floating"
           v-model="newFodderFuel.fodder_utilisation"
@@ -52,7 +52,7 @@
           class="ion-margin-top"
           placeholder="Enter value"
           fill="outline"
-           type="number"
+          type="number"
           label="Fire/Fuel Cow Dung"
           label-placement="floating"
           v-model="newFodderFuel.cow_dung"
@@ -61,7 +61,7 @@
           class="ion-margin-top"
           placeholder="Enter values"
           fill="outline"
-           type="number"
+          type="number"
           label="Firewood"
           label-placement="floating"
           v-model="newFodderFuel.fire_wood"
@@ -70,24 +70,24 @@
           class="ion-margin-top"
           placeholder="Enter values"
           fill="outline"
-           type="number"
+          type="number"
           label="Agricultural Waste"
           label-placement="floating"
           v-model="newFodderFuel.agriculture_waste"
         ></ion-input>
       </ion-card-content>
       <ion-button
-          class="ion-margin"
-          expand="block"
-          color="primary"
-          @click="UpdateFodderFuelData"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Fodder Fuel</ion-button
-        >
+        class="ion-margin"
+        expand="block"
+        color="primary"
+        @click="UpdateFodderFuelData"
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update Fodder Fuel</ion-button
+      >
     </ion-card>
   </div>
 </template>
@@ -114,6 +114,8 @@ import {
   IonList,
   IonButton,
   toastController,
+  IonItem,
+  IonIcon,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -156,7 +158,9 @@ export default {
     IonRadio,
     IonList,
     IonButton,
-    toastController
+    toastController,
+    IonItem,
+    IonIcon,
   },
   methods: {
     selectFodderFuel(item) {
@@ -205,31 +209,29 @@ export default {
     // migrate data updation
     async UpdateFodderFuelData() {
       try {
-        this.triggerToastMessage("Updated Fodder Fuel Details Successfully","custom_toast")
         this.updateFodderFuelrows();
-      const newData = this.FodderFuelRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.FodderFuelRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("FodderFuel ", row);
-          await this.updateFodderFuel(row);
-          this.FodderFuelRows = [];
-        } else {
-          // Insert new row
-          // this.GovtBenefitRows.push(row);
-          console.log("FodderFuel  data", row);
-          await this.insertFodderFuel(row);
-          this.FodderFuelRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("FodderFuel ", row);
+            await this.updateFodderFuel(row);
+            this.FodderFuelRows = [];
+          } else {
+            // Insert new row
+            // this.GovtBenefitRows.push(row);
+            console.log("FodderFuel  data", row);
+            await this.insertFodderFuel(row);
+            this.FodderFuelRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Fodder Fuel Details","danger")
-        console.error("error in UpdateFodderFuelData function",error)
-      }  
+        console.error("error in UpdateFodderFuelData function", error);
+      }
     },
     async insertFodderFuel(row) {
       try {
@@ -246,8 +248,20 @@ export default {
             agriculture_waste: row.agriculture_waste,
           }
         );
+        this.fodderfueldetails.push(response.data.data);
+        if (response.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted FodderFuel Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("FodderFuel inserted:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Fodder Fuel Details",
+          "danger"
+        );
         console.error("Error inserting FodderFuel row:", error);
       }
     },
@@ -257,12 +271,23 @@ export default {
           `http://183.82.109.39:5000/api/updatefodderfuel/${row.id}`,
           row
         );
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated FodderFuel Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("FodderFuel Row updated:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Fodder Fuel Details",
+          "danger"
+        );
         console.error("Error updating FodderFuel row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -280,7 +305,7 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

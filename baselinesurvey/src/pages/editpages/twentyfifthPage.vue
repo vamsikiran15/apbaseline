@@ -53,19 +53,19 @@
         ></ion-input>
       </ion-card-content>
       <ion-button
-          color="primary"
-          class="ion-margin"
-          expand="block"
-          @click="
-            saveData(), saveHaveReceivedData(), saveUpdateDateServeyouName()
-          "
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Conclusion</ion-button
-        >
+        color="primary"
+        class="ion-margin"
+        expand="block"
+        @click="
+          saveData(), saveHaveReceivedData(), saveUpdateDateServeyouName()
+        "
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update Conclusion</ion-button
+      >
     </ion-card>
   </div>
 </template>
@@ -97,6 +97,7 @@ import {
   IonText,
   IonIcon,
   toastController,
+  IonItem,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -152,7 +153,8 @@ export default {
     IonModal,
     IonText,
     IonIcon,
-    toastController
+    toastController,
+    IonItem,
   },
 
   methods: {
@@ -212,7 +214,7 @@ export default {
         );
         if (resp.data.length === 0) {
           // If status is null or undefined, perform an insert (POST request)
-          await axios.post(
+          const response = await axios.post(
             `http://183.82.109.39:5000/api/insertawarewatershedstatus`,
             {
               status: this.selectedOption,
@@ -220,6 +222,13 @@ export default {
               // Add other properties if necessary for insert
             }
           );
+          if (response.statusText === "Created") {
+            // If response status is 200 (OK), trigger success toast
+            this.triggerToastMessage(
+              "Inserted awarewatershedstatus Details Successfully",
+              "custom_toast"
+            );
+          }
         } else {
           console.log(
             "__________________update id",
@@ -229,7 +238,7 @@ export default {
           );
           // If status is not null, perform an update (PUT request)
           this.awarewatershedstatusdetails[0].status = this.selectedOption; // Update responseData locally
-          await axios.put(
+          const responseOne = await axios.put(
             `http://183.82.109.39:5000/api/updateawarewatershedstatus/${this.editedItem.id}`,
             {
               id: this.editedItem.id,
@@ -238,9 +247,20 @@ export default {
               // Add other properties if necessary for insert
             }
           );
+          if (responseOne.statusText === "OK") {
+            // If response status is 200 (OK), trigger success toast
+            this.triggerToastMessage(
+              "Updated Aware Watershed Status Details Successfully",
+              "custom_toast"
+            );
+          }
         }
         console.log("Data saved successfully");
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Aware Watershed Status Details",
+          "danger"
+        );
         console.error("Error saving data:", error);
       }
     },
@@ -260,7 +280,7 @@ export default {
         );
         if (resp.data.length === 0) {
           // If status is null or undefined, perform an insert (POST request)
-          await axios.post(
+          const responseTwo = await axios.post(
             `http://183.82.109.39:5000/api/insertreceivedtrainingwatershedstatus`,
             {
               status: this.selectedOptionHaveReceived,
@@ -268,6 +288,13 @@ export default {
               // Add other properties if necessary for insert
             }
           );
+          if (responseTwo.statusText === "Created") {
+            // If response status is 200 (OK), trigger success toast
+            this.triggerToastMessage(
+              "Inserted receivedtrainingwatershedstatus Details Successfully",
+              "custom_toast"
+            );
+          }
         } else {
           console.log(
             "__________________update id",
@@ -278,7 +305,7 @@ export default {
           // If status is not null, perform an update (PUT request)
           this.receivedtrainingwatershedstatusdetails[0].status =
             this.selectedOptionHaveReceived; // Update responseData locally
-          await axios.put(
+          const responseThree = await axios.put(
             `http://183.82.109.39:5000/api/updatereceivedtrainingwatershedstatus/${this.editedItem.id}`,
             {
               id: this.editedItem.id,
@@ -287,9 +314,20 @@ export default {
               // Add other properties if necessary for insert
             }
           );
+          if (responseThree.statusText === "OK") {
+            // If response status is 200 (OK), trigger success toast
+            this.triggerToastMessage(
+              "Updated Received Training Watershed status Details Successfully",
+              "custom_toast"
+            );
+          }
         }
         console.log("Data saved successfully");
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Traning Watershed of any Scheme Details",
+          "danger"
+        );
         console.error("Error saving data:", error);
       }
     },
@@ -309,7 +347,7 @@ export default {
     async insertDateServename() {
       try {
         console.log("&&&&&&&&&&&&&&&&&&&&&&");
-        const response = await axios.post(
+        const responseFour = await axios.post(
           "http://183.82.109.39:5000/api/insertdateserveyor",
           {
             id: this.selectedDateServeyorName.id,
@@ -318,14 +356,25 @@ export default {
             serveyor_name: this.selectedDateServeyorName.serveyor_name,
           }
         );
-        console.log("insertdateserveyor inserted:", response);
+        if (responseFour.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Date Serveyor Details Successfully",
+            "custom_toast"
+          );
+        }
+        console.log("insertdateserveyor inserted:", responseFour);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Date Serveyor of any Scheme Details",
+          "danger"
+        );
         console.error("Error inserting insertdateserveyor row:", error);
       }
     },
     async updateDateServeName() {
       try {
-        const response = await axios.put(
+        const responseFive = await axios.put(
           `http://183.82.109.39:5000/api/updatedateserveyor/${this.editedItem.id}`,
           {
             id: this.editedItem.id,
@@ -334,12 +383,23 @@ export default {
             serveyor_name: this.selectedDateServeyorName.serveyor_name,
           }
         );
-        console.log("updatedateserveyor Row updated:", response);
+        if (responseFive.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated dateserveyor Details Successfully",
+            "custom_toast"
+          );
+        }
+        console.log("updatedateserveyor Row updated:", responseFive);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Date Serveyor of any Scheme Details",
+          "danger"
+        );
         console.error("Error updating updatedateserveyor row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -357,7 +417,7 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

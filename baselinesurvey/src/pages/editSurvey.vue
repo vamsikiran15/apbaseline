@@ -248,10 +248,7 @@
                   @touchstart="touched = true"
                   @mousedown="touched = true"
                 ></ion-input>
-                <ion-text
-                  v-if="(touched || dirty) && ValidPhoneNumberShowingMessage"
-                  color="danger"
-                >
+                <ion-text v-if="ValidPhoneNumberShowingMessage" color="danger">
                   Please enter a valid Phone Number.
                 </ion-text>
                 <ion-input
@@ -266,10 +263,7 @@
                   @touchstart="touched = true"
                   @mousedown="touched = true"
                 ></ion-input>
-                <ion-text
-                  v-if="(touched || dirty) && ValidAadharNumberShowingMessage"
-                  color="danger"
-                >
+                <ion-text v-if="ValidAadharNumberShowingMessage" color="danger">
                   Please enter valid Aadhar Number.
                 </ion-text>
                 <ion-input
@@ -607,16 +601,16 @@
               </ion-card>
               <ion-card>
                 <ion-list>
-                    <ion-item
-                      v-for="item in houseHoldEditItem"
-                      :key="item.id"
-                      @click="selectItem(item)"
-                    >
-                      {{ item.name_of_the_family_member }}
-                      {{ item.relationship_with_head }}
-                      {{ item.gender }}
-                    </ion-item>
-                  </ion-list>
+                  <ion-item
+                    v-for="item in houseHoldEditItem"
+                    :key="item.id"
+                    @click="selectItem(item)"
+                  >
+                    {{ item.name_of_the_family_member }}
+                    {{ item.relationship_with_head }}
+                    {{ item.gender }}
+                  </ion-item>
+                </ion-list>
               </ion-card>
               <ion-card>
                 <ion-card-content>
@@ -1714,6 +1708,8 @@ import {
   IonCheckbox,
   IonToast,
   toastController,
+  IonText,
+  IonRippleEffect,
 } from "@ionic/vue";
 import fifthPage from "./editpages/fifthPage.vue";
 import SixthPage from "./editpages/sixthPage.vue";
@@ -1997,6 +1993,8 @@ export default {
     IonItem,
     IonToast,
     toastController,
+    IonText,
+    IonRippleEffect,
   },
   computed: {
     currentStepLabel() {
@@ -2078,7 +2076,7 @@ export default {
     },
   },
   methods: {
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -2621,14 +2619,17 @@ export default {
         if (response.statusText === "OK") {
           // If response status is 200 (OK), trigger success toast
           this.triggerToastMessage(
-            "Updated of Survey Form is Submitted Successfully",
+            "Updated HouseHold Info Successfully",
             "custom_toast"
           );
         }
         console.log("Item updated individual:", response.data);
         // this.$emit("item-updated", response.data); // Emit event with updated item
       } catch (error) {
-        this.triggerToastMessage("Failed to submit the survey form", "danger");
+        this.triggerToastMessage(
+          "Failed to Update the Household Info",
+          "danger"
+        );
         console.error("Error individual updating item:", error);
       }
     },
@@ -2662,30 +2663,31 @@ export default {
 
     async UpdateHouseHoldMemberData() {
       try {
-      this.triggerToastMessage("Updated Household Details Successfully","custom_toast")
-      this.addRows();
-      const newData = this.rows.map((row) => ({
-        ...row,
-        occupation: row.occupation.join(","),
-        headId: this.editedItem.id,
-      }));
+        this.addRows();
+        const newData = this.rows.map((row) => ({
+          ...row,
+          occupation: Array.isArray(row.occupation)
+            ? row.occupation.join(",")
+            : row.occupation || "",
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
-          await this.updateHouseholdMembers(row);
-          this.rows = [];
-        } else {
-          // Insert new row
-          // this.landParticularRows.push(row);
-          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
-          await this.insertHouseholdMembers(row);
-          this.rows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+            await this.updateHouseholdMembers(row);
+            this.rows = [];
+          } else {
+            // Insert new row
+            // this.landParticularRows.push(row);
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+            await this.insertHouseholdMembers(row);
+            this.rows = [];
+          }
         }
-      }
-    } catch (error) {
-        console.error("error in UpdateHouseHoldMemberData function",error)
+      } catch (error) {
+        console.error("error in UpdateHouseHoldMemberData function", error);
       }
     },
     async insertHouseholdMembers(row) {
@@ -2708,7 +2710,18 @@ export default {
           }
         );
         console.log("Row inserted:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Household Member Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Inserting the Household Member Details",
+          "danger"
+        );
         console.error("Error inserting row:", error);
       }
     },
@@ -2721,7 +2734,18 @@ export default {
           row
         );
         console.log("Row updated:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated Household Member Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update the Household Member Details",
+          "danger"
+        );
         console.error("Error updating row:", error);
       }
     },
@@ -2732,30 +2756,28 @@ export default {
 
     async UpdateLandParticularsData() {
       try {
-        this.triggerToastMessage("Updated Land Particulars Details Succesfully","custom_toast")
         this.updateLandrows();
-      const newData = this.landParticularRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.landParticularRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
-          await this.updateLandParticular(row);
-          this.landParticularRows = [];
-        } else {
-          // Insert new row
-          // this.landParticularRows.push(row);
-          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
-          await this.insertLandParticular(row);
-          this.landParticularRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+            await this.updateLandParticular(row);
+            this.landParticularRows = [];
+          } else {
+            // Insert new row
+            // this.landParticularRows.push(row);
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+            await this.insertLandParticular(row);
+            this.landParticularRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update LandParticulars Details","danger")
-        console.error("error in UpdateLandParticularsData function",error)
+        console.error("error in UpdateLandParticularsData function", error);
       }
     },
     async insertLandParticular(row) {
@@ -2775,7 +2797,18 @@ export default {
           }
         );
         console.log("Row inserted:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted LandParticulars Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Inserting LandParticulars Details",
+          "danger"
+        );
         console.error("Error inserting row:", error);
       }
     },
@@ -2787,7 +2820,18 @@ export default {
           row
         );
         console.log("Row updated:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated LandParticulars Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update LandParticulars Details Successfully",
+          "custom_toast"
+        );
         console.error("Error updating row:", error);
       }
     },
@@ -2796,32 +2840,29 @@ export default {
 
     async UpdateKharifData() {
       try {
-        this.triggerToastMessage("Updated Income Kharif Data Details Successfully","custom_toast")
         this.updateIncomeKharifrows();
-      const newData = this.incomeKharifRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.incomeKharifRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
-          await this.updateIncomeKharif(row);
-          this.incomeKharifRows = [];
-        } else {
-          // Insert new row
-          // this.landParticularRows.push(row);
-          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
-          await this.insertIncomeKharif(row);
-          this.incomeKharifRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+            await this.updateIncomeKharif(row);
+            this.incomeKharifRows = [];
+          } else {
+            // Insert new row
+            // this.landParticularRows.push(row);
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^", row);
+            await this.insertIncomeKharif(row);
+            this.incomeKharifRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Income Kharif Data Details","danger")
-        console.error("error in UpdateKharifData function",error)
+        console.error("error in UpdateKharifData function", error);
       }
-     
     },
     async insertIncomeKharif(row) {
       try {
@@ -2848,7 +2889,18 @@ export default {
           }
         );
         console.log("Row inserted:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Income Kharif Data Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Inserting Income Kharif Data Details",
+          "danger"
+        );
         console.error("Error inserting row:", error);
       }
     },
@@ -2860,37 +2912,46 @@ export default {
           row
         );
         console.log("Row updated:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated Income Kharif Data Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Income Kharif Data Details",
+          "danger"
+        );
         console.error("Error updating row:", error);
       }
     },
     async UpdateRabhiData() {
       try {
-        this.triggerToastMessage("Updated Income Rabi Data Details Successfully","custom_toast")
         this.updateIncomeRabhirows();
-      const newData = this.incomeRabhiRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.incomeRabhiRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("Rabhi ", row);
-          await this.updateIncomeRabhi(row);
-          this.incomeRabhiRows = [];
-        } else {
-          // Insert new row
-          // this.landParticularRows.push(row);
-          console.log("Rabhi updated data", row);
-          await this.insertIncomeRabhi(row);
-          this.incomeRabhiRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("Rabhi ", row);
+            await this.updateIncomeRabhi(row);
+            this.incomeRabhiRows = [];
+          } else {
+            // Insert new row
+            // this.landParticularRows.push(row);
+            console.log("Rabhi updated data", row);
+            await this.insertIncomeRabhi(row);
+            this.incomeRabhiRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Income Rabi Data Details","danger")
-        console.error("error in UpdateRabhiData function",error)
-      } 
+        console.error("error in UpdateRabhiData function", error);
+      }
     },
     async insertIncomeRabhi(row) {
       try {
@@ -2917,7 +2978,18 @@ export default {
           }
         );
         console.log("Rabhi Row inserted:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Income Rabi Data Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Inserting Income Rabi Data Details",
+          "danger"
+        );
         console.error("Error inserting rabhi row:", error);
       }
     },
@@ -2935,32 +3007,29 @@ export default {
     // live stock data updation
     async UpdateLiveStockData() {
       try {
-        this.triggerToastMessage("Updated Livestock Details Successfully","custom_toast")
         this.updateLiveStockrows();
-      const newData = this.liveStockRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.liveStockRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("Live stock ", row);
-          await this.updateLiveStock(row);
-          this.liveStockRows = [];
-        } else {
-          // Insert new row
-          // this.landParticularRows.push(row);
-          console.log("Live Stock updated data", row);
-          await this.insertLiveStock(row);
-          this.liveStockRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("Live stock ", row);
+            await this.updateLiveStock(row);
+            this.liveStockRows = [];
+          } else {
+            // Insert new row
+            // this.landParticularRows.push(row);
+            console.log("Live Stock updated data", row);
+            await this.insertLiveStock(row);
+            this.liveStockRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Livestock Details","danger")
-        console.error("error in UpdateLiveStockData function",error)
+        console.error("error in UpdateLiveStockData function", error);
       }
-     
     },
     async insertLiveStock(row) {
       try {
@@ -2982,7 +3051,18 @@ export default {
           }
         );
         console.log("Live Stock Row inserted:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Livestock Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Inserting Livestock Details",
+          "danger"
+        );
         console.error("Error inserting Live Stock row:", error);
       }
     },
@@ -2993,7 +3073,18 @@ export default {
           row
         );
         console.log("Live stock Row updated:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated Livestock Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Livestock Details",
+          "danger"
+        );
         console.error("Error updating Live Stock row:", error);
       }
     },
@@ -3081,7 +3172,11 @@ ion-card {
 }
 
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
+.danger {
+  --background: #d83503; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

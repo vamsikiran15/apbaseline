@@ -35,7 +35,7 @@
           fill="outline"
           v-model="newRowGovtBenefit.scheme_name"
         >
-        <ion-select-option value="">Select Scheme Name</ion-select-option>
+          <ion-select-option value="">Select Scheme Name</ion-select-option>
           <ion-select-option value="Amma Vodi">Amma Vodi</ion-select-option>
           <ion-select-option value="YSR Asara">YSR Asara</ion-select-option>
           <ion-select-option value="Ban on alcohol"
@@ -77,17 +77,17 @@
         ></ion-input>
       </ion-card-content>
       <ion-button
-          class="ion-margin"
-          expand="block"
-          color="primary"
-          @click="UpdateGovtBenefitData()"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Government Scheme Details</ion-button
-        >
+        class="ion-margin"
+        expand="block"
+        color="primary"
+        @click="UpdateGovtBenefitData()"
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update Government Scheme Details</ion-button
+      >
     </ion-card>
   </div>
 </template>
@@ -115,6 +115,7 @@ import {
   IonButton,
   IonItem,
   toastController,
+  IonIcon,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -156,7 +157,8 @@ export default {
     IonList,
     IonButton,
     IonItem,
-    toastController
+    toastController,
+    IonIcon,
   },
   methods: {
     selectGovtBenefit(item) {
@@ -199,32 +201,29 @@ export default {
     // migrate data updation
     async UpdateGovtBenefitData() {
       try {
-        this.triggerToastMessage("Updated Government Benefits Details Successfully","custom_toast")
         this.updateGovtBenenfitrows();
-      const newData = this.GovtBenefitRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.GovtBenefitRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("govt banefit ", row);
-          await this.updateGovtBenefit(row);
-          this.GovtBenefitRows = [];
-        } else {
-          // Insert new row
-          // this.GovtBenefitRows.push(row);
-          console.log("govt banefit updated data", row);
-          await this.insertGovtBenefit(row);
-          this.GovtBenefitRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("govt banefit ", row);
+            await this.updateGovtBenefit(row);
+            this.GovtBenefitRows = [];
+          } else {
+            // Insert new row
+            // this.GovtBenefitRows.push(row);
+            console.log("govt banefit updated data", row);
+            await this.insertGovtBenefit(row);
+            this.GovtBenefitRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Government Benefits Details","danger")
-        console.error("error in UpdateGovtBenefitData function",error)
+        console.error("error in UpdateGovtBenefitData function", error);
       }
-     
     },
     stringValidation() {
       let value = event.target.value;
@@ -246,8 +245,20 @@ export default {
             amount: row.amount,
           }
         );
+        this.govtbenefit.push(response.data.data);
+        if (response.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Government Benefits Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("govt banefits inserted:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Insert Government Benefits Details",
+          "danger"
+        );
         console.error("Error inserting govt banefit row:", error);
       }
     },
@@ -257,12 +268,23 @@ export default {
           `http://183.82.109.39:5000/api/updategovtbenefit/${row.id}`,
           row
         );
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated Government Benefits Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("govt banefit Row updated:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Government Benefits Details",
+          "danger"
+        );
         console.error("Error updating govt banefit row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -280,7 +302,7 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

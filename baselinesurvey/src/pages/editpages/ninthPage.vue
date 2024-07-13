@@ -32,7 +32,7 @@
           fill="outline"
           v-model="newRowPestDisease.crops"
         >
-        <ion-select-option value="">Select Crop</ion-select-option>
+          <ion-select-option value="">Select Crop</ion-select-option>
           <ion-select-option value="Paddy">Paddy</ion-select-option>
           <ion-select-option value="maize">maize</ion-select-option>
           <ion-select-option value="jowar">jowar</ion-select-option>
@@ -124,17 +124,17 @@
         ></ion-input> -->
       </ion-card-content>
       <ion-button
-          class="ion-margin"
-          expand="block"
-          color="primary"
-          @click="UpdatePestDiseaseData()"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Pest/Disease Details</ion-button
-        >
+        class="ion-margin"
+        expand="block"
+        color="primary"
+        @click="UpdatePestDiseaseData()"
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update Pest/Disease Details</ion-button
+      >
     </ion-card>
     <!-- <ion-card>
       <ion-card-content>
@@ -172,6 +172,8 @@ import {
   IonList,
   IonButton,
   toastController,
+  IonItem,
+  IonIcon,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -216,7 +218,9 @@ export default {
     IonRadio,
     IonList,
     IonButton,
-    toastController
+    toastController,
+    IonItem,
+    IonIcon,
   },
   methods: {
     selectPestDisease(item) {
@@ -270,30 +274,28 @@ export default {
     // migrate data updation
     async UpdatePestDiseaseData() {
       try {
-        this.triggerToastMessage("Updated Pest and Disease Details Successfully","custom_toast")
         this.updatePestDiseaserows();
-      const newData = this.pestDiseaseRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.pestDiseaseRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("pest disease ", row);
-          await this.updatePestDisease(row);
-          this.pestDiseaseRows = [];
-        } else {
-          // Insert new row
-          // this.GovtBenefitRows.push(row);
-          console.log("pest disease updated data", row);
-          await this.insertPestDisease(row);
-          this.pestDiseaseRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("pest disease ", row);
+            await this.updatePestDisease(row);
+            this.pestDiseaseRows = [];
+          } else {
+            // Insert new row
+            // this.GovtBenefitRows.push(row);
+            console.log("pest disease updated data", row);
+            await this.insertPestDisease(row);
+            this.pestDiseaseRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Pest and Disease Details","danger")
-        console.error("error in UpdatePestDiseaseData function",error)
+        console.error("error in UpdatePestDiseaseData function", error);
       }
     },
     async insertPestDisease(row) {
@@ -313,8 +315,20 @@ export default {
             amount_spent_wages: row.amount_spent_wages,
           }
         );
+        this.pestdiseasedetails.push(response.data.data);
+        if (response.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted Pest and Disease Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("pest disease inserted:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Pest and Disease Details",
+          "danger"
+        );
         console.error("Error inserting pest disease row:", error);
       }
     },
@@ -324,12 +338,23 @@ export default {
           `http://183.82.109.39:5000/api/updatepestdisease/${row.id}`,
           row
         );
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated Pest and Disease Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("pest disease Row updated:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to Update Pest and Disease Details",
+          "danger"
+        );
         console.error("Error updating pest disease row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -347,7 +372,7 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>

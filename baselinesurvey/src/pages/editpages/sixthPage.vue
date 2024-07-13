@@ -30,7 +30,9 @@
           class="ion-margin-top"
           v-model="newRowLandLess.name_of_the_scheme_or_project"
         >
-        <ion-select-option value="">Select Name of the Scheme</ion-select-option>
+          <ion-select-option value=""
+            >Select Name of the Scheme</ion-select-option
+          >
           <ion-select-option value="Watershed">Watershed</ion-select-option>
           <ion-select-option value="MGNREGS">MGNREGS</ion-select-option>
           <ion-select-option value="Others">Others</ion-select-option>
@@ -39,7 +41,7 @@
           class="ion-margin-top"
           placeholder="Enter days"
           fill="outline"
-           type="number"
+          type="number"
           label="Man-Days"
           label-placement="floating"
           v-model="newRowLandLess.mandays"
@@ -48,7 +50,7 @@
           class="ion-margin-top"
           placeholder="Enter days"
           fill="outline"
-           type="number"
+          type="number"
           label="Wage/Days"
           label-placement="floating"
           v-model="newRowLandLess.wage_per_day"
@@ -56,25 +58,25 @@
         <ion-input
           class="ion-margin-top"
           placeholder="Enter days"
-           type="number"
+          type="number"
           fill="outline"
           label="Income(Rs)"
           label-placement="floating"
           v-model="newRowLandLess.income"
-        ></ion-input> 
+        ></ion-input>
       </ion-card-content>
       <ion-button
-          class="ion-margin"
-          expand="block"
-          color="primary"
-          @click="UpdateLandLessData()"
-          ><ion-icon
-            class="ion-margin-end"
-            name="add-circle"
-            slot="icon-only"
-          ></ion-icon
-          >Update Land Less Details</ion-button
-        >
+        class="ion-margin"
+        expand="block"
+        color="primary"
+        @click="UpdateLandLessData()"
+        ><ion-icon
+          class="ion-margin-end"
+          name="add-circle"
+          slot="icon-only"
+        ></ion-icon
+        >Update Land Less Details</ion-button
+      >
     </ion-card>
     <!-- <ion-card>
       <ion-card-content>
@@ -112,6 +114,9 @@ import {
   IonRadio,
   IonList,
   toastController,
+  IonItem,
+  IonIcon,
+  IonButton,
 } from "@ionic/vue";
 import axios from "axios";
 export default {
@@ -152,7 +157,10 @@ export default {
     IonRadioGroup,
     IonRadio,
     IonList,
-    toastController
+    toastController,
+    IonItem,
+    IonIcon,
+    IonButton,
   },
   methods: {
     selectMigrate(item) {
@@ -197,32 +205,29 @@ export default {
     // migrate data updation
     async UpdateLandLessData() {
       try {
-        this.triggerToastMessage("Updated Landless Details Successfully","custom_toast")
         this.updateLandLessrows();
-      const newData = this.landLessRows.map((row) => ({
-        ...row,
-        headId: this.editedItem.id,
-      }));
+        const newData = this.landLessRows.map((row) => ({
+          ...row,
+          headId: this.editedItem.id,
+        }));
 
-      for (const row of newData) {
-        if (row.id) {
-          // Update existing row
-          console.log("land less ", row);
-          await this.updateLandLess(row);
-          this.landLessRows = [];
-        } else {
-          // Insert new row
-          this.landLessRows.push(row);
-          console.log("Land Less updated data", row);
-          await this.insertLandLess(row);
-          this.landLessRows = [];
+        for (const row of newData) {
+          if (row.id) {
+            // Update existing row
+            console.log("land less ", row);
+            await this.updateLandLess(row);
+            this.landLessRows = [];
+          } else {
+            // Insert new row
+            this.landLessRows.push(row);
+            console.log("Land Less updated data", row);
+            await this.insertLandLess(row);
+            this.landLessRows = [];
+          }
         }
-      }
       } catch (error) {
-        this.triggerToastMessage("Failed to Update Landless Details","danger")
-        console.error("error in UpdateLandLessData function",error)
+        console.error("error in UpdateLandLessData function", error);
       }
-     
     },
     async insertLandLess(row) {
       try {
@@ -239,8 +244,20 @@ export default {
             income: row.income,
           }
         );
+        this.landless.push(response.data.data);
+        if (response.statusText === "Created") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Inserted LandLess Details Successfully",
+            "custom_toast"
+          );
+        }
         console.log("LandLess inserted:", response);
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to insert LandLess Details",
+          "custom_toast"
+        );
         console.error("Error inserting Land Less row:", error);
       }
     },
@@ -251,11 +268,22 @@ export default {
           row
         );
         console.log("Land Less Row updated:", response);
+        if (response.statusText === "OK") {
+          // If response status is 200 (OK), trigger success toast
+          this.triggerToastMessage(
+            "Updated LandLess Details Successfully",
+            "custom_toast"
+          );
+        }
       } catch (error) {
+        this.triggerToastMessage(
+          "Failed to updated LandLess Details",
+          "custom_toast"
+        );
         console.error("Error updating Land Less row:", error);
       }
     },
-    async triggerToastMessage(message,color) {
+    async triggerToastMessage(message, color) {
       const toast = await toastController.create({
         message: message,
         duration: 3000,
@@ -273,7 +301,7 @@ ion-card {
   box-shadow: 1px 1px 6px rgb(96, 96, 161);
 }
 .custom_toast {
-    --background: #df3389; /* Set your desired background color */
-    --color: white; /* Set your desired text color */
-  }
+  --background: #df3389; /* Set your desired background color */
+  --color: white; /* Set your desired text color */
+}
 </style>
